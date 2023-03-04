@@ -1,0 +1,93 @@
+body {
+    animation: fade 2s ease-in;
+    background: #111;
+    font-family: 'Courier New', monospace;
+}
+
+iframe {
+    border: none;
+    display: block;
+    height: 100%;
+    margin: 0 5%;
+    outline: 1px solid #eee;
+    outline-offset: -1px;
+    width: 90%;
+}
+
+main {
+    height: calc(100vh - 5vh - 5vh - 1rem - 1rem);
+}
+
+nav {
+    font-size: 1rem;
+    height: 1rem;
+    margin: 5vh 5% 1rem 5%;
+    width: 90%;
+}
+
+select {
+    border-color: #eee;
+    border-radius: .5rem;
+    color: #eee;
+    cursor: pointer;
+    outline-color: crimson;
+    padding-right: 1rem;
+}
+
+select:first-of-type {
+    float: left;
+    margin-right: 1rem;
+    width: 20%;
+}
+
+select:last-of-type {
+    width: calc(100% - 20% - 1rem);
+}
+
+@media screen and (max-width: 768px) {
+
+    select:first-of-type {
+        margin-right: 0;
+        width: 50%;
+    }
+
+    select:last-of-type {
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    iframe {
+        outline: none;
+        margin: 0;
+        width: 100%;
+    }
+
+    main {
+        height: calc(100vh - 1vh - 1vh - 1rem);
+    }
+
+    nav {
+        margin-bottom: 0;
+        margin-top: 1vh;
+    }
+
+}
+
+@keyframes fade {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
