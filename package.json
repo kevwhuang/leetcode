@@ -1,10 +1,14 @@
 {
     "name": "neetcode",
-    "version": "23.03.01",
+    "version": "23.04.01",
     "description": "NeetCode",
     "author": "Kevin Huang",
     "license": "MIT",
     "main": "main.js",
+    "scripts": {
+        "eslint": "eslint '**/*.{js,mjs,ts}'",
+        "test": "jest --watchAll"
+    },
     "homepage": "https://github.com/kevwhuang/neetcode#readme",
     "repository": {
         "type": "git",
@@ -12,7 +16,10 @@
     },
     "dependencies": {},
     "devDependencies": {
+        "eslint": "*",
         "eslint-config-airbnb-base": "*",
+        "eslint-plugin-jest": "*",
+        "jest": "*",
         "nodemon": "*"
     }
 }

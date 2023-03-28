@@ -20,7 +20,7 @@ main {
 nav {
     font-size: 1rem;
     height: 1rem;
-    margin: 5vh 5% 1rem 5%;
+    margin: 5vh 5% 1rem;
     width: 90%;
 }
 
@@ -81,7 +81,6 @@ select:last-of-type {
 }
 
 @keyframes fade {
-
     0% {
         opacity: 0;
     }
@@ -93,5 +92,4 @@ select:last-of-type {
     100% {
         opacity: 1;
     }
-
 }

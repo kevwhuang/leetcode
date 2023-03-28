@@ -19,6 +19,7 @@ algorithms.addEventListener('change', () => {
     const category = categories.options[categories.selectedIndex].text;
     const link = document.createElement('link');
 
+    iframe.title = `algorithms/${category}/${algorithm}`;
     iframe.src = `algorithms/${category}/${algorithm}`;
     link.setAttribute('href', '../../iframe.css');
     link.setAttribute('rel', 'stylesheet');
