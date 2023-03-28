@@ -1,3 +1,9 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
 function twoSum(nums, target) {
     for (let i = 0; i < nums.length; i++) {
         const check = nums.slice(i + 1);
@@ -7,3 +13,5 @@ function twoSum(nums, target) {
         }
     }
 }
+
+module.exports = twoSum;

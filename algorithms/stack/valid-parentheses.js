@@ -1,3 +1,8 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+
 function isValid(s) {
     while (1) {
         const $ = s.length;
@@ -6,3 +11,5 @@ function isValid(s) {
         if ($ == s.length) return false;
     }
 }
+
+module.exports = isValid;
