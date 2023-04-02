@@ -21,7 +21,7 @@ algorithms.addEventListener('change', () => {
 
     iframe.title = `algorithms/${category}/${algorithm}`;
     iframe.src = `algorithms/${category}/${algorithm}`;
-    link.setAttribute('href', '../../iframe.css');
+    link.setAttribute('href', '../../public/iframe.css');
     link.setAttribute('rel', 'stylesheet');
     main.style.animation = 'fade .5s ease-in';
 
@@ -33,7 +33,7 @@ algorithms.addEventListener('change', () => {
     const link = document.createElement('link');
 
     link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', 'iframe.css');
+    link.setAttribute('href', 'public/iframe.css');
 
     setTimeout(() => iframe.contentDocument.querySelector('head').append(link), 100);
 }());
