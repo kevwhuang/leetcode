@@ -3,13 +3,11 @@
  * @return {boolean}
  */
 
-function isValid(s) {
+module.exports = function isValid(s) {
     while (1) {
-        const $ = s.length;
-        if (!$) return true;
+        const LEN = s.length;
+        if (!LEN) return true;
         s = s.replaceAll(/\(\)|\[\]|\{\}/g, '');
-        if ($ == s.length) return false;
+        if (LEN === s.length) return false;
     }
 }
-
-module.exports = isValid;
