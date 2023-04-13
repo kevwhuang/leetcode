@@ -81,6 +81,7 @@ select:last-of-type {
 }
 
 @keyframes fade {
+
     0% {
         opacity: 0;
     }
@@ -92,4 +93,5 @@ select:last-of-type {
     100% {
         opacity: 1;
     }
+
 }

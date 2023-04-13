@@ -1,5 +1,12 @@
 {
     "root": true,
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base"
+    ],
+    "plugins": [
+        "jest"
+    ],
     "env": {
         "browser": true,
         "jest": true,
@@ -9,13 +16,6 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "extends": [
-        "eslint:recommended",
-        "airbnb-base"
-    ],
-    "plugins": [
-        "jest"
-    ],
     "rules": {
         "indent": [
             "error",

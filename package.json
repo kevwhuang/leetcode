@@ -1,15 +1,13 @@
 {
     "name": "neetcode",
-    "version": "23.04.01",
-    "description": "NeetCode",
-    "author": "Kevin Huang",
+    "version": "23.4.1",
+    "homepage": "https://github.com/kevwhuang/neetcode",
     "license": "MIT",
-    "main": "main.js",
+    "author": "Kevin Huang",
     "scripts": {
         "eslint": "eslint '**/*.js'",
         "test": "jest --watchAll"
     },
-    "homepage": "https://github.com/kevwhuang/neetcode#readme",
     "repository": {
         "type": "git",
         "url": "https://github.com/kevwhuang/neetcode.git"
