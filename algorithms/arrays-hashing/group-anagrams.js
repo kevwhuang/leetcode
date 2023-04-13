@@ -12,4 +12,4 @@ module.exports = function groupAnagrams(strs) {
     }
     for (const e in map) output.push(map[e]);
     return output;
-}
+};

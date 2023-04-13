@@ -10,4 +10,4 @@ module.exports = function isValid(s) {
         s = s.replaceAll(/\(\)|\[\]|\{\}/g, '');
         if (LEN === s.length) return false;
     }
-}
+};
