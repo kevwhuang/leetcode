@@ -1,22 +1,16 @@
 {
     "name": "neetcode",
     "version": "23.5.1",
-    "homepage": "https://github.com/kevwhuang/neetcode",
-    "license": "MIT",
+    "homepage": "https://kevwhuang.github.io/neetcode",
     "author": "Kevin Huang",
     "scripts": {
-        "eslint": "eslint '**/*.js'",
         "test": "jest --watchAll"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/kevwhuang/neetcode.git"
     },
-    "dependencies": {},
     "devDependencies": {
-        "eslint": "*",
-        "eslint-config-airbnb-base": "*",
-        "eslint-plugin-jest": "*",
         "jest": "*",
         "nodemon": "*"
     }
