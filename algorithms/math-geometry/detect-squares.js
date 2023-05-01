@@ -1,6 +1,6 @@
 module.exports = class DetectSquares {
     /**
-     * @param {number[]} points
+     * @param {Map} points
      */
 
     constructor() {
