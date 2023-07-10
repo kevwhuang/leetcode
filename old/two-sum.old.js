@@ -5,13 +5,10 @@
  */
 
 module.exports = function twoSum(nums, target) {
-    const map = new Map();
     for (let i = 0; i < nums.length; i++) {
-        const diff = target - nums[i];
-        if (map.has(diff)) {
-            return [map.get(diff), i];
-        } else {
-            map.set(nums[i], i);
+        const check = nums.slice(i + 1);
+        for (let j = 0; j < check.length; j++) {
+            if (nums[i] + check[j] === target) return [i, i + j + 1];
         }
     }
 };
