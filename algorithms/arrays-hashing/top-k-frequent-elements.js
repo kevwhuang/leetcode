@@ -4,16 +4,21 @@
  * @return {number[]}
  */
 
-module.exports = function topKFrequent(nums, k) {
-    const map = {};
+module.exports = topKFrequent;
+
+function topKFrequent(nums, k) {
+    const map = new Map();
+    const bucket = [];
     const output = [];
-    for (const e of nums) map[e] ? map[e] += 1 : map[e] = 1;
-    const freqs = Object.values(map).sort((a, b) => b - a).slice(0, k);
-    for (const e of freqs) for (const f in map) {
-        if (map[f] === e && output.length < k) {
-            output.push(+f);
-            delete map[f];
-        }
+    for (const num of nums) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
+    for (const [num, freq] of map) {
+        bucket[freq] = (bucket[freq] || new Set()).add(num);
+    }
+    for (let i = bucket.length - 1; i >= 0; i--) {
+        bucket[i] && output.push(...bucket[i]);
+        if (output.length === k) break;
     }
     return output;
 };

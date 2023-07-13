@@ -3,7 +3,9 @@
  * @return {string[][]}
  */
 
-module.exports = function groupAnagrams(strs) {
+module.exports = groupAnagrams;
+
+function groupAnagrams(strs) {
     const map = new Map();
     for (const str of strs) {
         const table = Array(26).fill(0);
@@ -16,4 +18,4 @@ module.exports = function groupAnagrams(strs) {
             : map.set(code, [str]);
     }
     return [...map.values()];
-};
+}

@@ -4,7 +4,9 @@
  * @return {boolean}
  */
 
-module.exports = function isAnagram(s, t) {
+module.exports = isAnagram;
+
+function isAnagram(s, t) {
     if (s.length !== t.length) return false;
     const map = new Map();
     for (const letter of s) {
@@ -15,4 +17,4 @@ module.exports = function isAnagram(s, t) {
         map.set(letter, map.get(letter) - 1);
     }
     return true;
-};
+}

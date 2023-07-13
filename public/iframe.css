@@ -18,14 +18,14 @@ pre::selection {
     width: .5rem;
 }
 
-::-webkit-scrollbar-track {
-    background: #444;
-}
-
 ::-webkit-scrollbar-thumb {
     background: #eee;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #bbb;
+}
+
+::-webkit-scrollbar-track {
+    background: #444;
 }
