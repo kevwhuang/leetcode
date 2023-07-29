@@ -18,4 +18,4 @@ function productExceptSelf(nums) {
         result[i - 1] *= rightMult;
     }
     return result;
-};
+}

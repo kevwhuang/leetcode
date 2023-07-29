@@ -3,7 +3,9 @@
  * @return {number}
  */
 
-module.exports = function longestConsecutive(nums) {
+module.exports = longestConsecutive;
+
+function longestConsecutive(nums) {
     if (!nums.length) return 0;
     let max = 1;
     let tally = 1;
@@ -14,4 +16,4 @@ module.exports = function longestConsecutive(nums) {
         if (tally > max) max = tally;
     }
     return max;
-};
+}

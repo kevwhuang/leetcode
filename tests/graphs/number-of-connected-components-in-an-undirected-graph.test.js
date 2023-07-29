@@ -1,5 +1,5 @@
 const algorithm = require('../../algorithms/graphs/number-of-connected-components-in-an-undirected-graph');
 
-describe.skip('Main', () => {
-    test('Case', () => { });
+describe('Main', () => {
+    test('Skip', () => { });
 });

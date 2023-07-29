@@ -47,7 +47,7 @@ select:first-of-type {
 }
 
 select:last-of-type {
-    width: calc(100% - 20% - 1rem);
+    width: calc(80% - 1rem);
 }
 
 @keyframes fade {
@@ -77,8 +77,8 @@ select:last-of-type {
 
 @media screen and (max-width: 480px) {
     iframe {
-        outline: none;
         margin: 0;
+        outline: none;
         width: 100%;
     }
 

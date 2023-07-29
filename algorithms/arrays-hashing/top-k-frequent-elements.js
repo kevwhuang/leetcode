@@ -21,4 +21,4 @@ function topKFrequent(nums, k) {
         if (output.length === k) break;
     }
     return output;
-};
+}

@@ -37,11 +37,22 @@ function fizzBuzz(n) {
 function numberOfSteps(num) {
     let steps = 0;
     while (num) {
-        if (!(num % 2)) num *= .5;
-        else num--;
+        if (num % 2) num--;
+        else num /= 2;
         steps++;
     }
     return steps;
+}
+
+// 876 - Middle of the Linked List
+function middleNode(head) {
+    let current = head;
+    let middle = head;
+    while (current && current.next) {
+        current = current.next.next;
+        middle = middle.next;
+    }
+    return middle;
 }
 
 // 383 - Ransom Note
