@@ -1,10 +1,10 @@
+// 1 - Two Sum
+
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
-
-module.exports = twoSum;
 
 function twoSum(nums, target) {
     const map = new Map();
@@ -14,3 +14,5 @@ function twoSum(nums, target) {
         else map.set(nums[i], i);
     }
 }
+
+module.exports = twoSum;

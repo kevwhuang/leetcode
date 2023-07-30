@@ -1,4 +1,5 @@
 // 2695 - Array Wrapper
+
 class ArrayWrapper {
     constructor(nums) {
         this.nums = nums;

@@ -1,9 +1,9 @@
+// 238 - Product of Array Except Self
+
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
-
-module.exports = productExceptSelf;
 
 function productExceptSelf(nums) {
     const result = [];
@@ -19,3 +19,5 @@ function productExceptSelf(nums) {
     }
     return result;
 }
+
+module.exports = productExceptSelf;

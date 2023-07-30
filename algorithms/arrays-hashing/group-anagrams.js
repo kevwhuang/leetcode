@@ -1,9 +1,9 @@
+// 49 - Group Anagrams
+
 /**
  * @param {string[]} strs
  * @return {string[][]}
  */
-
-module.exports = groupAnagrams;
 
 function groupAnagrams(strs) {
     const map = new Map();
@@ -19,3 +19,5 @@ function groupAnagrams(strs) {
     }
     return [...map.values()];
 }
+
+module.exports = groupAnagrams;

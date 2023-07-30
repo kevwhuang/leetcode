@@ -1,10 +1,10 @@
+// 242 - Valid Anagram
+
 /**
  * @param {string} s
  * @param {string} t
  * @return {boolean}
  */
-
-module.exports = isAnagram;
 
 function isAnagram(s, t) {
     if (s.length !== t.length) return false;
@@ -18,3 +18,5 @@ function isAnagram(s, t) {
     }
     return true;
 }
+
+module.exports = isAnagram;

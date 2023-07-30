@@ -1,9 +1,9 @@
+// 128 - Longest Consecutive Sequence
+
 /**
  * @param {number[]} nums
  * @return {number}
  */
-
-module.exports = longestConsecutive;
 
 function longestConsecutive(nums) {
     if (!nums.length) return 0;
@@ -17,3 +17,5 @@ function longestConsecutive(nums) {
     }
     return max;
 }
+
+module.exports = longestConsecutive;

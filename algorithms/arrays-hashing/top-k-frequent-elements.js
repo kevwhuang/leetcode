@@ -1,10 +1,10 @@
+// 347 - Top K Frequent Elements
+
 /**
  * @param {number[]} nums
  * @param {number} k
  * @return {number[]}
  */
-
-module.exports = topKFrequent;
 
 function topKFrequent(nums, k) {
     const map = new Map();
@@ -22,3 +22,5 @@ function topKFrequent(nums, k) {
     }
     return output;
 }
+
+module.exports = topKFrequent;
