@@ -1,15 +1,5 @@
-// 485 - Max Consecutive Ones
-function findMaxConsecutiveOnes(nums) {
-    let max = 0;
-    let window = 0;
-    for (const num of nums) {
-        if (num) max = Math.max(++window, max);
-        else window = 0;
-    }
-    return max;
-}
-
 // 1295 - Find Numbers with Even Number of Digits
+
 function findNumbers(nums) {
     let count = 0;
     for (const num of nums) {
@@ -19,6 +9,7 @@ function findNumbers(nums) {
 }
 
 // 977 - Squares of a Sorted Array
+
 function sortedSquares(nums) {
     const squares = [];
     let left = 0;
@@ -38,6 +29,7 @@ function sortedSquares(nums) {
 }
 
 // 1089 - Duplicate Zeros
+
 function duplicateZeros(arr) {
     let i = 0;
     while (i < arr.length) {
@@ -51,6 +43,7 @@ function duplicateZeros(arr) {
 }
 
 // 88 - Merge Sorted Array
+
 function merge(nums1, m, nums2, n) {
     nums1.splice(m, n);
     nums2.forEach(num => nums1.push(num));
@@ -58,6 +51,7 @@ function merge(nums1, m, nums2, n) {
 }
 
 // 1346 - Check If N and Its Double Exist
+
 function checkIfExist(arr) {
     for (let i = 0; i < arr.length; i++) {
         const index = arr.lastIndexOf(arr[i] * 2);
@@ -67,6 +61,7 @@ function checkIfExist(arr) {
 }
 
 // 941 - Valid Mountain Array
+
 function validMountainArray(arr) {
     if (arr.length < 3) return false;
     if (arr[0] > arr[1]) return false;
@@ -84,6 +79,7 @@ function validMountainArray(arr) {
 }
 
 // 1299 - Replace Elements with Greatest Element on Right Side
+
 function replaceElements(arr) {
     let greatest = arr.at(-1);
     for (let i = arr.length - 2; i >= 0; i--) {
@@ -96,6 +92,7 @@ function replaceElements(arr) {
 }
 
 // 283 - Move Zeroes
+
 function moveZeroes(nums) {
     let left = 0;
     let right = nums.length - 1;
@@ -110,6 +107,7 @@ function moveZeroes(nums) {
 }
 
 // 905 - Sort Array By Parity
+
 function sortArrayByParity(nums) {
     let left = 0;
     let right = nums.length - 1;

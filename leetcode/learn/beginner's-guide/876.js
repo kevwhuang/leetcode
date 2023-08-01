@@ -1,4 +1,5 @@
 // 876 - Middle of the Linked List
+
 function middleNode(head) {
     let current = head;
     let middle = head;

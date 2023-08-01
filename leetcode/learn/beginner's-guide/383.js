@@ -1,4 +1,5 @@
 // 383 - Ransom Note
+
 function canConstruct(ransomNote, magazine) {
     const map = new Map();
     for (const letter of magazine) {

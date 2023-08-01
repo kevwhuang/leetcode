@@ -1,4 +1,5 @@
 // 412 - Fizz Buzz
+
 function fizzBuzz(n) {
     const answer = [];
     for (let i = 1; i <= n; i++) {

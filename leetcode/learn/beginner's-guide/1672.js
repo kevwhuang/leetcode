@@ -1,4 +1,5 @@
 // 1672 - Richest Customer Wealth
+
 function maximumWealth(accounts) {
     let max = 0;
     for (const customer of accounts) {
