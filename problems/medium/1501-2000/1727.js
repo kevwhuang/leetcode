@@ -10,10 +10,9 @@ function largestSubmatrix(matrix) {
             if (matrix[r][c]) cols.push(++dp[c]);
             else dp[c] = 0;
         }
-        cols.sort((a, b) => a - b);
-        const len = cols.length;
-        for (let i = 0; i < len; i++) {
-            area = Math.max(cols[i] * (len - i), area);
+        cols.sort((a, b) => b - a);
+        for (let i = 0, len = 1; i < cols.length; i++, len++) {
+            area = Math.max(cols[i] * len, area);
         }
     }
     return area;
