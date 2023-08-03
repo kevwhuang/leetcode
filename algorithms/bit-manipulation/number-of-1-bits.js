@@ -1,8 +1,17 @@
+// 191 - Number of 1 Bits
+
 /**
  * @param {number} n
  * @return {number}
  */
 
-module.exports = function hammingWeight(n) {
-    return n.toString(2).replaceAll('0', '').length;
-};
+function hammingWeight(n) {
+    let count = 0;
+    while (n) {
+        n & 1 && count++;
+        n >>>= 1;
+    }
+    return count;
+}
+
+module.exports = hammingWeight;
