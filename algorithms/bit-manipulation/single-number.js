@@ -1,10 +1,16 @@
+// 136 - Single Number
+
 /**
  * @param {number[]} nums
  * @return {number}
  */
 
-module.exports = function singleNumber(nums) {
-    let unique;
-    for (let i = 0; i < nums.length; i++) unique ^= nums[i];
+function singleNumber(nums) {
+    let unique = 0;
+    for (let i = 0; i < nums.length; i++) {
+        unique ^= nums[i];
+    }
     return unique;
-};
+}
+
+module.exports = singleNumber;
