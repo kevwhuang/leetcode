@@ -1,4 +1,4 @@
-// 1252 - Cells with Odd Values in a Matrix
+// 1252 - Cells With Odd Values in a Matrix
 
 function oddCells(m, n, indices) {
     const matrix = [];

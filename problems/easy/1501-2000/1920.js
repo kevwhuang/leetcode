@@ -1,4 +1,4 @@
-// 1920 - Build Array from Permutation
+// 1920 - Build Array From Permutation
 
 function buildArray(nums) {
     return nums.map(n => nums[n]);
