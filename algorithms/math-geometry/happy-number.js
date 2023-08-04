@@ -1,9 +1,9 @@
+// 202 - Happy Number
+
 /**
  * @param {number} n
  * @return {boolean}
  */
-
-module.exports = isHappy;
 
 function isHappy(n) {
     const set = new Set([n]);
@@ -19,3 +19,5 @@ function isHappy(n) {
     }
     return true;
 }
+
+module.exports = isHappy;
