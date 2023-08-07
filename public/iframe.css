@@ -1,0 +1,31 @@
+body {
+    background: #111;
+    color: #eee;
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+pre {
+    margin: 0;
+}
+
+pre::selection {
+    background: #eee;
+    color: #111;
+}
+
+::-webkit-scrollbar {
+    width: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+::-webkit-scrollbar-track {
+    background: #444;
+}
