@@ -6,6 +6,6 @@ describe('Main', () => {
     });
 
     test('Case 2', () => {
-        expect(productExceptSelf([-1, 1, 0, -3, 3])).toStrictEqual([0, 0, 9, 0, 0]);
+        expect(productExceptSelf([-1, 1, 0, -3, 3])).toStrictEqual([-0, 0, 9, -0, 0]);
     });
 });

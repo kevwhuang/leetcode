@@ -6,7 +6,11 @@
  */
 
 function plusOne(digits) {
-    return String(BigInt(digits.join('')) + 1n).split('');
+    digits = String(BigInt(digits.join('')) + 1n).split('');
+    for (let i = 0; i < digits.length; i++) {
+        digits[i] = Number(digits[i]);
+    }
+    return digits;
 }
 
 module.exports = plusOne;
