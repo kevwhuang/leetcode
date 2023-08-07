@@ -1,4 +1,4 @@
-const longestConsecutive = require('../../algorithms/arrays-hashing/longest-consecutive-sequence');
+const longestConsecutive = require('../../neetcode/arrays-hashing/longest-consecutive-sequence');
 
 describe('Main', () => {
     test('Case 1', () => {

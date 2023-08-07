@@ -1,4 +1,4 @@
-const search = require('../../algorithms/binary-search/search-in-rotated-sorted-array');
+const search = require('../../neetcode/binary-search/search-in-rotated-sorted-array');
 
 describe('Main', () => {
     test('Case 1', () => {

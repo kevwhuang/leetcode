@@ -1,4 +1,4 @@
-const numIslands = require('../../algorithms/graphs/number-of-islands');
+const numIslands = require('../../neetcode/graphs/number-of-islands');
 
 describe('Main', () => {
     test('Case 1', () => {

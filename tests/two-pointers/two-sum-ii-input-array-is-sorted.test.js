@@ -1,4 +1,4 @@
-const twoSum = require('../../algorithms/two-pointers/two-sum-ii-input-array-is-sorted');
+const twoSum = require('../../neetcode/two-pointers/two-sum-ii-input-array-is-sorted');
 
 describe('Main', () => {
     test('Case 1', () => {

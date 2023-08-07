@@ -1,4 +1,4 @@
-const spiralOrder = require('../../algorithms/math-geometry/spiral-matrix');
+const spiralOrder = require('../../neetcode/math-geometry/spiral-matrix');
 
 describe('Main', () => {
     test('Case 1', () => {

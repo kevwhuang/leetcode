@@ -1,4 +1,4 @@
-const countSubstrings = require('../../algorithms/1d-dynamic-programming/palindromic-substrings');
+const countSubstrings = require('../../neetcode/1d-dynamic-programming/palindromic-substrings');
 
 describe('Main', () => {
     test('Case 1', () => {

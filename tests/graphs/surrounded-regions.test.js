@@ -1,4 +1,4 @@
-const solve = require('../../algorithms/graphs/surrounded-regions');
+const solve = require('../../neetcode/graphs/surrounded-regions');
 
 describe('Main', () => {
     test('Case 1', () => {

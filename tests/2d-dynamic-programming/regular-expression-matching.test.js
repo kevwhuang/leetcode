@@ -1,4 +1,4 @@
-const isMatch = require('../../algorithms/2d-dynamic-programming/regular-expression-matching');
+const isMatch = require('../../neetcode/2d-dynamic-programming/regular-expression-matching');
 
 describe('Main', () => {
     test('Case 1', () => {

@@ -1,4 +1,4 @@
-const isHappy = require('../../algorithms/math-geometry/happy-number');
+const isHappy = require('../../neetcode/math-geometry/happy-number');
 
 describe('Main', () => {
     test('Case 1', () => {

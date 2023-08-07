@@ -1,4 +1,4 @@
-const reverse = require('../../algorithms/bit-manipulation/reverse-integer');
+const reverse = require('../../neetcode/bit-manipulation/reverse-integer');
 
 describe('Main', () => {
     test('Case 1', () => {

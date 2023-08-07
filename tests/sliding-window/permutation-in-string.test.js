@@ -1,4 +1,4 @@
-const checkInclusion = require('../../algorithms/sliding-window/permutation-in-string');
+const checkInclusion = require('../../neetcode/sliding-window/permutation-in-string');
 
 describe('Main', () => {
     test('Case 1', () => {

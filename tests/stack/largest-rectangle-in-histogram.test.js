@@ -1,4 +1,4 @@
-const largestRectangleArea = require('../../algorithms/stack/largest-rectangle-in-histogram');
+const largestRectangleArea = require('../../neetcode/stack/largest-rectangle-in-histogram');
 
 describe('Main', () => {
     test('Case 1', () => {

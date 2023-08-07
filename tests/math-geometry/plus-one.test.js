@@ -1,4 +1,4 @@
-const plusOne = require('../../algorithms/math-geometry/plus-one');
+const plusOne = require('../../neetcode/math-geometry/plus-one');
 
 describe('Main', () => {
     test('Case 1', () => {

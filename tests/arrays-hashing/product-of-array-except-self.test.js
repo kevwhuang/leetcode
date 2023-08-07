@@ -1,4 +1,4 @@
-const productExceptSelf = require('../../algorithms/arrays-hashing/product-of-array-except-self');
+const productExceptSelf = require('../../neetcode/arrays-hashing/product-of-array-except-self');
 
 describe('Main', () => {
     test('Case 1', () => {

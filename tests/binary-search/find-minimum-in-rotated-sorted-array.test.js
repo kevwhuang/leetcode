@@ -1,4 +1,4 @@
-const findMin = require('../../algorithms/binary-search/find-minimum-in-rotated-sorted-array');
+const findMin = require('../../neetcode/binary-search/find-minimum-in-rotated-sorted-array');
 
 describe('Main', () => {
     test('Case 1', () => {

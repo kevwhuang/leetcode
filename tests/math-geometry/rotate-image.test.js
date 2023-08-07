@@ -1,4 +1,4 @@
-const rotate = require('../../algorithms/math-geometry/rotate-image');
+const rotate = require('../../neetcode/math-geometry/rotate-image');
 
 describe('Main', () => {
     test('Case 1', () => {

@@ -1,4 +1,4 @@
-const setZeroes = require('../../algorithms/math-geometry/set-matrix-zeroes');
+const setZeroes = require('../../neetcode/math-geometry/set-matrix-zeroes');
 
 describe('Main', () => {
     test('Case 1', () => {

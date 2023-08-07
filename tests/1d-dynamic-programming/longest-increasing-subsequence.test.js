@@ -1,4 +1,4 @@
-const lengthOfLIS = require('../../algorithms/1d-dynamic-programming/longest-increasing-subsequence');
+const lengthOfLIS = require('../../neetcode/1d-dynamic-programming/longest-increasing-subsequence');
 
 describe('Main', () => {
     test('Case 1', () => {

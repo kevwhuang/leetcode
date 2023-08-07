@@ -1,4 +1,4 @@
-const hammingWeight = require('../../algorithms/bit-manipulation/number-of-1-bits');
+const hammingWeight = require('../../neetcode/bit-manipulation/number-of-1-bits');
 
 describe('Main', () => {
     test('Case 1', () => {

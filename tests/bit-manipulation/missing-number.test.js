@@ -1,4 +1,4 @@
-const missingNumber = require('../../algorithms/bit-manipulation/missing-number');
+const missingNumber = require('../../neetcode/bit-manipulation/missing-number');
 
 describe('Main', () => {
     test('Case 1', () => {

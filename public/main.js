@@ -8,8 +8,8 @@ algorithms.addEventListener('change', () => {
     const category = categories.options[categories.selectedIndex].text;
     const link = document.createElement('link');
 
-    iframe.title = `algorithms/${category}/${algorithm}`;
-    iframe.src = `algorithms/${category}/${algorithm}`;
+    iframe.title = `neetcode/${category}/${algorithm}`;
+    iframe.src = `neetcode/${category}/${algorithm}`;
     link.setAttribute('href', '../../public/iframe.css');
     link.setAttribute('rel', 'stylesheet');
     main.style.animation = 'fade .5s ease-in';

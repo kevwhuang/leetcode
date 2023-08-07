@@ -1,4 +1,4 @@
-const twoSum = require('../../algorithms/arrays-hashing/two-sum');
+const twoSum = require('../../neetcode/arrays-hashing/two-sum');
 
 describe('Main', () => {
     test('Case 1', () => {

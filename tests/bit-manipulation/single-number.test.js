@@ -1,4 +1,4 @@
-const singleNumber = require('../../algorithms/bit-manipulation/single-number');
+const singleNumber = require('../../neetcode/bit-manipulation/single-number');
 
 describe('Main', () => {
     test('Case 1', () => {

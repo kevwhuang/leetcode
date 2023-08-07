@@ -1,4 +1,4 @@
-const isAnagram = require('../../algorithms/arrays-hashing/valid-anagram');
+const isAnagram = require('../../neetcode/arrays-hashing/valid-anagram');
 
 describe('Main', () => {
     test('Case 1', () => {

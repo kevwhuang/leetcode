@@ -1,4 +1,4 @@
-const isPalindrome = require('../../algorithms/two-pointers/valid-palindrome');
+const isPalindrome = require('../../neetcode/two-pointers/valid-palindrome');
 
 describe('Main', () => {
     test('Case 1', () => {

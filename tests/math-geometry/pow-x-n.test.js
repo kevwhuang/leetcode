@@ -1,4 +1,4 @@
-const myPow = require('../../algorithms/math-geometry/pow-x-n');
+const myPow = require('../../neetcode/math-geometry/pow-x-n');
 
 describe('Main', () => {
     test('Case 1', () => {

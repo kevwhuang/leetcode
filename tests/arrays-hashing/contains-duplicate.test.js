@@ -1,4 +1,4 @@
-const containsDuplicate = require('../../algorithms/arrays-hashing/contains-duplicate');
+const containsDuplicate = require('../../neetcode/arrays-hashing/contains-duplicate');
 
 describe('Main', () => {
     test('Case 1', () => {

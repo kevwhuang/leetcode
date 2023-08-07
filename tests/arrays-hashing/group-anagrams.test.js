@@ -1,4 +1,4 @@
-const groupAnagrams = require('../../algorithms/arrays-hashing/group-anagrams');
+const groupAnagrams = require('../../neetcode/arrays-hashing/group-anagrams');
 
 describe('Main', () => {
     test('Case 1', () => {

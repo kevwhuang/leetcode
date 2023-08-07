@@ -1,4 +1,4 @@
-const countBits = require('../../algorithms/bit-manipulation/counting-bits');
+const countBits = require('../../neetcode/bit-manipulation/counting-bits');
 
 describe('Main', () => {
     test('Case 1', () => {

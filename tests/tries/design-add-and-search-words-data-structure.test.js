@@ -1,4 +1,4 @@
-const WordDictionary = require('../../algorithms/tries/design-add-and-search-words-data-structure');
+const WordDictionary = require('../../neetcode/tries/design-add-and-search-words-data-structure');
 
 describe('Main', () => {
     test('Case 1', () => {

@@ -1,4 +1,4 @@
-const KthLargest = require('../../algorithms/heap-priority-queue/kth-largest-element-in-a-stream');
+const KthLargest = require('../../neetcode/heap-priority-queue/kth-largest-element-in-a-stream');
 
 describe('Main', () => {
     test('Case 1', () => {

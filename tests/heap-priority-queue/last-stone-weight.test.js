@@ -1,4 +1,4 @@
-const lastStoneWeight = require('../../algorithms/heap-priority-queue/last-stone-weight');
+const lastStoneWeight = require('../../neetcode/heap-priority-queue/last-stone-weight');
 
 describe('Main', () => {
     test('Case 1', () => {

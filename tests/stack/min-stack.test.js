@@ -1,4 +1,4 @@
-const MinStack = require('../../algorithms/stack/min-stack');
+const MinStack = require('../../neetcode/stack/min-stack');
 
 describe('Main', () => {
     test('Case 1', () => {

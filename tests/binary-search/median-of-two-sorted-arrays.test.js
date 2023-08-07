@@ -1,4 +1,4 @@
-const findMedianSortedArrays = require('../../algorithms/binary-search/median-of-two-sorted-arrays');
+const findMedianSortedArrays = require('../../neetcode/binary-search/median-of-two-sorted-arrays');
 
 describe('Main', () => {
     test('Case 1', () => {

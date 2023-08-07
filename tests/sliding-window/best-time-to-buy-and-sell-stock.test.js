@@ -1,4 +1,4 @@
-const maxProfit = require('../../algorithms/sliding-window/best-time-to-buy-and-sell-stock');
+const maxProfit = require('../../neetcode/sliding-window/best-time-to-buy-and-sell-stock');
 
 describe('Main', () => {
     test('Case 1', () => {

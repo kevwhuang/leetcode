@@ -1,4 +1,4 @@
-const isValid = require('../../algorithms/stack/valid-parentheses');
+const isValid = require('../../neetcode/stack/valid-parentheses');
 
 describe('Main', () => {
     test('Case 1', () => {

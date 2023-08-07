@@ -1,4 +1,4 @@
-const DetectSquares = require('../../algorithms/math-geometry/detect-squares');
+const DetectSquares = require('../../neetcode/math-geometry/detect-squares');
 
 describe('Main', () => {
     test('Case 1', () => {

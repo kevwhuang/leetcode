@@ -1,4 +1,4 @@
-const trap = require('../../algorithms/two-pointers/trapping-rain-water');
+const trap = require('../../neetcode/two-pointers/trapping-rain-water');
 
 describe('Main', () => {
     test('Case 1', () => {

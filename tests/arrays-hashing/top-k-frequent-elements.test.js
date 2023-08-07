@@ -1,4 +1,4 @@
-const topKFrequent = require('../../algorithms/arrays-hashing/top-k-frequent-elements');
+const topKFrequent = require('../../neetcode/arrays-hashing/top-k-frequent-elements');
 
 describe('Main', () => {
     test('Case 1', () => {

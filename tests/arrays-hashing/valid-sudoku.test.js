@@ -1,4 +1,4 @@
-const isValidSudoku = require('../../algorithms/arrays-hashing/valid-sudoku');
+const isValidSudoku = require('../../neetcode/arrays-hashing/valid-sudoku');
 
 describe('Main', () => {
     test('Case 1', () => {

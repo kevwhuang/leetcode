@@ -1,4 +1,4 @@
-const maxArea = require('../../algorithms/two-pointers/container-with-most-water');
+const maxArea = require('../../neetcode/two-pointers/container-with-most-water');
 
 describe('Main', () => {
     test('Case 1', () => {

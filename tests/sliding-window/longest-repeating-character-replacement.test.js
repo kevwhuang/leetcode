@@ -1,4 +1,4 @@
-const characterReplacement = require('../../algorithms/sliding-window/longest-repeating-character-replacement');
+const characterReplacement = require('../../neetcode/sliding-window/longest-repeating-character-replacement');
 
 describe('Main', () => {
     test('Case 1', () => {

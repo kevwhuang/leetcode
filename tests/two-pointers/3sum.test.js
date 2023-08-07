@@ -1,4 +1,4 @@
-const threeSum = require('../../algorithms/two-pointers/3sum');
+const threeSum = require('../../neetcode/two-pointers/3sum');
 
 describe('Main', () => {
     test('Case 1', () => {

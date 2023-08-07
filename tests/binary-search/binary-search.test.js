@@ -1,4 +1,4 @@
-const search = require('../../algorithms/binary-search/binary-search');
+const search = require('../../neetcode/binary-search/binary-search');
 
 describe('Main', () => {
     test('Case 1', () => {

@@ -1,4 +1,4 @@
-const multiply = require('../../algorithms/math-geometry/multiply-strings');
+const multiply = require('../../neetcode/math-geometry/multiply-strings');
 
 describe('Main', () => {
     test('Case 1', () => {

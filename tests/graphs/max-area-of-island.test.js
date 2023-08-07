@@ -1,4 +1,4 @@
-const maxAreaOfIsland = require('../../algorithms/graphs/max-area-of-island');
+const maxAreaOfIsland = require('../../neetcode/graphs/max-area-of-island');
 
 describe('Main', () => {
     test('Case 1', () => {

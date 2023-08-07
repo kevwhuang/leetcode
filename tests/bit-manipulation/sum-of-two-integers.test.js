@@ -1,4 +1,4 @@
-const getSum = require('../../algorithms/bit-manipulation/sum-of-two-integers');
+const getSum = require('../../neetcode/bit-manipulation/sum-of-two-integers');
 
 describe('Main', () => {
     test('Case 1', () => {

@@ -1,4 +1,4 @@
-const lengthOfLongestSubstring = require('../../algorithms/sliding-window/longest-substring-without-repeating-characters');
+const lengthOfLongestSubstring = require('../../neetcode/sliding-window/longest-substring-without-repeating-characters');
 
 describe('Main', () => {
     test('Case 1', () => {

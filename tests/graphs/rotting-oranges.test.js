@@ -1,4 +1,4 @@
-const orangesRotting = require('../../algorithms/graphs/rotting-oranges');
+const orangesRotting = require('../../neetcode/graphs/rotting-oranges');
 
 describe('Main', () => {
     test('Case 1', () => {
