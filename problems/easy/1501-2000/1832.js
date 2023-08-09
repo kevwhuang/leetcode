@@ -1,4 +1,4 @@
-// 1832 - Check if the Sentence Is Pangram
+// 1832 - Check If the Sentence Is Pangram
 
 function checkIfPangram(sentence) {
     const letters = new Set();

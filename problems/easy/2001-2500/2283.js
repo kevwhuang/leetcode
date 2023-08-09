@@ -1,4 +1,4 @@
-// 2283 - Check if Number Has Equal Digit Count and Digit Value
+// 2283 - Check If Number Has Equal Digit Count and Digit Value
 
 function digitCount(num) {
     const freq = new Array(10).fill(0);
