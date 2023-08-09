@@ -7,7 +7,6 @@ module.exports = function spiralOrder(matrix) {
     const order = [];
     let dir = 'e';
     while (true) {
-        console.log(dir, matrix)
         switch (dir) {
             case 'e':
                 for (const e of matrix[0]) {
