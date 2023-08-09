@@ -3,35 +3,35 @@
 function findDiagonalOrder(mat) {
     const size = mat.length * mat[0].length;
     const output = [];
-    let [row, col, dir] = [0, 0, 'NE'];
+    let [row, col] = [0, 0];
     while (true) {
-        if (output.length === size) return output;
-        while (dir === 'NE') {
+        while (true) {
             output.push(mat[row][col]);
             if (col + 1 === mat[0].length) {
                 row++;
-                dir = 'SW';
-            } else if (row < 1) {
+                break;
+            } else if (row === 0) {
                 col++;
-                dir = 'SW';
+                break;
             } else {
                 row--;
                 col++;
             }
         }
         if (output.length === size) return output;
-        while (dir === 'SW') {
+        while (true) {
             output.push(mat[row][col]);
             if (row + 1 === mat.length) {
                 col++;
-                dir = 'NE';
-            } else if (col < 1) {
+                break;
+            } else if (col === 0) {
                 row++;
-                dir = 'NE';
+                break;
             } else {
                 row++;
                 col--;
             }
         }
+        if (output.length === size) return output;
     }
 }
