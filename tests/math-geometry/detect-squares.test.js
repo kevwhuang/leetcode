@@ -3,7 +3,6 @@ const DetectSquares = require('../../neetcode/math-geometry/detect-squares');
 describe('Main', () => {
     test('Case 1', () => {
         const squares = new DetectSquares();
-
         squares.add([3, 10]);
         squares.add([11, 2]);
         squares.add([3, 2]);

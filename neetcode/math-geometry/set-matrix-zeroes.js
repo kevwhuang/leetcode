@@ -25,6 +25,7 @@ function setZeroes(matrix) {
             matrix[i][j] === null && (matrix[i][j] = 0);
         }
     }
+    return matrix;
 }
 
 module.exports = setZeroes;

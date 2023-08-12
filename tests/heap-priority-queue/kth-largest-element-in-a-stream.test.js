@@ -3,7 +3,6 @@ const KthLargest = require('../../neetcode/heap-priority-queue/kth-largest-eleme
 describe('Main', () => {
     test('Case 1', () => {
         const kth = new KthLargest(3, [4, 5, 8, 2]);
-
         expect(kth.add(3)).toStrictEqual(4);
         expect(kth.add(5)).toStrictEqual(5);
         expect(kth.add(10)).toStrictEqual(5);
