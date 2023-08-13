@@ -11,6 +11,8 @@
         "url": "https://github.com/kevwhuang/leetcode.git"
     },
     "devDependencies": {
+        "@datastructures-js/priority-queue": "*",
+        "@datastructures-js/queue": "*",
         "jest": "*",
         "nodemon": "*"
     }
