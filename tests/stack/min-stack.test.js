@@ -3,7 +3,6 @@ const MinStack = require('../../neetcode/stack/min-stack');
 describe('Main', () => {
     test('Case 1', () => {
         const stack = new MinStack();
-
         stack.push(-2);
         stack.push(0);
         stack.push(-3);
