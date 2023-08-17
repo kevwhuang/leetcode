@@ -8,19 +8,19 @@
 
 function topKFrequent(nums, k) {
     const map = new Map();
-    const bucket = [];
-    const output = [];
-    for (const num of nums) {
-        map.set(num, (map.get(num) || 0) + 1);
+    for (let i = 0; i < nums.length; i++) {
+        map.set(nums[i], map.get(nums[i]) + 1 || 1);
     }
+    const bucket = [];
     for (const [num, freq] of map) {
         bucket[freq] = (bucket[freq] || new Set()).add(num);
     }
+    const res = [];
     for (let i = bucket.length - 1; i >= 0; i--) {
-        bucket[i] && output.push(...bucket[i]);
-        if (output.length === k) break;
+        bucket[i] && res.push(...bucket[i]);
+        if (res.length === k) break;
     }
-    return output;
+    return res;
 }
 
 module.exports = topKFrequent;
