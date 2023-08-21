@@ -1,4 +1,4 @@
-// 1933 - Check if String Is Decomposable Into Value-Equal Substrings
+// 1933 - Check If String Is Decomposable Into Value-Equal Substrings
 
 function isDecomposable(s) {
     let has2 = false;

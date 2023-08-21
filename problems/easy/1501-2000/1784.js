@@ -1,4 +1,4 @@
-// 1784 - Check if Binary String Has at Most One Segment of Ones
+// 1784 - Check If Binary String Has at Most One Segment of Ones
 
 function checkOnesSegment(s) {
     let checked = false;
