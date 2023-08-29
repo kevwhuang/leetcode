@@ -8,8 +8,7 @@ function findErrorNums(nums) {
         cur = nums[i];
         if (cur === arr[cur]) {
             duplicate = cur;
-        }
-        else {
+        } else {
             arr[cur] = cur;
             missing -= nums[i];
         }
