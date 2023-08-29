@@ -3,7 +3,7 @@
 class Solution {
     constructor(rects) {
         this.rects = rects;
-        this.sums = this.#initialize(rects);
+        this.sums = this.#init(rects);
         this.total = this.sums[rects.length - 1][0];
     }
     pick() {
@@ -19,7 +19,7 @@ class Solution {
         const y = rect[1] + ((rect[3] - rect[1] + 1) * Math.random() >> 0);
         return [x, y];
     }
-    #initialize(rects) {
+    #init(rects) {
         const sums = new Array(rects.length);
         let running = 0;
         for (let i = 0; i < rects.length; i++) {
