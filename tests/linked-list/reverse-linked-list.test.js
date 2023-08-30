@@ -32,7 +32,6 @@ describe('Main', () => {
     });
 
     test('Case 3', () => {
-        const head = new ListNode();
-        expect(reverseList(head)).toStrictEqual(head);
+        expect(reverseList(null)).toStrictEqual(null);
     });
 });
