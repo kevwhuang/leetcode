@@ -8,7 +8,7 @@
 function groupAnagrams(strs) {
     const map = new Map();
     for (const str of strs) {
-        const table = Array(26).fill(0);
+        const table = new Array(26).fill(0);
         for (const letter of str) {
             table[letter.charCodeAt() - 97]++;
         }

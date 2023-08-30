@@ -16,7 +16,7 @@ module.exports = function productExceptSelf(nums) {
             zeroCount++;
         }
     }
-    if (zeroCount > 1) return Array(L).fill(0);
+    if (zeroCount > 1) return new Array(L).fill(0);
     for (let i = 0; i < L; i++) {
         if (!zeroExists && nums[i]) output[i] = product * nums[i] ** -1;
         else nums[i] ? output[i] = 0 : output[i] = product;
