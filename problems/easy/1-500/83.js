@@ -1,11 +1,9 @@
 // 83 - Remove Duplicates From Sorted List
 
 function deleteDuplicates(head) {
-    let current = head;
-    while (current) {
-        current.val === current.next?.val
-            ? current.next = current.next.next
-            : current = current.next;
+    let cur = head;
+    while (cur) {
+        cur.val === cur.next?.val ? cur.next = cur.next.next : cur = cur.next;
     }
     return head;
 }
