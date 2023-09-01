@@ -1,17 +1,18 @@
 // 733 - Flood Fill
 
 function floodFill(image, sr, sc, color) {
-    const targ = image[sr][sc];
-    const stack = [[sr, sc]];
-    while (stack.length) {
-        [sr, sc] = stack.at(-1);
-        stack.pop();
-        if (image[sr][sc] === color) continue;
-        image[sr][sc] = color;
-        image[sr - 1]?.[sc] === targ && stack.push([sr - 1, sc]);
-        image[sr + 1]?.[sc] === targ && stack.push([sr + 1, sc]);
-        image[sr]?.[sc - 1] === targ && stack.push([sr, sc - 1]);
-        image[sr]?.[sc + 1] === targ && stack.push([sr, sc + 1]);
+    function dfs(r, c) {
+        if (!validate(r, c)) return;
+        if (image[r][c] !== tgt) return;
+        if (image[r][c] === color) return;
+        image[r][c] = color;
+        dfs(r - 1, c);
+        dfs(r + 1, c);
+        dfs(r, c - 1);
+        dfs(r, c + 1);
     }
+    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
+    const tgt = image[sr][sc], m = image.length, n = image[0].length;
+    dfs(sr, sc);
     return image;
 }

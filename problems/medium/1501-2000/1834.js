@@ -3,7 +3,7 @@
 function getOrder(tasks) {
     const compare = (a, b) => a[2] - b[2] || a[0] - b[0];
     const order = new Array(tasks.length);
-    const pq = new MinPriorityQueue({ compare });
+    const pq = new PriorityQueue({ compare });
     for (let i = 0; i < tasks.length; i++) {
         tasks[i] = [i, tasks[i][0], tasks[i][1]];
     }
@@ -13,7 +13,7 @@ function getOrder(tasks) {
         while (j < tasks.length && tasks[j][1] <= time) {
             pq.enqueue(tasks[j++]);
         }
-        if (!pq.isEmpty()) {
+        if (pq.size()) {
             const task = pq.dequeue();
             order[i++] = task[0];
             time += task[2];

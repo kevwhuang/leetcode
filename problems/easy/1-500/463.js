@@ -2,14 +2,14 @@
 
 function islandPerimeter(grid) {
     let perimeter = 0;
-    for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid[0].length; j++) {
-            if (grid[i][j]) {
-                !grid[i + 1]?.[j] && perimeter++;
-                !grid[i - 1]?.[j] && perimeter++;
-                !grid[i]?.[j + 1] && perimeter++;
-                !grid[i]?.[j - 1] && perimeter++;
-            }
+    const m = grid.length, n = grid[0].length;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (!grid[r][c]) continue;
+            if (!r || !grid[r - 1][c]) perimeter++;
+            if (r + 1 === m || !grid[r + 1][c]) perimeter++;
+            if (!c || !grid[r][c - 1]) perimeter++;
+            if (c + 1 === n || !grid[r][c + 1]) perimeter++;
         }
     }
     return perimeter;

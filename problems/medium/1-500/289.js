@@ -3,17 +3,16 @@
 function gameOfLife(board) {
     function neighbors(r, c) {
         let live = 0;
-        board[r - 1]?.[c - 1] >= 1 && live++;
-        board[r - 1]?.[c] >= 1 && live++;
-        board[r - 1]?.[c + 1] >= 1 && live++;
-        board[r]?.[c - 1] >= 1 && live++;
-        board[r]?.[c + 1] >= 1 && live++;
-        board[r + 1]?.[c - 1] >= 1 && live++;
-        board[r + 1]?.[c] >= 1 && live++;
-        board[r + 1]?.[c + 1] >= 1 && live++;
+        for (let i = 0; i < 8; i++) {
+            const rr = r + dr[i], cc = c + dc[i];
+            if (validate(rr, cc) && board[rr][cc] >= 1) live++;
+        }
         return live;
     }
+    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
     const m = board.length, n = board[0].length;
+    const dr = [-1, -1, -1, 0, 0, 1, 1, 1];
+    const dc = [-1, 0, 1, -1, 1, -1, 0, 1];
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             if (board[r][c] === 1) {

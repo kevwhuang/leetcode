@@ -1,12 +1,15 @@
 // 78 - Subsets
 
 function subsets(nums) {
-    function power(ite, cur = []) {
-        if (!ite.length) return res.push(cur);
-        power(ite.slice(1), cur);
-        power(ite.slice(1), cur.concat(ite[0]));
+    function backtrack(i) {
+        res.push([...cur]);
+        while (i < nums.length) {
+            cur.push(nums[i]);
+            backtrack(++i);
+            cur.pop();
+        }
     }
-    const res = [];
-    power(nums);
+    const res = [], cur = [];
+    backtrack(0);
     return res;
 }

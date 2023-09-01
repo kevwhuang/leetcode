@@ -1,21 +1,17 @@
 // 90 - Subsets II
 
 function subsetsWithDup(nums) {
-    function power(ite, cur = []) {
-        if (!ite.length) return set.add(String(cur));
-        power(ite.slice(1), cur);
-        power(ite.slice(1), cur.concat(ite[0]));
-    }
-    const set = new Set();
-    power(nums.sort((a, b) => a - b));
-    set.delete('');
-    const res = [[]];
-    for (const e of set) {
-        const cur = e.split(',');
-        for (let i = 0; i < cur.length; i++) {
-            cur[i] = Number(cur[i]);
+    function backtrack(i) {
+        res.push([...cur]);
+        for (let j = i; j < nums.length; j++) {
+            if (j > i && nums[j - 1] === nums[j]) continue;
+            cur.push(nums[j]);
+            backtrack(j + 1);
+            cur.pop();
         }
-        res.push(cur);
     }
+    nums.sort((a, b) => a - b);
+    const res = [], cur = [];
+    backtrack(0);
     return res;
 }

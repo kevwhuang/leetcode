@@ -1,50 +1,20 @@
 // 54 - Spiral Matrix
 
 function spiralOrder(matrix) {
-    const size = matrix.length * matrix[0].length;
-    const res = [];
-    let row = 0, col = 0;
-    let left = 0, top = 1, right = matrix[0].length, bottom = matrix.length;
-    while (true) {
-        while (true) {
-            res.push(matrix[row][col]);
-            if (res.length === size) return res;
-            if (col + 1 === right) {
-                row++;
-                right--;
-                break;
-            }
-            col++;
+    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
+    const M = matrix, m = M.length, n = M[0].length;
+    const res = new Int8Array(m * n);
+    let r = 0, c = 0, dr = 0, dc = 1;
+    for (let i = 0; i < res.length; i++) {
+        res[i] = M[r][c];
+        M[r][c] = null;
+        if (!validate(r + dr, c + dc) || M[r + dr][c + dc] === null) {
+            if (dr === 0 && dc === 1) dr = 1, dc = 0;
+            else if (dr === 1 && dc === 0) dr = 0, dc = -1;
+            else if (dr === 0 && dc === -1) dr = -1, dc = 0;
+            else dr = 0, dc = 1;
         }
-        while (true) {
-            res.push(matrix[row][col]);
-            if (res.length === size) return res;
-            if (row + 1 === bottom) {
-                col--;
-                bottom--;
-                break;
-            }
-            row++;
-        }
-        while (true) {
-            res.push(matrix[row][col]);
-            if (res.length === size) return res;
-            if (col === left) {
-                row--;
-                left++;
-                break;
-            }
-            col--;
-        }
-        while (true) {
-            res.push(matrix[row][col]);
-            if (res.length === size) return res;
-            if (row === top) {
-                col++;
-                top++;
-                break;
-            }
-            row--;
-        }
+        r += dr, c += dc;
     }
+    return res;
 }
