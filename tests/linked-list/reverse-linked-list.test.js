@@ -1,9 +1,9 @@
 const reverseList = require('../../neetcode/linked-list/reverse-linked-list');
 
 class ListNode {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
+    constructor(val, next) {
+        this.val = val === undefined ? 0 : val;
+        this.next = next === undefined ? null : next;
     }
 }
 

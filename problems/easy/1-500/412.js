@@ -1,13 +1,12 @@
 // 412 - Fizz Buzz
 
 function fizzBuzz(n) {
-    const answer = [];
+    const res = [];
     for (let i = 1; i <= n; i++) {
-        let current = String(i);
-        if (!(i % 15)) current = 'FizzBuzz';
-        else if (!(i % 3)) current = 'Fizz';
-        else if (!(i % 5)) current = 'Buzz';
-        answer.push(current);
+        if (!(i % 15)) res.push('FizzBuzz');
+        else if (!(i % 3)) res.push('Fizz');
+        else if (!(i % 5)) res.push('Buzz');
+        else res.push(String(i));
     }
-    return answer;
+    return res;
 }

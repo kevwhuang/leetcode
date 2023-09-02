@@ -11,6 +11,20 @@ class BinarySearchTree {
         this.root = null;
     }
 
+    bfs() {
+        if (!this.root) return [];
+        const res = [];
+        const queue = [this.root];
+        let cur;
+        while (queue.length) {
+            cur = queue.shift();
+            res.push(cur.val);
+            if (cur.left) queue.push(cur.left);
+            if (cur.right) queue.push(cur.right);
+        }
+        return res;
+    }
+
     find(val) {
         if (!this.root) return false;
         let cur = this.root;
@@ -23,11 +37,11 @@ class BinarySearchTree {
     }
 
     insert(val) {
-        const node = new Node(val);
         if (!this.root) {
-            this.root = node;
+            this.root = new Node(val);
             return this;
         }
+        const node = new Node(val);
         let cur = this.root;
         while (true) {
             if (val < cur.val) {
