@@ -10,14 +10,30 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        expect(isSameTree(new TreeNode([1, 2, 3]), new TreeNode([1, 2, 3]))).toBeTruthy();
+        const p = new TreeNode(1);
+        p.left = new TreeNode(2);
+        p.right = new TreeNode(3);
+        const q = new TreeNode(1);
+        q.left = new TreeNode(2);
+        q.right = new TreeNode(3);
+        expect(isSameTree(new TreeNode(1, 2, 3), new TreeNode(1, 2, 3))).toBeTruthy();
     });
 
     test('Case 2', () => {
-        expect(isSameTree(new TreeNode([1, 2]), new TreeNode([1, null, 2]))).toBeFalsy();
+        const p = new TreeNode(1);
+        p.left = new TreeNode(2);
+        const q = new TreeNode(1);
+        q.right = new TreeNode(2);
+        expect(isSameTree(p, q)).toBeFalsy();
     });
 
     test('Case 3', () => {
-        expect(isSameTree(new TreeNode([1, 2, 1]), new TreeNode([1, 1, 2]))).toBeFalsy();
+        const p = new TreeNode(1);
+        p.left = new TreeNode(2);
+        p.right = new TreeNode(1);
+        const q = new TreeNode(1);
+        q.left = new TreeNode(1);
+        q.right = new TreeNode(2);
+        expect(isSameTree(p, q)).toBeFalsy();
     });
 });
