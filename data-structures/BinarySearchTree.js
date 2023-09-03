@@ -73,20 +73,23 @@ class BinarySearchTree {
     }
 
     traverseIn(cur, arr) {
-        cur.left && this.traverseIn(cur.left, arr);
+        if (!cur) return;
+        this.traverseIn(cur.left, arr);
         arr.push(cur.val);
-        cur.right && this.traverseIn(cur.right, arr);
+        this.traverseIn(cur.right, arr);
     }
 
     traversePost(cur, arr) {
-        cur.left && this.traversePost(cur.left, arr);
-        cur.right && this.traversePost(cur.right, arr);
+        if (!cur) return;
+        this.traversePost(cur.left, arr);
+        this.traversePost(cur.right, arr);
         arr.push(cur.val);
     }
 
     traversePre(cur, arr) {
+        if (!cur) return;
         arr.push(cur.val);
-        cur.left && this.traversePre(cur.left, arr);
-        cur.right && this.traversePre(cur.right, arr);
+        this.traversePre(cur.left, arr);
+        this.traversePre(cur.right, arr);
     }
 }
