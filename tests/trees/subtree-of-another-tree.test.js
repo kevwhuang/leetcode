@@ -22,7 +22,7 @@ describe('Main', () => {
         expect(isSubtree(root, subRoot)).toBeTruthy();
     });
 
-    test('Case 1', () => {
+    test('Case 2', () => {
         root.left.right.left = new TreeNode(0);
         expect(isSubtree(root, subRoot)).toBeFalsy();
     });
