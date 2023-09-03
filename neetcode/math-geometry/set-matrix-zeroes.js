@@ -6,11 +6,11 @@
  */
 
 function setZeroes(matrix) {
-    const [W, H] = [matrix[0].length, matrix.length];
+    const H = matrix.length, W = matrix[0].length;
     for (let i = 0; i < H; i++) {
         for (let j = 0; j < W; j++) {
             if (matrix[i][j] !== 0) continue;
-            let [row, col] = [i, j];
+            let row = i, col = j;
             while (row > 0) matrix[--row][col] && (matrix[row][col] = null);
             row = i;
             while (row < H - 1) matrix[++row][col] && (matrix[row][col] = null);

@@ -1,8 +1,8 @@
 class Node {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
+    constructor(val, left, right) {
+        this.val = val === undefined ? 0 : val;
+        this.left = left === undefined ? null : left;
+        this.right = right === undefined ? null : right;
     }
 }
 
@@ -19,9 +19,19 @@ class BinarySearchTree {
         while (queue.length) {
             cur = queue.shift();
             res.push(cur.val);
-            if (cur.left) queue.push(cur.left);
-            if (cur.right) queue.push(cur.right);
+            cur.left && queue.push(cur.left);
+            cur.right && queue.push(cur.right);
         }
+        return res;
+    }
+
+    dfs(type = 'pre') {
+        if (!this.root) return [];
+        const res = [];
+        if (type === 'pre') this.traversePre(this.root, res);
+        else if (type === 'post') this.traversePost(this.root, res);
+        else if (type === 'in') this.traverseIn(this.root, res);
+        else return false;
         return res;
     }
 
@@ -60,5 +70,23 @@ class BinarySearchTree {
                 return false;
             }
         }
+    }
+
+    traverseIn(cur, arr) {
+        cur.left && this.traverseIn(cur.left, arr);
+        arr.push(cur.val);
+        cur.right && this.traverseIn(cur.right, arr);
+    }
+
+    traversePost(cur, arr) {
+        cur.left && this.traversePost(cur.left, arr);
+        cur.right && this.traversePost(cur.right, arr);
+        arr.push(cur.val);
+    }
+
+    traversePre(cur, arr) {
+        arr.push(cur.val);
+        cur.left && this.traversePre(cur.left, arr);
+        cur.right && this.traversePre(cur.right, arr);
     }
 }

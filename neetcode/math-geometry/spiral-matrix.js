@@ -7,13 +7,13 @@
 
 function spiralOrder(matrix) {
     const size = matrix.length * matrix[0].length;
-    const output = [];
-    let [row, col] = [0, 0],
-        [top, right, bottom, left] = [1, matrix[0].length, matrix.length, 0];
+    const res = [];
+    let row = 0, col = 0;
+    let left = 0, top = 1, right = matrix[0].length, bottom = matrix.length;
     while (true) {
         while (true) {
-            output.push(matrix[row][col]);
-            if (output.length === size) return output;
+            res.push(matrix[row][col]);
+            if (res.length === size) return res;
             if (col + 1 === right) {
                 row++;
                 right--;
@@ -22,8 +22,8 @@ function spiralOrder(matrix) {
             col++;
         }
         while (true) {
-            output.push(matrix[row][col]);
-            if (output.length === size) return output;
+            res.push(matrix[row][col]);
+            if (res.length === size) return res;
             if (row + 1 === bottom) {
                 col--;
                 bottom--;
@@ -32,8 +32,8 @@ function spiralOrder(matrix) {
             row++;
         }
         while (true) {
-            output.push(matrix[row][col]);
-            if (output.length === size) return output;
+            res.push(matrix[row][col]);
+            if (res.length === size) return res;
             if (col === left) {
                 row--;
                 left++;
@@ -42,8 +42,8 @@ function spiralOrder(matrix) {
             col--;
         }
         while (true) {
-            output.push(matrix[row][col]);
-            if (output.length === size) return output;
+            res.push(matrix[row][col]);
+            if (res.length === size) return res;
             if (row === top) {
                 col++;
                 top++;

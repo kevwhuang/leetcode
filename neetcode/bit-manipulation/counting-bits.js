@@ -6,17 +6,16 @@
  */
 
 function countBits(n) {
-    const output = new Array(n + 1);
+    const res = new Array(n + 1);
     for (let i = 0; i <= n; i++) {
-        let num = i,
-            count = 0;
+        let num = i, count = 0;
         while (num) {
             num & 1 && count++;
             num >>= 1;
         }
-        output[i] = count;
+        res[i] = count;
     }
-    return output;
+    return res;
 }
 
 module.exports = countBits;

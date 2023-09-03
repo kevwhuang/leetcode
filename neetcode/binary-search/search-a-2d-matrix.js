@@ -8,23 +8,21 @@
 
 function searchMatrix(matrix, target) {
     function binarySearch(nums, target) {
-        let left = 0,
-            right = nums.length - 1;
-        while (left <= right) {
-            const mid = Math.floor((left + right) / 2);
-            if (nums[mid] < target) left = mid + 1;
-            else if (nums[mid] > target) right = mid - 1;
+        let l = 0, r = nums.length - 1, m;
+        while (l <= r) {
+            m = ~~((l + r) / 2);
+            if (nums[m] < target) l = m + 1;
+            else if (nums[m] > target) r = m - 1;
             else return true;
         }
         return false;
     }
-    let left = 0,
-        right = matrix.length - 1;
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
-        if (matrix[mid].at(-1) < target) left = mid + 1;
-        else if (matrix[mid][0] > target) right = mid - 1;
-        else return binarySearch(matrix[mid], target);
+    let l = 0, r = matrix.length - 1, m;
+    while (l <= r) {
+        m = ~~((l + r) / 2);
+        if (matrix[m].at(-1) < target) l = m + 1;
+        else if (matrix[m][0] > target) r = m - 1;
+        else return binarySearch(matrix[m], target);
     }
     return false;
 }

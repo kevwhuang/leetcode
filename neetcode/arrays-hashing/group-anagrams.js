@@ -7,15 +7,16 @@
 
 function groupAnagrams(strs) {
     const map = new Map();
-    for (const str of strs) {
-        const table = new Array(26).fill(0);
-        for (const letter of str) {
-            table[letter.charCodeAt() - 97]++;
+    for (let i = 0, cur; i < strs.length; i++) {
+        const freqs = new Array(26).fill(0);
+        cur = strs[i];
+        for (let j = 0; j < cur.length; j++) {
+            freqs[cur.charCodeAt(j) - 97]++;
         }
-        const code = table.join('_');
+        const code = freqs.join('_');
         map.has(code)
-            ? map.set(code, map.get(code).concat(str))
-            : map.set(code, [str]);
+            ? map.set(code, map.get(code).concat(cur))
+            : map.set(code, [cur]);
     }
     return [...map.values()];
 }

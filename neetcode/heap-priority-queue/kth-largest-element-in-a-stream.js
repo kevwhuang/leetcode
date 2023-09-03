@@ -18,15 +18,14 @@ class KthLargest {
 
     add(val) {
         const index = () => {
-            let left = 0,
-                right = this.nums.length - 1;
-            while (left <= right) {
-                const mid = Math.floor((left + right) / 2);
-                if (this.nums[mid] < val) left = mid + 1;
-                else if (this.nums[mid] > val) right = mid - 1;
-                else return mid;
+            let l = 0, r = this.nums.length - 1, m;
+            while (l <= r) {
+                m = Math.floor((l + r) / 2);
+                if (this.nums[m] < val) l = m + 1;
+                else if (this.nums[m] > val) r = m - 1;
+                else return m;
             }
-            return left;
+            return l;
         };
         this.nums.splice(index(), 0, val);
         return this.nums[this.nums.length - this.k];

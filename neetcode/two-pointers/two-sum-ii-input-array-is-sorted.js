@@ -7,12 +7,11 @@
  */
 
 function twoSum(numbers, target) {
-    let left = 0,
-        right = numbers.length - 1;
-    while (left < right) {
-        if (numbers[left] + numbers[right] > target) right--;
-        else if (numbers[left] + numbers[right] < target) left++;
-        else return [left + 1, right + 1];
+    let l = 0, r = numbers.length - 1;
+    while (l < r) {
+        if (numbers[l] + numbers[r] > target) r--;
+        else if (numbers[l] + numbers[r] < target) l++;
+        else return [l + 1, r + 1];
     }
 }
 

@@ -11,9 +11,9 @@ function subsets(nums) {
         power(ite.slice(1), cur, arr);
         power(ite.slice(1), cur.concat(ite[0]), arr);
     }
-    const subsets = [];
-    power(nums, [], subsets);
-    return subsets;
+    const res = [];
+    power(nums, [], res);
+    return res;
 }
 
 module.exports = subsets;

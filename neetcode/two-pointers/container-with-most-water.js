@@ -6,11 +6,9 @@
  */
 
 function maxArea(height) {
-    let max = 0;
-    let l = 0;
-    let r = height.length - 1;
+    let area, max = 0, l = 0, r = height.length - 1;
     while (l < r) {
-        const area = (r - l) * Math.min(height[l], height[r]);
+        area = (r - l) * Math.min(height[l], height[r]);
         max = Math.max(area, max);
         height[l] <= height[r] ? l++ : r--;
     }

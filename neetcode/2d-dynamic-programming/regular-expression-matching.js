@@ -7,8 +7,6 @@
  */
 
 function isMatch(s, p) {
-    p = p.replace(/\*+/g, '*');
-    return new RegExp(`^${p}$`).test(s);
 }
 
 module.exports = isMatch;
