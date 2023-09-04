@@ -6,14 +6,14 @@
  */
 
 function reverseList(head) {
-    let reversed = null, cur;
+    let cur, rvs = null;
     while (head) {
         cur = head;
         head = head.next;
-        cur.next = reversed;
-        reversed = cur;
+        cur.next = rvs;
+        rvs = cur;
     }
-    return reversed;
+    return rvs;
 }
 
 module.exports = reverseList;
