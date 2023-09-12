@@ -8,7 +8,6 @@ describe('Main', () => {
             ['1', '1', '0', '0', '0'],
             ['0', '0', '0', '0', '0'],
         ];
-
         expect(numIslands(grid)).toStrictEqual(1);
     });
 
@@ -19,7 +18,6 @@ describe('Main', () => {
             ['0', '0', '1', '0', '0'],
             ['0', '0', '0', '1', '1'],
         ];
-
         expect(numIslands(grid)).toStrictEqual(3);
     });
 });
