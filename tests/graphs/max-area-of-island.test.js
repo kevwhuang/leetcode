@@ -12,7 +12,6 @@ describe('Main', () => {
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
         ];
-
         expect(maxAreaOfIsland(grid)).toStrictEqual(6);
     });
 
