@@ -8,14 +8,13 @@ describe('Main', () => {
             ['X', 'X', 'O', 'X'],
             ['X', 'O', 'X', 'X'],
         ];
-        const output = [
+        const solution = [
             ['X', 'X', 'X', 'X'],
             ['X', 'X', 'X', 'X'],
             ['X', 'X', 'X', 'X'],
             ['X', 'O', 'X', 'X'],
         ];
-
-        expect(solve(board)).toStrictEqual(output);
+        expect(solve(board)).toStrictEqual(solution);
     });
 
     test('Case 2', () => {
