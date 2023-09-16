@@ -2,11 +2,11 @@
 
 function removeElements(head, val) {
     if (!head || !val) return head;
-    const sentinel = new ListNode(0);
+    const sentinel = new ListNode();
     sentinel.next = head;
     let cur = sentinel;
-    while (cur) {
-        val === cur.next?.val ? cur.next = cur.next.next : cur = cur.next;
+    while (cur.next) {
+        val === cur.next.val ? cur.next = cur.next.next : cur = cur.next;
     }
     return sentinel.next;
 }
