@@ -1,6 +1,6 @@
-// 209 - Minimum Size Subarray Sum
+// 8 - Sliding Window
 
-function minSubArrayLen(target, nums) {
+function minSubArrayLen(nums, target) {
     let p1 = 0, p2 = 0, sum = 0, min = Infinity;
     while (p2 < nums.length) {
         sum += nums[p2++];

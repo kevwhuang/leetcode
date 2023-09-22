@@ -15,12 +15,12 @@ class BinarySearchTree {
         if (!this.root) return [];
         const res = [];
         const queue = [this.root];
-        let cur;
+        let node;
         while (queue.length) {
-            cur = queue.shift();
-            res.push(cur.val);
-            cur.left && queue.push(cur.left);
-            cur.right && queue.push(cur.right);
+            node = queue.shift();
+            res.push(node.val);
+            node.left && queue.push(node.left);
+            node.right && queue.push(node.right);
         }
         return res;
     }
@@ -37,11 +37,11 @@ class BinarySearchTree {
 
     find(val) {
         if (!this.root) return false;
-        let cur = this.root;
-        while (cur) {
-            if (val < cur.val) cur = cur.left;
-            else if (val > cur.val) cur = cur.right;
-            else return cur;
+        let node = this.root;
+        while (node) {
+            if (val < node.val) node = node.left;
+            else if (val > node.val) node = node.right;
+            else return node;
         }
         return false;
     }
@@ -51,21 +51,20 @@ class BinarySearchTree {
             this.root = new Node(val);
             return this;
         }
-        const node = new Node(val);
-        let cur = this.root;
+        let node = this.root;
         while (true) {
-            if (val < cur.val) {
-                if (!cur.left) {
-                    cur.left = node;
+            if (val < node.val) {
+                if (!node.left) {
+                    node.left = new Node(val);
                     return this;
                 }
-                cur = cur.left;
-            } else if (val > cur.val) {
-                if (!cur.right) {
-                    cur.right = node;
+                node = node.left;
+            } else if (val > node.val) {
+                if (!node.right) {
+                    node.right = new Node(val);
                     return this;
                 }
-                cur = cur.right;
+                node = node.right;
             } else {
                 return false;
             }
