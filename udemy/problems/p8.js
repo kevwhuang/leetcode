@@ -1,4 +1,4 @@
-// 8 - Sliding Window
+// 8 - Sliding Window - minSubArrayLen
 
 function minSubArrayLen(nums, target) {
     let p1 = 0, p2 = 0, sum = 0, min = Infinity;

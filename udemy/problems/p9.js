@@ -1,4 +1,4 @@
-// 9 - Sliding Window
+// 9 - Sliding Window - findLongestSubstring
 
 function findLongestSubstring(str) {
     const set = new Set();

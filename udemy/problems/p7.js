@@ -1,4 +1,4 @@
-// 7 - Sliding Window
+// 7 - Sliding Window - maxSubarraySum
 
 function maxSubarraySum(nums, length) {
     if (nums.length < length) return null;

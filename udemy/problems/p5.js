@@ -1,4 +1,4 @@
-// 5 - Multiple Pointers
+// 5 - Multiple Pointers - averagePair
 
 function averagePair(nums, target) {
     let start = 0, end = nums.length - 1;

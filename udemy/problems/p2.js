@@ -1,4 +1,4 @@
-// 2 - Multiple Pointers
+// 2 - Multiple Pointers - countUniqueValues
 
 function countUniqueValues(arr) {
     if (arr.length === 0) return 0;

@@ -1,4 +1,4 @@
-// 3 - Frequency Counter
+// 3 - Frequency Counter - sameFrequency
 
 function sameFrequency(int1, int2) {
     const map = new Map();

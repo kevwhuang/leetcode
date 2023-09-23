@@ -1,4 +1,4 @@
-// 6 - Multiple Pointers
+// 6 - Multiple Pointers - isSubsequence
 
 function isSubsequence(str1, str2) {
     for (let pt1 = 0, pt2 = 0; pt2 < str2.length; pt2++) {

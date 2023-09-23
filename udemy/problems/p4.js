@@ -1,4 +1,4 @@
-// 4 - Frequency Counter / Multiple Counters
+// 4 - Frequency Counter / Multiple Counters - areThereDuplicates
 
 function areThereDuplicates(...args) {
     const set = new Set();
