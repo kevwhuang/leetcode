@@ -15,9 +15,8 @@ class BinarySearchTree {
         if (!this.root) return [];
         const res = [];
         const queue = [this.root];
-        let node;
         while (queue.length) {
-            node = queue.shift();
+            const node = queue.shift();
             res.push(node.val);
             node.left && queue.push(node.left);
             node.right && queue.push(node.right);
@@ -28,9 +27,9 @@ class BinarySearchTree {
     dfs(type = 'pre') {
         if (!this.root) return [];
         const res = [];
-        if (type === 'pre') this.traversePre(this.root, res);
-        else if (type === 'post') this.traversePost(this.root, res);
-        else if (type === 'in') this.traverseIn(this.root, res);
+        if (type === 'pre') this.#traversePre(this.root, res);
+        else if (type === 'post') this.#traversePost(this.root, res);
+        else if (type === 'in') this.#traverseIn(this.root, res);
         else return false;
         return res;
     }
@@ -71,24 +70,24 @@ class BinarySearchTree {
         }
     }
 
-    traverseIn(cur, arr) {
+    #traverseIn(cur, arr) {
         if (!cur) return;
-        this.traverseIn(cur.left, arr);
+        this.#traverseIn(cur.left, arr);
         arr.push(cur.val);
-        this.traverseIn(cur.right, arr);
+        this.#traverseIn(cur.right, arr);
     }
 
-    traversePost(cur, arr) {
+    #traversePost(cur, arr) {
         if (!cur) return;
-        this.traversePost(cur.left, arr);
-        this.traversePost(cur.right, arr);
+        this.#traversePost(cur.left, arr);
+        this.#traversePost(cur.right, arr);
         arr.push(cur.val);
     }
 
-    traversePre(cur, arr) {
+    #traversePre(cur, arr) {
         if (!cur) return;
         arr.push(cur.val);
-        this.traversePre(cur.left, arr);
-        this.traversePre(cur.right, arr);
+        this.#traversePre(cur.left, arr);
+        this.#traversePre(cur.right, arr);
     }
 }
