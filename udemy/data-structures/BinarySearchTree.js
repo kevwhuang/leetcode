@@ -1,4 +1,4 @@
-class Node {
+class TreeNode {
     constructor(val, left, right) {
         this.val = val === undefined ? 0 : val;
         this.left = left === undefined ? null : left;
@@ -47,20 +47,20 @@ class BinarySearchTree {
 
     insert(val) {
         if (!this.root) {
-            this.root = new Node(val);
+            this.root = new TreeNode(val);
             return this;
         }
         let node = this.root;
         while (true) {
             if (val < node.val) {
                 if (!node.left) {
-                    node.left = new Node(val);
+                    node.left = new TreeNode(val);
                     return this;
                 }
                 node = node.left;
             } else if (val > node.val) {
                 if (!node.right) {
-                    node.right = new Node(val);
+                    node.right = new TreeNode(val);
                     return this;
                 }
                 node = node.right;

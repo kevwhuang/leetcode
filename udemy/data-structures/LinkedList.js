@@ -1,4 +1,4 @@
-class Node {
+class ListNode {
     constructor(val, next) {
         this.val = val === undefined ? 0 : val;
         this.next = next === undefined ? null : next;
@@ -13,7 +13,7 @@ class LinkedList {
     }
 
     push(val) {
-        const node = new Node(val);
+        const node = new ListNode(val);
         if (this.head) {
             this.tail.next = node;
             this.tail = node;

@@ -1,6 +1,6 @@
 // 66 - Binary Search Tree Exercise - Check If Balanced
 
-class Node {
+class TreeNode {
     constructor(val) {
         this.value = val;
         this.left = null;
@@ -12,30 +12,28 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-
     insert(val) {
         if (!this.root) {
-            this.root = new Node(val);
+            this.root = new TreeNode(val);
             return this;
         }
         let node = this.root;
         while (true) {
             if (val < node.value) {
                 if (!node.left) {
-                    node.left = new Node(val);
+                    node.left = new TreeNode(val);
                     return this;
                 }
                 node = node.left;
             } else {
                 if (!node.right) {
-                    node.right = new Node(val);
+                    node.right = new TreeNode(val);
                     return this;
                 }
                 node = node.right;
             }
         }
     }
-
     isBalanced() {
         function dfs(node) {
             if (!node) return 0;
