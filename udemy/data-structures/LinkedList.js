@@ -19,6 +19,17 @@ class LinkedList {
         return node;
     }
 
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return this.unshift(val);
+        if (index === this.length) return this.push(val);
+        const node = new ListNode(val);
+        const cur = this.get(index - 1);
+        [node.next, cur.next] = [cur.next, node];
+        this.length++;
+        return this;
+    }
+
     pop() {
         if (!this.head) return null;
         let node;
@@ -48,6 +59,17 @@ class LinkedList {
         }
         this.length++;
         return this;
+    }
+
+    remove(index) {
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+        const cur = this.get(index - 1);
+        const node = cur.next;
+        cur.next = node.next;
+        this.length--;
+        return node;
     }
 
     set(index, val) {
