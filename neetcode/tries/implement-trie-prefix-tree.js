@@ -1,15 +1,9 @@
 // 208 - Implement Trie (Prefix Tree)
 
-class TrieNode {
+class Trie {
     constructor() {
         this.children = {};
         this.isWord = false;
-    }
-}
-
-class Trie {
-    constructor() {
-        this.root = new TrieNode();
     }
 
     /**
@@ -18,9 +12,9 @@ class Trie {
      */
 
     insert(word) {
-        let cur = this.root;
+        let cur = this;
         for (let i = 0; i < word.length; i++) {
-            cur.children[word[i]] = cur.children[word[i]] || new TrieNode();
+            cur.children[word[i]] = cur.children[word[i]] || new Trie();
             cur = cur.children[word[i]];
         }
         cur.isWord = true;
@@ -32,7 +26,7 @@ class Trie {
      */
 
     search(word) {
-        let cur = this.root;
+        let cur = this;
         for (let i = 0; i < word.length; i++) {
             if (!cur.children[word[i]]) return false;
             cur = cur.children[word[i]];
@@ -46,7 +40,7 @@ class Trie {
      */
 
     startsWith(prefix) {
-        let cur = this.root;
+        let cur = this;
         for (let i = 0; i < prefix.length; i++) {
             if (!cur.children[prefix[i]]) return false;
             cur = cur.children[prefix[i]];
@@ -55,4 +49,4 @@ class Trie {
     }
 }
 
-module.exports = { TrieNode, Trie };
+module.exports = Trie;

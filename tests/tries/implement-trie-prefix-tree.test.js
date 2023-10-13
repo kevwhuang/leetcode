@@ -1,4 +1,4 @@
-const { TrieNode, Trie } = require('../../neetcode/tries/implement-trie-prefix-tree');
+const Trie = require('../../neetcode/tries/implement-trie-prefix-tree');
 
 describe('Main', () => {
     test('Case 1', () => {

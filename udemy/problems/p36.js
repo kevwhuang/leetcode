@@ -1,4 +1,4 @@
-// 35 - SLL - pop Exercise
+// 36 - SLL - pop Exercise
 
 class ListNode {
     constructor(val) {
@@ -15,20 +15,18 @@ class SinglyLinkedList {
     }
     pop() {
         if (!this.head) return;
+        let node;
         if (this.length === 1) {
-            const node = this.head;
+            node = this.head;
             this.head = null;
             this.tail = null;
-            this.length = 0;
-            return node;
+        } else {
+            let cur = this.head;
+            while (cur.next.next) cur = cur.next;
+            node = cur.next;
+            cur.next = null;
+            this.tail = cur;
         }
-        let cur = this.head;
-        while (cur.next.next) {
-            cur = cur.next;
-        }
-        const node = cur.next;
-        cur.next = null;
-        this.tail = cur;
         this.length--;
         return node;
     }
