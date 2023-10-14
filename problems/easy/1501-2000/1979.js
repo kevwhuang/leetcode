@@ -1,15 +1,11 @@
 // 1979 - Find Greatest Common Divisor of Array
 
 function findGCD(nums) {
-    let min = nums[0],
-        max = nums[0];
+    const gcd = (a, b) => !a ? b : gcd(b % a, a);
+    let min = nums[0], max = nums[0];
     for (let i = 1; i < nums.length; i++) {
-        if (nums[i] < min) min = nums[i];
-        else if (nums[i] > max) max = nums[i];
+        min = Math.min(nums[i], min);
+        max = Math.max(nums[i], max);
     }
-    let gcd = 1;
-    for (let i = 2; i <= min; i++) {
-        if (min % i === 0 && max % i === 0) gcd = i;
-    }
-    return gcd;
+    return gcd(min, max);
 }
