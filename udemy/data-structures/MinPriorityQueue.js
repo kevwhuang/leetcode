@@ -28,3 +28,5 @@ class MinPriorityQueue {
         return this;
     }
 }
+
+module.exports = MinPriorityQueue;
