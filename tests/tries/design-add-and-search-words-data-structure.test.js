@@ -3,7 +3,6 @@ const WordDictionary = require('../../neetcode/tries/design-add-and-search-words
 describe('Main', () => {
     test('Case 1', () => {
         const dictionary = new WordDictionary();
-
         dictionary.addWord('bad');
         dictionary.addWord('dad');
         dictionary.addWord('mad');

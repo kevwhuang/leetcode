@@ -1,5 +1,20 @@
 // 2542 - Maximum Subsequence Score
 
+function maxScore(nums1, nums2, k) {
+    const heap = new MinHeap();
+    for (let i = 0; i < nums1.length; i++) {
+        nums1[i] = [nums1[i], nums2[i]];
+    }
+    nums1.sort((a, b) => b[1] - a[1]);
+    let score = 0, sum = 0;
+    for (let i = 0; i < nums1.length; i++) {
+        if (i >= k) sum -= heap.pop();
+        sum += heap.push(nums1[i][0]);
+        if (i > k - 2) score = Math.max(sum * nums1[i][1], score);
+    }
+    return score;
+}
+
 class MinHeap {
     constructor() {
         this.arr = [null];
@@ -27,19 +42,4 @@ class MinHeap {
         }
         return val;
     }
-}
-
-function maxScore(nums1, nums2, k) {
-    const heap = new MinHeap();
-    for (let i = 0; i < nums1.length; i++) {
-        nums1[i] = [nums1[i], nums2[i]];
-    }
-    nums1.sort((a, b) => b[1] - a[1]);
-    let score = 0, sum = 0;
-    for (let i = 0; i < nums1.length; i++) {
-        if (i >= k) sum -= heap.pop();
-        sum += heap.push(nums1[i][0]);
-        if (i > k - 2) score = Math.max(sum * nums1[i][1], score);
-    }
-    return score;
 }
