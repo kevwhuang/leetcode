@@ -6,13 +6,13 @@
  */
 
 function permute(nums) {
-    function backtrack(arr, i) {
+    function backtrack(cur, i) {
         if (permutations.length === resLen) return;
-        if (i === len) return permutations.push([...arr]);
+        if (i === len) return permutations.push([...cur]);
         for (let j = i; j < len; j++) {
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-            backtrack(arr, i + 1);
-            [arr[i], arr[j]] = [arr[j], arr[i]];
+            [cur[i], cur[j]] = [cur[j], cur[i]];
+            backtrack(cur, i + 1);
+            [cur[i], cur[j]] = [cur[j], cur[i]];
         }
     }
     const len = nums.length;
