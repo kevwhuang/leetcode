@@ -6,13 +6,6 @@
  * @return {ListNode}
  */
 
-class ListNode {
-    constructor(val, next) {
-        this.val = val === undefined ? 0 : val;
-        this.next = next === undefined ? null : next;
-    }
-}
-
 function mergeTwoLists(list1, list2) {
     const sentinel = new ListNode();
     let cur = sentinel;
@@ -28,6 +21,13 @@ function mergeTwoLists(list1, list2) {
     }
     cur.next = list1 || list2;
     return sentinel.next;
+}
+
+class ListNode {
+    constructor(val, next) {
+        this.val = val === undefined ? 0 : val;
+        this.next = next === undefined ? null : next;
+    }
 }
 
 module.exports = mergeTwoLists;

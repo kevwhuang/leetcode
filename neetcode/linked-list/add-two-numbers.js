@@ -6,13 +6,6 @@
  * @return {ListNode}
  */
 
-class ListNode {
-    constructor(val, next) {
-        this.val = val === undefined ? 0 : val;
-        this.next = next === undefined ? null : next;
-    }
-}
-
 function addTwoNumbers(l1, l2) {
     const sentinel = new ListNode();
     let sum, carry = 0, tail = sentinel;
@@ -26,6 +19,13 @@ function addTwoNumbers(l1, l2) {
     }
     if (carry) tail.next = new ListNode(carry);
     return sentinel.next;
+}
+
+class ListNode {
+    constructor(val, next) {
+        this.val = val === undefined ? 0 : val;
+        this.next = next === undefined ? null : next;
+    }
 }
 
 module.exports = addTwoNumbers;
