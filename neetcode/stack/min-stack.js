@@ -1,11 +1,6 @@
 // 155 - Min Stack
 
 class MinStack {
-    /**
-     * @param {number[]} stack
-     * @param {number[]} min
-     */
-
     constructor() {
         this.stack = [];
         this.min = [];
