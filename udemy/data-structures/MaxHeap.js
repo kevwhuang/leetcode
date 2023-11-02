@@ -5,7 +5,7 @@ class MaxHeap {
 
     extract() {
         if (this.vals.length === 1) return null;
-        if (this.data.length === 2) return this.vals.pop();
+        if (this.vals.length === 2) return this.vals.pop();
         const root = this.vals[1];
         this.vals[1] = this.vals.pop();
         let top = 1, l = 2, r = 3;
