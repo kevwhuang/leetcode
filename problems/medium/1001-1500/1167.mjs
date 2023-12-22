@@ -22,7 +22,7 @@ class MinHeap {
     dequeue() {
         if (this.vals.length === 1) return null;
         if (this.vals.length === 2) return this.vals.pop();
-        const root = this.vals[1];
+        const val = this.vals[1];
         this.vals[1] = this.vals.pop();
         let top = 1, l = 2, r = 3;
         let next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
@@ -31,7 +31,7 @@ class MinHeap {
             [top, l, r] = [next, 2 * next, 2 * next + 1];
             next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
         }
-        return root;
+        return val;
     }
     enqueue(val) {
         this.vals.push(val);

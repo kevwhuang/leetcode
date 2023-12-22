@@ -9,13 +9,13 @@ function validPath(n, edges, source, destination) {
         graph.has(v1) ? graph.get(v1).add(v2) : graph.set(v1, new Set([v2]));
         graph.has(v2) ? graph.get(v2).add(v1) : graph.set(v2, new Set([v1]));
     }
-    const visited = new Set();
+    const seen = new Set();
     const queue = [source];
     while (queue.length) {
         for (const vert of graph.get(queue[0])) {
-            if (visited.has(vert)) continue;
-            visited.add(vert);
-            if (visited.has(destination)) return true;
+            if (seen.has(vert)) continue;
+            seen.add(vert);
+            if (seen.has(destination)) return true;
             queue.push(vert);
         }
         queue.shift();

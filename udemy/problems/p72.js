@@ -14,14 +14,14 @@ class Graph {
     depthFirstSearch(v) {
         function traverse(vert) {
             res.push(vert);
-            visited.add(vert);
+            seen.add(vert);
             const edges = adj[vert];
             for (let i = 0; i < edges.length; i++) {
-                !visited.has(edges[i]) && traverse(edges[i]);
+                !seen.has(edges[i]) && traverse(edges[i]);
             }
         }
         const res = [];
-        const visited = new Set();
+        const seen = new Set();
         const adj = this.adj;
         traverse(v);
         return res;

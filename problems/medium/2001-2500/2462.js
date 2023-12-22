@@ -21,7 +21,7 @@ function totalCost(costs, k, candidates) {
         heapRight.enqueue(costs[i]);
     }
     while (k--) {
-        if (heapLeft.front() <= heapRight.front()) {
+        if (heapLeft.vals[1] <= heapRight.vals[1]) {
             cost += heapLeft.dequeue();
             if (l + 1 === r) continue;
             heapLeft.enqueue(costs[++l]);
@@ -39,33 +39,26 @@ class MinHeap {
         this.vals = [null];
     }
     dequeue() {
+        if (this.vals.length === 1) return null;
         if (this.vals.length === 2) return this.vals.pop();
-        const front = this.vals[1];
+        const val = this.vals[1];
         this.vals[1] = this.vals.pop();
         let top = 1, l = 2, r = 3;
         let next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
         while (this.vals[top] > this.vals[next]) {
-            const temp = this.vals[top];
-            this.vals[top] = this.vals[next];
-            this.vals[next] = temp;
-            top = next;
-            l = 2 * next;
-            r = l + 1;
+            [this.vals[top], this.vals[next]] = [this.vals[next], this.vals[top]];
+            [top, l, r] = [next, 2 * next, 2 * next + 1];
             next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
         }
-        return front;
+        return val;
     }
     enqueue(val) {
         this.vals.push(val);
         let index = this.vals.length - 1, parent = ~~(index / 2);
         while (parent && val < this.vals[parent]) {
-            this.vals[index] = this.vals[parent];
-            this.vals[parent] = val;
-            index = parent;
-            parent = ~~(parent / 2);
+            [this.vals[index], this.vals[parent]] = [this.vals[parent], val];
+            [index, parent] = [parent, ~~(parent / 2)];
         }
-    }
-    front() {
-        return this.vals[1];
+        return val;
     }
 }

@@ -7,7 +7,7 @@ class UndirectedGraph {
         v = this.#setEntry(v);
         if (!v) return [];
         const res = [];
-        const visited = new Set([v]);
+        const seen = new Set([v]);
         const queue = [v];
         while (queue.length) {
             const node = queue.shift();
@@ -15,8 +15,8 @@ class UndirectedGraph {
             const edges = this.adj[node];
             for (let i = 0, vert; i < edges.length; i++) {
                 vert = edges[i];
-                if (visited.has(vert)) continue;
-                visited.add(vert);
+                if (seen.has(vert)) continue;
+                seen.add(vert);
                 queue.push(vert);
             }
         }
@@ -26,16 +26,16 @@ class UndirectedGraph {
     dfs(v) {
         function traverse(vert) {
             res.push(vert);
-            visited.add(vert);
+            seen.add(vert);
             const edges = adj[vert];
             for (let i = 0; i < edges.length; i++) {
-                !visited.has(edges[i]) && traverse(edges[i]);
+                !seen.has(edges[i]) && traverse(edges[i]);
             }
         }
         v = this.#setEntry(v);
         if (!v) return [];
         const res = [];
-        const visited = new Set();
+        const seen = new Set();
         const adj = this.adj;
         traverse(v);
         return res;
@@ -45,7 +45,7 @@ class UndirectedGraph {
         v = this.#setEntry(v);
         if (!v) return [];
         const res = [];
-        const visited = new Set([v]);
+        const seen = new Set([v]);
         const stack = [v];
         while (stack.length) {
             const node = stack.pop();
@@ -53,8 +53,8 @@ class UndirectedGraph {
             const edges = this.adj[node];
             for (let i = 0, vert; i < edges.length; i++) {
                 vert = edges[i];
-                if (visited.has(vert)) continue;
-                visited.add(vert);
+                if (seen.has(vert)) continue;
+                seen.add(vert);
                 stack.push(vert);
             }
         }

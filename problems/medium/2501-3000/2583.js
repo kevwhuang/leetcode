@@ -12,37 +12,39 @@ function kthLargestLevelSum(root, k) {
             if (node.left) newQueue.push(node.left);
             if (node.right) newQueue.push(node.right);
         }
-        heap.insert(sum);
+        heap.enqueue(sum);
         queue = newQueue;
     }
-    if (k >= heap.heap.length) return -1;
-    while (--k) heap.extract();
-    return heap.extract();
+    if (k >= heap.vals.length) return -1;
+    while (--k) heap.dequeue();
+    return heap.dequeue();
 }
 
 class MaxHeap {
     constructor() {
-        this.heap = [null];
+        this.vals = [null];
     }
-    extract() {
-        if (this.heap.length === 2) return this.heap.pop();
-        const val = this.heap[1];
-        this.heap[1] = this.heap.pop();
+    dequeue() {
+        if (this.vals.length === 1) return null;
+        if (this.vals.length === 2) return this.vals.pop();
+        const val = this.vals[1];
+        this.vals[1] = this.vals.pop();
         let top = 1, l = 2, r = 3;
-        let next = !this.heap[r] || this.heap[l] > this.heap[r] ? l : r;
-        while (this.heap[top] < this.heap[next]) {
-            [this.heap[top], this.heap[next]] = [this.heap[next], this.heap[top]];
+        let next = !this.vals[r] || this.vals[l] > this.vals[r] ? l : r;
+        while (this.vals[top] < this.vals[next]) {
+            [this.vals[top], this.vals[next]] = [this.vals[next], this.vals[top]];
             [top, l, r] = [next, 2 * next, 2 * next + 1];
-            next = !this.heap[r] || this.heap[l] > this.heap[r] ? l : r;
+            next = !this.vals[r] || this.vals[l] > this.vals[r] ? l : r;
         }
         return val;
     }
-    insert(val) {
-        this.heap.push(val);
-        let index = this.heap.length - 1, parent = ~~(index / 2);
-        while (parent && val > this.heap[parent]) {
-            [this.heap[index], this.heap[parent]] = [this.heap[parent], val];
+    enqueue(val) {
+        this.vals.push(val);
+        let index = this.vals.length - 1, parent = ~~(index / 2);
+        while (parent && val > this.vals[parent]) {
+            [this.vals[index], this.vals[parent]] = [this.vals[parent], val];
             [index, parent] = [parent, ~~(parent / 2)];
         }
+        return val;
     }
 }

@@ -8,8 +8,8 @@ function maxScore(nums1, nums2, k) {
     nums1.sort((a, b) => b[1] - a[1]);
     let score = 0, sum = 0;
     for (let i = 0; i < nums1.length; i++) {
-        if (i >= k) sum -= heap.pop();
-        sum += heap.push(nums1[i][0]);
+        if (i >= k) sum -= heap.dequeue();
+        sum += heap.enqueue(nums1[i][0]);
         if (i > k - 2) score = Math.max(sum * nums1[i][1], score);
     }
     return score;
@@ -17,28 +17,28 @@ function maxScore(nums1, nums2, k) {
 
 class MinHeap {
     constructor() {
-        this.arr = [null];
-        this.size = 0;
+        this.vals = [null];
     }
-    pop() {
-        if (!this.size--) return;
-        const head = this.arr[1];
-        this.arr[1] = this.arr.pop();
-        let cur = 1, l = 2, r = 3;
-        let top = !this.arr[r] || this.arr[l] - this.arr[r] < 0 ? l : r;
-        while (this.arr[top] && this.arr[cur] - this.arr[top] > 0) {
-            [this.arr[cur], this.arr[top]] = [this.arr[top], this.arr[cur]];
-            [cur, l, r] = [top, top * 2, top * 2 + 1];
-            top = !this.arr[r] || this.arr[l] - this.arr[r] < 0 ? l : r;
+    dequeue() {
+        if (this.vals.length === 1) return null;
+        if (this.vals.length === 2) return this.vals.pop();
+        const val = this.vals[1];
+        this.vals[1] = this.vals.pop();
+        let top = 1, l = 2, r = 3;
+        let next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
+        while (this.vals[top] > this.vals[next]) {
+            [this.vals[top], this.vals[next]] = [this.vals[next], this.vals[top]];
+            [top, l, r] = [next, 2 * next, 2 * next + 1];
+            next = !this.vals[r] || this.vals[l] < this.vals[r] ? l : r;
         }
-        return head;
+        return val;
     }
-    push(val) {
-        this.arr.push(val);
-        let cur = ++this.size, top = ~~(cur / 2);
-        while (top && this.arr[cur] - this.arr[top] < 0) {
-            [this.arr[cur], this.arr[top]] = [this.arr[top], this.arr[cur]];
-            [top, cur] = [~~(top / 2), top];
+    enqueue(val) {
+        this.vals.push(val);
+        let index = this.vals.length - 1, parent = ~~(index / 2);
+        while (parent && val < this.vals[parent]) {
+            [this.vals[index], this.vals[parent]] = [this.vals[parent], val];
+            [index, parent] = [parent, ~~(parent / 2)];
         }
         return val;
     }

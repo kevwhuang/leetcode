@@ -13,7 +13,7 @@ class Graph {
     }
     breadthFirstSearch(v) {
         const res = [];
-        const visited = new Set([v]);
+        const seen = new Set([v]);
         const queue = [v];
         while (queue.length) {
             const node = queue.shift();
@@ -21,8 +21,8 @@ class Graph {
             const edges = this.adj[node];
             for (let i = 0, vert; i < edges.length; i++) {
                 vert = edges[i];
-                if (visited.has(vert)) continue;
-                visited.add(vert);
+                if (seen.has(vert)) continue;
+                seen.add(vert);
                 queue.push(vert);
             }
         }
