@@ -11,7 +11,7 @@ function quickSort(arr, comparator = (a, b) => a < b ? -1 : 1, l = 0, r = arr.le
 function partition(arr, comparator, l, r) {
     let swap = l;
     for (let i = l + 1, val = arr[l]; i <= r; i++) {
-        if (comparator(val, arr[i]) <= 0) continue;
+        if (comparator(val, arr[i]) < 0) continue;
         [arr[i], arr[swap]] = [arr[++swap], arr[i]];
     }
     [arr[l], arr[swap]] = [arr[swap], arr[l]];
