@@ -1,8 +1,7 @@
 // 1422 - Maximum Score After Splitting a String
 
 function maxScore(s) {
-    let left = s[0] === '0' ? 1 : 0,
-        right = 0;
+    let left = s[0] === '0' ? 1 : 0, right = 0;
     for (let i = 1; i < s.length; i++) {
         s[i] === '1' && right++;
     }
