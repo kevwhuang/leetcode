@@ -2,7 +2,7 @@
 
 function isPathCrossing(path) {
     const set = new Set(['0,0']);
-    let [x, y] = [0, 0];
+    let x = 0, y = 0;
     for (let i = 0; i < path.length; i++) {
         switch (path[i]) {
             case 'N':
@@ -17,7 +17,7 @@ function isPathCrossing(path) {
             case 'W':
                 x--;
         }
-        const coords = x + ',' + y;
+        const coords = `${x},${y}`;
         if (set.has(coords)) return true;
         set.add(coords);
     }
