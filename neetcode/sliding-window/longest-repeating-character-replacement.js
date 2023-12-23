@@ -7,16 +7,16 @@
  */
 
 function characterReplacement(s, k) {
+    let longest = 1, local = 1;
     const map = new Map();
-    let max = 1, local = 1, l = 0;
-    for (let r = 0, freq; r < s.length; r++) {
-        freq = map.get(s[r]) + 1 || 1;
+    for (let l = 0, r = 0; r < s.length; r++) {
+        const freq = map.get(s[r]) + 1 || 1;
         map.set(s[r], freq);
         local = Math.max(freq, local);
-        k + local < r - l + 1 && map.set(s[l], map.get(s[l++]) - 1);
-        max = Math.max(r - l + 1, max);
+        if (k + local < r - l + 1) map.set(s[l], map.get(s[l++]) - 1);
+        longest = Math.max(r - l + 1, longest);
     }
-    return max;
+    return longest;
 }
 
 module.exports = characterReplacement;
