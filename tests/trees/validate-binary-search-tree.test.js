@@ -10,7 +10,7 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        expect(isValidBST(new TreeNode(2, 1, 3))).toBeTruthy();
+        expect(isValidBST(new TreeNode(2, new TreeNode(1), new TreeNode(3)))).toBeTruthy();
     });
 
     test('Case 2', () => {

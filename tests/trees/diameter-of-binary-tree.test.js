@@ -10,11 +10,12 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        const root = new TreeNode(3, new TreeNode(2, 4, 5), 3);
+        const root = new TreeNode(3, null, new TreeNode(3));
+        root.left = new TreeNode(2, new TreeNode(4), new TreeNode(5));
         expect(diameterOfBinaryTree(root)).toStrictEqual(3);
     });
 
     test('Case 2', () => {
-        expect(diameterOfBinaryTree(new TreeNode(1, 2))).toStrictEqual(1);
+        expect(diameterOfBinaryTree(new TreeNode(1, new TreeNode(2)))).toStrictEqual(1);
     });
 });

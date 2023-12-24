@@ -20,7 +20,9 @@ describe('Main', () => {
     });
 
     test('Case 2', () => {
-        expect(invertTree(new TreeNode(2, 1, 3))).toStrictEqual(new TreeNode(2, 3, 1));
+        const root = new TreeNode(2, new TreeNode(1), new TreeNode(3));
+        const solution = new TreeNode(2, new TreeNode(3), new TreeNode(1));
+        expect(invertTree(root)).toStrictEqual(solution);
     });
 
     test('Case 3', () => {

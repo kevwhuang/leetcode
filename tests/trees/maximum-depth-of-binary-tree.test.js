@@ -10,10 +10,15 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        expect(maxDepth(new TreeNode(3, 9, new TreeNode(20, 15, 17)))).toStrictEqual(3);
+        const root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(17);
+        expect(maxDepth(root)).toStrictEqual(3);
     });
 
     test('Case 2', () => {
-        expect(maxDepth(new TreeNode(1, null, 2))).toStrictEqual(2);
+        expect(maxDepth(new TreeNode(1, null, new TreeNode(2)))).toStrictEqual(2);
     });
 });
