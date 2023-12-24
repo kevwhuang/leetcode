@@ -1,20 +1,13 @@
 // 2782 - Number of Unique Categories
 
 function numberOfCategories(n, categoryHandler) {
-    let categories = 0;
-    const set = new Set();
+    let dups = 0;
     for (let i = 0; i < n; i++) {
-        set.add(i);
-    }
-    while (set.size) {
-        const [cur] = set;
-        set.delete(cur);
-        for (const compare of set.values()) {
-            if (categoryHandler.haveSameCategory(cur, compare)) {
-                set.delete(compare);
-            }
+        for (let j = i + 1; j < n; j++) {
+            if (!categoryHandler.haveSameCategory(i, j)) continue;
+            dups++;
+            break;
         }
-        categories++;
     }
-    return categories;
+    return n - dups;
 }
