@@ -2,20 +2,20 @@
 
 function validPath(n, edges, source, destination) {
     function union(v1, v2) {
-        const root1 = find(v1);
-        const root2 = find(v2);
-        if (root1 !== root2) parent[root1] = root2;
+        const p1 = find(v1);
+        const p2 = find(v2);
+        if (p1 !== p2) uf[p1] = p2;
     }
     function find(v) {
-        while (v !== parent[v]) {
-            parent[v] = parent[parent[v]];
-            v = parent[v];
+        while (v !== uf[v]) {
+            uf[v] = uf[uf[v]];
+            v = uf[v];
         }
         return v;
     }
-    const parent = new Array(n);
+    const uf = new Array(n);
     for (let i = 0; i < n; i++) {
-        parent[i] = i;
+        uf[i] = i;
     }
     for (let i = 0; i < edges.length; i++) {
         union(edges[i][0], edges[i][1]);
