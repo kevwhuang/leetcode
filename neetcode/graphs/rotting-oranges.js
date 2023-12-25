@@ -6,44 +6,33 @@
  */
 
 function orangesRotting(grid) {
-    const queue = [];
-    let fresh = 0;
-    for (let r = 0; r < grid.length; r++) {
-        for (let c = 0; c < grid[0].length; c++) {
-            grid[r][c] === 1 && fresh++;
-            grid[r][c] === 2 && queue.push([r, c]);
+    const m = grid.length, n = grid[0].length;
+    let fresh = 0, queue = [];
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] === 1) fresh++;
+            else if (grid[r][c] === 2) queue.push([r, c]);
         }
     }
-    if (!fresh && !queue.length) return 0;
-    let len, time = -1;
+    if (fresh === 0 && !queue.length) return 0;
+    const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    let time = -1;
     while (queue.length) {
-        len = queue.length;
-        time++;
-        for (let i = 0, r, c; i < len; i++) {
-            [r, c] = queue.shift();
-            if (grid[r - 1]?.[c] === 1) {
-                grid[r - 1][c] = 2;
-                queue.push([r - 1, c]);
-                fresh--;
-            }
-            if (grid[r + 1]?.[c] === 1) {
-                grid[r + 1][c] = 2;
-                queue.push([r + 1, c]);
-                fresh--;
-            }
-            if (grid[r]?.[c - 1] === 1) {
-                grid[r][c - 1] = 2;
-                queue.push([r, c - 1]);
-                fresh--;
-            }
-            if (grid[r]?.[c + 1] === 1) {
-                grid[r][c + 1] = 2;
-                queue.push([r, c + 1]);
+        const nextQueue = [];
+        for (let i = 0; i < queue.length; i++) {
+            const r = queue[i][0], c = queue[i][1];
+            for (let j = 0; j < 4; j++) {
+                const dr = dirs[j][0], dc = dirs[j][1];
+                if (grid[r + dr]?.[c + dc] !== 1) continue;
+                grid[r + dr][c + dc] = 2;
+                nextQueue.push([r + dr, c + dc]);
                 fresh--;
             }
         }
+        time++;
+        queue = nextQueue;
     }
-    return !fresh ? time : -1;
+    return fresh ? -1 : time;
 }
 
 module.exports = orangesRotting;
