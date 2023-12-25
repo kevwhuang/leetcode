@@ -1,18 +1,17 @@
 // 2965 - Find Missing and Repeated Values
 
 function findMissingAndRepeatedValues(grid) {
-    const set = new Set();
-    const len = grid.length, bound = len * len;
-    for (let n = 1; n <= bound; n++) {
-        set.add(n);
-    }
-    let dup;
-    for (let i = 0; i < len; i++) {
-        for (let j = 0; j < len; j++) {
-            const cur = grid[i][j];
-            if (set.has(cur)) set.delete(cur);
-            else dup = cur;
+    const len = grid.length;
+    const arr = new Array(len * len + 1).fill(0);
+    for (let r = 0; r < len; r++) {
+        for (let c = 0; c < len; c++) {
+            arr[grid[r][c]]++;
         }
     }
-    return [dup, set.keys().next().value];
+    const res = [];
+    for (let n = 1; n < arr.length; n++) {
+        if (arr[n] === 0) res[1] = n;
+        else if (arr[n] === 2) res[0] = n;
+    }
+    return res;
 }
