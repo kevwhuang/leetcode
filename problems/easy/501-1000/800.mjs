@@ -2,14 +2,12 @@
 
 function similarRGB(color) {
     function findSimilar(col) {
-        let min = Infinity;
-        let similar;
+        let similar, min = Infinity;
         for (let i = 0; i < 16; i++) {
             const abs = Math.abs(list[i] - col);
-            if (abs < min) {
-                min = abs;
-                similar = list[i];
-            }
+            if (abs >= min) continue;
+            similar = list[i];
+            min = abs;
         }
         return similar.toString(16).padStart(2, 0);
     }

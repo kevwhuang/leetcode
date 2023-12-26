@@ -5,12 +5,8 @@ function validMountainArray(arr) {
     let isIncreasing = true;
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] === arr[i - 1]) return false;
-        if (isIncreasing) {
-            if (arr[i] < arr[i - 1]) isIncreasing = false;
-        } else {
-            if (arr[i] >= arr[i - 1]) return false;
-        }
+        if (isIncreasing && arr[i] < arr[i - 1]) isIncreasing = false;
+        else if (!isIncreasing && arr[i] >= arr[i - 1]) return false;
     }
-    if (isIncreasing) return false;
-    return true;
+    return !isIncreasing;
 }

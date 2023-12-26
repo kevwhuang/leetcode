@@ -1,9 +1,7 @@
 // 696 - Count Binary Substrings
 
 function countBinarySubstrings(s) {
-    let prev = 0;
-    let cur = 1;
-    let substrings = 0;
+    let substrings = 0, prev = 0, cur = 1;
     for (let i = 1; i < s.length; i++) {
         if (s[i] === s[i - 1]) cur++;
         else {

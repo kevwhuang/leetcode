@@ -2,12 +2,10 @@
 
 function diStringMatch(s) {
     const perm = [];
-    let left = 0,
-        right = s.length;
+    let l = 0, r = s.length;
     for (let i = 0; i < s.length; i++) {
-        if (s[i] === 'I') perm.push(left++);
-        else perm.push(right--);
+        s[i] === 'I' ? perm.push(l++) : perm.push(r--);
     }
-    perm.push(left);
+    perm.push(l);
     return perm;
 }

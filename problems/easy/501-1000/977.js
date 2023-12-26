@@ -2,8 +2,7 @@
 
 function sortedSquares(nums) {
     const squares = [];
-    let left = 0;
-    let right = nums.length - 1;
+    let left = 0, right = nums.length - 1;
     while (left <= right) {
         const leftNum = Math.abs(nums[left]);
         const rightNum = Math.abs(nums[right]);

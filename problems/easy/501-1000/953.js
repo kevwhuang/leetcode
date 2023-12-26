@@ -6,14 +6,12 @@ function isAlienSorted(words, order) {
         map.set(order[i], i);
     }
     loop: for (let i = 1, j, prev, cur; i < words.length; i++) {
-        prev = words[i - 1];
-        cur = words[i];
-        j = 0;
+        j = 0, prev = words[i - 1], cur = words[i];
         for (let code1, code2; j < prev.length && j < cur.length; j++) {
             code1 = map.get(prev[j]);
             code2 = map.get(cur[j]);
             if (code1 < code2) continue loop;
-            else if (code1 > code2) return false;
+            if (code1 > code2) return false;
         }
         if (prev.length > j) return false;
     }

@@ -2,8 +2,7 @@
 
 function largeGroupPositions(s) {
     const groups = [];
-    let currentLetter;
-    let currentCount;
+    let currentLetter, currentCount;
     for (let i = 0; i <= s.length; i++) {
         if (s[i] === currentLetter) currentCount++;
         else {

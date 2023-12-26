@@ -2,8 +2,7 @@
 
 function imageSmoother(img) {
     function smooth(i, j) {
-        let total = 0;
-        let cells = 0;
+        let total = 0, cells = 0;
         for (let di = i - 1; di <= i + 1; di++) {
             if (di < 0 || di >= height) continue;
             for (let dj = j - 1; dj <= j + 1; dj++) {
@@ -14,8 +13,7 @@ function imageSmoother(img) {
         }
         return Math.floor(total / cells);
     }
-    const height = img.length;
-    const width = img[0].length;
+    const height = img.length, width = img[0].length;
     const res = [];
     for (let i = 0; i < height; i++) {
         const row = [];

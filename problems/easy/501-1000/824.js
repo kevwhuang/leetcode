@@ -1,8 +1,8 @@
 // 824 - Goat Latin
 
 function toGoatLatin(sentence) {
-    const vowels = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
     sentence = sentence.split(' ');
+    const vowels = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
     for (let i = 0; i < sentence.length; i++) {
         let word = sentence[i];
         word = vowels.has(word[0])

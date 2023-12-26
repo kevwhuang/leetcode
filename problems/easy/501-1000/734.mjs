@@ -9,8 +9,7 @@ function areSentencesSimilar(sentence1, sentence2, similarPairs) {
         else map.set(pair[0], [pair[1]]);
     }
     for (let i = 0; i < sentence1.length; i++) {
-        const word1 = sentence1[i];
-        const word2 = sentence2[i];
+        const word1 = sentence1[i], word2 = sentence2[i];
         if (word1 === word2) continue;
         if (map.has(word1)) {
             if (!map.get(word1).includes(word2)) {

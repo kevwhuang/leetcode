@@ -6,20 +6,17 @@ function uncommonFromSentences(s1, s2) {
         let pos = 0;
         while (true) {
             const space = s.indexOf(' ', pos);
-            let word,
-                willBreak = false;
-            if (space > 0) {
-                word = s.slice(pos, space);
-            } else {
+            let word, willBreak = false;
+            if (space > 0) word = s.slice(pos, space);
+            else {
                 word = s.slice(pos);
                 willBreak = true;
             }
             if (!duplicates.has(word)) {
-                if (set.has(word)) {
+                if (!set.has(word)) set.add(word);
+                else {
                     duplicates.add(word);
                     set.delete(word);
-                } else {
-                    set.add(word);
                 }
             }
             if (willBreak) break;

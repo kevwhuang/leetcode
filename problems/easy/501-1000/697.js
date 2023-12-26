@@ -1,10 +1,8 @@
 // 697 - Degree of an Array
 
 function findShortestSubArray(nums) {
-    const freqs = {};
-    const indices = {};
-    let degree = 0;
-    let shortest = Infinity;
+    const freqs = {}, indices = {};
+    let shortest = Infinity, degree = 0;
     for (let i = 0; i < nums.length; i++) {
         const n = nums[i];
         if (freqs[n]) {

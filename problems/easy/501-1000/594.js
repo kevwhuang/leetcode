@@ -7,9 +7,8 @@ function findLHS(nums) {
     }
     let max = 0;
     for (const e of map) {
-        if (map.has(e[0] + 1)) {
-            max = Math.max(e[1] + map.get(e[0] + 1), max);
-        }
+        if (!map.has(e[0] + 1)) continue;
+        max = Math.max(e[1] + map.get(e[0] + 1), max);
     }
     return max;
 }

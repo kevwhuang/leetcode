@@ -1,8 +1,7 @@
 // 896 - Monotonic Array
 
 function isMonotonic(nums) {
-    let hasIncreased = false;
-    let hasDecreased = false;
+    let hasIncreased = false, hasDecreased = false;
     for (let i = 1; i < nums.length; i++) {
         const diff = nums[i] - nums[i - 1];
         if (diff > 0) hasIncreased = true;

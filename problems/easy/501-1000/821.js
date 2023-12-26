@@ -2,8 +2,7 @@
 
 function shortestToChar(s, c) {
     const distances = new Array(s.length);
-    let l = -1;
-    let r = s.indexOf(c);
+    let l = -1, r = s.indexOf(c);
     for (let i = 0; i < s.length; i++) {
         if (s[i] === c) {
             distances[i] = 0;

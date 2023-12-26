@@ -10,8 +10,7 @@ function shortestCompletingWord(licensePlate, words) {
         }
     }
     const init = [...map.entries()];
-    let completingWord;
-    let completingLength = Infinity;
+    let completingWord, completingLength = Infinity;
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
         if (word.length >= completingLength) continue;

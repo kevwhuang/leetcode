@@ -1,8 +1,7 @@
 // 747 - Largest Number at Least Twice of Others
 
 function dominantIndex(nums) {
-    let index,
-        largest = 0;
+    let index, largest = 0;
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] > largest) {
             index = i;
