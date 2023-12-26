@@ -6,9 +6,7 @@ class SeatManager {
         this.next = 1;
     }
     reserve() {
-        return this.seats[0] < this.next
-            ? this.seats.shift()
-            : this.next++;
+        return this.seats[0] < this.next ? this.seats.shift() : this.next++;
     }
     unreserve(seatNumber) {
         let i = 0;

@@ -3,8 +3,7 @@
 function minOperations(boxes) {
     const ops = new Array(boxes.length);
     ops[0] = 0;
-    let countLeft = Number(boxes[0] === '1');
-    let countRight = 0;
+    let countLeft = Number(boxes[0] === '1'), countRight = 0;
     for (let i = 1; i < boxes.length; i++) {
         if (boxes[i] === '0') continue;
         ops[0] += i;

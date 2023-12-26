@@ -1,21 +1,20 @@
 // 2415 - Reverse Odd Levels of Binary Tree
 
 function reverseOddLevels(root) {
-    const queue = [root];
-    let level = 0;
+    let level = 0, queue = [root];
     while (queue.length) {
-        const len = queue.length;
         if (level++ % 2) {
-            let l = -1, r = len;
+            let l = -1, r = queue.length;
             while (++l < --r) {
                 [queue[l].val, queue[r].val] = [queue[r].val, queue[l].val];
             }
         }
-        for (let i = 0, node; i < len; i++) {
-            node = queue.shift();
-            node.left && queue.push(node.left);
-            node.right && queue.push(node.right);
+        const nextQueue = [];
+        for (let i = 0; i < queue.length; i++) {
+            if (queue[i].left) nextQueue.push(queue[i].left);
+            if (queue[i].right) nextQueue.push(queue[i].right);
         }
+        queue = nextQueue;
     }
     return root;
 }

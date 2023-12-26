@@ -12,8 +12,7 @@ class CustomStack {
         }
     }
     pop() {
-        if (this.stack.length === 0) return -1;
-        return this.stack.pop();
+        return this.stack.length ? this.stack.pop() : -1;
     }
     push(x) {
         if (this.stack.length === this.maxSize) return;

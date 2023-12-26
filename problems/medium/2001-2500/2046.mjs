@@ -1,9 +1,8 @@
 // 2046 - Sort Linked List Already Sorted Using Absolute Values
 
 function sortLinkedList(head) {
-    let list1 = null;
     const list2 = new ListNode();
-    let cur = head, cur2 = list2, tail1 = null;
+    let list1 = null, cur = head, cur2 = list2, tail1 = null;
     while (cur) {
         if (cur.val < 0) {
             if (list1) {

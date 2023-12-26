@@ -5,13 +5,13 @@ function minimumOperations(root) {
     let queue = [root];
     while (queue.length) {
         const len = queue.length;
-        const level = new Array(len);
-        const next = [];
+        const level = new Array();
+        const nextQueue = [];
         for (let i = 0; i < len; i++) {
             const node = queue[i];
             level[i] = node.val;
-            if (node.left) next.push(node.left);
-            if (node.right) next.push(node.right);
+            if (node.left) nextQueue.push(node.left);
+            if (node.right) nextQueue.push(node.right);
         }
         const nums = level.map((e, i) => [i, e]);
         nums.sort((a, b) => a[1] - b[1]);
@@ -22,7 +22,7 @@ function minimumOperations(root) {
             [nums[idx1], nums[idx2]] = [nums[idx2], nums[idx1]];
             ops++;
         }
-        queue = next;
+        queue = nextQueue;
     }
     return ops;
 }
