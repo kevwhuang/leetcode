@@ -5,7 +5,6 @@ describe('Main', () => {
         const wordList = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'];
         expect(ladderLength('hit', 'cog', wordList)).toStrictEqual(5);
     });
-
     test('Case 2', () => {
         const wordList = ['hot', 'dot', 'dog', 'lot', 'log'];
         expect(ladderLength('hit', 'cog', wordList)).toStrictEqual(0);

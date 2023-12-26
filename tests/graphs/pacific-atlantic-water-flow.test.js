@@ -12,7 +12,6 @@ describe('Main', () => {
         const solution = [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]];
         expect(pacificAtlantic(heights)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(pacificAtlantic([[1]])).toStrictEqual([[0, 0]]);
     });

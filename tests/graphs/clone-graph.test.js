@@ -34,13 +34,11 @@ describe('Main', () => {
         expect(results.neighbors[0].val).toStrictEqual(1);
         expect(results.neighbors[1].val).toStrictEqual(3);
     });
-
     test('Case 2', () => {
         const results = cloneGraph(new Node(1));
         expect(results.val).toStrictEqual(1);
         expect(results.neighbors).toStrictEqual([]);
     });
-
     test('Case 3', () => {
         expect(cloneGraph(null)).toBeNull();
     });

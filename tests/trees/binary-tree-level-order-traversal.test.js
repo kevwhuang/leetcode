@@ -17,11 +17,9 @@ describe('Main', () => {
         root.right.right = new TreeNode(7);
         expect(levelOrder(root)).toStrictEqual([[3], [9, 20], [15, 7]]);
     });
-
     test('Case 2', () => {
         expect(levelOrder(new TreeNode(1))).toStrictEqual([[1]]);
     });
-
     test('Case 3', () => {
         expect(levelOrder()).toStrictEqual([]);
     });

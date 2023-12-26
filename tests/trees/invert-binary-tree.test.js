@@ -18,13 +18,11 @@ describe('Main', () => {
         solution.right = new TreeNode(2, new TreeNode(3), new TreeNode(1));
         expect(invertTree(root)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         const root = new TreeNode(2, new TreeNode(1), new TreeNode(3));
         const solution = new TreeNode(2, new TreeNode(3), new TreeNode(1));
         expect(invertTree(root)).toStrictEqual(solution);
     });
-
     test('Case 3', () => {
         expect(invertTree(new TreeNode())).toStrictEqual(new TreeNode());
     });

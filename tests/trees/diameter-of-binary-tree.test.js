@@ -14,7 +14,6 @@ describe('Main', () => {
         root.left = new TreeNode(2, new TreeNode(4), new TreeNode(5));
         expect(diameterOfBinaryTree(root)).toStrictEqual(3);
     });
-
     test('Case 2', () => {
         expect(diameterOfBinaryTree(new TreeNode(1, new TreeNode(2)))).toStrictEqual(1);
     });

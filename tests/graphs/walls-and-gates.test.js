@@ -12,7 +12,6 @@ describe('Main', () => {
         const solution = [[3, -1, 0, 1], [2, 2, 1, -1], [1, -1, 2, -1], [0, -1, 3, 4]];
         expect(wallsAndGates(rooms)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(wallsAndGates([[-1]])).toStrictEqual([[-1]]);
     });

@@ -10,7 +10,6 @@ describe('Main', () => {
         ];
         expect(numIslands(grid)).toStrictEqual(1);
     });
-
     test('Case 2', () => {
         const grid = [
             ['1', '1', '0', '0', '0'],

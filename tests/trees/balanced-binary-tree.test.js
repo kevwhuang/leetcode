@@ -14,14 +14,12 @@ describe('Main', () => {
         root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
         expect(isBalanced(root)).toBeTruthy();
     });
-
     test('Case 2', () => {
         const root = new TreeNode(1, null, new TreeNode(2));
         root.left = new TreeNode(2, null, new TreeNode(3));
         root.left.left = new TreeNode(3, new TreeNode(4), new TreeNode(4));
         expect(isBalanced(root)).toBeFalsy();
     });
-
     test('Case 3', () => {
         expect(isBalanced(new TreeNode())).toBeTruthy();
     });

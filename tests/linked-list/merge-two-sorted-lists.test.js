@@ -21,11 +21,9 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         expect(mergeTwoLists(null, null)).toStrictEqual(null);
     });
-
     test('Case 3', () => {
         expect(mergeTwoLists(null, new ListNode(0)).val).toStrictEqual(0);
     });

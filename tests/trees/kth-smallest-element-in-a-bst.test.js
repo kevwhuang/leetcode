@@ -15,7 +15,6 @@ describe('Main', () => {
         root.right = new TreeNode(4);
         expect(kthSmallest(root, 1)).toStrictEqual(1);
     });
-
     test('Case 2', () => {
         const root = new TreeNode(5);
         root.left = new TreeNode(3);

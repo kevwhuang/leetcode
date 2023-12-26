@@ -11,7 +11,6 @@ class Queue {
         this.last = null;
         this.size = 0;
     }
-
     dequeue() {
         if (!this.first) return null;
         const node = this.first;
@@ -20,7 +19,6 @@ class Queue {
         if (!this.first) this.last = null;
         return node.val;
     }
-
     enqueue(val) {
         const node = new QueueNode(val);
         if (this.first) {
@@ -33,3 +31,5 @@ class Queue {
         return ++this.size;
     }
 }
+
+module.exports = Queue;

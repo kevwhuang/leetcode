@@ -18,4 +18,4 @@ function decode(s) {
     return s.split('<delim>');
 }
 
-module.exports = { encode, decode };
+module.exports = { decode, encode };

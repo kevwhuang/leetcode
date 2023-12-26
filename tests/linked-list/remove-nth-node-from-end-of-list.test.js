@@ -20,11 +20,9 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         expect(removeNthFromEnd(new ListNode(1), 1)).toBeNull();
     });
-
     test('Case 3', () => {
         expect(removeNthFromEnd(new ListNode(1, new ListNode(2)), 1).val).toStrictEqual(1);
     });

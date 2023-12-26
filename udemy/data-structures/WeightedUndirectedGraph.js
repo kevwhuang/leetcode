@@ -2,7 +2,6 @@ class WeightedUndirectedGraph {
     constructor() {
         this.adj = {};
     }
-
     dijkstra(v1, v2) {
         if (!this.adj[v1] || !this.adj[v2]) return false;
         const prev = {};
@@ -32,27 +31,23 @@ class WeightedUndirectedGraph {
         }
         return path.reverse();
     }
-
     insertEdge(v1, v2, weight) {
         if (!this.adj[v1] || !this.adj[v2] || isNaN(weight)) return false;
         this.adj[v1].push([v2, weight]);
         this.adj[v2].push([v1, weight]);
         return this;
     }
-
     insertVertex(v) {
         if (this.adj[v]) return false;
         this.adj[v] = [];
         return this;
     }
-
     removeEdge(v1, v2) {
         if (!this.adj[v1] || !this.adj[v2]) return false;
         this.adj[v1] = this.adj[v1].filter(v => v[0] !== v2);
         this.adj[v2] = this.adj[v2].filter(v => v[0] !== v1);
         return this;
     }
-
     removeVertex(v) {
         if (!this.adj[v]) return false;
         while (this.adj[v].length) this.removeEdge(v, this.adj[v].pop()[0]);
@@ -60,3 +55,5 @@ class WeightedUndirectedGraph {
         return this;
     }
 }
+
+module.exports = WeightedUndirectedGraph;

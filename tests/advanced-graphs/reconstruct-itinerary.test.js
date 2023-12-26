@@ -5,7 +5,6 @@ describe('Main', () => {
         const tickets = [['MUC', 'LHR'], ['JFK', 'MUC'], ['SFO', 'SJC'], ['LHR', 'SFO']];
         expect(findItinerary(tickets)).toStrictEqual(['JFK', 'MUC', 'LHR', 'SFO', 'SJC']);
     });
-
     test('Case 2', () => {
         const tickets = [
             ['JFK', 'SFO'],

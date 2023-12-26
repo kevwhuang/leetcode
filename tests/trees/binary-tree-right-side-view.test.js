@@ -15,11 +15,9 @@ describe('Main', () => {
         root.right = new TreeNode(3, null, new TreeNode(4));
         expect(rightSideView(root)).toStrictEqual([1, 3, 4]);
     });
-
     test('Case 2', () => {
         expect(rightSideView(new TreeNode(1, null, new TreeNode(3)))).toStrictEqual([1, 3]);
     });
-
     test('Case 3', () => {
         expect(rightSideView()).toStrictEqual([]);
     });

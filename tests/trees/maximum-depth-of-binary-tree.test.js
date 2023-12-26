@@ -17,7 +17,6 @@ describe('Main', () => {
         root.right.right = new TreeNode(17);
         expect(maxDepth(root)).toStrictEqual(3);
     });
-
     test('Case 2', () => {
         expect(maxDepth(new TreeNode(1, null, new TreeNode(2)))).toStrictEqual(2);
     });

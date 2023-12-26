@@ -5,7 +5,6 @@ class HashTable {
         this.map = new Array(size);
         this.prime = prime;
     }
-
     get(key) {
         const index = this.#hash(key);
         if (!this.map[index]) return false;
@@ -14,7 +13,6 @@ class HashTable {
         }
         return false;
     }
-
     keys() {
         const res = [];
         for (let i = 0; i < this.map.length; i++) {
@@ -25,7 +23,6 @@ class HashTable {
         }
         return res;
     }
-
     set(key, val) {
         const index = this.#hash(key);
         if (!this.map[index]) this.map[index] = [];
@@ -37,7 +34,6 @@ class HashTable {
         this.map[index].push([key, val]);
         return true;
     }
-
     values() {
         const res = [];
         for (let i = 0; i < this.map.length; i++) {
@@ -49,7 +45,6 @@ class HashTable {
         }
         return res;
     }
-
     #hash(key) {
         let index = 0;
         for (let i = 0; i < Math.min(key.length, 100); i++) {
@@ -60,3 +55,5 @@ class HashTable {
         return index;
     }
 }
+
+module.exports = HashTable;

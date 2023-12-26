@@ -15,7 +15,6 @@ describe('Main', () => {
         root.right = new TreeNode(3);
         expect(maxPathSum(root)).toStrictEqual(6);
     });
-
     test('Case 2', () => {
         const root = new TreeNode(-10);
         root.left = new TreeNode(9);

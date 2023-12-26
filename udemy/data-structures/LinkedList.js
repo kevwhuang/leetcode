@@ -11,14 +11,12 @@ class LinkedList {
         this.tail = null;
         this.length = 0;
     }
-
     get(index) {
         if (index < 0 || index >= this.length) return null;
         let node = this.head;
         while (index--) node = node.next;
         return node;
     }
-
     insert(index, val) {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return this.unshift(val);
@@ -29,7 +27,6 @@ class LinkedList {
         this.length++;
         return this;
     }
-
     pop() {
         if (!this.head) return null;
         let node;
@@ -47,7 +44,6 @@ class LinkedList {
         this.length--;
         return node;
     }
-
     push(val) {
         const node = new ListNode(val);
         if (this.head) {
@@ -60,7 +56,6 @@ class LinkedList {
         this.length++;
         return this;
     }
-
     remove(index) {
         if (index < 0 || index >= this.length) return false;
         if (index === 0) return this.shift();
@@ -71,14 +66,12 @@ class LinkedList {
         this.length--;
         return node;
     }
-
     set(index, val) {
         const node = this.get(index);
         if (!node) return false;
         node.val = val;
         return true;
     }
-
     shift() {
         if (!this.head) return null;
         const node = this.head;
@@ -87,7 +80,6 @@ class LinkedList {
         if (!this.head) this.tail = null;
         return node;
     }
-
     unshift(val) {
         if (!this.head) return this.push(val);
         const node = new ListNode(val);
@@ -97,3 +89,5 @@ class LinkedList {
         return this;
     }
 }
+
+module.exports = LinkedList;

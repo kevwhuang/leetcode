@@ -2,7 +2,6 @@ class MinHeap {
     constructor() {
         this.vals = [null];
     }
-
     dequeue() {
         if (this.vals.length === 1) return null;
         if (this.vals.length === 2) return this.vals.pop();
@@ -17,7 +16,6 @@ class MinHeap {
         }
         return val;
     }
-
     enqueue(val) {
         this.vals.push(val);
         let index = this.vals.length - 1, parent = ~~(index / 2);
@@ -28,3 +26,5 @@ class MinHeap {
         return val;
     }
 }
+
+module.exports = MinHeap;

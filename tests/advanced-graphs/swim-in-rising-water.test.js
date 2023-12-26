@@ -4,7 +4,6 @@ describe('Main', () => {
     test('Case 1', () => {
         expect(swimInWater([[0, 2], [1, 3]])).toStrictEqual(3);
     });
-
     test('Case 2', () => {
         const grid = [
             [0, 1, 2, 3, 4],

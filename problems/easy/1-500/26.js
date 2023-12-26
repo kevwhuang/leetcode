@@ -1,16 +1,9 @@
 // 26 - Remove Duplicates From Sorted Array
 
 function removeDuplicates(nums) {
-    let marker,
-        count = nums.length;
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === marker) {
-            delete nums[i];
-            count--;
-        } else {
-            marker = nums[i];
-        }
+    let l = 0;
+    for (let r = 1; r < nums.length; r++) {
+        if (nums[l] !== nums[r]) nums[++l] = nums[r];
     }
-    nums.sort((a, b) => a - b);
-    return count;
+    return l + 1;
 }

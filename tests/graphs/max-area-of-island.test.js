@@ -14,7 +14,6 @@ describe('Main', () => {
         ];
         expect(maxAreaOfIsland(grid)).toStrictEqual(6);
     });
-
     test('Case 2', () => {
         expect(maxAreaOfIsland([[0, 0, 0, 0, 0, 0, 0, 0]])).toStrictEqual(0);
     });

@@ -1,14 +1,9 @@
 {
     "name": "leetcode",
     "version": "1.0.0",
-    "homepage": "https://kevwhuang.github.io/leetcode",
     "author": "Kevin Huang",
     "scripts": {
         "test": "jest --watchAll"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kevwhuang/leetcode.git"
     },
     "devDependencies": {
         "@datastructures-js/priority-queue": "*",

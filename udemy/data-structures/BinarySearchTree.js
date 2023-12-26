@@ -10,7 +10,6 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-
     bfs() {
         if (!this.root) return [];
         const res = [];
@@ -23,7 +22,6 @@ class BinarySearchTree {
         }
         return res;
     }
-
     dfs(type = 'pre') {
         if (!this.root) return [];
         const res = [];
@@ -33,7 +31,6 @@ class BinarySearchTree {
         else return false;
         return res;
     }
-
     find(val) {
         if (!this.root) return false;
         let node = this.root;
@@ -44,7 +41,6 @@ class BinarySearchTree {
         }
         return false;
     }
-
     insert(val) {
         if (!this.root) {
             this.root = new TreeNode(val);
@@ -69,21 +65,18 @@ class BinarySearchTree {
             }
         }
     }
-
     #traverseIn(cur, arr) {
         if (!cur) return;
         this.#traverseIn(cur.left, arr);
         arr.push(cur.val);
         this.#traverseIn(cur.right, arr);
     }
-
     #traversePost(cur, arr) {
         if (!cur) return;
         this.#traversePost(cur.left, arr);
         this.#traversePost(cur.right, arr);
         arr.push(cur.val);
     }
-
     #traversePre(cur, arr) {
         if (!cur) return;
         arr.push(cur.val);
@@ -91,3 +84,5 @@ class BinarySearchTree {
         this.#traversePre(cur.right, arr);
     }
 }
+
+module.exports = BinarySearchTree;

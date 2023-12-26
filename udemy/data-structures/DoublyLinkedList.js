@@ -12,7 +12,6 @@ class DoublyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-
     get(index) {
         if (index < 0 || index >= this.length) return null;
         let node = this.head;
@@ -24,7 +23,6 @@ class DoublyLinkedList {
         }
         return node;
     }
-
     insert(index, val) {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return this.unshift(val);
@@ -36,7 +34,6 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
-
     pop() {
         if (!this.head) return null;
         const node = this.tail;
@@ -51,7 +48,6 @@ class DoublyLinkedList {
         this.length--;
         return node;
     }
-
     push(val) {
         const node = new DoublyListNode(val);
         if (this.head) {
@@ -65,7 +61,6 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
-
     remove(index) {
         if (index < 0 || index >= this.length) return false;
         if (index === 0) return this.shift();
@@ -76,14 +71,12 @@ class DoublyLinkedList {
         this.length--;
         return node;
     }
-
     set(index, val) {
         const node = this.get(index);
         if (!node) return false;
         node.val = val;
         return true;
     }
-
     shift() {
         if (!this.head) return null;
         const node = this.head;
@@ -98,7 +91,6 @@ class DoublyLinkedList {
         this.length--;
         return node;
     }
-
     unshift(val) {
         if (!this.head) return this.push(val);
         const node = new DoublyListNode(val);
@@ -109,3 +101,5 @@ class DoublyLinkedList {
         return this;
     }
 }
+
+module.exports = DoublyLinkedList;

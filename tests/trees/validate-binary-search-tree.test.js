@@ -12,7 +12,6 @@ describe('Main', () => {
     test('Case 1', () => {
         expect(isValidBST(new TreeNode(2, new TreeNode(1), new TreeNode(3)))).toBeTruthy();
     });
-
     test('Case 2', () => {
         const root = new TreeNode(5);
         root.left = new TreeNode(1);

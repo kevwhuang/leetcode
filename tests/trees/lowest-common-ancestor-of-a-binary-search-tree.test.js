@@ -20,7 +20,6 @@ describe('Main', () => {
         root.right.right = new TreeNode(9);
         expect(lowestCommonAncestor(root, root.left, root.right).val).toStrictEqual(6);
     });
-
     test('Case 2', () => {
         const root = new TreeNode(6);
         root.left = new TreeNode(2);
@@ -34,7 +33,6 @@ describe('Main', () => {
         const q = root.left.right;
         expect(lowestCommonAncestor(root, root.left, q).val).toStrictEqual(2);
     });
-
     test('Case 3', () => {
         const root = new TreeNode(2);
         root.left = new TreeNode(1);

@@ -15,14 +15,12 @@ describe('Main', () => {
         head.next.next.next = head.next;
         expect(hasCycle(head)).toBeTruthy();
     });
-
     test('Case 2', () => {
         const head = new ListNode(1);
         head.next = new ListNode(2);
         head.next.next = head.next;
         expect(hasCycle(head)).toBeTruthy();
     });
-
     test('Case 3', () => {
         const head = new ListNode(1);
         expect(hasCycle(head)).toBeFalsy();

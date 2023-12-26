@@ -9,7 +9,6 @@ describe('Main', () => {
         expect(results.right.left.val).toStrictEqual(15);
         expect(results.right.right.val).toStrictEqual(7);
     });
-
     test('Case 2', () => {
         expect(buildTree([-1], [-1]).val).toStrictEqual(-1);
     });

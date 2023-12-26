@@ -5,7 +5,6 @@ describe('Main', () => {
         const solution = [['.Q..', '...Q', 'Q...', '..Q.'], ['..Q.', 'Q...', '...Q', '.Q..']];
         expect(solveNQueens(4)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(solveNQueens(1)).toStrictEqual([['Q']]);
     });

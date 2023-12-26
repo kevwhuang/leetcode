@@ -18,7 +18,6 @@ describe('Main', () => {
         q.right = new TreeNode(3);
         expect(isSameTree(p, q)).toBeTruthy();
     });
-
     test('Case 2', () => {
         const p = new TreeNode(1);
         p.left = new TreeNode(2);
@@ -26,7 +25,6 @@ describe('Main', () => {
         q.right = new TreeNode(2);
         expect(isSameTree(p, q)).toBeFalsy();
     });
-
     test('Case 3', () => {
         const p = new TreeNode(1);
         p.left = new TreeNode(2);

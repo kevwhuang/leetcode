@@ -16,7 +16,6 @@ describe('Main', () => {
         ];
         expect(solve(board)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(solve([['X']])).toStrictEqual([['X']]);
     });

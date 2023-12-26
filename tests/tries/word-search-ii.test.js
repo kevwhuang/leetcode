@@ -10,7 +10,6 @@ describe('Main', () => {
         ];
         expect(findWords(board, ['oath', 'pea', 'eat', 'rain'])).toStrictEqual(['eat', 'oath']);
     });
-
     test('Case 2', () => {
         expect(findWords([['a', 'b'], ['c', 'd']], ['abcb'])).toStrictEqual([]);
     });

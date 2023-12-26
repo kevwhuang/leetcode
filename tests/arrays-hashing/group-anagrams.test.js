@@ -18,11 +18,9 @@ describe('Main', () => {
             }
         }
     });
-
     test('Case 2', () => {
         expect(groupAnagrams([''])).toStrictEqual([['']]);
     });
-
     test('Case 3', () => {
         expect(groupAnagrams(['a'])).toStrictEqual([['a']]);
     });

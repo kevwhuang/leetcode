@@ -17,13 +17,11 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         const l1 = new ListNode(0);
         const l2 = new ListNode(0);
         expect(addTwoNumbers(l1, l2).val).toStrictEqual(0);
     });
-
     test('Case 3', () => {
         const l1 = new ListNode(9);
         l1.next = new ListNode(9);

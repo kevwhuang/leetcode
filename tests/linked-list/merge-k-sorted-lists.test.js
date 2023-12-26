@@ -21,11 +21,9 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         expect(mergeKLists([])).toStrictEqual(null);
     });
-
     test('Case 3', () => {
         expect(mergeKLists([null])).toStrictEqual(null);
     });

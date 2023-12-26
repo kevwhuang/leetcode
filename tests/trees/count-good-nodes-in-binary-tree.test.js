@@ -15,13 +15,11 @@ describe('Main', () => {
         root.right = new TreeNode(4, new TreeNode(1), new TreeNode(5));
         expect(goodNodes(root)).toStrictEqual(4);
     });
-
     test('Case 2', () => {
         const root = new TreeNode(3);
         root.left = new TreeNode(3, new TreeNode(4), new TreeNode(2));
         expect(goodNodes(root)).toStrictEqual(3);
     });
-
     test('Case 3', () => {
         expect(goodNodes(new TreeNode(1))).toStrictEqual(1);
     });

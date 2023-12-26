@@ -6,7 +6,6 @@ describe('Main', () => {
         const solution = [3, 3, 5, 5, 6, 7];
         expect(maxSlidingWindow(nums, 3)).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(maxSlidingWindow([1], 1)).toStrictEqual([1]);
     });

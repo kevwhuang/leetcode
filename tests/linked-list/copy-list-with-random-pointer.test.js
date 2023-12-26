@@ -30,7 +30,6 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         const head = new Node(1);
         head.next = new Node(2);
@@ -43,7 +42,6 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 3', () => {
         const head = new Node(3);
         head.next = new Node(3);

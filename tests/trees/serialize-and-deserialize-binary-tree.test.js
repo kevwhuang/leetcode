@@ -1,4 +1,4 @@
-const { serialize, deserialize } = require('../../neetcode/trees/serialize-and-deserialize-binary-tree');
+const { deserialize, serialize } = require('../../neetcode/trees/serialize-and-deserialize-binary-tree');
 
 class TreeNode {
     constructor(val) {
@@ -13,7 +13,6 @@ describe('Main', () => {
         const solution = [1, 2, 3, null, null, 4, 5];
         expect(deserialize(serialize([1, 2, 3, null, null, 4, 5]))).toStrictEqual(solution);
     });
-
     test('Case 2', () => {
         expect(deserialize(serialize([]))).toStrictEqual([]);
     });

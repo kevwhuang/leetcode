@@ -11,7 +11,6 @@ class Stack {
         this.last = null;
         this.size = 0;
     }
-
     pop() {
         if (!this.first) return null;
         const node = this.first;
@@ -20,7 +19,6 @@ class Stack {
         if (!this.first) this.last = null;
         return node.val;
     }
-
     push(val) {
         const node = new StackNode(val);
         if (this.first) [this.first, this.first.next] = [node, this.first];
@@ -28,3 +26,5 @@ class Stack {
         return ++this.size;
     }
 }
+
+module.exports = Stack;

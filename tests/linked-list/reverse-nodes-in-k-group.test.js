@@ -20,7 +20,6 @@ describe('Main', () => {
             results = results.next;
         }
     });
-
     test('Case 2', () => {
         const head = new ListNode(1);
         head.next = new ListNode(2);

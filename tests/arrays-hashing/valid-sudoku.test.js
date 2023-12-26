@@ -15,7 +15,6 @@ describe('Main', () => {
         ];
         expect(isValidSudoku(board)).toBeTruthy();
     });
-
     test('Case 2', () => {
         const board = [
             ['8', '3', '.', '.', '7', '.', '.', '.', '.'],
