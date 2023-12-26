@@ -12,7 +12,7 @@ algorithms.addEventListener('change', () => {
     link.setAttribute('href', '../../public/iframe.css');
     link.setAttribute('rel', 'stylesheet');
     main.style.animation = 'fade .5s ease-in';
-    setTimeout(() => { main.style.animation = 'none'; }, 500);
+    setTimeout(() => main.style.animation = 'none', 500);
     setTimeout(() => iframe.contentDocument.querySelector('head').append(link), 100);
 });
 

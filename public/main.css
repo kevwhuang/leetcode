@@ -1,5 +1,5 @@
 body {
-    animation: fade 2s ease-in;
+    animation: fade 3s ease-in;
     background: #111;
     font-family:
         'Courier New',
@@ -36,7 +36,7 @@ select {
     border-radius: .25rem;
     color: #eee;
     cursor: pointer;
-    outline-color: crimson;
+    outline: none;
     padding-right: 1rem;
 }
 
@@ -88,6 +88,6 @@ select:last-of-type {
 
     nav {
         margin-bottom: 0;
-        margin-top: 1dvh;
+        margin-top: 2dvh;
     }
 }
