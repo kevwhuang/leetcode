@@ -2,11 +2,11 @@
 
 function findDiagonalOrder(mat) {
     const size = mat.length * mat[0].length;
-    const output = [];
-    let [row, col] = [0, 0];
+    const res = [];
+    let row = 0, col = 0;
     while (true) {
         while (true) {
-            output.push(mat[row][col]);
+            res.push(mat[row][col]);
             if (col + 1 === mat[0].length) {
                 row++;
                 break;
@@ -18,9 +18,9 @@ function findDiagonalOrder(mat) {
                 col++;
             }
         }
-        if (output.length === size) return output;
+        if (res.length === size) return res;
         while (true) {
-            output.push(mat[row][col]);
+            res.push(mat[row][col]);
             if (row + 1 === mat.length) {
                 col++;
                 break;
@@ -32,6 +32,6 @@ function findDiagonalOrder(mat) {
                 col--;
             }
         }
-        if (output.length === size) return output;
+        if (res.length === size) return res;
     }
 }

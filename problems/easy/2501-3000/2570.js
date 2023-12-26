@@ -2,8 +2,7 @@
 
 function mergeArrays(nums1, nums2) {
     const res = [];
-    let p1 = 0;
-    let p2 = 0;
+    let p1 = 0, p2 = 0;
     while (p1 < nums1.length || p2 < nums2.length) {
         const e1 = nums1[p1] || [Infinity];
         const e2 = nums2[p2] || [Infinity];

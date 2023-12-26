@@ -2,9 +2,9 @@
 
 function minLength(s) {
     while (true) {
-        const previousLength = s.length;
-        s = s.replaceAll(/AB|CD/g, '');
-        if (s.length === previousLength) break;
+        const len = s.length;
+        s = s.replace(/AB|CD/, '');
+        if (s.length === len) break;
     }
     return s.length;
 }

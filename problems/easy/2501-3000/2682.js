@@ -5,8 +5,7 @@ function circularGameLosers(n, k) {
     for (let i = 2; i <= n; i++) {
         losers.add(i);
     }
-    let pos = 1,
-        factor = 1;
+    let pos = 1, factor = 1;
     while (true) {
         pos = (pos + k * factor++) % n;
         !pos && (pos = n);

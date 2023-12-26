@@ -1,17 +1,12 @@
 // 392 - Is Subsequence
 
 function isSubsequence(s, t) {
-    const sLen = s.length;
-    const tLen = t.length;
-    if (sLen > tLen) return false;
-    let i = -1;
-    let j = -1;
-    let cur;
-    loop: while (++i < sLen) {
+    const len1 = s.length, len2 = t.length;
+    if (len1 > len2) return false;
+    let i = -1, j = -1, cur;
+    L: while (++i < len1) {
         cur = s[i];
-        while (++j < tLen) {
-            if (t[j] === cur) continue loop;
-        }
+        while (++j < len2) if (t[j] === cur) continue L;
         return false;
     }
     return true;

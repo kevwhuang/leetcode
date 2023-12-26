@@ -1,17 +1,16 @@
 // 2697 - Lexicographically Smallest Palindrome
 
 function makeSmallestPalindrome(s) {
-    const A = new Array(s.length);
-    let l = 0,
-        r = s.length - 1;
+    const res = new Array(s.length);
+    let l = 0, r = s.length - 1;
     while (l <= r) {
         if (s[l] < s[r]) {
-            A[l] = s[l];
-            A[r--] = s[l++];
+            res[l] = s[l];
+            res[r--] = s[l++];
         } else {
-            A[r] = s[r];
-            A[l++] = s[r--];
+            res[r] = s[r];
+            res[l++] = s[r--];
         }
     }
-    return A.join('');
+    return res.join('');
 }

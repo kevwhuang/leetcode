@@ -1,9 +1,7 @@
 // 2774 - Array Upper Bound
 
 Array.prototype.upperBound = function (target) {
-    let l = 0;
-    let r = this.length - 1;
-    let index;
+    let index, l = 0, r = this.length - 1;
     while (l <= r) {
         const m = ~~((l + r) / 2);
         if (this[m] < target) l = m + 1;

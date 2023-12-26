@@ -1,9 +1,7 @@
 // 243 - Shortest Word Distance
 
 function shortestDistance(wordsDict, word1, word2) {
-    let lastSeen1;
-    let lastSeen2;
-    let min = Infinity;
+    let min = Infinity, lastSeen1, lastSeen2;
     for (let i = 0; i < wordsDict.length; i++) {
         if (wordsDict[i] === word1) {
             lastSeen1 = i;

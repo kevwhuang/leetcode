@@ -1,8 +1,7 @@
 // 2605 - Form Smallest Number From Two Digit Arrays
 
 function minNumber(nums1, nums2) {
-    let common = Infinity;
-    let min1 = Infinity;
+    let common = Infinity, min1 = Infinity;
     for (let i = 0, num; i < nums1.length; i++) {
         num = nums1[i];
         if (nums2.includes(num)) common = Math.min(num, common);

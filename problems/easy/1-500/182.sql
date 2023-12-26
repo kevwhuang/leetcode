@@ -7,4 +7,4 @@ FROM
 GROUP BY
     Email
 HAVING
-    COUNT(Email) > 1
+    COUNT(Email) > 1;

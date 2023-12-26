@@ -2,8 +2,7 @@
 
 function isStrobogrammatic(num) {
     const banned = new Set(['2', '3', '4', '5', '7']);
-    let l = -1;
-    let r = num.length;
+    let l = -1, r = num.length;
     while (l++ <= r--) {
         if (banned.has(num[l]) || banned.has(num[r])) return false;
         if (num[l] === '6') {
