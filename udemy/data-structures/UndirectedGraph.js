@@ -4,7 +4,7 @@ class UndirectedGraph {
     }
     bfs(v) {
         v = this.#setEntry(v);
-        if (!v) return [];
+        if (v === undefined) return [];
         const res = [];
         const seen = new Set([v]);
         const queue = [v];
@@ -31,7 +31,7 @@ class UndirectedGraph {
             }
         }
         v = this.#setEntry(v);
-        if (!v) return [];
+        if (v === undefined) return [];
         const res = [];
         const seen = new Set();
         const adj = this.adj;
@@ -40,7 +40,7 @@ class UndirectedGraph {
     }
     dfsIterative(v) {
         v = this.#setEntry(v);
-        if (!v) return [];
+        if (v === undefined) return [];
         const res = [];
         const seen = new Set([v]);
         const stack = [v];
@@ -81,12 +81,8 @@ class UndirectedGraph {
         return this;
     }
     #setEntry(v) {
-        if (v) {
-            return this.adj[v] ? v : null;
-        } else {
-            for (const key in this.adj) return key;
-            return null;
-        }
+        if (v) return this.adj[v] ? v : null;
+        return Object.keys(obj)[0];
     }
 }
 
