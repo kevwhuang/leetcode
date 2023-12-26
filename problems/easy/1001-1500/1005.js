@@ -6,8 +6,7 @@ function largestSumAfterKNegations(nums, k) {
         if (nums[i] >= 0) break;
         nums[i] *= -1;
     }
-    let min = Infinity;
-    let sum = 0;
+    let sum = 0, min = Infinity;
     for (let i = 0, cur; i < nums.length; i++) {
         cur = nums[i];
         min = Math.min(cur, min);

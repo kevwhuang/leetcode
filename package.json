@@ -7,7 +7,6 @@
     },
     "devDependencies": {
         "@datastructures-js/priority-queue": "*",
-        "@datastructures-js/queue": "*",
         "jest": "*",
         "nodemon": "*"
     }
