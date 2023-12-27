@@ -2,10 +2,9 @@
 
 function largestInteger(num) {
     num = num.toString().split('');
-    const odds = [];
-    const evens = [];
-    for (let i = 0, cur; i < num.length; i++) {
-        cur = num[i];
+    const odds = [], evens = [];
+    for (let i = 0; i < num.length; i++) {
+        const cur = num[i];
         if (cur % 2) {
             odds.push(+cur);
             num[i] = true;
@@ -16,11 +15,9 @@ function largestInteger(num) {
     }
     odds.sort((a, b) => b - a);
     evens.sort((a, b) => b - a);
-    let pt_odds = 0;
-    let pt_evens = 0;
+    let pt_odds = 0, pt_evens = 0;
     for (let i = 0; i < num.length; i++) {
-        if (num[i]) num[i] = odds[pt_odds++];
-        else num[i] = evens[pt_evens++];
+        num[i] = num[i] ? odds[pt_odds++] : evens[pt_evens++];
     }
     return parseInt(num.join(''));
 }

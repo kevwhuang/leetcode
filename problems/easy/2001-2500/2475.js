@@ -2,13 +2,14 @@
 
 function unequalTriplets(nums) {
     let triplets = 0;
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            for (let k = j + 1; k < nums.length; k++) {
-                nums[i] !== nums[j]
-                    && nums[i] !== nums[k]
-                    && nums[j] !== nums[k]
-                    && triplets++;
+    const len = nums.length;
+    for (let i = 0; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+            for (let k = j + 1; k < len; k++) {
+                if (nums[i] === nums[j]) continue;
+                if (nums[i] === nums[k]) continue;
+                if (nums[j] === nums[k]) continue;
+                triplets++;
             }
         }
     }

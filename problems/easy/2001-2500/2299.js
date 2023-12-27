@@ -2,10 +2,8 @@
 
 function strongPasswordCheckerII(password) {
     if (password.length < 8) return false;
-    let hasLowercase = false,
-        hasUppercase = false,
-        hasDigit = false,
-        hasSpecial = false;
+    let hasLowercase = false, hasUppercase = false;
+    let hasDigit = false, hasSpecial = false;
     for (let i = 0; i < password.length; i++) {
         if (password[i] === password[i - 1]) return false;
         const code = password.charCodeAt(i);

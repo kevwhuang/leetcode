@@ -2,14 +2,13 @@
 
 function mostFrequentEven(nums) {
     const map = new Map();
-    let max = 0,
-        smallestFrequent = -1;
+    let smallestFrequent = -1, max = 0;
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] % 2) continue;
         const freq = map.get(nums[i]) + 1 || 1;
         if (freq > max) {
-            max = freq;
             smallestFrequent = nums[i];
+            max = freq;
         } else if (freq === max) {
             smallestFrequent = Math.min(nums[i], smallestFrequent);
         }

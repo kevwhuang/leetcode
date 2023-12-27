@@ -2,8 +2,7 @@
 
 function partitionArray(nums, k) {
     nums.sort((a, b) => a - b);
-    let subsequences = 0;
-    let base;
+    let subsequences = 0, base;
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] - k <= base) continue;
         subsequences++;

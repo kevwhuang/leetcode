@@ -5,9 +5,7 @@ function arithmeticTriplets(nums, diff) {
     let count = 0;
     for (let i = 0; i < nums.length; i++) {
         set.add(nums[i]);
-        set.has(nums[i] - diff)
-            && set.has(nums[i] - 2 * diff)
-            && count++;
+        set.has(nums[i] - diff) && set.has(nums[i] - 2 * diff) && count++;
     }
     return count;
 }
