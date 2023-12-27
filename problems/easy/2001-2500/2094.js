@@ -9,14 +9,11 @@ function findEvenNumbers(digits) {
     for (let i = 1; i <= 9; i++) {
         for (let j = 0; j <= 9; j++) {
             for (let k = 0; k <= 8; k += 2) {
-                freq[i]--;
-                freq[j]--;
-                freq[k]--;
-                freq[i] >= 0 && freq[j] >= 0 && freq[k] >= 0
-                    && res.push(+('' + i + j + k));
-                freq[i]++;
-                freq[j]++;
-                freq[k]++;
+                freq[i]--, freq[j]--, freq[k]--;
+                if (freq[i] >= 0 && freq[j] >= 0 && freq[k] >= 0) {
+                    res.push(Number('' + i + j + k));
+                }
+                freq[i]++, freq[j]++, freq[k]++;
             }
         }
     }

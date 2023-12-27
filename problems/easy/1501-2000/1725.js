@@ -1,14 +1,13 @@
 // 1725 - Number of Rectangles That Can Form the Largest Square
 
 function countGoodRectangles(rectangles) {
-    let maxLen = 1,
-        count = 0;
+    let count = 0, maxLen = 1;
     for (let i = 0; i < rectangles.length; i++) {
-        const max = Math.min(rectangles[i][0], rectangles[i][1]);
+        const max = Math.min(...rectangles[i]);
         if (max === maxLen) count++;
         else if (max > maxLen) {
-            maxLen = max;
             count = 1;
+            maxLen = max;
         }
     }
     return count;

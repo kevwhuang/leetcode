@@ -7,13 +7,12 @@ function maximumPopulation(logs) {
             populations[j - 1950]++;
         }
     }
-    let maxPopulation = 0;
-    let maxYear = 1950;
+    let maxYear = 1950, maxPopulation = 0;
     for (let i = 0; i < populations.length; i++) {
         const pop = populations[i];
         if (pop > maxPopulation) {
-            maxPopulation = pop;
             maxYear = i + 1950;
+            maxPopulation = pop;
         }
     }
     return maxYear;

@@ -1,8 +1,7 @@
 // 2073 - Time Needed to Buy Tickets
 
 function timeRequiredToBuy(tickets, k) {
-    let target = tickets[k];
-    let time = target;
+    let time = tickets[k], target = tickets[k];
     for (let i = 0; i < k; i++) {
         time += Math.min(tickets[i], target);
     }

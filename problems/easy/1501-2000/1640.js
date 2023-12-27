@@ -7,13 +7,9 @@ function canFormArray(arr, pieces) {
     }
     for (let i = 0; i < arr.length;) {
         const nums = map.get(arr[i]);
-        if (nums) {
-            for (let j = 0; j < nums.length; j++) {
-                if (nums[j] !== arr[i]) return false;
-                i++;
-            }
-        } else {
-            return false;
+        if (!nums) return false;
+        for (let j = 0; j < nums.length; i++, j++) {
+            if (nums[j] !== arr[i]) return false;
         }
     }
     return true;

@@ -5,7 +5,8 @@ function maxSubsequence(nums, k) {
     for (let i = 0; i < nums.length; i++) {
         arr[i] = [i, nums[i]];
     }
-    return arr.sort((a, b) => b[1] - a[1])
+    return arr
+        .sort((a, b) => b[1] - a[1])
         .slice(0, k)
         .sort((a, b) => a[0] - b[0])
         .map(e => e[1]);

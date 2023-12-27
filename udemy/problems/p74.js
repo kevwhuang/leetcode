@@ -14,17 +14,21 @@ class Graph {
     breadthFirstSearch(v) {
         const res = [];
         const seen = new Set([v]);
-        const queue = [v];
+        let queue = [v];
         while (queue.length) {
-            const node = queue.shift();
-            res.push(node);
-            const edges = this.adj[node];
-            for (let i = 0, vert; i < edges.length; i++) {
-                vert = edges[i];
-                if (seen.has(vert)) continue;
-                seen.add(vert);
-                queue.push(vert);
+            const nextQueue = [];
+            for (let i = 0; i < queue.length; i++) {
+                const vert = queue[i];
+                res.push(vert);
+                const edges = this.adj[vert];
+                for (let j = 0; j < edges.length; j++) {
+                    const neighbor = edges[j];
+                    if (seen.has(neighbor)) continue;
+                    seen.add(neighbor);
+                    nextQueue.push(neighbor);
+                }
             }
+            queue = nextQueue;
         }
         return res;
     }

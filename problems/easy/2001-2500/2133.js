@@ -1,18 +1,17 @@
 // 2133 - Check If Every Row and Column Contains All Numbers
 
 function checkValid(matrix) {
-    const height = matrix.length;
-    const width = matrix[0].length;
-    for (let i = 0; i < height; i++) {
-        const set = new Set(matrix[i]);
-        if (set.size !== height) return false;
+    const m = matrix.length, n = matrix[0].length;
+    for (let r = 0; r < m; r++) {
+        const set = new Set(matrix[r]);
+        if (set.size !== m) return false;
     }
-    for (let j = 0; j < width; j++) {
+    for (let c = 0; c < n; c++) {
         const set = new Set();
-        for (let i = 0; i < height; i++) {
-            set.add(matrix[i][j]);
+        for (let r = 0; r < m; r++) {
+            set.add(matrix[r][c]);
         }
-        if (set.size !== width) return false;
+        if (set.size !== n) return false;
     }
     return true;
 }

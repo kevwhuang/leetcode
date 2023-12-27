@@ -3,13 +3,13 @@
 class OrderedStream {
     constructor(n) {
         this.stream = new Array(n).fill('');
-        this.ptr = 0;
+        this.idx = 0;
     }
     insert(idKey, value) {
-        const chunk = [];
         this.stream[idKey - 1] = value;
-        while (this.stream[this.ptr]) {
-            chunk.push(this.stream[this.ptr++]);
+        const chunk = [];
+        while (this.stream[this.idx]) {
+            chunk.push(this.stream[this.idx++]);
         }
         return chunk;
     }

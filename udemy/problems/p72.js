@@ -17,7 +17,7 @@ class Graph {
             seen.add(vert);
             const edges = adj[vert];
             for (let i = 0; i < edges.length; i++) {
-                !seen.has(edges[i]) && traverse(edges[i]);
+                if (!seen.has(edges[i])) traverse(edges[i]);
             }
         }
         const res = [];

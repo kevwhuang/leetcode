@@ -1,8 +1,7 @@
 // 1629 - Slowest Key
 
 function slowestKey(releaseTimes, keysPressed) {
-    let maxTime = releaseTimes[0];
-    let maxKey = keysPressed[0];
+    let maxTime = releaseTimes[0], maxKey = keysPressed[0];
     for (let i = 1, time; i < releaseTimes.length; i++) {
         time = releaseTimes[i] - releaseTimes[i - 1];
         if (time === maxTime) {

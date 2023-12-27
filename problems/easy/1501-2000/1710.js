@@ -2,9 +2,8 @@
 
 function maximumUnits(boxTypes, truckSize) {
     boxTypes.sort((a, b) => b[1] - a[1]);
-    let i = 0,
-        totalUnits = 0;
-    while (truckSize > 0 && i < boxTypes.length) {
+    let totalUnits = 0, i = 0;
+    while (truckSize && i < boxTypes.length) {
         const [num, unit] = boxTypes[i++];
         if (truckSize >= num) {
             truckSize -= num;

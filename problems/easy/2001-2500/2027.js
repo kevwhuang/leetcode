@@ -1,13 +1,12 @@
 // 2027 - Minimum Moves to Convert String
 
 function minimumMoves(s) {
-    let moves = 0;
-    for (let i = 0; i < s.length;) {
-        if (s[i] === 'X') {
-            i += 3;
+    let moves = 0, i = 0;
+    while (i < s.length) {
+        if (s[i] !== 'X') i++;
+        else {
             moves++;
-        } else {
-            i++;
+            i += 3;
         }
     }
     return moves;

@@ -2,8 +2,7 @@
 
 function specialArray(nums) {
     function binarySearch(target) {
-        let l = 0;
-        let r = nums.length - 1;
+        let l = 0, r = nums.length - 1;
         while (l <= r) {
             const m = ~~((l + r) / 2);
             if (nums[m] < target) l = m + 1;

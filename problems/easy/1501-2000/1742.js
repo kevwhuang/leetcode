@@ -4,8 +4,7 @@ function countBalls(lowLimit, highLimit) {
     const map = new Map();
     let max = 1;
     while (lowLimit <= highLimit) {
-        let num = lowLimit++,
-            sum = 0;
+        let sum = 0, num = lowLimit++;
         while (num) {
             sum += num % 10;
             num = Math.floor(num / 10);
