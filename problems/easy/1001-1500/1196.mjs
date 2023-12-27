@@ -2,15 +2,11 @@
 
 function maxNumberOfApples(weight) {
     weight.sort((a, b) => a - b);
-    let apples = 0;
-    let addedWeight = 0;
+    let apples = 0, addedWeight = 0;
     for (let i = 0; i < weight.length; i++) {
-        if (weight[i] + addedWeight <= 5000) {
-            apples++;
-            addedWeight += weight[i];
-        } else {
-            break;
-        }
+        if (weight[i] + addedWeight > 5000) break;
+        apples++;
+        addedWeight += weight[i];
     }
     return apples;
 }

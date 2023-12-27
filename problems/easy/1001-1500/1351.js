@@ -1,14 +1,13 @@
 // 1351 - Count Negative Numbers in a Sorted Matrix
 
 function countNegatives(grid) {
-    let row = grid.length - 1,
-        col = 0,
-        count = 0;
-    while (row >= 0 && col < grid[0].length) {
-        if (grid[row][col] >= 0) col++;
+    let count = 0, r = grid.length - 1, c = 0;
+    const n = grid[0].length;
+    while (r >= 0 && c < n) {
+        if (grid[r][c] >= 0) c++;
         else {
-            count += grid[0].length - col;
-            row--;
+            count += n - c;
+            r--;
         }
     }
     return count;

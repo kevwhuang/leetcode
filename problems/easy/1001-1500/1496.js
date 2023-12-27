@@ -5,17 +5,10 @@ function isPathCrossing(path) {
     let x = 0, y = 0;
     for (let i = 0; i < path.length; i++) {
         switch (path[i]) {
-            case 'N':
-                y++;
-                break;
-            case 'S':
-                y--;
-                break;
-            case 'E':
-                x++;
-                break;
-            case 'W':
-                x--;
+            case 'N': y++; break;
+            case 'S': y--; break;
+            case 'E': x++; break;
+            case 'W': x--;
         }
         const coords = `${x},${y}`;
         if (set.has(coords)) return true;

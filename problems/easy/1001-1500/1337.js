@@ -1,14 +1,14 @@
 // 1337 - The K Weakest Rows in a Matrix
 
 function kWeakestRows(mat, k) {
-    for (let i = 0; i < mat.length; i++) {
-        const row = mat[i];
+    const m = mat.length, n = mat[0].length;
+    for (let r = 0; r < m; r++) {
         let strength = 0;
-        for (let j = 0; j < row.length; j++) {
-            if (!row[j]) break;
+        for (let c = 0; c < n; c++) {
+            if (!mat[r][c]) break;
             strength++;
         }
-        mat[i] = [i, strength];
+        mat[r] = [r, strength];
     }
     mat.sort((a, b) => a[1] - b[1]);
     const indices = new Array(k);

@@ -2,8 +2,7 @@
 
 function arraysIntersection(arr1, arr2, arr3) {
     function binarySearch(arr, targ) {
-        let l = 0;
-        let r = arr.length - 1;
+        let l = 0, r = arr.length - 1;
         while (l <= r) {
             const m = ~~((l + r) / 2);
             if (arr[m] < targ) l = m + 1;

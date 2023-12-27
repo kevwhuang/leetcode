@@ -2,18 +2,11 @@
 
 function twoSumLessThanK(nums, k) {
     nums.sort((a, b) => a - b);
-    let max = -1;
-    let l = 0;
-    let r = nums.length - 1;
-    let sum;
+    let max = -1, l = 0, r = nums.length - 1, sum;
     while (l < r) {
         sum = nums[l] + nums[r];
-        if (sum < k) {
-            max = Math.max(sum, max);
-            l++;
-        } else {
-            r--;
-        }
+        if (sum < k) (max = Math.max(sum, max)) && l++;
+        else r--;
     }
     return max;
 }

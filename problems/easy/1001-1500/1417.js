@@ -1,8 +1,7 @@
 // 1417 - Reformat the String
 
 function reformat(s) {
-    let arr1 = [];
-    let arr2 = [];
+    let arr1 = [], arr2 = [];
     for (let i = 0; i < s.length; i++) {
         isNaN(s[i]) ? arr1.push(s[i]) : arr2.push(s[i]);
     }

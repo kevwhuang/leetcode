@@ -2,11 +2,9 @@
 
 function countLargestGroup(n) {
     const map = new Map();
-    let maxSum = 1,
-        maxGroups = [];
+    let maxSum = 1, maxGroups = [];
     for (let i = 1; i <= n; i++) {
-        let num = i,
-            sum = 0;
+        let num = i, sum = 0;
         while (num) {
             sum += num % 10;
             num = Math.floor(num / 10);
