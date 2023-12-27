@@ -88,7 +88,8 @@ class UndirectedGraph {
         function union(v1, v2) {
             const p1 = find(v1);
             const p2 = find(v2);
-            if (p1 !== p2) uf[p1] = p2;
+            if (p1 < p2) uf[p2] = p1;
+            else uf[p1] = p2;
         }
         function find(v) {
             while (v !== uf[v]) {
