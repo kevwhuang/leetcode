@@ -6,24 +6,24 @@ class WeightedGraph {
     }
     Dijkstra(v1, v2) {
         const prev = {};
-        const dists = {};
-        for (const vert in this.adj) {
-            prev[vert] = null;
-            dists[vert] = Infinity;
+        const costs = {};
+        for (const v in this.adj) {
+            prev[v] = null;
+            costs[v] = Infinity;
         }
-        dists[v1] = 0;
+        costs[v1] = 0;
         const pq = new MinPriorityQueue();
-        let node = v1;
-        while (pq.data.length && node !== v2) {
-            for (const vert in this.adj[node]) {
-                const neighbor = this.adj[node][vert][0];
-                const dist = dists[node] + this.adj[node][vert][1];
-                if (dist >= dists[neighbor]) continue;
-                prev[neighbor] = node;
-                dists[neighbor] = dist;
-                pq.enqueue(neighbor, dist);
+        while (v1 !== v2) {
+            const neighbors = this.adj[v1];
+            for (let i = 0; i < neighbors.length; i++) {
+                const neighbor = neighbors[i][0];
+                const newCost = neighbors[i][1] + costs[v1];
+                if (newCost >= costs[neighbor]) continue;
+                prev[neighbor] = v1;
+                costs[neighbor] = newCost;
+                pq.enqueue(neighbor, newCost);
             }
-            node = pq.dequeue()[0];
+            v1 = pq.dequeue()[0];
         }
         const path = [];
         while (v2) {
@@ -47,8 +47,8 @@ class MinPriorityQueue {
     }
     dequeue() {
         if (this.data.length === 1) return null;
-        if (this.data.length === 2) return this.data.pop()[0];
-        const val = this.data[1][0];
+        if (this.data.length === 2) return this.data.pop();
+        const entry = this.data[1];
         this.data[1] = this.data.pop();
         let top = 1, l = 2, r = 3;
         let next = !this.data[r] || this.data[l][1] < this.data[r][1] ? l : r;
@@ -57,7 +57,7 @@ class MinPriorityQueue {
             [top, l, r] = [next, 2 * next, 2 * next + 1];
             next = !this.data[r] || this.data[l][1] < this.data[r][1] ? l : r;
         }
-        return val;
+        return entry;
     }
     enqueue(val, priority) {
         this.data.push([val, priority]);
@@ -66,5 +66,6 @@ class MinPriorityQueue {
             [this.data[index], this.data[parent]] = [this.data[parent], this.data[index]];
             [index, parent] = [parent, ~~(parent / 2)];
         }
+        return val;
     }
 }

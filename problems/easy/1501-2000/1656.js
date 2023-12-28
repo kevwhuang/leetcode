@@ -2,7 +2,7 @@
 
 class OrderedStream {
     constructor(n) {
-        this.stream = new Array(n).fill('');
+        this.stream = new Array(n);
         this.idx = 0;
     }
     insert(idKey, value) {
