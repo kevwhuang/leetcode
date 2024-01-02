@@ -1,25 +1,19 @@
 // 1260 - Shift 2D Grid
 
 function shiftGrid(grid, k) {
-    function rotateArr(arr, k) {
-        function reverse(l, r) {
-            while (l < r) [arr[l++], arr[r--]] = [arr[r], arr[l]];
-        }
-        k %= arr.length;
-        reverse(0, arr.length - 1);
-        reverse(0, k - 1);
-        reverse(k, arr.length - 1);
-        return arr;
-    }
     const m = grid.length, n = grid[0].length;
     k %= m * n;
     if (k === 0) return grid;
-    const arr = rotateArr(grid.flat(), k);
-    let index = 0;
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            grid[i][j] = arr[index++];
+    const res = Array.from({ length: m }, () => new Array(n));
+    let rr = ~~(k / n), cc = k - n * rr;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            res[rr][cc] = grid[r][c];
+            if (++cc !== n) continue;
+            if (rr === m - 1) rr = 0;
+            else rr++;
+            cc = 0;
         }
     }
-    return grid;
+    return res;
 }
