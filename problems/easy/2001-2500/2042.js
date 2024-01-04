@@ -1,10 +1,11 @@
 // 2042 - Check If Numbers Are Ascending in a Sentence
 
 function areNumbersAscending(s) {
-    let previous = 0;
-    for (const num of s.matchAll(/[0-9]+/g)) {
-        if (previous >= +num[0]) return false;
-        previous = +num[0];
+    let prev = 0;
+    for (let num of s.matchAll(/\d+/g)) {
+        num = +num[0];
+        if (prev >= num) return false;
+        prev = num;
     }
     return true;
 }

@@ -3,11 +3,10 @@
 function minimumMoves(s) {
     let moves = 0, i = 0;
     while (i < s.length) {
-        if (s[i] !== 'X') i++;
-        else {
+        if (s.charAt(i) === 'X') {
             moves++;
             i += 3;
-        }
+        } else i++;
     }
     return moves;
 }
