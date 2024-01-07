@@ -1,24 +1,24 @@
 // 661 - Image Smoother
 
 function imageSmoother(img) {
-    function smooth(i, j) {
+    function smooth(r, c) {
         let total = 0, cells = 0;
-        for (let di = i - 1; di <= i + 1; di++) {
-            if (di < 0 || di >= height) continue;
-            for (let dj = j - 1; dj <= j + 1; dj++) {
-                if (dj < 0 || dj >= width) continue;
-                total += img[di][dj];
+        for (let dr = r - 1; dr <= r + 1; dr++) {
+            if (dr < 0 || dr >= m) continue;
+            for (let dc = c - 1; dc <= c + 1; dc++) {
+                if (dc < 0 || dc >= n) continue;
+                total += img[dr][dc];
                 cells++;
             }
         }
         return Math.floor(total / cells);
     }
-    const height = img.length, width = img[0].length;
+    const m = img.length, n = img[0].length;
     const res = [];
-    for (let i = 0; i < height; i++) {
+    for (let r = 0; r < m; r++) {
         const row = [];
-        for (let j = 0; j < width; j++) {
-            row.push(smooth(i, j));
+        for (let c = 0; c < n; c++) {
+            row.push(smooth(r, c));
         }
         res.push(row);
     }

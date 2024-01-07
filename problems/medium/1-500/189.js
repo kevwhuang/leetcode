@@ -1,10 +1,8 @@
 // 189 - Rotate Array
 
 function rotate(nums, k) {
-    function reverse(left, right) {
-        while (left < right) {
-            [nums[left++], nums[right--]] = [nums[right], nums[left]];
-        }
+    function reverse(l, r) {
+        while (l < r) [nums[l++], nums[r--]] = [nums[r], nums[l]];
     }
     k %= nums.length;
     reverse(0, nums.length - 1);

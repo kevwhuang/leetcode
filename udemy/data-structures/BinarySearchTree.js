@@ -13,12 +13,16 @@ class BinarySearchTree {
     bfs() {
         if (!this.root) return [];
         const res = [];
-        const queue = [this.root];
+        let queue = [this.root];
         while (queue.length) {
-            const node = queue.shift();
-            res.push(node.val);
-            node.left && queue.push(node.left);
-            node.right && queue.push(node.right);
+            const nextQueue = [];
+            for (let i = 0; i < queue.length; i++) {
+                const node = queue[i];
+                res.push(node.val);
+                if (node.left) nextQueue.push(node.left);
+                if (node.right) nextQueue.push(node.right);
+            }
+            queue = nextQueue;
         }
         return res;
     }
@@ -26,8 +30,8 @@ class BinarySearchTree {
         if (!this.root) return [];
         const res = [];
         if (type === 'pre') this.#traversePre(this.root, res);
-        else if (type === 'post') this.#traversePost(this.root, res);
         else if (type === 'in') this.#traverseIn(this.root, res);
+        else if (type === 'post') this.#traversePost(this.root, res);
         else return false;
         return res;
     }

@@ -18,7 +18,7 @@ function checkValidString(s) {
             left--;
             right++;
         }
-        left = Math.max(left, 0);
+        left = Math.max(0, left);
         if (right < 0) return false;
     }
     return left === 0;

@@ -16,7 +16,7 @@ class BinarySearchTree {
         function dfs(node) {
             if (!node || arr.length === 2) return;
             dfs(node.right);
-            arr.length < 2 && arr.push(node.value);
+            if (arr.length < 2) arr.push(node.value);
             dfs(node.left);
         }
         const arr = [];

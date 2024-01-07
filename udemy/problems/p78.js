@@ -5,10 +5,10 @@ function constructNote(msg, letters) {
     for (let i = 0; i < letters.length; i++) {
         freqs[letters.charCodeAt(i) - 97]++;
     }
-    for (let i = 0, char; i < msg.length; i++) {
-        char = msg.charCodeAt(i) - 97;
-        if (freqs[char] === 0) return false;
-        freqs[char]--;
+    for (let i = 0; i < msg.length; i++) {
+        const code = msg.charCodeAt(i) - 97;
+        if (freqs[code] === 0) return false;
+        freqs[code]--;
     }
     return true;
 }

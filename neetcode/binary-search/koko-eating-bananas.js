@@ -7,10 +7,10 @@
  */
 
 function minEatingSpeed(piles, h) {
-    let l = 1, r = Math.max(...piles), m, time;
+    let l = 1, r = Math.max(...piles), m;
     loop: while (l <= r) {
-        m = Math.floor((l + r) / 2);
-        time = 0;
+        m = ~~((l + r) / 2);
+        let time = 0;
         for (let i = 0; i < piles.length; i++) {
             time += Math.ceil(piles[i] / m);
             if (time > h) {

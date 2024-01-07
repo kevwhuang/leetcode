@@ -8,13 +8,13 @@
 function threeSum(nums) {
     nums.sort((a, b) => a - b);
     const triplets = [];
-    for (let i = 0, cur, l, r; i < nums.length - 2; i++) {
-        cur = nums[i];
+    for (let i = 0; i < nums.length - 2; i++) {
+        const cur = nums[i];
         if (cur > 0) break;
         if (nums[i - 1] === nums[i]) continue;
-        l = i + 1, r = nums.length - 1;
+        let l = i + 1, r = nums.length - 1;
         while (l < r) {
-            let sum = cur + nums[l] + nums[r];
+            const sum = cur + nums[l] + nums[r];
             if (sum < 0) {
                 l++;
             } else if (sum > 0) {

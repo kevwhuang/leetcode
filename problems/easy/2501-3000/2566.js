@@ -2,11 +2,11 @@
 
 function minMaxDifference(num) {
     num = num.toString();
-    let maxDigit;
+    let max;
     for (let i = 0; i < num.length; i++) {
-        if (num[i] == 9) continue;
-        maxDigit = num[i];
+        if (num[i] === '9') continue;
+        max = num[i];
         break;
     }
-    return num.replaceAll(maxDigit, 9) - num.replaceAll(num[0], 0);
+    return num.replaceAll(max, 9) - num.replaceAll(num[0], 0);
 }

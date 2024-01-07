@@ -6,25 +6,24 @@
  */
 
 function isValidSudoku(board) {
-    for (let i = 0; i < 9; i++) {
-        const row = new Set();
-        const col = new Set();
-        for (let j = 0; j < 9; j++) {
-            const rowCell = board[i][j];
+    for (let r = 0; r < 9; r++) {
+        const row = new Set(), col = new Set();
+        for (let c = 0; c < 9; c++) {
+            const rowCell = board[r][c];
             if (rowCell !== '.') {
                 if (row.has(rowCell)) return false;
                 row.add(rowCell);
             }
-            const colCell = board[j][i];
+            const colCell = board[c][r];
             if (colCell !== '.') {
                 if (col.has(colCell)) return false;
                 col.add(colCell);
             }
-            if (!(i % 3) && !(j % 3)) {
+            if (!(r % 3) && !(c % 3)) {
                 const box = new Set();
-                for (let m = 0; m < 3; m++) {
-                    for (let n = 0; n < 3; n++) {
-                        const boxCell = board[i + m][j + n];
+                for (let d1 = 0; d1 < 3; d1++) {
+                    for (let d2 = 0; d2 < 3; d2++) {
+                        const boxCell = board[r + d1][c + d2];
                         if (boxCell !== '.') {
                             if (box.has(boxCell)) return false;
                             box.add(boxCell);

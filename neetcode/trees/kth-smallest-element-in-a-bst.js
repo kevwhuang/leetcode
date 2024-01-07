@@ -9,13 +9,13 @@
 function kthSmallest(root, k) {
     function dfs(node) {
         if (!node || !k) return;
-        node.left && dfs(node.left);
-        if (!--k) res = node.val;
-        node.right && dfs(node.right);
+        dfs(node.left);
+        if (!--k) smallest = node.val;
+        dfs(node.right);
     }
-    let res;
+    let smallest;
     dfs(root);
-    return res;
+    return smallest;
 }
 
 module.exports = kthSmallest;

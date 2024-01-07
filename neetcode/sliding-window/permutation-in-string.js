@@ -7,13 +7,13 @@
  */
 
 function checkInclusion(s1, s2) {
-    if (s1.length > s2.length) return false;
+    const len = s1.length;
+    if (len > s2.length) return false;
     const freqs = new Array(26).fill(0);
-    for (let i = 0; i < s1.length; i++) {
+    for (let i = 0; i < len; i++) {
         freqs[s1.charCodeAt(i) - 97]++;
         freqs[s2.charCodeAt(i) - 97]--;
     }
-    const len = s1.length;
     for (let i = len; i < s2.length; i++) {
         if (!freqs.some(Boolean)) return true;
         freqs[s2.charCodeAt(i - len) - 97]++;

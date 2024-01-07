@@ -11,14 +11,13 @@ function topKFrequent(nums, k) {
     for (let i = 0; i < nums.length; i++) {
         map.set(nums[i], map.get(nums[i]) + 1 || 1);
     }
-    const entries = [...map.entries()];
-    const bucket = [];
+    const entries = [...map.entries()], bucket = [];
     for (let i = 0; i < entries.length; i++) {
         bucket[entries[i][1]] = (bucket[entries[i][1]] || new Set()).add(entries[i][0]);
     }
     const res = [];
     for (let i = bucket.length - 1; i >= 0; i--) {
-        bucket[i] && res.push(...bucket[i]);
+        if (bucket[i]) res.push(...bucket[i]);
         if (res.length === k) break;
     }
     return res;

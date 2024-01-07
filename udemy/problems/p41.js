@@ -2,9 +2,9 @@
 
 function countZeroes(nums) {
     if (nums[nums.length - 1]) return 0;
-    let l = 0, r = nums.length - 1, m;
+    let l = 0, r = nums.length - 1;
     while (l < r) {
-        m = ~~((l + r) / 2);
+        const m = ~~((l + r) / 2);
         if (nums[m]) l = m + 1;
         else r = m;
     }

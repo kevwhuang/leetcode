@@ -6,25 +6,23 @@
  */
 
 function setZeroes(matrix) {
-    const H = matrix.length, W = matrix[0].length;
-    let row, col;
-    for (let i = 0; i < H; i++) {
-        for (let j = 0; j < W; j++) {
-            if (matrix[i][j] !== 0) continue;
-            row = i;
-            col = j;
+    const m = matrix.length, n = matrix[0].length;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (matrix[r][c] !== 0) continue;
+            let row = r, col = c;
             while (row > 0) matrix[--row][col] && (matrix[row][col] = null);
-            row = i;
-            while (row < H - 1) matrix[++row][col] && (matrix[row][col] = null);
-            row = i;
+            row = r;
+            while (row < m - 1) matrix[++row][col] && (matrix[row][col] = null);
+            row = r;
             while (col > 0) matrix[row][--col] && (matrix[row][col] = null);
-            col = j;
-            while (col < W - 1) matrix[row][++col] && (matrix[row][col] = null);
+            col = c;
+            while (col < n - 1) matrix[row][++col] && (matrix[row][col] = null);
         }
     }
-    for (let i = 0; i < H; i++) {
-        for (let j = 0; j < W; j++) {
-            matrix[i][j] === null && (matrix[i][j] = 0);
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            matrix[r][c] === null && (matrix[r][c] = 0);
         }
     }
     return matrix;

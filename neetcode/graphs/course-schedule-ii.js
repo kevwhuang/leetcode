@@ -14,13 +14,13 @@ function findOrder(numCourses, prerequisites) {
         adj.has(v2) ? adj.get(v2).push(v1) : adj.set(v2, [v1]);
         indegree[v1]++;
     }
-    const order = [];
     let queue = [];
     for (let i = 0; i < numCourses; i++) {
         if (indegree[i] === 0) queue.push(i);
     }
+    const order = [];
     while (queue.length) {
-        const newQueue = [];
+        const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
             const vert = queue[i];
             order.push(vert);
@@ -28,10 +28,10 @@ function findOrder(numCourses, prerequisites) {
             const neighbors = adj.get(vert);
             for (let j = 0; j < neighbors.length; j++) {
                 const v = neighbors[j];
-                if (--indegree[v] === 0) newQueue.push(v);
+                if (--indegree[v] === 0) nextQueue.push(v);
             }
         }
-        queue = newQueue;
+        queue = nextQueue;
     }
     return order.length === numCourses ? order : [];
 }
