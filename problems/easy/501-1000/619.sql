@@ -11,5 +11,5 @@ FROM
         GROUP BY
             num
         HAVING
-            count(num) = 1
-    ) AS uniques;
+            COUNT(num) = 1
+    ) AS Uniques;

@@ -9,6 +9,6 @@ WHERE
     department_id NOT IN (
         SELECT
             id
-        from
+        FROM
             Departments
     );

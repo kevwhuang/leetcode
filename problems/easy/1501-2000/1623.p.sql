@@ -5,9 +5,9 @@ SELECT
     B.student_name AS member_B,
     C.student_name AS member_C
 FROM
-    SchoolA AS A,
-    SchoolB AS B,
-    SchoolC AS C
+    SchoolA A,
+    SchoolB B,
+    SchoolC C
 WHERE
     A.student_id <> B.student_id
     AND A.student_id <> C.student_id

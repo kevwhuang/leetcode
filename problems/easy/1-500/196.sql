@@ -1,9 +1,9 @@
 -- 196 - Delete Duplicate Emails
 
-DELETE t2
+DELETE P2
 FROM
-    Person t1,
-    Person t2
+    Person P1,
+    Person P2
 WHERE
-    t1.email = t2.email
-    and t1.id < t2.id;
+    P1.email = P2.email
+    AND P1.id < P2.id;

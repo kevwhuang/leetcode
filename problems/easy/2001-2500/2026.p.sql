@@ -5,6 +5,6 @@ SELECT
 FROM
     Problems
 WHERE
-    (likes / (likes + dislikes)) <.6
+    (likes / (likes + dislikes)) < 0.6
 ORDER BY
-    problem_id;
+    1;

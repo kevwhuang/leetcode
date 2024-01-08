@@ -3,8 +3,8 @@
 SELECT
     S.buyer_id
 FROM
-    Product AS P
-    JOIN Sales AS S USING (product_id)
+    Product P
+    JOIN Sales S USING(product_id)
 GROUP BY
     S.buyer_id
 HAVING

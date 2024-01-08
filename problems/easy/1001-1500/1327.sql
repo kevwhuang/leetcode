@@ -5,7 +5,7 @@ SELECT
     SUM(unit) AS unit
 FROM
     Orders
-    JOIN Products USING (product_id)
+    JOIN Products USING(product_id)
 WHERE
     order_date LIKE '2020-02%'
 GROUP BY

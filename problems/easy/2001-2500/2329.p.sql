@@ -5,7 +5,7 @@ SELECT
     SUM(price * quantity) AS spending
 FROM
     Sales
-    JOIN Product USING (product_id)
+    JOIN Product USING(product_id)
 GROUP BY
     user_id
 ORDER BY

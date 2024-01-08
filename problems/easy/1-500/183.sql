@@ -1,7 +1,7 @@
 -- 183 - Customers Who Never Order
 
 SELECT
-    name AS Customers
+    name AS customers
 FROM
     Customers
 WHERE

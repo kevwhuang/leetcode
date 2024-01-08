@@ -10,6 +10,6 @@ FROM
     Product
     LEFT JOIN Invoice USING(product_id)
 GROUP BY
-    1
+    name
 ORDER BY
-    1;
+    name;

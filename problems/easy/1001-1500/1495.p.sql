@@ -3,8 +3,8 @@
 SELECT
     DISTINCT title
 FROM
-    TVProgram AS T
-    JOIN Content AS C ON T.content_id = C.content_id
+    TVProgram T
+    JOIN Content C ON T.content_id = C.content_id
     AND program_date LIKE '2020-06%'
-    AND Kids_content = 'Y'
+    AND kids_content = 'Y'
     AND content_type = 'Movies';

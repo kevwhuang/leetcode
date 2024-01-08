@@ -1,8 +1,8 @@
 -- 2339 - All the Matches of the League
 
 SELECT
-    T1.team_name home_team,
-    T2.team_name away_team
+    T1.team_name AS home_team,
+    T2.team_name AS away_team
 FROM
     Teams T1,
     Teams T2

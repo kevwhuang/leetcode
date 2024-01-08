@@ -4,14 +4,14 @@ SELECT
     student_id,
     student_name,
     subject_name,
-    COUNT(E.student_id) attended_exams
+    COUNT(E.student_id) AS attended_exams
 FROM
     Students
     JOIN Subjects
-    LEFT JOIN Examinations E USING (student_id, subject_name)
+    LEFT JOIN Examinations E USING(student_id, subject_name)
 GROUP BY
-    2,
-    3
+    student_name,
+    subject_name
 ORDER BY
-    1,
-    3;
+    student_id,
+    subject_name;

@@ -2,10 +2,10 @@
 
 SELECT
     product_id,
-    SUM(IF(store = 'store1', price, NULL)) store1,
-    SUM(IF(store = 'store2', price, NULL)) store2,
-    SUM(IF(store = 'store3', price, NULL)) store3
+    SUM(IF(store = 'store1', price, NULL)) AS store1,
+    SUM(IF(store = 'store2', price, NULL)) AS store2,
+    SUM(IF(store = 'store3', price, NULL)) AS store3
 FROM
     Products
 GROUP BY
-    1;
+    product_id;

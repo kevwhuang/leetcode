@@ -15,7 +15,7 @@ HAVING
         GROUP BY
             seller_id
         ORDER BY
-            SUM(price) DESC
+            1 DESC
         LIMIT
             1
     );

@@ -15,7 +15,7 @@ HAVING
         GROUP BY
             project_id
         ORDER BY
-            COUNT(*) DESC
+            1 DESC
         LIMIT
             1
     );

@@ -1,10 +1,10 @@
 -- 182 - Duplicate Emails
 
 SELECT
-    Email
+    email
 FROM
     Person
 GROUP BY
-    Email
+    email
 HAVING
-    COUNT(Email) > 1;
+    COUNT(email) > 1;

@@ -9,6 +9,6 @@ FROM
     Employees E1
     JOIN Employees E2 ON E1.employee_id = E2.reports_to
 GROUP BY
-    1
+    employee_id
 ORDER BY
-    1;
+    employee_id;

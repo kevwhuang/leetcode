@@ -7,7 +7,7 @@ FROM
 WHERE
     free = 1
     AND (
-        seat_id -1 IN (
+        seat_id - 1 IN (
             SELECT
                 seat_id
             FROM

@@ -13,8 +13,8 @@ SELECT
     COUNT(DISTINCT sub_id) AS number_of_comments
 FROM
     Posts
-    LEFT JOIN Submissions AS S ON post_id = parent_id
+    LEFT JOIN Submissions ON post_id = parent_id
 GROUP BY
-    1
+    post_id
 ORDER BY
-    1;
+    post_id;

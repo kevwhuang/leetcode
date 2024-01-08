@@ -8,8 +8,8 @@ SELECT
         ELSE 'Warm'
     END AS weather_type
 FROM
-    Countries AS C
-    JOIN Weather AS W ON C.country_id = W.country_id
+    Countries C
+    JOIN Weather W ON C.country_id = W.country_id
     AND day LIKE '2019-11%'
 GROUP BY
     country_name;
