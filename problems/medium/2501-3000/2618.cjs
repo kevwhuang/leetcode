@@ -1,4 +1,4 @@
-// 2618 - Check if Object Instance of Class
+// 2618 - Check If Object Instance of Class
 
 function checkIfInstanceOf(obj, classFunction) {
     return (obj !== undefined && obj !== null)
