@@ -1,15 +1,13 @@
 // 997 - Find the Town Judge
 
 function findJudge(n, trust) {
-    if (n === 1) return 1;
-    const set = new Set();
-    const map = new Map();
+    const arr = new Array(n + 1).fill(0);
     for (let i = 0; i < trust.length; i++) {
-        set.add(trust[i][0]);
-        map.set(trust[i][1], map.get(trust[i][1]) + 1 || 1);
+        arr[trust[i][0]]--;
+        arr[trust[i][1]]++;
     }
-    for (const [key, val] of map.entries()) {
-        if (!set.has(key) && val === n - 1) return key;
+    for (let i = 1; i < n + 1; i++) {
+        if (arr[i] === n - 1) return i;
     }
     return -1;
 }
