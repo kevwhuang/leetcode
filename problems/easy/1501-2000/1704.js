@@ -1,11 +1,12 @@
 // 1704 - Determine If String Halves Are Alike
 
 function halvesAreAlike(s) {
-    const vowels = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
     let count = 0;
-    for (let i = 0, j = s.length / 2; i < s.length / 2; i++, j++) {
-        vowels.has(s[i]) && count++;
-        vowels.has(s[j]) && count--;
+    const vowels = new Set(['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']);
+    const bound = s.length / 2;
+    for (let i = 0, j = bound; i < bound; i++, j++) {
+        if (vowels.has(s[i])) count++;
+        if (vowels.has(s[j])) count--;
     }
-    return !count;
+    return count === 0;
 }
