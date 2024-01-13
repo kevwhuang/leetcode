@@ -1,3 +1,3 @@
-// 358 - Rearrange String k Distance Apart
+// 358 - Rearrange String K Distance Apart
 
 

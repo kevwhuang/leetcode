@@ -1,3 +1,3 @@
--- 2701 - Consecutive Transactions with Increasing Amounts
+-- 2701 - Consecutive Transactions With Increasing Amounts
 
 

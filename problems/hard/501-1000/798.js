@@ -1,3 +1,3 @@
-// 798 - Smallest Rotation with Highest Score
+// 798 - Smallest Rotation With Highest Score
 
 

@@ -1,3 +1,3 @@
-// 983 - Minimum Cost For Tickets
+// 983 - Minimum Cost for Tickets
 
 

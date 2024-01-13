@@ -1,3 +1,3 @@
-// 1719 - Number Of Ways To Reconstruct A Tree
+// 1719 - Number of Ways to Reconstruct a Tree
 
 

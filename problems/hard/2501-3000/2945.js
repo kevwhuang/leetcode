@@ -1,3 +1,3 @@
-// 2945 - Find Maximum Non-decreasing Array Length
+// 2945 - Find Maximum Non-Decreasing Array Length
 
 

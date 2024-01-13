@@ -1,3 +1,3 @@
-// 548 - Split Array with Equal Sum
+// 548 - Split Array With Equal Sum
 
 

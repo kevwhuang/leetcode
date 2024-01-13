@@ -1,3 +1,3 @@
-// 1301 - Number of Paths with Max Score
+// 1301 - Number of Paths With Max Score
 
 

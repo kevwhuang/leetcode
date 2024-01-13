@@ -1,3 +1,3 @@
-// 2321 - Maximum Score Of Spliced Array
+// 2321 - Maximum Score of Spliced Array
 
 

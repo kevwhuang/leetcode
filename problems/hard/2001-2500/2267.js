@@ -1,3 +1,3 @@
-// 2267 - Check if There Is a Valid Parentheses String Path
+// 2267 - Check If There Is a Valid Parentheses String Path
 
 

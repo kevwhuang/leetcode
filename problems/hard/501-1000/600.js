@@ -1,3 +1,3 @@
-// 600 - Non-negative Integers without Consecutive Ones
+// 600 - Non-Negative Integers Without Consecutive Ones
 
 

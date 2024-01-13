@@ -1,3 +1,3 @@
-// 757 - Set Intersection Size At Least Two
+// 757 - Set Intersection Size at Least Two
 
 

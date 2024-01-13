@@ -1,3 +1,3 @@
-// 1007 - Minimum Domino Rotations For Equal Row
+// 1007 - Minimum Domino Rotations for Equal Row
 
 

@@ -1,3 +1,3 @@
--- 1112 - Highest Grade For Each Student
+-- 1112 - Highest Grade for Each Student
 
 

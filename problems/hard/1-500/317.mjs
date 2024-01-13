@@ -1,3 +1,3 @@
-// 317 - Shortest Distance from All Buildings
+// 317 - Shortest Distance From All Buildings
 
 

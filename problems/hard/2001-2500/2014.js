@@ -1,3 +1,3 @@
-// 2014 - Longest Subsequence Repeated k Times
+// 2014 - Longest Subsequence Repeated K Times
 
 

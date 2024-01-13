@@ -1,3 +1,3 @@
-// 2081 - Sum of k-Mirror Numbers
+// 2081 - Sum of K-Mirror Numbers
 
 

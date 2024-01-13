@@ -1,3 +1,3 @@
-// 982 - Triples with Bitwise AND Equal To Zero
+// 982 - Triples With Bitwise AND Equal to Zero
 
 

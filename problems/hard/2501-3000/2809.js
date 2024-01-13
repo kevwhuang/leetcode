@@ -1,3 +1,3 @@
-// 2809 - Minimum Time to Make Array Sum At Most x
+// 2809 - Minimum Time to Make Array Sum at Most X
 
 

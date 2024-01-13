@@ -1,3 +1,3 @@
-// 1519 - Number of Nodes in the Sub-Tree With the Same Label
+// 1519 - Number of Nodes in the Subtree With the Same Label
 
 

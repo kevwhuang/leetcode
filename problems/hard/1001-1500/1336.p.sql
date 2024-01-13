@@ -1,3 +1,3 @@
--- 1336 - Number of Transactions per Visit
+-- 1336 - Number of Transactions Per Visit
 
 

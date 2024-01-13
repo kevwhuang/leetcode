@@ -1,3 +1,3 @@
-// 1240 - Tiling a Rectangle with the Fewest Squares
+// 1240 - Tiling a Rectangle With the Fewest Squares
 
 

@@ -1,3 +1,3 @@
-// 1156 - Swap For Longest Repeated Character Substring
+// 1156 - Swap for Longest Repeated Character Substring
 
 
