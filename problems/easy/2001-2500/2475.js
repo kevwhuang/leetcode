@@ -5,8 +5,8 @@ function unequalTriplets(nums) {
     const len = nums.length;
     for (let i = 0; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
+            if (nums[i] === nums[j]) continue;
             for (let k = j + 1; k < len; k++) {
-                if (nums[i] === nums[j]) continue;
                 if (nums[i] === nums[k]) continue;
                 if (nums[j] === nums[k]) continue;
                 triplets++;

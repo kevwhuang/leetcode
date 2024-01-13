@@ -4,7 +4,7 @@ function oddString(words) {
     function getDIA(str) {
         let res = '';
         for (let i = 1; i < len; i++) {
-            res += str.charCodeAt(i) - str.charCodeAt(i - 1);
+            res += `${str.charCodeAt(i) - str.charCodeAt(i - 1)} `;
         }
         return res;
     }

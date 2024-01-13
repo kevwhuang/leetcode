@@ -15,9 +15,8 @@ function largestInteger(num) {
     }
     odds.sort((a, b) => b - a);
     evens.sort((a, b) => b - a);
-    let pt_odds = 0, pt_evens = 0;
-    for (let i = 0; i < num.length; i++) {
-        num[i] = num[i] ? odds[pt_odds++] : evens[pt_evens++];
+    for (let i = 0, j = 0, k = 0; i < num.length; i++) {
+        num[i] = num[i] ? odds[j++] : evens[k++];
     }
     return parseInt(num.join(''));
 }
