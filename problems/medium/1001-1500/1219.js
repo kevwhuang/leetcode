@@ -1,3 +1,3 @@
-// 1219 - Path with Maximum Gold
+// 1219 - Path With Maximum Gold
 
 

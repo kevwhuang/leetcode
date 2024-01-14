@@ -1,3 +1,3 @@
-// 2038 - Remove Colored Pieces if Both Neighbors are the Same Color
+// 2038 - Remove Colored Pieces If Both Neighbors Are the Same Color
 
 

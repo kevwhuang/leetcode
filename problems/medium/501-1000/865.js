@@ -1,3 +1,3 @@
-// 865 - Smallest Subtree with all the Deepest Nodes
+// 865 - Smallest Subtree With All the Deepest Nodes
 
 

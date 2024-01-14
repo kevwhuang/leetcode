@@ -1,3 +1,3 @@
-// 1239 - Maximum Length of a Concatenated String with Unique Characters
+// 1239 - Maximum Length of a Concatenated String With Unique Characters
 
 

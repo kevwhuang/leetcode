@@ -1,3 +1,3 @@
-// 1093 - Statistics from a Large Sample
+// 1093 - Statistics From a Large Sample
 
 

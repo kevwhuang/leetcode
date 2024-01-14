@@ -1,3 +1,3 @@
-// 2526 - Find Consecutive Integers from a Data Stream
+// 2526 - Find Consecutive Integers From a Data Stream
 
 

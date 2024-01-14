@@ -1,3 +1,3 @@
-// 1839 - Longest Substring Of All Vowels in Order
+// 1839 - Longest Substring of All Vowels in Order
 
 

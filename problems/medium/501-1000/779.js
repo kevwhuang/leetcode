@@ -1,3 +1,3 @@
-// 779 - K-th Symbol in Grammar
+// 779 - Kth Symbol in Grammar
 
 

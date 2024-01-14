@@ -1,3 +1,3 @@
-// 1477 - Find Two Non-overlapping Sub-arrays Each With Target Sum
+// 1477 - Find Two Non-Overlapping Subarrays Each With Target Sum
 
 

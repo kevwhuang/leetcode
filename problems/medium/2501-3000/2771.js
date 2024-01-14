@@ -1,3 +1,3 @@
-// 2771 - Longest Non-decreasing Subarray From Two Arrays
+// 2771 - Longest Non-Decreasing Subarray From Two Arrays
 
 

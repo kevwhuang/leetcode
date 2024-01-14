@@ -1,3 +1,3 @@
-// 1129 - Shortest Path with Alternating Colors
+// 1129 - Shortest Path With Alternating Colors
 
 

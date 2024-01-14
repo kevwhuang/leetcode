@@ -1,3 +1,3 @@
-// 524 - Longest Word in Dictionary through Deleting
+// 524 - Longest Word in Dictionary Through Deleting
 
 

@@ -1,4 +1,4 @@
-// 283 - Move Zeroes
+// 283 - Move Zeros
 
 function moveZeroes(nums) {
     let zeros = 0;

@@ -1,3 +1,3 @@
-// 825 - Friends Of Appropriate Ages
+// 825 - Friends of Appropriate Ages
 
 

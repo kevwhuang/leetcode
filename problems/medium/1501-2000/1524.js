@@ -1,3 +1,3 @@
-// 1524 - Number of Sub-arrays With Odd Sum
+// 1524 - Number of Subarrays With Odd Sum
 
 

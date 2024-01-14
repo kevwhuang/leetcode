@@ -1,3 +1,3 @@
-// 2939 - Maximum Xor Product
+// 2939 - Maximum XOR Product
 
 

@@ -1,3 +1,3 @@
-// 2840 - Check if Strings Can be Made Equal With Operations II
+// 2840 - Check If Strings Can Be Made Equal With Operations II
 
 

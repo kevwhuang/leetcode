@@ -1,3 +1,3 @@
-// 1754 - Largest Merge Of Two Strings
+// 1754 - Largest Merge of Two Strings
 
 

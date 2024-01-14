@@ -1,3 +1,3 @@
-// 395 - Longest Substring with at Least K Repeating Characters
+// 395 - Longest Substring With at Least K Repeating Characters
 
 

@@ -1,3 +1,3 @@
-// 2369 - Check if There Is a Valid Partition for The Array
+// 2369 - Check If There Is a Valid Partition for the Array
 
 

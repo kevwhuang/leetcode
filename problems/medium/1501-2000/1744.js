@@ -1,3 +1,3 @@
-// 1744 - Can You Eat Your Favorite Candy on Your Favorite Day?
+// 1744 - Can You Eat Your Favorite Candy on Your Favorite Day
 
 

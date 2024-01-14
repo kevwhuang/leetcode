@@ -1,3 +1,3 @@
-// 1162 - As Far from Land as Possible
+// 1162 - As Far From Land as Possible
 
 

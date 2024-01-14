@@ -1,3 +1,3 @@
-// 2952 - Minimum Number of Coins to be Added
+// 2952 - Minimum Number of Coins to Be Added
 
 

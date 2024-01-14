@@ -1,3 +1,3 @@
-// 2466 - Count Ways To Build Good Strings
+// 2466 - Count Ways to Build Good Strings
 
 

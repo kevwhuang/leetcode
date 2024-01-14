@@ -1,3 +1,3 @@
-// 1428 - Leftmost Column with at Least a One
+// 1428 - Leftmost Column With at Least a One
 
 

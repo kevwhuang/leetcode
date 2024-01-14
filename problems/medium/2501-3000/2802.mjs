@@ -1,3 +1,3 @@
-// 2802 - Find The K-th Lucky Number
+// 2802 - Find the Kth Lucky Number
 
 

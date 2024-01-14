@@ -1,3 +1,3 @@
-// 1177 - Can Make Palindrome from Substring
+// 1177 - Can Make Palindrome From Substring
 
 

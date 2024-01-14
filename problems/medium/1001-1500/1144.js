@@ -1,3 +1,3 @@
-// 1144 - Decrease Elements To Make Array Zigzag
+// 1144 - Decrease Elements to Make Array Zigzag
 
 

@@ -1,3 +1,3 @@
-// 2829 - Determine the Minimum Sum of a k-avoiding Array
+// 2829 - Determine the Minimum Sum of a K-Avoiding Array
 
 

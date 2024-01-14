@@ -1,3 +1,3 @@
-// 947 - Most Stones Removed with Same Row or Column
+// 947 - Most Stones Removed With Same Row or Column
 
 

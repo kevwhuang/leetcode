@@ -1,3 +1,3 @@
-// 1958 - Check if Move Is Legal
+// 1958 - Check If Move Is Legal
 
 

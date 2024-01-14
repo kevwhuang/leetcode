@@ -1,3 +1,3 @@
-// 1104 - Path In Zigzag Labelled Binary Tree
+// 1104 - Path in Zigzag Labeled Binary Tree
 
 

@@ -1,4 +1,4 @@
--- 1517 - Find Users With Valid E-Mails
+-- 1517 - Find Users With Valid Emails
 
 SELECT
     user_id,

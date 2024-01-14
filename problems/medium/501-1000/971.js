@@ -1,3 +1,3 @@
-// 971 - Flip Binary Tree To Match Preorder Traversal
+// 971 - Flip Binary Tree to Match Preorder Traversal
 
 

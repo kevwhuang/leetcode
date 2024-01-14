@@ -1,3 +1,3 @@
-// 789 - Escape The Ghosts
+// 789 - Escape the Ghosts
 
 

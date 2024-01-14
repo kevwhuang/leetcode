@@ -1,3 +1,3 @@
-// 795 - Number of Subarrays with Bounded Maximum
+// 795 - Number of Subarrays With Bounded Maximum
 
 

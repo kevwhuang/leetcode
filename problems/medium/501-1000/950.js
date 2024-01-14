@@ -1,3 +1,3 @@
-// 950 - Reveal Cards In Increasing Order
+// 950 - Reveal Cards in Increasing Order
 
 

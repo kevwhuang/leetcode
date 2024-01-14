@@ -1,3 +1,3 @@
-// 1171 - Remove Zero Sum Consecutive Nodes from Linked List
+// 1171 - Remove Zero Sum Consecutive Nodes From Linked List
 
 

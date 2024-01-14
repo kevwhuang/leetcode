@@ -1,3 +1,3 @@
-// 1726 - Tuple with Same Product
+// 1726 - Tuple With Same Product
 
 
