@@ -1,3 +1,6 @@
+const veto = [
+    247, 255, 307,
+];
 const bt = [
     17, 22, 37, 39, 40, 46, 47, 51, 52, 77, 78, 79, 89, 90, 93, 95, 113, 126, 131, 140, 212, 216,
     254, 257, 267, 282, 291, 294, 301, 306, 320, 351, 357, 401, 411, 425, 465, 473, 489, 491, 494,
@@ -38,6 +41,6 @@ const dp = [
 ];
 
 Array.from(document.getElementsByTagName('a'))
-    .filter(e => bt.concat(dp).some(n => e.innerText.startsWith(`${n}. `)))
+    .filter(e => veto.concat(bt).concat(dp).some(n => e.innerText.startsWith(`${n}. `)))
     .map(e => e.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
     .forEach(e => e.hidden = true);
