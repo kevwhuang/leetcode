@@ -1,11 +1,12 @@
 // 2788 - Split Strings by Separator
 
 function splitWordsBySeparator(words, separator) {
-    const output = [];
+    const res = [];
     for (let i = 0; i < words.length; i++) {
-        words[i]
-            .split(separator)
-            .forEach(e => e.length && output.push(e));
+        const split = words[i].split(separator);
+        for (let j = 0; j < split.length; j++) {
+            if (split[j].length) res.push(split[j]);
+        }
     }
-    return output;
+    return res;
 }

@@ -16,8 +16,16 @@ function jsonToMatrix(arr) {
         }
         return keys;
     }
-    arr = arr.map(extractKeys);
-    const keys = [...new Set(arr.map(Object.keys).flat())].sort();
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = extractKeys(arr[i]);
+    }
+    let keys = new Set();
+    for (let i = 0; i < arr.length; i++) {
+        for (const key in arr[i]) {
+            keys.add(key);
+        }
+    }
+    keys = Array.from(keys).sort();
     const mat = Array.from({ length: arr.length + 1 }, () => []);
     mat[0] = keys;
     for (let i = 0; i < arr.length; i++) {

@@ -1,13 +1,13 @@
 // 290 - Word Pattern
 
 function wordPattern(pattern, s) {
-    const A = s.split(' ');
-    if (pattern.length !== A.length) return false;
-    const M = new Map();
+    s = s.split(' ');
+    if (pattern.length !== s.length) return false;
+    const map = new Map();
     for (let i = 0; i < pattern.length; i++) {
-        if (M.has(pattern[i]) && M.get(pattern[i]) !== A[i]) return false;
-        M.set(pattern[i], A[i]);
+        if (map.has(pattern[i]) && map.get(pattern[i]) !== s[i]) return false;
+        map.set(pattern[i], s[i]);
     }
-    const values = [...M.values()];
+    const values = [...map.values()];
     return values.length === new Set(values).size;
 }

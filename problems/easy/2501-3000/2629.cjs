@@ -1,11 +1,11 @@
 // 2629 - Function Composition
 
 function compose(functions) {
-    return x => {
-        let result = x;
+    return function (x) {
+        let res = x;
         for (let i = functions.length - 1; i >= 0; i--) {
-            result = functions[i](result);
+            res = functions[i](res);
         }
-        return result;
-    };
-}   
+        return res;
+    }
+}

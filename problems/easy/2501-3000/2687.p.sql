@@ -6,4 +6,6 @@ SELECT
 FROM
     Bikes
 GROUP BY
-    bike_number;
+    bike_number
+ORDER BY
+    end_time DESC;
