@@ -1,6 +1,3 @@
-const veto = [
-    247, 255, 307,
-];
 const bt = [
     17, 22, 37, 39, 40, 46, 47, 51, 52, 77, 78, 79, 89, 90, 93, 95, 113, 126, 131, 140, 212, 216,
     254, 257, 267, 282, 291, 294, 301, 306, 320, 351, 357, 401, 411, 425, 465, 473, 489, 491, 494,
@@ -39,8 +36,19 @@ const dp = [
     2836, 2850, 2851, 2858, 2867, 2876, 2892, 2896, 2900, 2901, 2902, 2907, 2911, 2912, 2915, 2916,
     2919, 2920, 2925, 2926, 2930, 2944, 2945, 2957, 2969, 2973, 2977, 2979, 2992, 2998, 2999,
 ];
+const ft = [
+    307, 406, 673, 1395, 1409, 1756, 2031, 2250, 2424,
+];
+const rc = [
+    2, 24, 50, 143, 241, 247, 255, 390, 394, 439, 486, 544, 776, 779, 894, 1265, 1545, 1823, 1922,
+    1969, 2487, 2550, 2992,
+];
+const st = [
+    307, 406, 673, 729, 731, 2031, 2080, 2424,
+];
+const veto = bt.concat(dp).concat(ft).concat(rc).concat(st);
 
 Array.from(document.getElementsByTagName('a'))
-    .filter(e => veto.concat(bt).concat(dp).some(n => e.innerText.startsWith(`${n}. `)))
+    .filter(e => veto.some(n => e.innerText.startsWith(`${n}. `)))
     .map(e => e.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
     .forEach(e => e.hidden = true);
