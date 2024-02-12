@@ -46,7 +46,7 @@ const rc = [
 const st = [
     307, 406, 673, 729, 731, 2031, 2080, 2424,
 ];
-const veto = bt.concat(dp).concat(ft).concat(rc).concat(st);
+const veto = [...new Set(bt.concat(dp).concat(ft).concat(rc).concat(st))];
 
 Array.from(document.getElementsByTagName('a'))
     .filter(e => veto.some(n => e.innerText.startsWith(`${n}. `)))
