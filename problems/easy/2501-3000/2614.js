@@ -13,7 +13,7 @@ function diagonalPrime(nums) {
                 isPrime = false;
                 break;
             }
-            if (isPrime) largest = Math.max(largest, num);
+            if (isPrime) largest = Math.max(num, largest);
         }
     }
     return largest;
