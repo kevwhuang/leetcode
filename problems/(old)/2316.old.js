@@ -27,8 +27,7 @@ function countPairs(n, edges) {
         traverse(vert);
         sizes.push(componentSize);
     }
-    let unreachablePairs = 0;
-    let connectedCount = 0;
+    let unreachablePairs = 0, connectedCount = 0;
     for (let i = 0; i < sizes.length; i++) {
         connectedCount += sizes[i];
         for (let j = i + 1; j < sizes.length; j++)
