@@ -8,7 +8,7 @@
 
 function minDistance(word1, word2) {
     const m = word1.length, n = word2.length;
-    const dp = Array.from({ length: m + 1 }, () => new Array(n + 1));
+    const dp = Array.from({ length: m + 1 }, () => new Uint16Array(n + 1));
     for (let r = m; r >= 0; r--) {
         dp[r][n] = m - r;
     }
