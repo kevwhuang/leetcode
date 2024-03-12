@@ -5,9 +5,7 @@ function maximumHappinessSum(happiness, k) {
     let sum = 0;
     const bound = Math.min(happiness.length, k);
     for (let i = 0; i < bound; i++) {
-        const val = happiness[i] - i;
-        if (val <= 0) break;
-        sum += val;
+        sum += Math.max(0, happiness[i] - i);
     }
     return sum;
 }
