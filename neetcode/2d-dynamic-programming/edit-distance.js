@@ -25,6 +25,4 @@ function minDistance(word1, word2) {
     return dp[0][0];
 }
 
-minDistance("intention", "execution");
-
 module.exports = minDistance;

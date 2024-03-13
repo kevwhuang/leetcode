@@ -14,7 +14,10 @@ function letterCombinations(digits) {
         }
     }
     if (digits.length === 0) return [];
-    const arr = [null, null, 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'];
+    const arr = [
+        null, null, 'abc', 'def', 'ghi',
+        'jkl', 'mno', 'pqrs', 'tuv', 'wxyz',
+    ];
     const combos = [];
     backtrack('', 0);
     return combos;
