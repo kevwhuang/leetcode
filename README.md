@@ -1,4 +1,4 @@
-# ALGORITHMS
+# Algorithms & Data Structures
 
 [LeetCode](https://leetcode.com/aephonics)
 
