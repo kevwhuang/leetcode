@@ -9,4 +9,4 @@ FROM
     AND purchase_date BETWEEN start_date
     AND end_date
 GROUP BY
-    P.product_id;
+    product_id;

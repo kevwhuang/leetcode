@@ -2,18 +2,18 @@
 
 SELECT
     id,
-    SUM(IF(month = 'Jan', revenue, NULL)) AS Jan_Revenue,
-    SUM(IF(month = 'Feb', revenue, NULL)) AS Feb_Revenue,
-    SUM(IF(month = 'Mar', revenue, NULL)) AS Mar_Revenue,
-    SUM(IF(month = 'Apr', revenue, NULL)) AS Apr_Revenue,
-    SUM(IF(month = 'May', revenue, NULL)) AS May_Revenue,
-    SUM(IF(month = 'Jun', revenue, NULL)) AS Jun_Revenue,
-    SUM(IF(month = 'Jul', revenue, NULL)) AS Jul_Revenue,
-    SUM(IF(month = 'Aug', revenue, NULL)) AS Aug_Revenue,
-    SUM(IF(month = 'Sep', revenue, NULL)) AS Sep_Revenue,
-    SUM(IF(month = 'Oct', revenue, NULL)) AS Oct_Revenue,
-    SUM(IF(month = 'Nov', revenue, NULL)) AS Nov_Revenue,
-    SUM(IF(month = 'Dec', revenue, NULL)) AS Dec_Revenue
+    SUM(IF(month = 'Jan', revenue, NULL)) AS jan_revenue,
+    SUM(IF(month = 'Feb', revenue, NULL)) AS feb_revenue,
+    SUM(IF(month = 'Mar', revenue, NULL)) AS mar_revenue,
+    SUM(IF(month = 'Apr', revenue, NULL)) AS apr_revenue,
+    SUM(IF(month = 'May', revenue, NULL)) AS may_revenue,
+    SUM(IF(month = 'Jun', revenue, NULL)) AS jun_revenue,
+    SUM(IF(month = 'Jul', revenue, NULL)) AS jul_revenue,
+    SUM(IF(month = 'Aug', revenue, NULL)) AS aug_revenue,
+    SUM(IF(month = 'Sep', revenue, NULL)) AS sep_revenue,
+    SUM(IF(month = 'Oct', revenue, NULL)) AS oct_revenue,
+    SUM(IF(month = 'Nov', revenue, NULL)) AS nov_revenue,
+    SUM(IF(month = 'Dec', revenue, NULL)) AS dec_revenue
 FROM
     Department
 GROUP BY
