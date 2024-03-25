@@ -2,4 +2,4 @@
 
 [LeetCode](https://leetcode.com/aephonics)
 
-[NeetCode](https://kevwhuang.github.io/leetcode)
+[NeetCode](https://aephonics.com)
