@@ -2,36 +2,17 @@
 
 class MapSum {
     constructor() {
-        this.trie = {};
+        this.map = new Map();
     }
     insert(key, val) {
-        let node = this.trie;
-        for (let i = 0; i < key.length; i++) {
-            const char = key[i];
-            if (!(char in node)) node[char] = {};
-            node = node[char];
-        }
-        node.val = val;
+        this.map.set(key, val);
     }
     sum(prefix) {
-        let node = this.trie;
-        for (let i = 0; i < prefix.length; i++) {
-            const char = prefix[i];
-            if (char in node) node = node[char];
-            else return 0;
+        let res = 0;
+        const map = this.map;
+        for (const key of map.keys()) {
+            if (key.startsWith(prefix)) res += map.get(key);
         }
-        let sum = 0, queue = [node];
-        while (queue.length) {
-            const nextQueue = [];
-            for (let i = 0; i < queue.length; i++) {
-                node = queue[i];
-                for (const key in node) {
-                    if (key === 'val') sum += node.val;
-                    else nextQueue.push(node[key]);
-                }
-            }
-            queue = nextQueue;
-        }
-        return sum;
+        return res;
     }
 }

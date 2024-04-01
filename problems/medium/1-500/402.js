@@ -9,13 +9,13 @@ function removeKdigits(num, k) {
         }
         stack.push(num[i]);
     }
-    k++;
-    while (--k) stack.pop();
-    const index = stack.findIndex(e => e !== '0');
-    if (index === -1) return '0';
-    let res = '';
-    for (let i = index; i < stack.length; i++) {
-        res += stack[i];
+    while (k--) stack.pop();
+    let index = -1;
+    for (let i = 0; i < stack.length; i++) {
+        if (stack[i] === '0') continue;
+        index = i;
+        break;
     }
-    return res;
+    if (index === -1) return '0';
+    return stack.slice(index).join('');
 }
