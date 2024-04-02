@@ -4,9 +4,9 @@ function expressiveWords(s, words) {
     function analyze(word) {
         const arr = [];
         for (let i = 0; i < word.length; i++) {
-            const char = word[i], start = i;
-            while (word[i] === word[i + 1]) i++;
-            arr.push([char, i - start + 1]);
+            const start = i;
+            while (i + 1 < word.length && word[i] === word[i + 1]) i++;
+            arr.push([word[i], i - start + 1]);
         }
         return arr;
     }

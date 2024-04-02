@@ -6,14 +6,14 @@ function largestPalindromic(num) {
         bucket[num[i]]++;
     }
     const res = [];
-    for (let n = 9; n >= 0; n--) {
+    for (let n = 9; n; n--) {
         if (bucket[n] < 2) continue;
-        if (n === 0 && res.length === 0) continue;
-        const bound = bucket[n] / 2 >> 0;
-        for (let i = 0; i < bound; i++) {
-            res.push(n);
-        }
+        res.push(n.toString().repeat(bucket[n] >> 1));
         bucket[n] %= 2;
+    }
+    if (bucket[0] && res.length) {
+        res.push('0'.repeat(bucket[0] >> 1));
+        bucket[0] %= 2;
     }
     let i = res.length - 1;
     for (let n = 9; n >= 0; n--) {

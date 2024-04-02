@@ -2,11 +2,9 @@
 
 function getLongestSubsequence(words, groups) {
     const subsequence = [words[0]];
-    let cur = groups[0];
     for (let i = 1; i < words.length; i++) {
-        if (groups[i] == cur) continue;
+        if (groups[i - 1] === groups[i]) continue;
         subsequence.push(words[i]);
-        cur = !cur;
     }
     return subsequence;
 }
