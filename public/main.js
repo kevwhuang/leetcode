@@ -11,9 +11,9 @@ algorithms.addEventListener('change', () => {
     iframe.src = `neetcode/${category}/${algorithm}`;
     link.setAttribute('href', '../../public/iframe.css');
     link.setAttribute('rel', 'stylesheet');
-    main.style.animation = 'fade .5s ease-in';
-    iframe.contentDocument.querySelector('head').append(link);
-    setTimeout(() => main.style.animation = 'none', 500);
+    main.style.animation = 'fade 1s ease-in';
+    setTimeout(() => iframe.contentDocument.querySelector('head').append(link), 500);
+    setTimeout(() => main.style.animation = 'none', 1000);
 });
 
 categories.addEventListener('change', () => {
@@ -30,5 +30,5 @@ categories.addEventListener('change', () => {
     const link = document.createElement('link');
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('href', 'public/iframe.css');
-    iframe.contentDocument.querySelector('head').append(link);
+    setTimeout(() => iframe.contentDocument.querySelector('head').append(link), 500);
 }());
