@@ -3,7 +3,8 @@ body {
     background: #111;
     font-family:
         'Courier New',
-        monospace;
+        monospace,
+    ;
 }
 
 iframe {
