@@ -1,16 +1,17 @@
 // 1156 - Swap for Longest Repeated Character Substring
 
 function maxRepOpt1(text) {
-    const map = new Map();
+    const obj = {};
     let i = 0;
     while (i < text.length) {
         const char = text[i], start = i++;
         while (text[i] === char) i++;
-        if (map.has(char)) map.get(char).push([start, i]);
-        else map.set(char, [[start, i]]);
+        if (!obj[char]) obj[char] = [];
+        obj[char].push([start, i]);
     }
     let max = 1;
-    for (const intervals of map.values()) {
+    for (const char in obj) {
+        const intervals = obj[char];
         let d = intervals.length === 1 ? 0 : 1;
         max = Math.max(intervals[0][1] - intervals[0][0] + d, max);
         for (let i = 1; i < intervals.length; i++) {
