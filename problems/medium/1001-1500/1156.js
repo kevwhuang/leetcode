@@ -11,13 +11,13 @@ function maxRepOpt1(text) {
     }
     let max = 1;
     for (const intervals of map.values()) {
-        const d = intervals.length === 1 ? 0 : 1;
+        let d = intervals.length === 1 ? 0 : 1;
         max = Math.max(intervals[0][1] - intervals[0][0] + d, max);
         for (let i = 1; i < intervals.length; i++) {
             const start = intervals[i][0], end = intervals[i][1];
             max = Math.max(end - start + 1, max);
             if (intervals[i - 1][1] + 1 !== start) continue;
-            const d = intervals.length === 2 ? -1 : 0;
+            d = intervals.length === 2 ? -1 : 0;
             max = Math.max(end - intervals[i - 1][0] + d, max);
         }
     }
