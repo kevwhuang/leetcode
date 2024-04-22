@@ -10,7 +10,7 @@ function maxSum(nums, m, k) {
     let max = map.size >= m ? window : 0;
     for (let i = k; i < nums.length; i++) {
         const head = nums[i], tail = nums[i - k];
-        window = window + head - tail;
+        window += head - tail;
         map.set(head, (map.get(head) ?? 0) + 1);
         const nextFreq = map.get(tail) - 1;
         if (nextFreq) map.set(tail, nextFreq);
