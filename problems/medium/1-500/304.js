@@ -2,27 +2,30 @@
 
 class NumMatrix {
     constructor(matrix) {
-        this.matrix = matrix;
-        this.m = matrix.length;
-        this.n = matrix[0].length;
-        for (let r = 1; r < this.m; r++) {
-            matrix[r][0] += matrix[r - 1][0];
-        }
-        for (let c = 1; c < this.n; c++) {
-            matrix[0][c] += matrix[0][c - 1];
-        }
-        for (let r = 1; r < this.m; r++) {
-            for (let c = 1; c < this.n; c++) {
-                matrix[r][c] += matrix[r][c - 1];
-                matrix[r][c] += matrix[r - 1][c];
-                matrix[r][c] -= matrix[r - 1][c - 1];
-            }
-        }
+        this.matrix = this.#init(matrix);
     }
     sumRegion(row1, col1, row2, col2) {
-        return this.matrix[row2][col2]
-            + (this.matrix[row1 - 1]?.[col1 - 1] ?? 0)
-            - (this.matrix[row1 - 1]?.[col2] ?? 0)
-            - (this.matrix[row2]?.[col1 - 1] ?? 0);
+        const M = this.matrix;
+        let sum = M[row2][col2];
+        if (row1) sum -= M[row1 - 1][col2];
+        if (col1) sum -= M[row2][col1 - 1];
+        if (row1 && col1) sum += M[row1 - 1][col1 - 1];
+        return sum;
+    }
+    #init(M) {
+        const m = M.length, n = M[0].length;
+        for (let c = 1; c < n; c++) {
+            M[0][c] += M[0][c - 1];
+        }
+        for (let r = 1; r < m; r++) {
+            M[r][0] += M[r - 1][0];
+        }
+        for (let r = 1; r < m; r++) {
+            for (let c = 1; c < n; c++) {
+                M[r][c] += M[r - 1][c] + M[r][c - 1];
+                M[r][c] -= M[r - 1][c - 1];
+            }
+        }
+        return M;
     }
 }
