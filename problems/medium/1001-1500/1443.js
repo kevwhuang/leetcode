@@ -17,5 +17,5 @@ function minTime(n, edges, hasApple) {
         adj[edges[i][0]].push(edges[i][1]);
         adj[edges[i][1]].push(edges[i][0]);
     }
-    return dfs(0, -1);
+    return dfs(0);
 }
