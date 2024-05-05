@@ -1,5 +1,5 @@
 # Algorithms & Data Structures
 
-[LeetCode](https://leetcode.com/aephonics)
+[LeetCode](https://leetcode.com/u/aephonics)
 
 [NeetCode](https://aephonics.com)
