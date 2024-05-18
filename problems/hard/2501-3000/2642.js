@@ -9,7 +9,7 @@ class Graph {
         }
     }
     addEdge(edge) {
-        if (!this.adj[edge[0]]) this.adj[edge[0]] = [];
+        this.adj[edge[0]] ??= [];
         this.adj[edge[0]].push(edge.slice(1));
     }
     shortestPath(node1, node2) {
