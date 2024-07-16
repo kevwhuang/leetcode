@@ -3,7 +3,7 @@
 WITH CTE AS (
     SELECT
         person_name,
-        SUM(weight) OVER(
+        SUM(weight) OVER (
             ORDER BY
                 turn
         ) AS sum
