@@ -10,5 +10,9 @@ FROM
 GROUP BY
     customer_id
 HAVING
-    SUM(IF(order_date LIKE '2020-06%', price * quantity, 0)) >= 100
-    AND SUM(IF(order_date LIKE '2020-07%', price * quantity, 0)) >= 100;
+    SUM(
+        IF(order_date LIKE '2020-06%', price * quantity, 0)
+    ) >= 100
+    AND SUM(
+        IF(order_date LIKE '2020-07%', price * quantity, 0)
+    ) >= 100;

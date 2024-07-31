@@ -6,25 +6,26 @@
  */
 
 function wallsAndGates(rooms) {
+    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
     const m = rooms.length, n = rooms[0].length;
-    const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    const dirs = [0, -1, 0, 1, 0];
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             if (rooms[r][c] !== 0) continue;
             let dist = 1, queue = [[r, c]];
             while (queue.length) {
-                const newQueue = [];
+                const nextQueue = [];
                 for (let i = 0; i < queue.length; i++) {
-                    const [rr, cc] = queue[i];
-                    for (const [dr, dc] of dirs) {
-                        if (rooms[rr + dr]?.[cc + dc] > dist) {
-                            rooms[rr + dr][cc + dc] = dist;
-                            newQueue.push([rr + dr, cc + dc]);
-                        }
+                    for (let j = 0; j < 4; j++) {
+                        const rr = queue[i][0] + dirs[j];
+                        const cc = queue[i][1] + dirs[j + 1];
+                        if (!validate(rr, cc)) continue;
+                        if (rooms[rr][cc] <= dist) continue;
+                        rooms[rr][cc] = dist;
+                        nextQueue.push([rr, cc]);
                     }
                 }
-                dist++;
-                queue = newQueue;
+                dist++, queue = nextQueue;
             }
         }
     }
