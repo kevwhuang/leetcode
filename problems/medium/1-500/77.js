@@ -1,15 +1,15 @@
 // 77 - Combinations
 
 function combine(n, k) {
-    function backtrack(cur, start) {
-        if (cur.length === k) return combos.push([...cur]);
-        for (let i = start; i <= n; i++) {
+    function backtrack(i) {
+        if (cur.length === k) return res.push([...cur]);
+        while (i <= n) {
             cur.push(i);
-            backtrack(cur, i + 1);
+            backtrack(++i);
             cur.pop();
         }
     }
-    const combos = [];
-    backtrack([], 1);
-    return combos;
+    const res = [], cur = [];
+    backtrack(1);
+    return res;
 }
