@@ -6,14 +6,10 @@ function intToRoman(num) {
         [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
         [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
     ];
-    let roman = '', i = 0;
+    let res = '', i = 0;
     while (num) {
-        if (dict[i][0] <= num) {
-            num -= dict[i][0];
-            roman += dict[i][1];
-        } else {
-            i++;
-        }
+        if (dict[i][0] > num) i++;
+        else res += dict[i][1], num -= dict[i][0];
     }
-    return roman;
+    return res;
 }
