@@ -2,17 +2,17 @@
 
 function minimizeResult(expression) {
     let res, min = Infinity;
-    const index = expression.indexOf('+');
-    for (let i = 0; i < index; i++) {
+    const idx = expression.indexOf('+');
+    for (let i = 0; i < idx; i++) {
         const a = expression.slice(0, i);
-        const b = +expression.slice(i, index);
-        for (let j = index + 2; j <= expression.length; j++) {
-            const c = +expression.slice(index + 1, j);
+        const b = Number(expression.slice(i, idx));
+        for (let j = idx + 2; j <= expression.length; j++) {
+            const c = Number(expression.slice(idx + 1, j));
             const d = expression.slice(j);
-            const eval = (a || 1) * (b + c) * (d || 1);
-            if (eval >= min) continue;
+            const val = (a || 1) * (b + c) * (d || 1);
+            if (val >= min) continue;
             res = `${a}(${b}+${c})${d}`;
-            min = eval;
+            min = val;
         }
     }
     return res;
