@@ -2,15 +2,14 @@
 
 function solution(read4) {
     function readN(buf, n) {
-        let i = 0, buf4, len = 4;
-        while (len === 4) {
-            buf4 = [];
-            len = read4(buf4);
-            for (let j = 0; i < n && j < len; i++, j++) {
-                buf[i] = buf4[j];
+        while (true) {
+            const buf4 = [];
+            const len = read4(buf4);
+            for (let i = 0; buf.length < n && i < buf4.length; i++) {
+                buf.push(buf4[i]);
             }
+            if (len !== 4) break;
         }
-        return buf4.length;
     }
     return readN;
 }
