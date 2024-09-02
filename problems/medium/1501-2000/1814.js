@@ -3,12 +3,12 @@
 function countNicePairs(nums) {
     const map = new Map();
     for (let i = 0; i < nums.length; i++) {
-        let rev = 0, cur = nums[i];
+        let rvs = 0, cur = nums[i];
         while (cur) {
-            rev = (10 * rev) + cur % 10;
+            rvs = (10 * rvs) + cur % 10;
             cur = cur / 10 >> 0;
         }
-        const diff = nums[i] - rev;
+        const diff = nums[i] - rvs;
         map.set(diff, (map.get(diff) ?? 0) + 1);
     }
     let pairs = 0;
