@@ -1,16 +1,13 @@
 // 3273 - Minimum Amount of Damage Dealt to Bob
 
 function minDamage(power, damage, health) {
-    let acc = 0;
-    for (let i = 0; i < health.length; i++) {
-        health[i] = [Math.ceil(health[i] / power), damage[i]];
-        acc += damage[i];
-    }
-    health.sort((a, b) => b[1] / b[0] - a[1] / a[0]);
-    let res = 0;
-    for (let i = 0; i < health.length; i++) {
-        res += health[i][0] * acc;
-        acc -= health[i][1];
+    health = health.map(e => Math.ceil(e / power));
+    const indices = Array.from({ length: health.length }, (_, i) => i);
+    indices.sort((a, b) => health[a] * damage[b] - health[b] * damage[a]);
+    let res = 0, time = 0;
+    for (let i = 0; i < indices.length; i++) {
+        time += health[indices[i]];
+        res += damage[indices[i]] * time;
     }
     return res;
 }
