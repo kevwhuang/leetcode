@@ -1,21 +1,19 @@
-// 307 - Range Sum Query - Mutable
-
-class NumArray {
-    constructor(nums) {
-        this.nums = nums;
-        this.tree = [null, ...nums];
+class BinaryIndexedTree {
+    constructor(vals) {
+        this.vals = vals;
+        this.tree = [null, ...vals];
         for (let i = 1; i < this.tree.length; i++) {
             const p = i + (i & -i);
             if (p >= this.tree.length) continue;
             this.tree[p] += this.tree[i];
         }
     }
-    sumRange(left, right) {
+    rangeSum(start, end) {
         let sum = 0;
-        for (let i = right + 1; i; i -= i & -i) {
+        for (let i = end + 1; i; i -= i & -i) {
             sum += this.tree[i];
         }
-        for (let i = left; i; i -= i & -i) {
+        for (let i = start; i; i -= i & -i) {
             sum -= this.tree[i];
         }
         return sum;
@@ -28,3 +26,5 @@ class NumArray {
         this.nums[index] = val;
     }
 }
+
+module.exports = BinaryIndexedTree;

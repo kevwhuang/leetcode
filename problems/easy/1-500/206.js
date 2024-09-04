@@ -1,7 +1,7 @@
 // 206 - Reverse Linked List
 
 function reverseList(head) {
-    let cur, rvs = null;
+    let rvs = null, cur;
     while (head) {
         cur = head;
         head = head.next;

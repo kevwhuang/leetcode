@@ -6,15 +6,21 @@
  */
 
 function rotate(matrix) {
-    const M = matrix, l = M.length - 1, bound1 = Math.ceil(l / 2);
-    for (let i = 0; i < bound1; i++) {
-        const bound2 = l - 2 * i;
-        for (let j = 0; j < bound2; j++) {
-            [M[i][i + j], M[i + j][l - i], M[l - i][l - i - j], M[l - i - j][i]]
-                = [M[l - i - j][i], M[i][i + j], M[i + j][l - i], M[l - i][l - i - j]];
+    const M = matrix, m = M.length - 1, bound1 = Math.ceil(m / 2);
+    for (let r = 0; r < bound1; r++) {
+        const bound2 = m - 2 * r;
+        for (let c = 0; c < bound2; c++) {
+            const p1 = M[m - r - c][r];
+            const p2 = M[r][r + c];
+            const p3 = M[r + c][m - r];
+            const p4 = M[m - r][m - r - c];
+            M[r][r + c] = p1;
+            M[r + c][m - r] = p2;
+            M[m - r][m - r - c] = p3;
+            M[m - r - c][r] = p4;
         }
     }
-    return matrix;
+    return M;
 }
 
 module.exports = rotate;

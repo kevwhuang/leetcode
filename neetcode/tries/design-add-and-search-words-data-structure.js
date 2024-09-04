@@ -26,7 +26,7 @@ class WordDictionary {
      */
 
     search(word, i = 0, node = this.trie) {
-        if (i === word.length) return !!node.isWord;
+        if (i === word.length) return Boolean(node.isWord);
         if (word[i] === '.') {
             for (const char in node) {
                 if (this.search(word, i + 1, node[char])) return true;

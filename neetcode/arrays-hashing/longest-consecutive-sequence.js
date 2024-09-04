@@ -6,13 +6,13 @@
  */
 
 function longestConsecutive(nums) {
-    if (!nums.length) return 0;
-    nums.sort((a, b) => a - b);
-    let max = 1, tally = 1;
-    for (let i = 0; i < nums.length - 1; i++) {
-        if (nums[i] === nums[i + 1]) continue;
-        nums[i] + 1 === nums[i + 1] ? tally++ : tally = 1;
-        max = Math.max(tally, max);
+    if (nums.length === 0) return 0;
+    nums = new Int32Array(nums).sort();
+    let max = 1, window = 1;
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i - 1] === nums[i]) continue;
+        window = nums[i - 1] + 1 === nums[i] ? window + 1 : 1;
+        max = Math.max(window, max);
     }
     return max;
 }

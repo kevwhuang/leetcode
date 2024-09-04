@@ -6,12 +6,12 @@
  */
 
 function maxProfit(prices) {
-    let buyPrice = prices[0], maxProfit = 0;
+    let max = 0, buy = prices[0];
     for (let i = 1; i < prices.length; i++) {
-        prices[i] < buyPrice && (buyPrice = prices[i]);
-        prices[i] - buyPrice > maxProfit && (maxProfit = prices[i] - buyPrice);
+        if (prices[i] < buy) buy = prices[i];
+        max = Math.max(prices[i] - buy, max);
     }
-    return maxProfit;
+    return max;
 }
 
 module.exports = maxProfit;

@@ -6,18 +6,16 @@
  */
 
 function dailyTemperatures(temperatures) {
-    const len = temperatures.length;
-    const ans = new Array(len).fill(0);
+    const res = new Array(temperatures.length).fill(0);
     const stack = [];
-    for (let i = 0, cur; i < len; i++) {
-        while (stack.length) {
-            if (temperatures[i] <= temperatures[stack[stack.length - 1]]) break;
+    for (let i = 0, cur; i < temperatures.length; i++) {
+        while (stack.length && temperatures[i] > temperatures[stack.at(-1)]) {
             cur = stack.pop();
-            ans[cur] = i - cur;
+            res[cur] = i - cur;
         }
         stack.push(i);
     }
-    return ans;
+    return res;
 }
 
 module.exports = dailyTemperatures;

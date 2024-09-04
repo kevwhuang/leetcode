@@ -6,32 +6,12 @@
  */
 
 function findRedundantConnection(edges) {
-    function union(n1, n2) {
-        const p1 = find(n1);
-        const p2 = find(n2);
-        if (p1 === p2) return false;
-        if (rank[p1] > rank[p2]) {
-            parent[p2] = p1;
-            rank[p1] += rank[p2];
-        } else {
-            parent[p1] = p2;
-            rank[p2] += rank[p1];
-        }
-        return true;
-    }
-    function find(n) {
-        let p = parent[n];
-        while (p !== parent[p]) {
-            parent[p] = parent[parent[p]];
-            p = parent[p];
-        }
-        return p;
-    }
-    const parent = new Array(edges.length + 1).fill().map((_, i) => i);
-    const rank = new Array(edges.length + 1).fill(1);
+    const find = v => v === uf[v] ? v : uf[v] = find(uf[v]);
+    const uf = Array.from({ length: edges.length + 1 }, (_, i) => i);
     for (let i = 0; i < edges.length; i++) {
-        const [n1, n2] = edges[i];
-        if (!union(n1, n2)) return [n1, n2];
+        const u = edges[i][0], v = edges[i][1];
+        if (find(u) === find(v)) return edges[i];
+        uf[find(u)] = find(v);
     }
 }
 

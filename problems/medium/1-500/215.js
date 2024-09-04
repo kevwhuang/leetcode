@@ -1,12 +1,12 @@
 // 215 - Kth Largest Element in an Array
 
 function findKthLargest(nums, k) {
-    const arr = new Array(20001).fill(0);
+    const bucket = new Uint32Array(20001);
     for (let i = 0; i < nums.length; i++) {
-        arr[nums[i] + 10000]++;
+        bucket[nums[i] + 10000]++;
     }
-    for (let i = 20000; i >= 0; i--) {
-        k -= arr[i];
+    for (let i = 20000; ~i; i--) {
+        k -= bucket[i];
         if (k <= 0) return i - 10000;
     }
 }
