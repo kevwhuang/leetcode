@@ -6,17 +6,15 @@
  */
 
 function isValidBST(root) {
-    function dfs(cur) {
-        if (!cur) return;
-        if (prev === Infinity) return false;
-        dfs(cur.left);
-        if (cur.val <= prev) prev = Infinity;
-        else prev = cur.val;
-        dfs(cur.right);
+    function dfs(node, min, max) {
+        if (!node) return true;
+        if (node.val <= min) return false;
+        if (node.val >= max) return false;
+        const left = dfs(node.left, min, node.val);
+        const right = dfs(node.right, node.val, max);
+        return left && right;
     }
-    let prev = -Infinity;
-    dfs(root);
-    return prev !== Infinity;
+    return dfs(root, -Infinity, Infinity);
 }
 
 module.exports = isValidBST;
