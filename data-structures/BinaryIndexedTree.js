@@ -8,7 +8,7 @@ class BinaryIndexedTree {
             this.tree[p] += this.tree[i];
         }
     }
-    rangeSum(start, end) {
+    getSum(start, end) {
         let sum = 0;
         for (let i = end + 1; i; i -= i & -i) {
             sum += this.tree[i];
@@ -19,9 +19,9 @@ class BinaryIndexedTree {
         return sum;
     }
     update(index, val) {
-        const d = val - this.nums[index];
+        const delta = val - this.nums[index];
         for (let i = index + 1; i < this.tree.length; i += i & -i) {
-            this.tree[i] += d;
+            this.tree[i] += delta;
         }
         this.nums[index] = val;
     }

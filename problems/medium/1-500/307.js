@@ -21,9 +21,9 @@ class NumArray {
         return sum;
     }
     update(index, val) {
-        const d = val - this.nums[index];
+        const delta = val - this.nums[index];
         for (let i = index + 1; i < this.tree.length; i += i & -i) {
-            this.tree[i] += d;
+            this.tree[i] += delta;
         }
         this.nums[index] = val;
     }
