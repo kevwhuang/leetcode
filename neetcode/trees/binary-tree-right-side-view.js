@@ -7,8 +7,7 @@
 
 function rightSideView(root) {
     if (!root) return [];
-    const res = [];
-    const queue = [root];
+    const res = [], queue = [root];
     while (queue.length) {
         let node;
         for (let i = 0, len = queue.length; i < len; i++) {

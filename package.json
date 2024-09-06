@@ -1,12 +1,7 @@
 {
     "name": "leetcode",
-    "version": "24.10.1",
     "author": "Kevin Huang",
-    "scripts": {
-        "test": "jest --watchAll"
-    },
     "devDependencies": {
-        "@datastructures-js/priority-queue": "latest",
-        "jest": "latest"
+        "@datastructures-js/priority-queue": "latest"
     }
 }

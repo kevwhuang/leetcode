@@ -11,8 +11,7 @@ function spiralOrder(matrix) {
     const res = new Int8Array(m * n);
     let r = 0, c = 0, dr = 0, dc = 1;
     for (let i = 0; i < res.length; i++) {
-        res[i] = M[r][c];
-        M[r][c] = null;
+        res[i] = M[r][c], M[r][c] = null;
         if (!validate(r + dr, c + dc) || M[r + dr][c + dc] === null) {
             if (dr === 0 && dc === 1) dr = 1, dc = 0;
             else if (dr === 1 && dc === 0) dr = 0, dc = -1;

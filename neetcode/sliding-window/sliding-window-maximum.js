@@ -7,12 +7,13 @@
  */
 
 function maxSlidingWindow(nums, k) {
-    const res = [], q = [];
-    for (let l = 0, r = 0; r < nums.length; r++) {
-        while (l < q.length && q[l] < r - k + 1) l++;
-        while (l < q.length && nums[r] > nums[q.at(-1)]) q.pop();
-        q.push(r);
-        if (r >= k - 1) res.push(nums[q[l]]);
+    const res = new Int16Array(nums.length - k + 1);
+    const stack = [];
+    for (let i = 0, l = 0, r = 0; r < nums.length; r++) {
+        while (l < stack.length && stack[l] < r - k + 1) l++;
+        while (l < stack.length && nums[stack.at(-1)] < nums[r]) stack.pop();
+        stack.push(r);
+        if (r >= k - 1) res[i++] = nums[stack[l]];
     }
     return res;
 }

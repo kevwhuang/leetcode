@@ -9,7 +9,7 @@ RETURN (
     FROM
         Employee
     ORDER BY
-        salary DESC
+        1 DESC
     LIMIT
         1 OFFSET N
 );

@@ -2,10 +2,10 @@
 
 class BoundedBlockingQueue {
     private int capacity;
-    private Queue < Integer > queue;
+    private Queue<Integer> queue;
     public BoundedBlockingQueue(int capacity) {
         this.capacity = capacity;
-        queue = new LinkedList < > ();
+        queue = new LinkedList<> ();
     }
     public synchronized void enqueue(int element) throws InterruptedException {
         while (queue.size() == capacity) wait();

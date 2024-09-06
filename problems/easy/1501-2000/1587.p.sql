@@ -1,11 +1,11 @@
 -- 1587 - Bank Account Summary II
 
 SELECT
-    U.name,
-    SUM(T.amount) AS balance
+    name,
+    SUM(amount) AS balance
 FROM
-    Users U
-    JOIN Transactions T ON U.account = T.account
+    Users
+    JOIN Transactions USING(account)
 GROUP BY
     name
 HAVING

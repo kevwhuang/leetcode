@@ -21,9 +21,8 @@ function friendRequests(n, restrictions, requests) {
             }
         }
         if (requests[i] === false) continue;
-        if (p1 < p2) uf[p2] = p1;
-        else uf[p1] = p2;
         requests[i] = true;
+        uf[p1] = p2;
     }
     return requests;
 }

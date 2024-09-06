@@ -14,9 +14,9 @@ class TimeMap {
     get(key, timestamp) {
         const data = this.store[key];
         if (!data || data[0][0] > timestamp) return '';
-        let l = 0, r = data.length - 1, m;
+        let l = 0, r = data.length - 1;
         while (l < r) {
-            m = Math.ceil((l + r) / 2);
+            const m = Math.ceil((l + r) / 2);
             if (data[m][0] < timestamp) l = m;
             else if (data[m][0] > timestamp) r = m - 1;
             else return data[m][1];

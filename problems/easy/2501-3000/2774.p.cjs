@@ -1,21 +1,17 @@
 // 2774 - Array Upper Bound
 
 Array.prototype.upperBound = function (target) {
-    let index, l = 0, r = this.length - 1;
+    let idx, l = 0, r = this.length - 1;
     while (l <= r) {
-        const m = ~~((l + r) / 2);
+        const m = l + r >> 1;
         if (this[m] < target) l = m + 1;
         else if (this[m] > target) r = m - 1;
-        else {
-            index = m;
-            break;
-        }
+        else idx = m, r = -1;
     }
-    if (index === undefined) return -1;
-    if (index === this.length - 1) return index;
-    while (index < this.length - 1) {
-        if (this[index + 1] !== target) return index;
-        index++;
+    if (idx === undefined) return -1;
+    if (idx === this.length - 1) return idx;
+    while (idx < this.length - 1) {
+        if (this[++idx] !== target) return idx - 1;
     }
-    return index;
+    return idx;
 };

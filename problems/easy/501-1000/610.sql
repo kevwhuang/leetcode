@@ -2,7 +2,7 @@
 
 SELECT
     *,
-    IF (
+    IF(
         x + y > z
         AND x + z > y
         AND y + z > x,

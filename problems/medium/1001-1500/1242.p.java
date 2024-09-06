@@ -1,15 +1,15 @@
 // 1242 - Web Crawler Multithreaded
 
 class Solution {
-    private Set < String > set;
+    private Set<String> set;
     private String host;
     private HtmlParser htmlParser;
-    public List < String > crawl(String startUrl, HtmlParser htmlParser) {
+    public List<String> crawl(String startUrl, HtmlParser htmlParser) {
         set = ConcurrentHashMap.newKeySet();
         host = getHost(startUrl);
         this.htmlParser = htmlParser;
         crawler(startUrl);
-        return new ArrayList < > (set);
+        return new ArrayList<> (set);
     }
     private void crawler(String startUrl) {
         if (set.contains(startUrl)) return;

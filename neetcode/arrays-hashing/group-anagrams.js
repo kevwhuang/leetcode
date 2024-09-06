@@ -9,13 +9,13 @@ function groupAnagrams(strs) {
     const map = new Map();
     for (let i = 0; i < strs.length; i++) {
         const cur = strs[i];
-        const freqs = new Array(26).fill(0);
+        const bucket = new Array(26).fill(0);
         for (let j = 0; j < cur.length; j++) {
-            freqs[cur.charCodeAt(j) - 97]++;
+            bucket[cur.charCodeAt(j) - 97]++;
         }
-        const code = freqs.join('_');
-        if (map.has(code)) map.set(code, map.get(code).concat(cur));
-        else map.set(code, [cur]);
+        const key = bucket.join('-');
+        if (map.has(key)) map.set(key, map.get(key).concat(cur));
+        else map.set(key, [cur]);
     }
     return [...map.values()];
 }

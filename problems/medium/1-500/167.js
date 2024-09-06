@@ -2,9 +2,9 @@
 
 function twoSum(numbers, target) {
     let l = 0, r = numbers.length - 1;
-    while (l < r) {
-        if (numbers[l] + numbers[r] > target) r--;
-        else if (numbers[l] + numbers[r] < target) l++;
+    while (true) {
+        if (numbers[l] + numbers[r] < target) l++;
+        else if (numbers[l] + numbers[r] > target) r--;
         else return [l + 1, r + 1];
     }
 }

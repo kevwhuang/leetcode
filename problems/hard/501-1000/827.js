@@ -2,41 +2,43 @@
 
 function largestIsland(grid) {
     function dfs(r, c) {
-        if (!validate(r, c) || !M[r][c]) return;
-        M[r][c] = 0, size++;
+        if (grid[r][c] === 0) return;
+        grid[r][c] = 0;
         cells.push([r, c]);
-        dfs(r - 1, c);
-        dfs(r + 1, c);
-        dfs(r, c - 1);
-        dfs(r, c + 1);
+        size++;
+        if (r) dfs(r - 1, c);
+        if (r + 1 < n) dfs(r + 1, c);
+        if (c) dfs(r, c - 1);
+        if (c + 1 < n) dfs(r, c + 1);
     }
-    const validate = (r, c) => r >= 0 && r < n && c >= 0 && c < n;
-    let largest = 1, id = -1, cells, size;
-    const sizes = new Map(), M = grid, n = M.length;
+    let max = 1, id = -1, cells, size;
+    const n = grid.length, map = new Map();
     for (let r = 0; r < n; r++) {
         for (let c = 0; c < n; c++) {
-            if (M[r][c] !== 1) continue;
+            if (grid[r][c] !== 1) continue;
             cells = [], size = 0;
             dfs(r, c);
-            largest = Math.max(size, largest);
+            max = Math.max(size, max);
             for (let i = 0; i < cells.length; i++) {
-                M[cells[i][0]][cells[i][1]] = id;
+                grid[cells[i][0]][cells[i][1]] = id;
             }
-            sizes.set(id--, size);
+            map.set(id--, size);
         }
     }
     for (let r = 0; r < n; r++) {
         for (let c = 0; c < n; c++) {
-            if (M[r][c] !== 0) continue;
+            if (grid[r][c] !== 0) continue;
             const set = new Set();
-            if (validate(r - 1, c) && M[r - 1][c] < 0) set.add(M[r - 1][c]);
-            if (validate(r + 1, c) && M[r + 1][c] < 0) set.add(M[r + 1][c]);
-            if (validate(r, c - 1) && M[r][c - 1] < 0) set.add(M[r][c - 1]);
-            if (validate(r, c + 1) && M[r][c + 1] < 0) set.add(M[r][c + 1]);
+            if (r && grid[r - 1][c] < 0) set.add(grid[r - 1][c]);
+            if (r + 1 < n && grid[r + 1][c] < 0) set.add(grid[r + 1][c]);
+            if (c && grid[r][c - 1] < 0) set.add(grid[r][c - 1]);
+            if (c + 1 < n && grid[r][c + 1] < 0) set.add(grid[r][c + 1]);
             size = 1;
-            set.forEach(id => size += sizes.get(id));
-            largest = Math.max(size, largest);
+            for (const id of set) {
+                size += map.get(id);
+            }
+            max = Math.max(size, max);
         }
     }
-    return largest;
+    return max;
 }

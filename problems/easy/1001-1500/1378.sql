@@ -1,8 +1,8 @@
 -- 1378 - Replace Employee ID With the Unique Identifier
 
 SELECT
-    E.unique_id,
-    EU.name
+    unique_id,
+    name
 FROM
-    EmployeeUNI E
-    RIGHT JOIN Employees EU ON E.id = EU.id;
+    EmployeeUNI
+    RIGHT JOIN Employees USING(id);
