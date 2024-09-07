@@ -1,10 +1,10 @@
 -- 175 - Combine Two Tables
 
 SELECT
-    P.firstName,
-    P.lastName,
-    A.city,
-    A.state
+    firstName,
+    lastName,
+    city,
+    state
 FROM
-    Person P
-    LEFT JOIN Address A ON P.personId = A.personId;
+    Person
+    LEFT JOIN Address USING(personId);
