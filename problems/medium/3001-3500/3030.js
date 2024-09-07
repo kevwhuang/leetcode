@@ -9,7 +9,7 @@ function resultGrid(image, threshold) {
         }
         return true;
     }
-    function getPrefixSum(r, c) {
+    function getSum(r, c) {
         return r < 0 || r >= m || c < 0 || c >= n ? 0 : prefixSum[r][c];
     }
     const m = image.length, n = image[0].length;
@@ -43,10 +43,8 @@ function resultGrid(image, threshold) {
     for (let r = 0; r < bound1; r++) {
         for (let c = 0; c < bound2; c++) {
             if (!isRegion(r, c)) continue;
-            const regionSum = prefixSum[r + 2][c + 2]
-                + getPrefixSum(r - 1, c - 1)
-                - getPrefixSum(r - 1, c + 2)
-                - getPrefixSum(r + 2, c - 1);
+            let regionSum = prefixSum[r + 2][c + 2] + getSum(r - 1, c - 1);
+            regionSum -= getSum(r - 1, c + 2) + getSum(r + 2, c - 1);
             const regionAvg = regionSum / 9 >> 0;
             for (let i = 0; i < 9; i++) {
                 const rr = r + dirs2[i][0], cc = c + dirs2[i][1];

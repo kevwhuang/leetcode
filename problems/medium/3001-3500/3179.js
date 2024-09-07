@@ -2,10 +2,9 @@
 
 function valueAfterKSeconds(n, k) {
     const arr = new Uint32Array(n).fill(1);
-    const mod = 1_000_000_007;
     while (k--) {
         for (let i = 1; i < n; i++) {
-            arr[i] = (arr[i - 1] + arr[i]) % mod;
+            arr[i] = (arr[i - 1] + arr[i]) % 1000000007;
         }
     }
     return arr[n - 1];

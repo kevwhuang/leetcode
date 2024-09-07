@@ -1,14 +1,13 @@
-// 30 - DLL - remove Exercise
+// 40 - SLL - remove Exercise
 
-class DoublyListNode {
+class ListNode {
     constructor(val) {
         this.val = val;
         this.next = null;
-        this.prev = null;
     }
 }
 
-class DoublyLinkedList {
+class SinglyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -17,33 +16,30 @@ class DoublyLinkedList {
     get(index) {
         if (index < 0 || index >= this.length) return null;
         let node = this.head;
-        if (index < this.length / 2) {
-            while (index--) node = node.next;
-        } else {
-            node = this.tail;
-            while (index++ < this.length - 1) node = node.prev;
-        }
+        while (index--) node = node.next;
         return node;
     }
     pop() {
-        if (!this.head) return null;
-        const node = this.tail;
+        if (!this.head) return;
+        let node;
         if (this.length === 1) {
+            node = this.head;
             this.head = null;
             this.tail = null;
         } else {
-            this.tail = this.tail.prev;
-            this.tail.next = null;
-            node.prev = null;
+            let cur = this.head;
+            while (cur.next.next) cur = cur.next;
+            node = cur.next;
+            cur.next = null;
+            this.tail = cur;
         }
         this.length--;
         return node;
     }
     push(val) {
-        const node = new DoublyListNode(val);
+        const node = new ListNode(val);
         if (this.head) {
             this.tail.next = node;
-            node.prev = this.tail;
             this.tail = node;
         } else {
             this.head = node;
@@ -56,24 +52,18 @@ class DoublyLinkedList {
         if (index < 0 || index >= this.length) return;
         if (index === 0) return this.shift();
         if (index === this.length - 1) return this.pop();
-        const node = this.get(index);
-        [node.prev.next, node.next.prev] = [node.next, node.prev];
-        [node.prev, node.next] = [null, null];
+        const cur = this.get(index - 1);
+        const node = cur.next;
+        cur.next = node.next;
         this.length--;
         return node;
     }
     shift() {
-        if (!this.head) return null;
+        if (!this.head) return;
         const node = this.head;
-        if (this.length === 1) {
-            this.head = null;
-            this.tail = null;
-        } else {
-            this.head = this.head.next;
-            this.head.prev = null;
-            node.next = null;
-        }
+        this.head = this.head.next;
         this.length--;
+        if (!this.head) this.tail = null;
         return node;
     }
 }

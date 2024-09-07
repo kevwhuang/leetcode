@@ -3,11 +3,9 @@
 function minimumArrayLength(nums) {
     let min = Infinity, count;
     for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > min) continue;
         if (nums[i] === min) count++;
-        else if (nums[i] < min) {
-            min = nums[i];
-            count = 1;
-        }
+        else min = nums[i], count = 1;
     }
     if (count === 1) return 1;
     for (let i = 0; i < nums.length; i++) {

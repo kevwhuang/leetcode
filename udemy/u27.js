@@ -1,4 +1,4 @@
-// 32 - DLL - get Exercise
+// 27 - DLL - pop Exercise
 
 class DoublyListNode {
     constructor(val) {
@@ -14,15 +14,18 @@ class DoublyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    get(index) {
-        if (index < 0 || index >= this.length) return null;
-        let node = this.head;
-        if (index < this.length / 2) {
-            while (index--) node = node.next;
+    pop() {
+        if (!this.head) return;
+        const node = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
         } else {
-            node = this.tail;
-            while (index++ < this.length - 1) node = node.prev;
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            node.prev = null;
         }
+        this.length--;
         return node;
     }
     push(val) {

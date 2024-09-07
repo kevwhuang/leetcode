@@ -1,16 +1,15 @@
 // 2932 - Maximum Strong Pair XOR I
 
 function maximumStrongPairXor(nums) {
-    const len = nums.length;
-    let min = 0;
-    for (let i = 0; i < len; i++) {
-        const num1 = nums[i];
-        for (let j = i + 1; j < len; j++) {
-            const num2 = nums[j];
-            if (Math.abs(num1 - num2) <= Math.min(num1, num2)) {
-                min = Math.max(nums[i] ^ nums[j], min);
-            }
+    let max = 0;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        const a = nums[i];
+        for (let j = i + 1; j < n; j++) {
+            const b = nums[j];
+            if (Math.abs(a - b) > Math.min(a, b)) continue;
+            max = Math.max(a ^ b, max);
         }
     }
-    return min;
+    return max;
 }

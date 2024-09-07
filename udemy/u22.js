@@ -6,9 +6,10 @@ function stringifyNumbers(obj) {
         const cur = obj[k];
         if (typeof cur === 'object' && !Array.isArray(cur)) {
             res[k] = stringifyNumbers(cur);
-        }
-        else if (typeof cur === 'number') res[k] = String(cur);
-        else res[k] = cur;
+        } else if (typeof cur === 'number') {
+            res[k] = String(cur);
+        } else
+            res[k] = cur;
     }
     return res;
 }

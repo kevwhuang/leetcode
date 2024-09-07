@@ -1,13 +1,14 @@
-// 40 - SLL - set Exercise
+// 31 - DLL - set Exercise
 
-class ListNode {
+class DoublyListNode {
     constructor(val) {
         this.val = val;
         this.next = null;
+        this.prev = null;
     }
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -16,13 +17,19 @@ class SinglyLinkedList {
     get(index) {
         if (index < 0 || index >= this.length) return null;
         let node = this.head;
-        while (index--) node = node.next;
+        if (index < this.length / 2) {
+            while (index--) node = node.next;
+        } else {
+            node = this.tail;
+            while (index++ < this.length - 1) node = node.prev;
+        }
         return node;
     }
     push(val) {
-        const node = new ListNode(val);
+        const node = new DoublyListNode(val);
         if (this.head) {
             this.tail.next = node;
+            node.prev = this.tail;
             this.tail = node;
         } else {
             this.head = node;

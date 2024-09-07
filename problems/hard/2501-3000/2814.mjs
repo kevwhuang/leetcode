@@ -24,13 +24,10 @@ function minimumSeconds(land) {
     let time = 1;
     const d = [0, -1, 0, 1, 0];
     while (queue2.length) {
-        const nextQueue1 = [];
-        const nextQueue2 = [];
+        const nextQueue1 = [], nextQueue2 = [];
         check(queue1, nextQueue1);
         if (check(queue2, nextQueue2, true)) return time;
-        time++;
-        queue1 = nextQueue1;
-        queue2 = nextQueue2;
+        time++, queue1 = nextQueue1, queue2 = nextQueue2;
     }
     return -1;
 }

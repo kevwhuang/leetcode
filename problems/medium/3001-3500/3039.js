@@ -8,8 +8,7 @@ function lastNonEmptyString(s) {
         bucket[code]++;
         lastSeen[code] = i;
     }
-    const res = [];
-    const max = Math.max(...bucket);
+    const res = [], max = Math.max(...bucket);
     for (let i = 0; i < 26; i++) {
         if (bucket[i] === max) res.push(i);
     }

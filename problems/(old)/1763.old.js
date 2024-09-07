@@ -14,15 +14,13 @@ function longestNiceSubstring(s) {
     }
     let end = s.length + 1;
     while (--end > 1) {
-        map.get(s[end]) > 1
-            ? map.set(s[end], map.get(s[end]) - 1)
-            : map.delete(s[end]);
+        if (map.get(s[end]) > 1) map.set(s[end], map.get(s[end]) - 1);
+        else map.delete(s[end]);
         const local = new Map(map);
         for (let i = 0, j = end - 1; j < s.length; i++, j++) {
             if (check(local)) return s.slice(i, j + 1);
-            local.get(s[i]) > 1
-                ? local.set(s[i], local.get(s[i]) - 1)
-                : local.delete(s[i]);
+            if (local.get(s[i]) > 1) local.set(s[i], local.get(s[i]) - 1);
+            else local.delete(s[i]);
             local.set(s[j + 1], local.get(s[j + 1]) + 1 || 1);
         }
     }

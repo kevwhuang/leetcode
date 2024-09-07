@@ -12,8 +12,7 @@ function minimumLevel(root) {
             if (node.right) nextQueue.push(node.right);
         }
         if (sum < minSum) min = level, minSum = sum;
-        level++;
-        queue = nextQueue;
+        level++, queue = nextQueue;
     }
     return min;
 }

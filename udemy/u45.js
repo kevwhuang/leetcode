@@ -1,4 +1,4 @@
-// 44 - Bubble Sort
+// 45 - Bubble Sort
 
 function bubbleSort(arr, comparator = (a, b) => a < b ? -1 : 1) {
     let swapped = true, bound = arr.length;

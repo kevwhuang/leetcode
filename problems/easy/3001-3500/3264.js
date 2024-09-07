@@ -2,12 +2,11 @@
 
 function getFinalState(nums, k, multiplier) {
     while (k--) {
-        let min = Infinity, minIdx;
+        let min;
         for (let i = 0; i < nums.length; i++) {
-            if (nums[i] >= min) continue;
-            min = nums[i], minIdx = i;
+            if (nums[i] < (nums[min] ?? Infinity)) min = i;
         }
-        nums[minIdx] *= multiplier;
+        nums[min] *= multiplier;
     }
     return nums;
 }

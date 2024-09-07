@@ -1,4 +1,4 @@
-// 83 - Trie Exercise - findWord
+// 83 - Trie Exercise - getWords
 
 class Trie {
     constructor() {
@@ -13,12 +13,16 @@ class Trie {
         }
         trie.isWord = true;
     }
-    findWord(word) {
-        let trie = this;
-        for (let i = 0; i < word.length; i++) {
-            if (!trie.characters[word[i]]) return;
-            trie = trie.characters[word[i]];
+    getWords() {
+        function dfs(trie, word) {
+            if (!trie) return;
+            if (trie.isWord) words.push(word);
+            for (const key in trie.characters) {
+                dfs(trie.characters[key], word + key);
+            }
         }
-        return trie;
+        const words = [];
+        dfs(this, '');
+        return words;
     }
 }

@@ -9,7 +9,7 @@ class TweetCounts {
         const dt = this.intervals[freq];
         const size = Math.ceil((endTime - startTime + 1) / (dt + 1));
         const res = new Uint16Array(size);
-        const times = this.#initTimes(tweetName);
+        const times = this.#init(tweetName);
         const len = times.length, r = len - 1;
         let start = startTime, i = 0;
         while (start <= endTime) {
@@ -55,7 +55,7 @@ class TweetCounts {
         }
         return idx;
     }
-    #initTimes(tweetName) {
+    #init(tweetName) {
         if (!this.tweets.has(tweetName)) return [];
         const times = [...this.tweets.get(tweetName).entries()];
         times.sort((a, b) => a[0] - b[0]);

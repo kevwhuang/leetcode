@@ -1,13 +1,13 @@
 // 2899 - Last Visited Integers
 
 function lastVisitedIntegers(words) {
-    const res = [];
-    for (let i = 0, nums = []; i < words.length;) {
-        if (words[i] === 'prev') {
-            let j = nums.length - 1;
-            while (words[i] === 'prev' && ++i) res.push(nums[j--] || -1);
+    const res = [], arr = [];
+    for (let i = 0, k = 0; i < words.length; i++) {
+        if (words[i] === -1) {
+            res.push(++k <= arr.length ? arr[arr.length - k] : -1);
         } else {
-            nums.push(words[i++]);
+            arr.push(words[i]);
+            k = 0;
         }
     }
     return res;

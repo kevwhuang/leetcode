@@ -28,12 +28,12 @@ function mostFrequentPrime(mat) {
             }
         }
     }
-    let mostFrequent = -1;
+    let res = -1;
     for (const num of map.keys()) {
         if (!isPrime(num)) continue;
-        if (map.get(num) < map.get(mostFrequent)) continue;
-        if (map.get(num) > map.get(mostFrequent)) mostFrequent = num;
-        else mostFrequent = Math.max(num, mostFrequent);
+        if (map.get(num) < map.get(res)) continue;
+        if (map.get(num) > map.get(res)) res = num;
+        else res = Math.max(num, res);
     }
-    return mostFrequent;
+    return res;
 }

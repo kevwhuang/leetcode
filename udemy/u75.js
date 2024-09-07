@@ -17,11 +17,11 @@ class WeightedGraph {
             const neighbors = this.adj[v1];
             for (let i = 0; i < neighbors.length; i++) {
                 const neighbor = neighbors[i][0];
-                const newCost = neighbors[i][1] + costs[v1];
-                if (newCost >= costs[neighbor]) continue;
+                const nextCost = neighbors[i][1] + costs[v1];
+                if (nextCost >= costs[neighbor]) continue;
                 prev[neighbor] = v1;
-                costs[neighbor] = newCost;
-                pq.enqueue(neighbor, newCost);
+                costs[neighbor] = nextCost;
+                pq.enqueue(neighbor, nextCost);
             }
             v1 = pq.dequeue()[0];
         }

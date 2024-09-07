@@ -1,4 +1,4 @@
-// 42 - Divide and Conquer - sortedFrequency
+// 43 - Divide and Conquer - sortedFrequency
 
 function sortedFrequency(nums, target) {
     let l = 0, r = nums.length - 1;

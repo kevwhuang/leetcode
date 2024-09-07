@@ -16,14 +16,9 @@ function maximumLength(nums) {
         num *= num;
         let count = 2, flag = false;
         while (map.has(num)) {
-            if (map.get(num) === 1) {
-                count++;
-                flag = true;
-                break;
-            } else {
-                count += 2;
-                num *= num;
-            }
+            if (map.get(num) === 1) count++, flag = true;
+            if (map.get(num) === 1) break;
+            count += 2, num *= num;
         }
         max = Math.max(count - !flag, max);
     }

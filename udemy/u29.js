@@ -1,4 +1,4 @@
-// 31 - DLL - pop Exercise
+// 29 - DLL - unshift Exercise
 
 class DoublyListNode {
     constructor(val) {
@@ -14,20 +14,6 @@ class DoublyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    pop() {
-        if (!this.head) return;
-        const node = this.tail;
-        if (this.length === 1) {
-            this.head = null;
-            this.tail = null;
-        } else {
-            this.tail = this.tail.prev;
-            this.tail.next = null;
-            node.prev = null;
-        }
-        this.length--;
-        return node;
-    }
     push(val) {
         const node = new DoublyListNode(val);
         if (this.head) {
@@ -38,6 +24,15 @@ class DoublyLinkedList {
             this.head = node;
             this.tail = this.head;
         }
+        this.length++;
+        return this;
+    }
+    unshift(val) {
+        if (!this.head) return this.push(val);
+        const node = new DoublyListNode(val);
+        node.next = this.head;
+        this.head.prev = node;
+        this.head = node;
         this.length++;
         return this;
     }

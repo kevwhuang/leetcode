@@ -1,4 +1,4 @@
-// 41 - Divide and Conquer - countZeros
+// 42 - Divide and Conquer - countZeros
 
 function countZeroes(nums) {
     if (nums[nums.length - 1]) return 0;

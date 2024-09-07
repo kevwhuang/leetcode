@@ -1,4 +1,4 @@
-// 82 - Trie Exercise - removeWord
+// 84 - Trie - autocomplete
 
 class Trie {
     constructor() {
@@ -13,16 +13,16 @@ class Trie {
         }
         trie.isWord = true;
     }
-    removeWord(word) {
-        let trie = this;
-        for (let i = 0, cur; i < word.length; i++) {
-            cur = trie.characters[word[i]];
-            if (Object.keys(cur.characters).length === 1) {
-                delete trie.characters[word[i]];
-                return;
+    autoComplete(prefix) {
+        function dfs(trie, word) {
+            if (!trie) return;
+            if (trie.isWord && word.startsWith(prefix)) words.push(word);
+            for (const key in trie.characters) {
+                dfs(trie.characters[key], word + key);
             }
-            trie = cur;
         }
-        trie.isWord = false;
+        const words = [];
+        dfs(this, '');
+        return words;
     }
 }

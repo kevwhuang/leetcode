@@ -2,13 +2,12 @@
 
 function minCoinChange(coins, amount) {
     const res = [];
-    let i = coins.length - 1;
-    while (amount > 0 && i >= 0) {
+    let i = coins.length;
+    while (amount && ~--i) {
         while (coins[i] <= amount) {
             amount -= coins[i];
             res.push(coins[i]);
         }
-        i--;
     }
     return res;
 }

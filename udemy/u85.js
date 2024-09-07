@@ -1,4 +1,4 @@
-// 84 - Trie Exercise - getWords
+// 85 - Trie Exercise - removeWord
 
 class Trie {
     constructor() {
@@ -13,16 +13,16 @@ class Trie {
         }
         trie.isWord = true;
     }
-    getWords() {
-        function dfs(trie, word) {
-            if (!trie) return;
-            if (trie.isWord) words.push(word);
-            for (const key in trie.characters) {
-                dfs(trie.characters[key], word + key);
+    removeWord(word) {
+        let trie = this;
+        for (let i = 0, cur; i < word.length; i++) {
+            cur = trie.characters[word[i]];
+            if (Object.keys(cur.characters).length === 1) {
+                delete trie.characters[word[i]];
+                return;
             }
+            trie = cur;
         }
-        const words = [];
-        dfs(this, '');
-        return words;
+        trie.isWord = false;
     }
 }

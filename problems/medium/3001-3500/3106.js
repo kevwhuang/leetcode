@@ -6,10 +6,8 @@ function getSmallestString(s, k) {
     for (let i = 0; i < s.length; i++) {
         let dist = s.charCodeAt(i) - 97;
         if (dist > 13) dist = 26 - dist;
-        if (k >= dist) {
-            res += 'a';
-            k -= dist;
-        } else {
+        if (k >= dist) res += 'a', k -= dist;
+        else {
             res += String.fromCharCode(s.charCodeAt(i) - k);
             res += s.slice(i + 1);
             break;

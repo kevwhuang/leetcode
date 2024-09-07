@@ -14,9 +14,8 @@ function maxPointsInsideSquare(points, s) {
             const size = points[i][0];
             while (i && points[i - 1][0] === size) i--;
             break;
-        } else {
-            seen.add(s[points[i++][1]]);
         }
+        seen.add(s[points[i++][1]]);
     }
     return i;
 }

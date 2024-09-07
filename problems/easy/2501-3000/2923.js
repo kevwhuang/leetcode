@@ -1,8 +1,7 @@
 // 2923 - Find Champion I
 
 function findChampion(grid) {
-    const n = grid.length;
-    const set = new Set();
+    const set = new Set(), n = grid.length;
     for (let i = 0; i < n; i++) {
         set.add(i);
     }

@@ -1,10 +1,10 @@
 // 3152 - Special Array II
 
 function isArraySpecial(nums, queries) {
-    nums[0] = nums[0] & 1;
+    nums[0] &= 1;
     const ps = new Uint32Array(nums.length);
     for (let i = 1; i < nums.length; i++) {
-        nums[i] = nums[i] & 1;
+        nums[i] &= 1;
         ps[i] = ps[i - 1] + (nums[i - 1] === nums[i]);
     }
     for (let i = 0; i < queries.length; i++) {

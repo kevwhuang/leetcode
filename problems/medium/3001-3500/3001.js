@@ -1,37 +1,28 @@
 // 3001 - Minimum Moves to Capture the Queen
 
 function minMovesToCaptureTheQueen(a, b, c, d, e, f) {
-    for (let row = e - 1, col = f; row >= 1; row--) {
-        if (row === a && col === b) return 1;
-        if (row === c && col === d) break;
+    function check(cur) {
+        let row = cur[0], col = cur[1];
+        while (row && row < 9 && col && col < 9) {
+            if (cur[4]) {
+                if (row === a && col === b) return true;
+                if (row === c && col === d) break;
+            } else {
+                if (row === a && col === b) break;
+                if (row === c && col === d) return true;
+            }
+            row += cur[2], col += cur[3];
+        }
     }
-    for (let row = e + 1, col = f; row <= 8; row++) {
-        if (row === a && col === b) return 1;
-        if (row === c && col === d) break;
-    }
-    for (let row = e, col = f - 1; col >= 1; col--) {
-        if (row === a && col === b) return 1;
-        if (row === c && col === d) break;
-    }
-    for (let row = e, col = f + 1; col <= 8; col++) {
-        if (row === a && col === b) return 1;
-        if (row === c && col === d) break;
-    }
-    for (let row = e - 1, col = f - 1; row >= 1 && col >= 1; row--, col--) {
-        if (row === a && col === b) break;
-        if (row === c && col === d) return 1;
-    }
-    for (let row = e - 1, col = f + 1; row >= 1 && col <= 8; row--, col++) {
-        if (row === a && col === b) break;
-        if (row === c && col === d) return 1;
-    }
-    for (let row = e + 1, col = f - 1; row <= 8 && col >= 1; row++, col--) {
-        if (row === a && col === b) break;
-        if (row === c && col === d) return 1;
-    }
-    for (let row = e + 1, col = f + 1; row <= 8 && col <= 8; row++, col++) {
-        if (row === a && col === b) break;
-        if (row === c && col === d) return 1;
-    }
-    return 2;
+    const mat = [
+        [e - 1, f, -1, 0, 1],
+        [e + 1, f, 1, 0, 1],
+        [e, f - 1, 0, -1, 1],
+        [e, f + 1, 0, 1, 1],
+        [e - 1, f - 1, -1, -1, 0],
+        [e - 1, f + 1, -1, 1, 0],
+        [e + 1, f - 1, 1, -1, 0],
+        [e + 1, f + 1, 1, 1, 0],
+    ];
+    return mat.some(check) ? 1 : 2;
 }
