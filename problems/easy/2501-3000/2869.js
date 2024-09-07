@@ -1,12 +1,12 @@
 // 2869 - Minimum Operations to Collect Elements
 
 function minOperations(nums, k) {
+    let ops = 0;
     const set = new Set();
-    let operations = 0, num;
     while (set.size < k) {
-        num = nums.pop();
-        num <= k && set.add(num);
-        operations++;
+        const num = nums.pop();
+        if (num <= k) set.add(num);
+        ops++;
     }
-    return operations;
+    return ops;
 }

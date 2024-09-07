@@ -5,11 +5,11 @@ function findChampion(n, edges) {
     for (let i = 0; i < edges.length; i++) {
         indegree[edges[i][1]]++;
     }
-    let champion = null;
+    let champion;
     for (let i = 0; i < n; i++) {
         if (indegree[i]) continue;
-        if (champion === null) champion = i;
-        else return -1;
+        if (champion !== undefined) return -1;
+        champion = i;
     }
     return champion;
 }

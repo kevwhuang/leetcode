@@ -3,9 +3,7 @@
 function maximumOddBinaryNumber(s) {
     let ones = -1;
     for (let i = 0; i < s.length; i++) {
-        s[i] === '1' && ones++;
+        if (s[i] === '1') ones++;
     }
-    let res = '1'.repeat(ones);
-    res += '0'.repeat(s.length - ones - 1);
-    return res.concat('1');
+    return '1'.repeat(ones) + '0'.repeat(s.length - ones - 1) + '1';
 }

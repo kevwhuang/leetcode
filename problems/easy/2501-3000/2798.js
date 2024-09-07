@@ -3,7 +3,7 @@
 function numberOfEmployeesWhoMetTarget(hours, target) {
     let count = 0;
     for (let i = 0; i < hours.length; i++) {
-        hours[i] >= target && count++;
+        if (hours[i] >= target) count++;
     }
     return count;
 }

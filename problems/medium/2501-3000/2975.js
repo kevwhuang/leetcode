@@ -1,12 +1,8 @@
 // 2975 - Maximum Square Area by Removing Fences From a Field
 
 function maximizeSquareArea(m, n, hFences, vFences) {
-    hFences.push(1);
-    hFences.sort((a, b) => a - b);
-    hFences.push(m);
-    vFences.push(1);
-    vFences.sort((a, b) => a - b);
-    vFences.push(n);
+    hFences = new Uint32Array([...hFences, 1, m]).sort();
+    vFences = new Uint32Array([...vFences, 1, n]).sort();
     if (hFences.length > vFences.length) {
         [hFences, vFences] = [vFences, hFences];
     }
@@ -21,10 +17,9 @@ function maximizeSquareArea(m, n, hFences, vFences) {
         for (let j = vFences.length - 1; j > i; j--) {
             const width = vFences[j] - vFences[i];
             if (width <= max) break;
-            if (set.has(width)) {
-                max = width;
-                break;
-            }
+            if (!set.has(width)) continue;
+            max = width;
+            break;
         }
     }
     return max ? Number(BigInt(max) ** 2n % 1000000007n) : -1;

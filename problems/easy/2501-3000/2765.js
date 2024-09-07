@@ -7,8 +7,7 @@ function alternatingSubarray(nums) {
         let len = 2, dir = -1;
         for (let j = i + 1; j < nums.length; j++) {
             if (nums[j] + dir !== nums[j + 1]) break;
-            len++;
-            dir *= -1;
+            len++, dir *= -1;
         }
         max = Math.max(len, max);
         i += len - 2;

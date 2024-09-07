@@ -1,10 +1,10 @@
 // 2810 - Faulty Keyboard
 
 function finalString(s) {
-    let final = [];
+    const res = [];
     for (let i = 0; i < s.length; i++) {
-        if (s[i] === 'i') final.reverse();
-        else final.push(s[i]);
+        if (s[i] === 'i') res.reverse();
+        else res.push(s[i]);
     }
-    return final.join('');
+    return res.join('');
 }
