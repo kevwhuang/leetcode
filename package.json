@@ -1,7 +1,7 @@
 {
     "name": "leetcode",
     "author": "Kevin Huang",
-    "devDependencies": {
+    "dependencies": {
         "@datastructures-js/priority-queue": "latest"
     }
 }
