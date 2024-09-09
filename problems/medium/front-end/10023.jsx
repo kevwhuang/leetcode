@@ -3,7 +3,7 @@
 import React from 'react';
 
 export function SignUpFormValidation() {
-    function validate(e) {
+    function handleClick(e) {
         e.preventDefault();
         let validUsername = true;
         if (username.length === 0) {
@@ -16,13 +16,11 @@ export function SignUpFormValidation() {
             setErrorUsername('');
         }
         let validPassword = true;
+        const match = password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/\d/);
         if (password.length === 0) {
             validPassword = false;
             setErrorPassword('Password is required');
-        } else if (password.length < 8
-            || !password.match(/[A-Z]/)
-            || !password.match(/[a-z]/)
-            || !password.match(/\d/)) {
+        } else if (password.length < 8 || !match) {
             validPassword = false;
             let errorMsg = 'Password must contain at least 8 characters, ';
             errorMsg += 'with uppercase, lowercase, and digit(s)';
@@ -30,11 +28,8 @@ export function SignUpFormValidation() {
         } else {
             setErrorPassword('');
         }
-        if (validUsername && validPassword) {
-            setSuccess('Sign Up Successful');
-        } else {
-            setSuccess('');
-        }
+        if (validUsername && validPassword) setSuccess('Sign Up Successful');
+        else setSuccess('');
     }
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -55,7 +50,7 @@ export function SignUpFormValidation() {
                 onChange={e => setPassword(e.target.value)}
             />
             <p>{errorPassword}</p>
-            <button onClick={e => validate(e)}>Sign Up</button>
+            <button onClick={handleClick}>Sign Up</button>
             <p>{success}</p>
         </form>
     );

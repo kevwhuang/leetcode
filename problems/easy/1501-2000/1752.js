@@ -2,11 +2,11 @@
 
 function check(nums) {
     for (let i = 1, rotated = false; i < nums.length; i++) {
-        if (nums[i] < nums[i - 1]) {
+        if (nums[i - 1] > nums[i]) {
             if (rotated) return false;
-            else rotated = true;
+            rotated = true;
         }
-        if (rotated && nums[i] > nums[0]) return false;
+        if (rotated && nums[0] < nums[i]) return false;
     }
     return true;
 }

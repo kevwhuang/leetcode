@@ -4,17 +4,18 @@ function placeWordInCrossword(board, word) {
     function dfs(r, c, dr, dc, i) {
         if (i === word.length) return validate(r, c);
         if (validate(r, c)) return false;
-        if (board[r][c] !== ' ' && board[r][c] !== word[i]) return false;
+        if (M[r][c] !== ' ' && M[r][c] !== word[i]) return false;
         return dfs(r + dr, c + dc, dr, dc, i + 1);
     }
-    const validate = (r, c) =>
-        r === -1 || r === m || c === -1 || c === n || board[r][c] === '#';
-    const m = board.length, n = board[0].length;
+    function validate(r, c) {
+        return r < 0 || r === m || c < 0 || c === n || M[r][c] === '#';
+    }
+    const M = board, m = M.length, n = M[0].length;
     const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (board[r][c] === '#') continue;
-            if (board[r][c] !== ' ' && board[r][c] !== word[0]) continue;
+            if (M[r][c] === '#') continue;
+            if (M[r][c] !== ' ' && M[r][c] !== word[0]) continue;
             for (const [dr, dc] of dirs) {
                 if (!validate(r - dr, c - dc)) continue;
                 if (dfs(r, c, dr, dc, 0)) return true;

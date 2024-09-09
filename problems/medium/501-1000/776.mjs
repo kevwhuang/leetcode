@@ -6,9 +6,8 @@ function splitBST(root, target) {
         const [left, right] = splitBST(root.right, target);
         root.right = left;
         return [root, right];
-    } else {
-        const [left, right] = splitBST(root.left, target);
-        root.left = right;
-        return [left, root];
     }
+    const [left, right] = splitBST(root.left, target);
+    root.left = right;
+    return [left, root];
 }

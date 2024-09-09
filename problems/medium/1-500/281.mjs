@@ -12,13 +12,9 @@ class ZigzagIterator {
         return this.i < this.v1.length || this.j < this.v2.length;
     }
     next() {
-        if (this.i === this.v1.length) {
-            return this.v2[this.j++];
-        } else if (this.j === this.v2.length) {
-            return this.v1[this.i++];
-        } else {
-            this.flag = !this.flag;
-            return this.flag ? this.v1[this.i++] : this.v2[this.j++];
-        }
+        if (this.i === this.v1.length) return this.v2[this.j++];
+        else if (this.j === this.v2.length) return this.v1[this.i++];
+        this.flag = !this.flag;
+        return this.flag ? this.v1[this.i++] : this.v2[this.j++];
     }
 }

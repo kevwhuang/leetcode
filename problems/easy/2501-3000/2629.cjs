@@ -7,5 +7,5 @@ function compose(functions) {
             res = functions[i](res);
         }
         return res;
-    }
+    };
 }

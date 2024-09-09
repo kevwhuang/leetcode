@@ -6,5 +6,5 @@ function promisify(fn) {
             const cb = (data, err) => err ? rej(err) : res(data);
             fn(cb, ...args);
         });
-    }
+    };
 }

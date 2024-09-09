@@ -18,7 +18,7 @@ function findStrobogrammatic(n) {
     }
     if (n === 1) return ['0', '1', '8'];
     const res = [];
-    const obj = { 0: '0', 1: '1', '6': 9, 8: '8', 9: '6' };
+    const obj = { 0: '0', 1: '1', 6: 9, 8: '8', 9: '6' };
     const bound = Math.ceil(n / 2) - 1;
     const isOdd = n % 2;
     backtrack('');

@@ -6,22 +6,15 @@ export function MortgageCalculator() {
         let input1 = document.querySelector('#input-1').value;
         let input2 = document.querySelector('#input-2').value;
         let input3 = document.querySelector('#input-3').value;
-        if (!input1.length
-            || !input2.length
-            || !input3.length
-            || input1 !== Number(input1).toString()
-            || input2 !== Number(input2).toString()
-            || input3 !== Number(input3).toString()
-        ) {
-            error.innerText = 'Invalid values';
-            return;
-        }
+        const cond1 = !input1 || input1 !== Number(input1).toString();
+        const cond2 = !input2 || input2 !== Number(input2).toString();
+        const cond3 = !input3 || input3 !== Number(input3).toString();
+        if (cond1 || cond2 || cond3) return error.innerText = 'Invalid values';
         input1 = Number(input1);
         input2 = Number(input2);
         input3 = Number(input3);
         if (input1 <= 0 || input2 <= 0 || input3 <= 0) {
-            error.innerText = 'Values must be positive';
-            return;
+            return error.innerText = 'Values must be positive';
         }
         const i = input2 / 1200;
         const n = input3 * 12;

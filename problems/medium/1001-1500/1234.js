@@ -1,7 +1,7 @@
 // 1234 - Replace the Substring for Balanced String
 
 function balancedString(s) {
-    const obj = { 'Q': 0, 'W': 0, 'E': 0, 'R': 0 };
+    const obj = { Q: 0, W: 0, E: 0, R: 0 };
     for (let i = 0; i < s.length; i++) {
         obj[s[i]]++;
     }

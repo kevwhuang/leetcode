@@ -3,38 +3,29 @@
 import React from 'react';
 
 export function TreeView({ items }) {
-    function Tree(props) {
-        const { children, name } = props;
-        const [collapsed, setCollapsed] = React.useState(true);
-        const root = (
-            <p onClick={() => setCollapsed(!collapsed)}>
-                <span>{collapsed ? '+ ' : '- '}</span>
-                {name}
-            </p>
-        );
-        const contents = (
-            <div>
-                {children.map(({ children, name }) =>
-                    children.length
-                        ? <Tree name={name} children={children} />
-                        : <p>{name}</p>
-                )}
-            </div>
-        );
+    function Tree({ items }) {
         return (
-            <>
-                {root}
-                {collapsed ? null : contents}
-            </>
+            <ul style={{ listStyle: 'none' }}>
+                {items.map(item => <TreeItem item={item} />)}
+            </ul>
         );
     }
-    return (
-        <div>
-            {items.map(({ children, name }) =>
-                children.length
-                    ? <Tree name={name} children={children} />
-                    : <p>{name}</p>
-            )}
-        </div>
-    );
+    function TreeItem({ item }) {
+        function handleClick() {
+            if (expanded.has(item)) expanded.delete(item) && setCollapsed(true);
+            else expanded.add(item) && setCollapsed(false);
+        }
+        const hasChildren = Boolean(item.children?.length);
+        const [collapsed, setCollapsed] = React.useState(!expanded.has(item));
+        return (
+            <li>
+                <span onClick={handleClick}>
+                    {hasChildren && (collapsed ? '+' : '-')} {item.name}
+                </span>
+                {hasChildren && !collapsed && <Tree items={item.children} />}
+            </li>
+        );
+    }
+    const expanded = new WeakSet();
+    return <Tree items={items} />;
 }

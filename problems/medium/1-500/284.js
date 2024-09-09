@@ -9,13 +9,10 @@ class PeekingIterator {
         return this.temp || this.iterator.hasNext();
     }
     next() {
-        if (this.temp) {
-            const val = this.temp;
-            this.temp = null;
-            return val;
-        } else {
-            return this.iterator.next();
-        }
+        if (!this.temp) return this.iterator.next();
+        const val = this.temp;
+        this.temp = null;
+        return val;
     }
     peek() {
         if (!this.temp) this.temp = this.iterator.next();

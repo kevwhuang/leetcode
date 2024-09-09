@@ -2,13 +2,11 @@
 
 function partial(fn, args) {
     return function (...restArgs) {
-        let j = 0;
-        for (let i = 0; i < args.length; i++) {
+        let i = -1, j = 0;
+        while (++i < args.length) {
             if (args[i] === '_') args[i] = restArgs[j++];
         }
-        for (; j < restArgs.length; j++) {
-            args.push(restArgs[j]);
-        }
+        while (j < restArgs.length) args.push(restArgs[j++]);
         return fn(...args);
-    }
+    };
 }

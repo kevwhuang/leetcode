@@ -7,12 +7,10 @@ function deleteNode(root, key) {
     else {
         if (!root.left) return root.right;
         else if (!root.right) return root.left;
-        else {
-            let node = root.right;
-            while (node.left) node = node.left;
-            node.left = root.left;
-            return root.right;
-        }
+        let node = root.right;
+        while (node.left) node = node.left;
+        node.left = root.left;
+        return root.right;
     }
     return root;
 }

@@ -28,7 +28,7 @@ export function AutoFocusSwitch({ elements }) {
                 <input
                     id={id}
                     type={type}
-                    onKeyDown={e => handleKeyDown(e, +maxLength)}
+                    onKeyDown={e => handleKeyDown(e, Number(maxLength))}
                 />
             )}
         </div>

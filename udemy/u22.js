@@ -8,8 +8,9 @@ function stringifyNumbers(obj) {
             res[k] = stringifyNumbers(cur);
         } else if (typeof cur === 'number') {
             res[k] = String(cur);
-        } else
+        } else {
             res[k] = cur;
+        }
     }
     return res;
 }

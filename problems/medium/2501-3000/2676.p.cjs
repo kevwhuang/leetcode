@@ -14,5 +14,5 @@ function throttle(fn, t) {
                 prevArgs = null;
             }, t);
         }
-    }
+    };
 }

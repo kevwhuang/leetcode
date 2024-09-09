@@ -5,5 +5,5 @@ function debounce(fn, t) {
     return function (...args) {
         clearTimeout(timer);
         timer = setTimeout(() => fn(...args), t);
-    }
+    };
 }

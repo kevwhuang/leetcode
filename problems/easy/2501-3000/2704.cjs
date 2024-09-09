@@ -4,11 +4,11 @@ function expect(val) {
     return {
         toBe: test => {
             if (test === val) return true;
-            else throw 'Not Equal';
+            throw 'Not Equal';
         },
         notToBe: test => {
             if (test !== val) return true;
-            else throw 'Equal';
+            throw 'Equal';
         },
     };
 }

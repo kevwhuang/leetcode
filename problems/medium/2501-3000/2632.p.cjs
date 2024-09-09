@@ -5,5 +5,5 @@ function curry(fn) {
     return function curried(...args) {
         arr.push(...args);
         return arr.length === fn.length ? fn(...arr) : curried;
-    }
+    };
 }

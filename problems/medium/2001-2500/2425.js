@@ -6,7 +6,6 @@ function xorAllNums(nums1, nums2) {
     if (m % 2) {
         const xor = nums2.reduce(reducer);
         return n % 2 ? xor ^ nums1.reduce(reducer) : xor;
-    } else {
-        return n % 2 ? nums1.reduce(reducer) : 0;
     }
+    return n % 2 ? nums1.reduce(reducer) : 0;
 }

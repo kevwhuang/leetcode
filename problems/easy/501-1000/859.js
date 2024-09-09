@@ -9,17 +9,16 @@ function buddyStrings(s, goal) {
             set.add(s[i]);
         }
         return false;
-    } else {
-        const diffS = [];
-        const diffGoal = [];
-        for (let i = 0; i < s.length; i++) {
-            if (s[i] !== goal[i]) {
-                if (diffS.length === 2) return false;
-                diffS.push(s[i]);
-                diffGoal.push(goal[i]);
-            }
-        }
-        if (diffS.length === 1) return false;
-        return diffS[0] === diffGoal[1] && diffS[1] === diffGoal[0];
     }
+    const diffS = [];
+    const diffGoal = [];
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== goal[i]) {
+            if (diffS.length === 2) return false;
+            diffS.push(s[i]);
+            diffGoal.push(goal[i]);
+        }
+    }
+    if (diffS.length === 1) return false;
+    return diffS[0] === diffGoal[1] && diffS[1] === diffGoal[0];
 }

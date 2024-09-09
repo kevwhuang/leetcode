@@ -8,5 +8,5 @@ function memoize(fn) {
         const res = fn(...args);
         memo.set(key, res);
         return res;
-    }
+    };
 }

@@ -7,8 +7,8 @@ export function FormHandler() {
         e.preventDefault();
         try {
             const res = await fetch('/contact-us', {
-                body: JSON.stringify({ message, name }),
                 method: 'POST',
+                body: JSON.stringify({ message, name }),
             });
             const data = await res.json();
             setSuccess(data.ok);
@@ -21,8 +21,9 @@ export function FormHandler() {
     const [success, setSuccess] = React.useState(null);
     return (
         <div>
-            {success ? <p>Thank you</p> :
-                <form onSubmit={handleSubmit}>
+            {success
+                ? <p>Thank you</p>
+                : <form onSubmit={handleSubmit}>
                     <input
                         name="name"
                         placeholder="Name"

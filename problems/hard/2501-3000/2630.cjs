@@ -13,5 +13,5 @@ function memoize(fn) {
         const tail = args[len - 1];
         if (!cache.has(tail)) cache.set(tail, fn(...args));
         return cache.get(tail);
-    }
+    };
 }

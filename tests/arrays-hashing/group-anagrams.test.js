@@ -8,7 +8,7 @@ describe('Main', () => {
                     expect(e).toContain('bat');
                     break;
                 case 2:
-                    expect(e).toContain('nat')
+                    expect(e).toContain('nat');
                     expect(e).toContain('tan');
                     break;
                 case 3:

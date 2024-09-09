@@ -3,7 +3,7 @@
 function entityParser(text) {
     return text
         .replaceAll('&quot;', '"')
-        .replaceAll('&apos;', "'")
+        .replaceAll('&apos;', '\'')
         .replaceAll('&gt;', '>')
         .replaceAll('&lt;', '<')
         .replaceAll('&frasl;', '/')

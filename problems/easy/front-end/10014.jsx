@@ -3,8 +3,8 @@
 import React from 'react';
 
 export function PhoneNumberInput() {
-    function handleChange(value) {
-        const nums = value.replace(/\D/g, '');
+    function handleChange(val) {
+        const nums = val.replace(/\D/g, '');
         if (nums.length >= 7) {
             setDigits(`(${nums.slice(0, 3)}) ${nums.slice(3, 6)}-${nums.slice(6)}`);
         } else if (nums.length >= 4) {

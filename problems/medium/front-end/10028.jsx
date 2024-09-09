@@ -13,20 +13,16 @@ export function SortableTable({ data }) {
         } else {
             e.target.setAttribute('data-dir', 'asc');
         }
-        copy.sort((a, b) => {
-            if (a[key] === b[key]) return 0;
-            else return a[key] < b[key] ? dir : -dir;
-        });
+        copy.sort((a, b) => a[key] === b[key] ? 0 : a[key] < b[key] ? dir : -dir);
         setTable(copy);
     }
     const sanitized = [];
     const keys = Object.keys(data[0]);
     for (const e of data) {
         for (const key of keys) {
-            if (e[key]) {
-                sanitized.push(e);
-                break;
-            }
+            if (!e[key]) continue;
+            sanitized.push(e);
+            break;
         }
     }
     const [table, setTable] = React.useState(sanitized);
@@ -35,10 +31,7 @@ export function SortableTable({ data }) {
             <thead>
                 <tr>
                     {keys.map(key =>
-                        <th
-                            data-dir="asc"
-                            onClick={handleClick}
-                        >
+                        <th data-dir="asc" onClick={handleClick}>
                             {key}
                         </th>
                     )}
@@ -47,9 +40,7 @@ export function SortableTable({ data }) {
             <tbody>
                 {table.map(e =>
                     <tr>
-                        {keys.map(key =>
-                            <td>{e[key]}</td>
-                        )}
+                        {keys.map(key => <td>{e[key]}</td>)}
                     </tr>
                 )}
             </tbody>

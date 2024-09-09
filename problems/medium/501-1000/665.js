@@ -6,7 +6,7 @@ function checkPossibility(nums) {
         if (nums[i - 1] <= nums[i]) continue;
         if (nums[i - 2] > nums[i]) nums[i] = nums[i - 1];
         if (modified) return false;
-        else modified = true;
+        modified = true;
     }
     return true;
 }

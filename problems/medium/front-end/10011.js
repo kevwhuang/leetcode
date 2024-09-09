@@ -1,10 +1,10 @@
 // 10011 - Text Highlighter
 
 export function highlightText(node, text) {
+    const filterFn = node => node.textContent.toLowerCase().includes(text);
     if (!text) return;
     text = text.toLowerCase();
-    const filterFunc = node => node.textContent.toLowerCase().includes(text);
-    const treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, filterFunc);
+    const treeWalker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, filterFn);
     const marked = [];
     while (treeWalker.nextNode()) marked.push(treeWalker.currentNode.parentNode);
     for (let i = 0; i < marked.length; i++) {

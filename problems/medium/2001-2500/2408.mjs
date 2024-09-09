@@ -4,7 +4,7 @@ class SQL {
     constructor(names, columns) {
         this.lib = {};
         for (let i = 0; i < names.length; i++) {
-            this.lib[names[i]] = { 'id': 0 };
+            this.lib[names[i]] = { id: 0 };
         }
     }
     deleteRow(name, rowId) { }

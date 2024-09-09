@@ -5,7 +5,7 @@ function minimumOperations(root) {
     let queue = [root];
     while (queue.length) {
         const len = queue.length;
-        const level = new Array();
+        const level = [];
         const nextQueue = [];
         for (let i = 0; i < len; i++) {
             const node = queue[i];
