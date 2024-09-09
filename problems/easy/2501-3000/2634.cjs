@@ -1,9 +1,9 @@
 // 2634 - Filter Elements From Array
 
 function filter(arr, fn) {
-    const filteredArr = [];
+    const res = [];
     for (let i = 0; i < arr.length; i++) {
-        fn(arr[i], i) && filteredArr.push(arr[i]);
+        if (fn(arr[i], i)) res.push(arr[i]);
     }
-    return filteredArr;
+    return res;
 }

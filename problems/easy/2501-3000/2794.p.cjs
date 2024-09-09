@@ -4,7 +4,7 @@ function createObject(keysArr, valuesArr) {
     const obj = {};
     for (let i = 0; i < keysArr.length; i++) {
         const key = String(keysArr[i]);
-        if (!obj.hasOwnProperty(key)) obj[key] = valuesArr[i];
+        if (!(key in obj)) obj[key] = valuesArr[i];
     }
     return obj;
 }

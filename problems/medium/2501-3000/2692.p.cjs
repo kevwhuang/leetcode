@@ -1,11 +1,11 @@
 // 2692 - Make Object Immutable
 
 function makeImmutable(obj) {
-    const banned = new Set(['pop', 'push', 'shift', 'unshift']);
-    banned.add('splice').add('sort').add('reverse');
+    const veto = new Set(['pop', 'push', 'shift', 'unshift']);
+    veto.add('splice').add('sort').add('reverse');
     const handler = {
         apply(target, thisArg, args) {
-            if (banned.has(target.name)) throw `Error Calling Method: ${target.name}`;
+            if (veto.has(target.name)) throw `Error Calling Method: ${target.name}`;
             return target.apply(thisArg, args);
         },
         get(target, prop) {

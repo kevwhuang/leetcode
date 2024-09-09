@@ -3,16 +3,12 @@
 Array.prototype.snail = function (rowsCount, colsCount) {
     if (this.length !== rowsCount * colsCount) return [];
     const res = Array.from({ length: rowsCount }, () => []);
-    for (let i = 0; i < this.length; i += rowsCount) {
-        let c = i;
-        if (res[0].length % 2) {
-            for (let r = rowsCount - 1; r >= 0; r--) {
-                res[r].push(this[c++]);
-            }
-        } else {
-            for (let r = 0; r < rowsCount; r++) {
-                res[r].push(this[c++]);
-            }
+    for (let i = 0, c = 0; i < this.length; c = i += rowsCount) {
+        let r = res[0].length % 2 ? rowsCount - 1 : 0;
+        const dr = r ? -1 : 1;
+        while (r >= 0 && r < rowsCount) {
+            res[r].push(this[c++]);
+            r += dr;
         }
     }
     return res;

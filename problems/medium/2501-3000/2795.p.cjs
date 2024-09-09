@@ -2,7 +2,7 @@
 
 function promiseAllSettled(functions) {
     return new Promise(res => {
-        const ans = new Array(functions.length).fill();
+        const ans = new Array(functions.length);
         let settled = 0;
         for (let i = 0; i < functions.length; i++) {
             functions[i]()
