@@ -8,10 +8,8 @@ function rowAndMaximumOnes(mat) {
         for (let j = 0; j < cur.length; j++) {
             if (cur[j]) count++;
         }
-        if (count > max) {
-            max = count;
-            row = i;
-        }
+        if (count <= max) continue;
+        row = i, max = count;
     }
     return [row, max];
 }

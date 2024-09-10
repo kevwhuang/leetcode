@@ -1,16 +1,16 @@
 // 2682 - Find the Losers of the Circular Game
 
 function circularGameLosers(n, k) {
-    const losers = new Set();
+    const set = new Set();
     for (let i = 2; i <= n; i++) {
-        losers.add(i);
+        set.add(i);
     }
-    let pos = 1, factor = 1;
+    let i = 1, mult = 1;
     while (true) {
-        pos = (pos + k * factor++) % n;
-        !pos && (pos = n);
-        if (!losers.has(pos)) break;
-        losers.delete(pos);
+        i = (i + k * mult++) % n;
+        if (i === 0) i = n;
+        if (!set.has(i)) break;
+        set.delete(i);
     }
-    return [...losers];
+    return [...set];
 }

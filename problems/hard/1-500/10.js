@@ -1,24 +1,22 @@
 // 10 - Regular Expression Matching
 
 function isMatch(s, p) {
-    const fill = () => new Array(p.length + 1).fill(false);
-    const dp = Array.from({ length: s.length + 1 }, fill);
-    dp[0][0] = true;
-    for (let i = 0; i < p.length; i++) {
-        dp[0][i + 1] = p.charAt(i) === '*' ? dp[0][i - 1] : false;
+    const m = s.length, n = p.length;
+    const dp = Array.from({ length: m + 1 }, () => new Uint8Array(n + 1));
+    dp[0][0] = 1;
+    for (let j = 0; j < n; j++) {
+        if (p[j] === '*') dp[0][j + 1] = dp[0][j - 1];
     }
-    for (let r = 0; r < s.length; r++) {
-        for (let c = 0; c < p.length; c++) {
-            if (p.charAt(c) === '*') {
-                if (s.charAt(r) === p.charAt(c - 1) || p.charAt(c - 1) === '.') {
-                    dp[r + 1][c + 1] = dp[r + 1][c - 1] || dp[r][c + 1];
-                } else {
-                    dp[r + 1][c + 1] = dp[r + 1][c - 1];
-                }
-            } else if (s.charAt(r) === p.charAt(c) || p.charAt(c) === '.') {
-                dp[r + 1][c + 1] = dp[r][c];
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (p[j] === '*') {
+                dp[i + 1][j + 1] = dp[i + 1][j - 1];
+                if (s[i] !== p[j - 1] && p[j - 1] !== '.') continue;
+                dp[i + 1][j + 1] ||= dp[i][j + 1];
+            } else if (s[i] === p[j] || p[j] === '.') {
+                dp[i + 1][j + 1] = dp[i][j];
             }
         }
     }
-    return dp[s.length][p.length];
+    return dp[m][n];
 }

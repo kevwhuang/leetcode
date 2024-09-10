@@ -1,7 +1,7 @@
 // 2609 - Find the Longest Balanced Substring of a Binary String
 
 function findTheLongestBalancedSubstring(s) {
-    let len = 0;
+    let max = 0;
     for (let i = 0, count0 = 0, count1 = 0; i < s.length; i++) {
         if (s[i] === '0') {
             count0++;
@@ -10,8 +10,8 @@ function findTheLongestBalancedSubstring(s) {
         } else {
             count1++;
             if (count1 > count0) continue;
-            len = Math.max(count1 * 2, len);
+            max = Math.max(2 * count1, max);
         }
     }
-    return len;
+    return max;
 }

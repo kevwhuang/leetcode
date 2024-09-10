@@ -1,14 +1,14 @@
 // 2639 - Find the Width of Columns of a Grid
 
 function findColumnWidth(grid) {
-    const widths = [];
-    for (let j = 0; j < grid[0].length; j++) {
+    const m = grid.length, n = grid[0].length;
+    const res = new Uint8Array(n);
+    for (let c = 0; c < n; c++) {
         let width = 1;
-        for (let i = 0; i < grid.length; i++) {
-            const length = String(grid[i][j]).length;
-            if (length > width) width = length;
+        for (let r = 0; r < m; r++) {
+            width = Math.max(String(grid[r][c]).length, width);
         }
-        widths.push(width);
+        res[c] = width;
     }
-    return widths;
+    return res;
 }

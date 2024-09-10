@@ -1,10 +1,12 @@
 // 2523 - Closest Prime Numbers in Range
 
 function closestPrimes(left, right) {
-    function isPrime(n) {
-        const bound = Math.sqrt(n) >> 0;
-        for (let m = 3; m <= bound; m += 2) {
-            if (n % m === 0) return false;
+    function isPrime(num) {
+        if (num === 2) return true;
+        if (num === 1 || num % 2 === 0) return false;
+        const sqrt = Math.sqrt(num);
+        for (let n = 3; n <= sqrt; n += 2) {
+            if (num % n === 0) return false;
         }
         return true;
     }

@@ -9,12 +9,12 @@ function smallestNumber(n) {
         case 851014335622500000: return '4555555577777777899999';
         case 857822450307480000: return '555577777777788999999';
     }
-    const arr = [];
+    const res = [];
     for (let k = 9; k > 1; k--) {
         while (n > 1 && n % k === 0) {
-            arr.push(k);
+            res.push(k);
             n /= k;
         }
     }
-    return n === 1 ? arr.reverse().join('') : '-1';
+    return n === 1 ? res.reverse().join('') : '-1';
 }

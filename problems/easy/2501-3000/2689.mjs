@@ -3,7 +3,6 @@
 function getKthCharacter(root, k) {
     if (!root.len) return root.val[k - 1];
     const len = root.left?.len || root.left?.val.length || 0;
-    return len > k - 1
-        ? getKthCharacter(root.left, k)
-        : getKthCharacter(root.right, k - len);
+    if (len > k - 1) return getKthCharacter(root.left, k);
+    return getKthCharacter(root.right, k - len);
 }

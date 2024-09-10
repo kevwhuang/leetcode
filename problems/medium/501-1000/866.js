@@ -12,9 +12,11 @@ function primePalindrome(n) {
         return cur++ * Math.pow(10, exp) + end;
     }
     function isPrime(num) {
+        if (num === 2) return true;
+        if (num === 1 || num % 2 === 0) return false;
         const sqrt = Math.sqrt(num);
-        for (let div = 2; div <= sqrt; div++) {
-            if (num % div === 0) return;
+        for (let n = 3; n <= sqrt; n += 2) {
+            if (num % n === 0) return false;
         }
         return true;
     }

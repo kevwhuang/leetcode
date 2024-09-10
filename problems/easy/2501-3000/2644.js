@@ -3,16 +3,13 @@
 function maxDivScore(nums, divisors) {
     let min = Infinity, maxScore = -Infinity;
     for (let i = 0; i < divisors.length; i++) {
-        const div = divisors[i];
+        const cur = divisors[i];
         let score = 0;
         for (let j = 0; j < nums.length; j++) {
-            nums[j] % div === 0 && score++;
+            if (nums[j] % cur === 0) score++;
         }
-        if (score === maxScore && div < min) min = div;
-        else if (score > maxScore) {
-            min = div;
-            maxScore = score;
-        }
+        if (score === maxScore && cur < min) min = cur;
+        else if (score > maxScore) min = cur, maxScore = score;
     }
     return min;
 }
