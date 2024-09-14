@@ -6,19 +6,16 @@
  */
 
 function permute(nums) {
-    function backtrack(i, cur) {
-        if (permutations.length === resLen) return;
-        if (i === len) return permutations.push([...cur]);
-        for (let j = i; j < len; j++) {
-            [cur[i], cur[j]] = [cur[j], cur[i]];
-            backtrack(i + 1, cur);
-            [cur[i], cur[j]] = [cur[j], cur[i]];
+    function backtrack(i) {
+        if (i === nums.length) return permutations.push([...nums]);
+        for (let j = i; j < nums.length; j++) {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            backtrack(i + 1);
+            [nums[i], nums[j]] = [nums[j], nums[i]];
         }
     }
-    const len = nums.length;
-    const resLen = [0, 1, 2, 6, 24, 120, 720][len];
     const permutations = [];
-    backtrack(0, nums);
+    backtrack(0);
     return permutations;
 }
 
