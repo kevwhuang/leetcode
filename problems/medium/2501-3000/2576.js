@@ -1,12 +1,12 @@
 // 2576 - Find the Maximum Number of Marked Indices
 
 function maxNumOfMarkedIndices(nums) {
-    nums.sort((a, b) => a - b);
-    const len = nums.length;
-    let l = 0, r = Math.ceil(len / 2);
+    nums = new Uint32Array(nums).sort();
+    const n = nums.length;
+    let l = 0, r = Math.ceil(n / 2);
     while (true) {
-        while (r < len && 2 * nums[l] > nums[r]) r++;
-        if (r === len) return l + l;
+        while (r < n && 2 * nums[l] > nums[r]) r++;
+        if (r === n) return l + l;
         l++, r++;
     }
 }

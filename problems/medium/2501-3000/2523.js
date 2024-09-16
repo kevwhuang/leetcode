@@ -10,17 +10,17 @@ function closestPrimes(left, right) {
         }
         return true;
     }
-    const pair = [-1, -1];
-    let prev, min = Infinity;
+    let prev;
     if (left === 1) left++;
-    if (left === 2) { prev = 2; left++; }
+    if (left === 2) left++ && (prev = 2);
     if (left % 2 === 0) left++;
-    for (let n = left; n <= right; n += 2) {
+    const pair = [-1, -1];
+    for (let n = left, min = Infinity; n <= right; n += 2) {
         if (!isPrime(n)) continue;
-        if (!prev) { prev = n; continue; }
+        if (!prev && (prev = n)) continue;
         const delta = n - prev;
         if (delta < 3) return [prev, n];
-        if (delta >= min) { prev = n; continue; }
+        if (delta >= min && (prev = n)) continue;
         pair[0] = prev, pair[1] = prev = n, min = delta;
     }
     return pair;

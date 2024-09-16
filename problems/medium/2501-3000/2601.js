@@ -19,7 +19,7 @@ function primeSubOperation(nums) {
     while (++i < nums.length) {
         const diff = nums[i] - prev;
         if (diff <= 0) return false;
-        if (diff <= 2) { prev = nums[i]; continue; }
+        if (diff <= 2 && (prev = nums[i])) continue;
         let j = 1;
         while (j < primes.length && primes[j] < diff) j++;
         prev = nums[i] - primes[--j];

@@ -11,8 +11,8 @@ function findMaxFish(grid) {
         dfs(r, c - 1);
         dfs(r, c + 1);
     }
-    const m = grid.length, n = grid[0].length;
     let max = 0, fish;
+    const m = grid.length, n = grid[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             if (grid[r][c] === 0) continue;

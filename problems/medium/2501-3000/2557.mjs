@@ -3,8 +3,8 @@
 function maxCount(banned, n, maxSum) {
     banned.push(0, n + 1);
     banned = new Uint32Array(banned).sort();
-    let res = 0, acc = 0;
-    for (let i = 1; acc < maxSum && i < banned.length; i++) {
+    let res = 0;
+    for (let i = 1, acc = 0; acc < maxSum && i < banned.length; i++) {
         let l = banned[i - 1] + 1, r = banned[i] - 1;
         if (l > r) continue;
         const sum = (l + r) * (r - l + 1) / 2;

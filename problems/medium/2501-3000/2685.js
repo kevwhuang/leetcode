@@ -8,24 +8,24 @@ function countCompleteComponents(n, edges) {
     }
     let components = 0;
     const seen = new Set();
-    for (let v = 0; v < n; v++) {
-        if (seen.has(v)) continue;
-        let queue = [v], nodeCount = 0, edgeCount = 0;
+    for (let u = 0; u < n; u++) {
+        if (seen.has(u)) continue;
+        let queue = [u], nodeCount = 0, edgeCount = 0;
         while (queue.length) {
-            const newQueue = [];
+            const nextQueue = [];
             for (let i = 0; i < queue.length; i++) {
-                const vert = queue[i];
-                if (seen.has(vert)) continue;
-                seen.add(vert);
+                const v = queue[i];
+                if (seen.has(v)) continue;
+                seen.add(v);
                 nodeCount++;
-                const neighbors = adj[vert];
+                const neighbors = adj[v];
                 for (let j = 0; j < neighbors.length; j++) {
                     if (seen.has(neighbors[j])) continue;
-                    newQueue.push(neighbors[j]);
                     edgeCount++;
+                    nextQueue.push(neighbors[j]);
                 }
             }
-            queue = newQueue;
+            queue = nextQueue;
         }
         if (nodeCount * (nodeCount - 1) / 2 === edgeCount) components++;
     }

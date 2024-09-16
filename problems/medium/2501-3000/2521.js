@@ -7,12 +7,9 @@ function distinctPrimeFactors(nums) {
         while (dividend % 2 === 0) dividend /= 2;
         if (dividend !== nums[i]) primes.add(2);
         let divisor = 3;
-        while (dividend > 2) {
+        while (dividend >= 3) {
             if (dividend % divisor) divisor += 2;
-            else {
-                dividend /= divisor;
-                primes.add(divisor);
-            }
+            else (dividend /= divisor) && primes.add(divisor);
         }
     }
     return primes.size;

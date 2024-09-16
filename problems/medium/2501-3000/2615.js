@@ -7,14 +7,13 @@ function distance(nums) {
         else map.set(nums[i], [i]);
     }
     for (const num of map.keys()) {
-        const indices = map.get(num);
+        const indices = map.get(num), len = indices.length;
         let leftSum = 0, rightSum = indices.reduce((s, e) => s + e);
-        const len = indices.length;
         for (let i = 0; i < len; i++) {
-            const index = indices[i];
-            rightSum -= index;
-            nums[index] = index * (i + i + 1 - len) + rightSum - leftSum;
-            leftSum += index;
+            const idx = indices[i];
+            rightSum -= idx;
+            nums[idx] = idx * (i + i + 1 - len) + rightSum - leftSum;
+            leftSum += idx;
         }
     }
     return nums;

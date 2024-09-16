@@ -5,10 +5,10 @@ function countBlackBlocks(m, n, coordinates) {
     const map = new Map();
     for (let i = 0; i < coordinates.length; i++) {
         const r = coordinates[i][0], c = coordinates[i][1];
-        if (r < m - 1 && c < n - 1) update(r * n + c);
-        if (r - 1 >= 0 && c < n - 1) update((r - 1) * n + c);
-        if (r < m - 1 && c - 1 >= 0) update(r * n + c - 1);
-        if (r - 1 >= 0 && c - 1 >= 0) update((r - 1) * n + c - 1);
+        if (r && c) update((r - 1) * n + c - 1);
+        if (r && c + 1 < n) update((r - 1) * n + c);
+        if (r + 1 < m && c) update(r * n + c - 1);
+        if (r + 1 < m && c + 1 < n) update(r * n + c);
     }
     const res = [, 0, 0, 0, 0];
     for (const count of map.values()) {

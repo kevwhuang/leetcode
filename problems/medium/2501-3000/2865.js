@@ -1,11 +1,11 @@
 // 2865 - Beautiful Towers I
 
 function maximumSumOfHeights(heights) {
-    function traverse(i, inc, limit) {
+    function traverse(i, inc, lim) {
         let acc = 0;
         while (~i && i < heights.length) {
-            limit = Math.min(heights[i], limit);
-            acc += limit;
+            lim = Math.min(heights[i], lim);
+            acc += lim;
             i += inc;
         }
         return acc;

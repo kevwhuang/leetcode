@@ -1,21 +1,21 @@
 // 2641 - Cousins in Binary Tree II
 
 function replaceValueInTree(root) {
-    let nextLevelSum = (root.left?.val || 0) + (root.right?.val || 0);
-    let queue = [[root, nextLevelSum]];
+    let sum = root.left ? root.left.val : 0;
+    sum += root.right ? root.right.val : 0;
+    let queue = [[root, sum]];
     while (queue.length) {
-        const newQueue = [];
-        const levelSum = nextLevelSum;
-        nextLevelSum = 0;
+        const nextQueue = [], cur = sum;
         for (let i = 0; i < queue.length; i++) {
-            const [node, siblingSum] = queue[i];
-            node.val = levelSum - siblingSum;
-            const childrenSum = (node.left?.val || 0) + (node.right?.val || 0);
-            nextLevelSum += childrenSum;
-            if (node.left) newQueue.push([node.left, childrenSum]);
-            if (node.right) newQueue.push([node.right, childrenSum]);
+            const node = queue[i][0], sub = queue[i][1];
+            node.val = cur - sub;
+            let next = node.left ? node.left.val : 0;
+            next += node.right ? node.right.val : 0;
+            sum += next;
+            if (node.left) nextQueue.push([node.left, next]);
+            if (node.right) nextQueue.push([node.right, next]);
         }
-        queue = newQueue;
+        sum -= cur, queue = nextQueue;
     }
     return root;
 }

@@ -1,19 +1,17 @@
 // 2674 - Split a Circular Linked List
 
 function splitCircularLinkedList(list) {
-    let slow = fast = list;
-    let len = 1;
+    let slow = list, fast = list, len = 1;
     while (slow.next !== fast.next.next) {
         slow = slow.next;
         fast = fast.next.next;
         len++;
     }
-    const tail2 = slow;
-    slow = list;
-    len = Math.ceil(len / 2);
+    const tail = slow;
+    slow = list, len = Math.ceil(len / 2);
     while (--len) slow = slow.next;
-    const head2 = slow.next;
-    tail2.next = head2;
+    const head = slow.next;
+    tail.next = head;
     slow.next = list;
-    return [list, head2];
+    return [list, head];
 }

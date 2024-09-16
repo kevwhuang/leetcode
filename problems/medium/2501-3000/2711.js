@@ -2,10 +2,7 @@
 
 function differenceOfDistinctValues(grid) {
     const m = grid.length, n = grid[0].length;
-    const ans = new Array(m);
-    for (let r = 0; r < m; r++) {
-        ans[r] = new Array(n);
-    }
+    const res = Array.from({ length: m }, () => new Array(n));
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             const topLeft = new Set(), bottomRight = new Set();
@@ -15,8 +12,8 @@ function differenceOfDistinctValues(grid) {
             for (let d = 1; r + d < m && c + d < n; d++) {
                 bottomRight.add(grid[r + d][c + d]);
             }
-            ans[r][c] = Math.abs(topLeft.size - bottomRight.size);
+            res[r][c] = Math.abs(topLeft.size - bottomRight.size);
         }
     }
-    return ans;
+    return res;
 }

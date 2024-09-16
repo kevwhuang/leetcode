@@ -1,11 +1,11 @@
 // 2592 - Maximize Greatness of an Array
 
 function maximizeGreatness(nums) {
-    nums.sort((a, b) => a - b);
-    let i = 0, j = 1;
-    while (j < nums.length) {
-        if (nums[i] >= nums[j++]) continue;
-        i++;
+    nums = new Uint32Array(nums).sort();
+    let l = 0, r = 1;
+    while (r < nums.length) {
+        if (nums[l] >= nums[r++]) continue;
+        l++;
     }
-    return i;
+    return l;
 }
