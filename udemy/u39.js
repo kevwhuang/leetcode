@@ -22,7 +22,7 @@ class SinglyLinkedList {
     insert(index, val) {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return this.unshift(val);
-        if (index === this.length) return !!this.push(val);
+        if (index === this.length) return Boolean(this.push(val));
         const node = new ListNode(val);
         const cur = this.get(index - 1);
         [node.next, cur.next] = [cur.next, node];
@@ -42,7 +42,7 @@ class SinglyLinkedList {
         return this;
     }
     unshift(val) {
-        if (!this.head) return !!this.push(val);
+        if (!this.head) return Boolean(this.push(val));
         const node = new ListNode(val);
         node.next = this.head;
         this.head = node;
