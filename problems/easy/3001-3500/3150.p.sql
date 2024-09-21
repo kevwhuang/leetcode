@@ -9,4 +9,4 @@ WHERE
     OR LENGTH(content) - LENGTH(REPLACE(content, '@', '')) > 3
     OR LENGTH(content) - LENGTH(REPLACE(content, '#', '')) > 3
 ORDER BY
-    1;
+    tweet_id;

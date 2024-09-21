@@ -15,4 +15,4 @@ WHERE
             sale_date LIKE '2020%'
     )
 ORDER BY
-    1;
+    seller_name;

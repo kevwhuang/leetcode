@@ -16,4 +16,4 @@ FROM
 WHERE
     name IS NULL
 ORDER BY
-    1;
+    employee_id;

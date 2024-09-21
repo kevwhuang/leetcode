@@ -15,4 +15,4 @@ WHERE
             DATE(day)
     )
 ORDER BY
-    1;
+    transaction_id;

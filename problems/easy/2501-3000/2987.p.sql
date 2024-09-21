@@ -14,4 +14,4 @@ HAVING
             Listings
     )
 ORDER BY
-    1;
+    city;

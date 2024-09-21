@@ -9,4 +9,4 @@ WHERE
     signup_action = 'Verified'
     AND DATEDIFF(action_date, signup_date) = 1
 ORDER BY
-    1;
+    user_id;

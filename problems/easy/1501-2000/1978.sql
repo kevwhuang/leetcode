@@ -13,4 +13,4 @@ WHERE
     )
     AND salary < 30000
 ORDER BY
-    1;
+    employee_id;

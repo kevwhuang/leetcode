@@ -11,4 +11,4 @@ GROUP BY
 HAVING
     COUNT(skill) = 3
 ORDER BY
-    1;
+    candidate_id;

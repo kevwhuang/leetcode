@@ -7,4 +7,4 @@ FROM
 WHERE
     (likes / (likes + dislikes)) < 0.6
 ORDER BY
-    1;
+    problem_id;

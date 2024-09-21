@@ -14,4 +14,4 @@ FROM
 WHERE
     loan_type = 'Mortgage'
 ORDER BY
-    1;
+    user_id;
