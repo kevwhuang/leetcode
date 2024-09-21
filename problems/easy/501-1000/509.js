@@ -2,5 +2,7 @@
 
 function fib(n) {
     const sqrt = Math.sqrt(5);
-    return ((1 + sqrt) / 2) ** n / sqrt - ((1 - sqrt) / 2) ** n / sqrt;
+    const term1 = ((1 + sqrt) / 2) ** n / sqrt;
+    const term2 = ((1 - sqrt) / 2) ** n / sqrt;
+    return Math.round(term1 - term2);
 }
