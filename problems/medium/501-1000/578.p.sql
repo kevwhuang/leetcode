@@ -7,7 +7,7 @@ FROM
 GROUP BY
     survey_log
 ORDER BY
-    SUM(IF(action = 'answer', 1, 0)) / SUM(IF(action = 'show', 1, 0)) DESC,
+    SUM(action = 'answer') / SUM(action = 'show') DESC,
     survey_log
 LIMIT
     1;

@@ -7,7 +7,7 @@ FROM
     Files
 UNION
 SELECT
-    'bear' AS word,
-    SUM(content LIKE '% bear %') AS count
+    'bear',
+    SUM(content LIKE '% bear %')
 FROM
     Files;

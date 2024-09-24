@@ -3,7 +3,7 @@
 WITH CTE AS (
     SELECT
         member_id,
-        100 * SUM(IF(charged_amount IS NULL, 0, 1)) / COUNT(visit_date) AS conversion
+        100 * SUM(charged_amount IS NOT NULL) / COUNT(visit_date) AS conversion
     FROM
         Visits
         LEFT JOIN Purchases USING(visit_id)

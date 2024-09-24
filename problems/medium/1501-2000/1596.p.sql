@@ -1,6 +1,6 @@
 -- 1596 - The Most Frequently Ordered Products for Each Customer
 
-WITH Counts AS (
+WITH CTE AS (
     SELECT
         customer_id,
         COUNT(product_id) AS count
@@ -9,15 +9,6 @@ WITH Counts AS (
     GROUP BY
         customer_id,
         product_id
-),
-CTE AS (
-    SELECT
-        customer_id,
-        MAX(count)
-    FROM
-        Counts
-    GROUP BY
-        customer_id
 )
 SELECT
     customer_id,
@@ -32,7 +23,10 @@ GROUP BY
 HAVING
     (customer_id, COUNT(*)) IN (
         SELECT
-            *
+            customer_id,
+            MAX(count)
         FROM
             CTE
+        GROUP BY
+            customer_id
     );

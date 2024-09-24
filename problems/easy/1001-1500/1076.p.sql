@@ -9,13 +9,13 @@ GROUP BY
 HAVING
     COUNT(*) = (
         SELECT
-            COUNT(*)
+            COUNT(*) AS count
         FROM
             Project
         GROUP BY
             project_id
         ORDER BY
-            1 DESC
+            count DESC
         LIMIT
             1
     );

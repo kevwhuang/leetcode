@@ -3,7 +3,7 @@
 WITH CTE AS (
     SELECT
         *,
-        SUM(IF(drink IS NULL, 0, 1)) OVER (
+        SUM(drink IS NOT NULL) OVER (
             ROWS BETWEEN UNBOUNDED PRECEDING
             AND CURRENT ROW
         ) AS label,

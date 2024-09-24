@@ -7,7 +7,7 @@ SELECT
         FROM
             Employee
         ORDER BY
-            1 DESC
+            salary DESC
         LIMIT
             1 OFFSET 1
-    ) AS SecondHighestSalary;
+    ) AS secondHighestSalary;

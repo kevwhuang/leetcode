@@ -2,7 +2,7 @@
 
 SELECT
     dept_name,
-    SUM(IF(gender IS NULL, 0, 1)) AS student_number
+    SUM(gender IS NOT NULL) AS student_number
 FROM
     Department
     LEFT JOIN Student USING(dept_id)

@@ -9,11 +9,7 @@ WITH CTE AS (
         Servers
 )
 SELECT
-    FLOOR(
-        SUM(
-            TIMESTAMPDIFF(SECOND, time1, time2)
-        ) / 86400
-    ) AS total_uptime_days
+    FLOOR(SUM(TIMESTAMPDIFF(SECOND, time1, time2)) / 86400) AS total_uptime_days
 FROM
     CTE
 WHERE

@@ -12,6 +12,6 @@ CREATE PROCEDURE getUserIDs(startDate DATE, endDate DATE, minAmount INT) BEGIN (
         )
         AND amount >= minAmount
     ORDER BY
-        1
+        user_id
 );
 END

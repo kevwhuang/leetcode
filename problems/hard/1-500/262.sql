@@ -3,7 +3,7 @@
 SELECT
     request_at AS day,
     ROUND(
-        SUM(IF(status = 'completed', 0, 1)) / COUNT(*),
+        SUM(status != 'completed') / COUNT(*),
         2
     ) AS 'cancellation rate'
 FROM

@@ -4,11 +4,7 @@ WITH CTE AS (
     SELECT
         user_id,
         DATEDIFF(
-            LEAD(
-                visit_date,
-                1,
-                '2021-1-1'
-            ) OVER (
+            LEAD(visit_date, 1, '2021-1-1') OVER (
                 PARTITION BY user_id
                 ORDER BY
                     visit_date

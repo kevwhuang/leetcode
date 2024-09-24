@@ -10,7 +10,7 @@ WITH CTE AS (
             PARTITION BY customer_id
             ORDER BY
                 order_date DESC
-        ) AS n
+        ) AS r
     FROM
         Orders
         JOIN Customers USING(customer_id)
@@ -27,4 +27,4 @@ SELECT
 FROM
     CTE
 WHERE
-    n <= 3;
+    r <= 3;

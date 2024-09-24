@@ -7,12 +7,12 @@ FROM
 WHERE
     (DATE(day), amount) IN (
         SELECT
-            DATE(day),
+            DATE(day) AS date,
             MAX(amount)
         FROM
             Transactions
         GROUP BY
-            DATE(day)
+            date
     )
 ORDER BY
     transaction_id;

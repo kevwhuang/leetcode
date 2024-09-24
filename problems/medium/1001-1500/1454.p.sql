@@ -21,11 +21,7 @@ SELECT
 FROM
     CTE C1
     JOIN CTE C2 ON C1.id = C2.id
-    AND TIMESTAMPDIFF(
-        DAY,
-        C1.login_date,
-        C2.login_date
-    ) = 4
+    AND TIMESTAMPDIFF(DAY, C1.login_date, C2.login_date) = 4
     AND C1.r + 4 = C2.r
     JOIN Accounts ON C1.id = Accounts.id
 ORDER BY

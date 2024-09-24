@@ -21,7 +21,7 @@ SELECT
         PARTITION BY product_id
         ORDER BY
             change_date DESC
-    ) AS price
+    )
 FROM
     Products
 WHERE

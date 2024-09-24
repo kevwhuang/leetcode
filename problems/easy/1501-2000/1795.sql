@@ -11,8 +11,8 @@ WHERE
 UNION
 SELECT
     product_id,
-    'store2' AS store,
-    store2 AS price
+    'store2',
+    store2
 FROM
     Products
 WHERE
@@ -20,8 +20,8 @@ WHERE
 UNION
 SELECT
     product_id,
-    'store3' AS store,
-    store3 AS price
+    'store3',
+    store3
 FROM
     Products
 WHERE

@@ -12,7 +12,7 @@ WITH CTE1 AS (
     ALL
     SELECT
         arrival_airport AS airport,
-        SUM(flights_count) AS count
+        SUM(flights_count)
     FROM
         Flights
     GROUP BY

@@ -9,13 +9,13 @@ GROUP BY
 HAVING
     SUM(price) = (
         SELECT
-            SUM(price)
+            SUM(price) AS sum
         FROM
             Sales
         GROUP BY
             seller_id
         ORDER BY
-            1 DESC
+            sum DESC
         LIMIT
             1
     );

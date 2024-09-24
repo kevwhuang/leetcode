@@ -8,7 +8,7 @@ WITH CTE AS (
     UNION
     ALL
     SELECT
-        accepter_id AS id
+        accepter_id
     FROM
         RequestAccepted
 )

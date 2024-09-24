@@ -5,13 +5,7 @@ WITH CTE1 AS (
         car_id,
         lot_id,
         SUM(fee_paid) AS fees,
-        SUM(
-            TIMESTAMPDIFF(
-                SECOND,
-                entry_time,
-                exit_time
-            )
-        ) AS seconds
+        SUM(TIMESTAMPDIFF(SECOND, entry_time, exit_time)) AS seconds
     FROM
         ParkingTransactions
     GROUP BY

@@ -9,8 +9,8 @@ WHERE
     duration <= 299
 UNION
 SELECT
-    '[5-10>' AS bin,
-    COUNT(*) AS total
+    '[5-10>',
+    COUNT(*)
 FROM
     Sessions
 WHERE
@@ -18,8 +18,8 @@ WHERE
     AND 599
 UNION
 SELECT
-    '[10-15>' AS bin,
-    COUNT(*) AS total
+    '[10-15>',
+    COUNT(*)
 FROM
     Sessions
 WHERE
@@ -27,8 +27,8 @@ WHERE
     AND 899
 UNION
 SELECT
-    '15 or more' AS bin,
-    COUNT(*) AS total
+    '15 or more',
+    COUNT(*)
 FROM
     Sessions
 WHERE

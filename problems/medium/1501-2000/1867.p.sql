@@ -9,13 +9,13 @@ GROUP BY
 HAVING
     MAX(quantity) > (
         SELECT
-            SUM(quantity) / COUNT(*)
+            AVG(quantity) AS average
         FROM
             OrdersDetails
         GROUP BY
             order_id
         ORDER BY
-            1 DESC
+            average DESC
         LIMIT
             1
     );

@@ -9,13 +9,13 @@ WITH CTE1 AS (
     UNION
     SELECT
         contest_id,
-        silver_medal AS user_id
+        silver_medal
     FROM
         Contests
     UNION
     SELECT
         contest_id,
-        bronze_medal AS user_id
+        bronze_medal
     FROM
         Contests
 ),
@@ -27,7 +27,7 @@ CTE2 AS (
             PARTITION BY user_id
             ORDER BY
                 contest_id
-        ) AS n
+        ) AS r
     FROM
         CTE1
 ),
@@ -38,7 +38,7 @@ CTE3 AS (
         CTE2
     GROUP BY
         user_id,
-        contest_id - n
+        contest_id - r
     HAVING
         COUNT(*) >= 3
     UNION

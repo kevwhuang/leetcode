@@ -1,17 +1,5 @@
 -- 2988 - Manager of the Largest Department
 
-WITH CTE AS (
-    SELECT
-        COUNT(*)
-    FROM
-        Employees
-    GROUP BY
-        dep_id
-    ORDER BY
-        1 DESC
-    LIMIT
-        1
-)
 SELECT
     emp_name AS manager_name,
     dep_id
@@ -22,9 +10,15 @@ GROUP BY
 HAVING
     COUNT(dep_id) = (
         SELECT
-            *
+            COUNT(*) AS count
         FROM
-            CTE
+            Employees
+        GROUP BY
+            dep_id
+        ORDER BY
+            count DESC
+        LIMIT
+            1
     )
 ORDER BY
     dep_id;

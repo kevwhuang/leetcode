@@ -1,18 +1,16 @@
 // 2462 - Total Cost to Hire K Workers
 
 function totalCost(costs, k, candidates) {
-    const compare = (a, b) => a - b;
+    const comparator = (a, b) => a - b;
     let cost = 0, l = candidates - 1, r = costs.length - candidates;
     if (costs.length === k || l >= r) {
-        const heap = new PriorityQueue({ compare });
-        for (let i = 0; i < costs.length; i++) {
-            heap.enqueue(costs[i]);
-        }
+        const heap = new PriorityQueue({ compare: comparator });
+        costs.forEach(e => heap.enqueue(e));
         while (k--) cost += heap.dequeue();
         return cost;
     }
-    const heap1 = new PriorityQueue({ compare });
-    const heap2 = new PriorityQueue({ compare });
+    const heap1 = new PriorityQueue({ compare: comparator });
+    const heap2 = new PriorityQueue({ compare: comparator });
     for (let i = 0; i <= l; i++) {
         heap1.enqueue(costs[i]);
     }
