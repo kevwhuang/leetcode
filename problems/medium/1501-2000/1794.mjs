@@ -6,18 +6,15 @@ function countQuadruples(firstString, secondString) {
         indices1[firstString.charCodeAt(i) - 97] ??= i;
     }
     const indices2 = new Array(26);
-    for (let i = secondString.length - 1; i >= 0; i--) {
+    for (let i = secondString.length - 1; ~i; i--) {
         indices2[secondString.charCodeAt(i) - 97] ??= i;
     }
     let quadruples = 0, min = Infinity;
     for (let i = 0; i < 26; i++) {
         const diff = indices1[i] - indices2[i];
-        if (diff === NaN) continue;
+        if (isNaN(diff)) continue;
         if (diff === min) quadruples++;
-        else if (diff < min) {
-            quadruples = 1;
-            min = diff;
-        }
+        if (diff < min) quadruples = 1, min = diff;
     }
     return quadruples;
 }

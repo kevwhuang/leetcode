@@ -1,21 +1,19 @@
 // 2500 - Delete Greatest Value in Each Row
 
 function deleteGreatestValue(grid) {
-    let sum = 0;
-    while (grid[0].length) {
+    let res = 0, m = grid.length, n = grid[0].length;
+    while (n) {
         let largest = 0;
-        for (let i = 0; i < grid.length; i++) {
-            let pos = 0, max = 0;
-            for (let j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] > max) {
-                    pos = j;
-                    max = grid[i][j];
-                }
+        for (let r = 0; r < m; r++) {
+            let max = 0, col;
+            for (let c = 0; c < n; c++) {
+                if (grid[r][c] <= max) continue;
+                max = grid[r][c], col = c;
             }
+            grid[r].splice(col, 1);
             largest = Math.max(max, largest);
-            grid[i].splice(pos, 1);
         }
-        sum += largest;
+        res += largest, n--;
     }
-    return sum;
+    return res;
 }
