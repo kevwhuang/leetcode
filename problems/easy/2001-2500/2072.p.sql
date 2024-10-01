@@ -1,6 +1,6 @@
 -- 2072 - The Winner University
 
-WITH N AS (
+WITH CTE1 AS (
     SELECT
         COUNT(*) AS count
     FROM
@@ -8,7 +8,7 @@ WITH N AS (
     WHERE
         score >= 90
 ),
-C AS (
+CTE2 AS (
     SELECT
         COUNT(*) AS count
     FROM
@@ -17,13 +17,11 @@ C AS (
         score >= 90
 )
 SELECT
-    (
-        CASE
-            WHEN N.count > C.count THEN 'New York University'
-            WHEN N.count < C.count THEN 'California University'
-            ELSE 'No Winner'
-        END
-    ) AS winner
+    CASE
+        WHEN C1.count > C2.count THEN 'New York University'
+        WHEN C1.count < C2.count THEN 'California University'
+        ELSE 'No Winner'
+    END AS winner
 FROM
-    N,
-    C;
+    CTE1 C1,
+    CTE2 C2;

@@ -37,7 +37,7 @@ WITH Base AS (
         'Web',
         'Programming'
 ),
-Counts AS (
+CTE AS (
     SELECT
         platform,
         experiment_name,
@@ -54,4 +54,4 @@ SELECT
     IFNULL(count, 0) AS num_experiments
 FROM
     Base
-    LEFT JOIN Counts USING(platform, experiment_name);
+    LEFT JOIN CTE USING(platform, experiment_name);

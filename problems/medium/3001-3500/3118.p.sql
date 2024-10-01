@@ -33,7 +33,7 @@ WITH Base AS (
         4,
         'VIP'
 ),
-Spending AS (
+CTE AS (
     SELECT
         WEEK(purchase_date) - 43 AS week_of_month,
         membership,
@@ -54,4 +54,4 @@ SELECT
     COALESCE(sum, 0) AS total_amount
 FROM
     Base
-    LEFT JOIN Spending USING(week_of_month, membership);
+    LEFT JOIN CTE USING(week_of_month, membership);

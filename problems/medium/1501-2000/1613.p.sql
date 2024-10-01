@@ -1,13 +1,13 @@
 -- 1613 - Find the Missing IDs
 
-WITH RECURSIVE Nums AS (
+WITH RECURSIVE CTE AS (
     SELECT
         1 AS ids
     UNION
     SELECT
         ids + 1
     FROM
-        Nums
+        CTE
     WHERE
         ids < (
             SELECT
@@ -19,7 +19,7 @@ WITH RECURSIVE Nums AS (
 SELECT
     ids
 FROM
-    Nums
+    CTE
 WHERE
     ids NOT IN (
         SELECT

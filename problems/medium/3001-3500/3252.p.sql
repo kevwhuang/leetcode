@@ -1,6 +1,12 @@
 -- 3252 - Premier League Table Ranking II
 
-WITH CTE AS (
+WITH CTE1 AS (
+    SELECT
+        COUNT(*)
+    FROM
+        TeamStats
+),
+CTE2 AS (
     SELECT
         team_name,
         wins * 3 + draws AS points,
@@ -15,12 +21,6 @@ WITH CTE AS (
     ORDER BY
         points DESC,
         team_name
-),
-Count AS (
-    SELECT
-        COUNT(*)
-    FROM
-        TeamStats
 )
 SELECT
     team_name,
@@ -31,15 +31,15 @@ SELECT
             SELECT
                 *
             FROM
-                Count
+                CTE1
         ) <= 0.33 THEN 'Tier 1'
         WHEN (position - 1) / (
             SELECT
                 *
             FROM
-                Count
+                CTE1
         ) <= 0.66 THEN 'Tier 2'
         ELSE 'Tier 3'
     END AS tier
 FROM
-    CTE;
+    CTE2;

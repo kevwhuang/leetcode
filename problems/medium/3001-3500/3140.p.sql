@@ -1,6 +1,6 @@
 -- 3140 - Consecutive Available Seats II
 
-WITH Gaps AS (
+WITH CTE1 AS (
     SELECT
         seat_id,
         seat_id - ROW_NUMBER() OVER (
@@ -12,24 +12,24 @@ WITH Gaps AS (
     WHERE
         free = 1
 ),
-Islands AS (
+CTE2 AS (
     SELECT
         MIN(seat_id) AS first_seat_id,
         MAX(seat_id) AS last_seat_id,
         MAX(seat_id) - MIN(seat_id) + 1 AS consecutive_seats_len
     FROM
-        Gaps
+        CTE1
     GROUP BY
         gap
 )
 SELECT
     *
 FROM
-    Islands
+    CTE2
 WHERE
     consecutive_seats_len = (
         SELECT
             MAX(consecutive_seats_len)
         FROM
-            Islands
+            CTE2
     );
