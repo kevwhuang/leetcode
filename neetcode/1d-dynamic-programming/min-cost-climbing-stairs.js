@@ -6,10 +6,10 @@
  */
 
 function minCostClimbingStairs(cost) {
-    for (let i = cost.length - 3; i >= 0; i--) {
-        cost[i] += Math.min(cost[i + 1], cost[i + 2]);
+    for (let i = 2; i < cost.length; i++) {
+        cost[i] += Math.min(cost[i - 2], cost[i - 1]);
     }
-    return Math.min(cost[0], cost[1]);
+    return Math.min(cost.at(-2), cost.at(-1));
 }
 
 module.exports = minCostClimbingStairs;
