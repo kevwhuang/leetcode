@@ -1,9 +1,10 @@
 // 2341 - Maximum Number of Pairs in Array
 
 function numberOfPairs(nums) {
-    const freq = new Set();
+    const set = new Set();
     for (let i = 0; i < nums.length; i++) {
-        freq.has(nums[i]) ? freq.delete(nums[i]) : freq.add(nums[i]);
+        if (set.has(nums[i])) set.delete(nums[i]);
+        else set.add(nums[i]);
     }
-    return [(nums.length - freq.size) / 2, freq.size];
+    return [(nums.length - set.size) / 2, set.size];
 }

@@ -1,16 +1,14 @@
 // 2383 - Minimum Hours of Training to Win a Competition
 
 function minNumberOfHours(initialEnergy, initialExperience, energy, experience) {
-    const totalEnergy = energy.reduce((s, e) => s + e) + 1;
-    const needEnergy = totalEnergy > initialEnergy ? totalEnergy - initialEnergy : 0;
-    let exp = initialExperience, needExperience = 0;
+    let need = 0, acc = initialExperience;
     for (let i = 0; i < experience.length; i++) {
-        if (exp <= experience[i]) {
-            const need = experience[i] - exp + 1;
-            exp += need;
-            needExperience += need;
+        if (acc <= experience[i]) {
+            need += experience[i] - acc + 1;
+            acc += experience[i] - acc + 1;
         }
-        exp += experience[i];
+        acc += experience[i];
     }
-    return needEnergy + needExperience;
+    const sum = energy.reduce((s, e) => s + e);
+    return Math.max(sum - initialEnergy + 1, 0) + need;
 }

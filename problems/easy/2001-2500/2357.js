@@ -3,7 +3,7 @@
 function minimumOperations(nums) {
     const set = new Set();
     for (let i = 0; i < nums.length; i++) {
-        nums[i] && set.add(nums[i]);
+        if (nums[i]) set.add(nums[i]);
     }
     return set.size;
 }

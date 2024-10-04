@@ -2,15 +2,15 @@
 
 WITH RECURSIVE CTE AS (
     SELECT
-        REGEXP_SUBSTR(tweet, '#[A-Za-z0-9]+') AS hashtag,
-        REGEXP_REPLACE(tweet, '#[A-Za-z0-9]+', '', 1, 1) AS tweet
+        REGEXP_SUBSTR(tweet, '#[A-Za-z]+') AS hashtag,
+        REGEXP_REPLACE(tweet, '#[A-Za-z]+', '', 1, 1) AS tweet
     FROM
         Tweets
     UNION
     ALL
     SELECT
-        REGEXP_SUBSTR(tweet, '#[A-Za-z0-9]+'),
-        REGEXP_REPLACE(tweet, '#[A-Za-z0-9]+', '', 1, 1)
+        REGEXP_SUBSTR(tweet, '#[A-Za-z]+'),
+        REGEXP_REPLACE(tweet, '#[A-Za-z]+', '', 1, 1)
     FROM
         CTE
     WHERE

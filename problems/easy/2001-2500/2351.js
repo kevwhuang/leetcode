@@ -3,8 +3,7 @@
 function repeatedCharacter(s) {
     const set = new Set();
     for (let i = 0; i < s.length; i++) {
-        const current = s[i];
-        if (set.has(current)) return current;
-        set.add(current);
+        if (set.has(s[i])) return s[i];
+        set.add(s[i]);
     }
 }
