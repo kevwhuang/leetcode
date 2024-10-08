@@ -1,11 +1,11 @@
 // 2269 - Find the K-Beauty of a Number
 
 function divisorSubstrings(num, k) {
-    const str = num.toString();
     let beauty = 0;
-    for (let i = 0, cur; i < str.length - k + 1; i++) {
-        cur = parseInt(str.slice(i, i + k));
-        num % cur === 0 && beauty++;
+    const str = num.toString(), bound = str.length - k + 1;
+    for (let i = 0; i < bound; i++) {
+        const cur = parseInt(str.slice(i, i + k));
+        if (num % cur === 0) beauty++;
     }
     return beauty;
 }

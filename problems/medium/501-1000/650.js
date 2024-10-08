@@ -1,16 +1,10 @@
 // 650 - 2 Keys Keyboard
 
 function minSteps(n) {
-    let ops = 0, copy = 0, cur = 1;
+    let ops = 0, cur = 1, copy = 0;
     while (cur < n) {
-        if (n % cur) {
-            ops++;
-            cur += copy;
-        } else {
-            ops += 2;
-            copy = cur;
-            cur += copy;
-        }
+        if (n % cur === 0) ops++, copy = cur;
+        ops++, cur += copy;
     }
     return ops;
 }

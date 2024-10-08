@@ -4,19 +4,14 @@ function largestInteger(num) {
     num = num.toString().split('');
     const odds = [], evens = [];
     for (let i = 0; i < num.length; i++) {
-        const cur = num[i];
-        if (cur % 2) {
-            odds.push(+cur);
-            num[i] = true;
-        } else {
-            evens.push(+cur);
-            num[i] = false;
-        }
+        (num[i] % 2 ? odds : evens).push(num[i]);
     }
     odds.sort((a, b) => b - a);
     evens.sort((a, b) => b - a);
+    let res = 0;
     for (let i = 0, j = 0, k = 0; i < num.length; i++) {
-        num[i] = num[i] ? odds[j++] : evens[k++];
+        res *= 10;
+        res += Number(num[i] % 2 ? odds[j++] : evens[k++]);
     }
-    return parseInt(num.join(''));
+    return res;
 }

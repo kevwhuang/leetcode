@@ -2,12 +2,12 @@
 
 function minMaxGame(nums) {
     while (nums.length > 1) {
-        const newNums = new Array(nums.length / 2);
-        for (let i = 0; i < newNums.length; i++) {
-            if (i % 2) newNums[i] = Math.max(nums[2 * i], nums[2 * i + 1]);
-            else newNums[i] = Math.min(nums[2 * i], nums[2 * i + 1]);
+        const nextNums = new Uint32Array(nums.length / 2);
+        for (let i = 0; i < nextNums.length; i++) {
+            const a = nums[i + i], b = nums[i + i + 1];
+            nextNums[i] = i % 2 ? Math.max(a, b) : Math.min(a, b);
         }
-        nums = newNums;
+        nums = nextNums;
     }
     return nums[0];
 }

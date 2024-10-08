@@ -1,15 +1,15 @@
 // 2248 - Intersection of Multiple Arrays
 
 function intersection(nums) {
-    const freq = [];
+    const bucket = new Array(1001).fill(0);
     for (let i = 0; i < nums.length; i++) {
         for (let j = 0; j < nums[i].length; j++) {
-            freq[nums[i][j]] = (freq[nums[i][j]] || 0) + 1;
+            bucket[nums[i][j]]++;
         }
     }
     const res = [];
-    for (let i = 1; i < freq.length; i++) {
-        freq[i] === nums.length && res.push(i);
+    for (let n = 1; n < bucket.length; n++) {
+        if (bucket[n] === nums.length) res.push(n);
     }
     return res;
 }

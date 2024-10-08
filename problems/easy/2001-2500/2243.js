@@ -2,16 +2,14 @@
 
 function digitSum(s, k) {
     while (s.length > k) {
-        let round = '';
-        for (let i = 0; i < s.length; i += k) {
-            const group = s.slice(i, i + k);
-            let sum = 0;
-            for (let j = 0; j < group.length; j++) {
-                sum += +group[j];
-            }
-            round += sum;
+        let next = '', i = 0;
+        while (i < s.length) {
+            let sum = 0, j = i;
+            const bound = Math.min(i + k, s.length);
+            while (j < bound) sum += Number(s[j++]);
+            next += sum, i += k;
         }
-        s = round;
+        s = next;
     }
     return s;
 }

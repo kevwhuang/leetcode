@@ -1,15 +1,11 @@
 // 2239 - Find Closest Number to Zero
 
 function findClosestNumber(nums) {
-    let largest = -Infinity, delta = Infinity;
+    let res = -Infinity;
     for (let i = 0; i < nums.length; i++) {
         const abs = Math.abs(nums[i]);
-        if (abs < delta) {
-            largest = nums[i];
-            delta = abs;
-        } else if (abs === delta && nums[i] > largest) {
-            largest = nums[i];
-        }
+        if (abs < Math.abs(res)) res = nums[i];
+        else if (abs === Math.abs(res) && nums[i] > res) res = nums[i];
     }
-    return largest;
+    return res;
 }

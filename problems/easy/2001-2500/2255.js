@@ -3,7 +3,7 @@
 function countPrefixes(words, s) {
     let count = 0;
     for (let i = 0; i < words.length; i++) {
-        s.startsWith(words[i]) && count++;
+        if (s.startsWith(words[i])) count++;
     }
     return count;
 }

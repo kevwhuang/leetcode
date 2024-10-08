@@ -2,12 +2,11 @@
 
 function removeAnagrams(words) {
     const res = [];
-    for (let i = 0, cur, prev; i < words.length; i++) {
-        cur = words[i].split('').sort().join('');
-        if (cur !== prev) {
-            prev = cur;
-            res.push(words[i]);
-        }
+    for (let i = 0, prev; i < words.length; i++) {
+        const cur = words[i].split('').sort().join('');
+        if (cur === prev) continue;
+        res.push(words[i]);
+        prev = cur;
     }
     return res;
 }
