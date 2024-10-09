@@ -15,13 +15,12 @@ function shortestPath(grid, k) {
                 const rr = r + dirs[j][0], cc = c + dirs[j][1];
                 if (!validate(rr, cc) || bombs <= seen[rr][cc]) continue;
                 if (rr === m - 1 && cc === n - 1) return steps;
-                const remaining = grid[rr][cc] ? bombs - 1 : bombs;
-                seen[rr][cc] = remaining;
-                nextQueue.push([rr, cc, remaining]);
+                const rem = grid[rr][cc] ? bombs - 1 : bombs;
+                seen[rr][cc] = rem;
+                nextQueue.push([rr, cc, rem]);
             }
         }
-        steps++;
-        queue = nextQueue;
+        steps++, queue = nextQueue;
     }
     return -1;
 }

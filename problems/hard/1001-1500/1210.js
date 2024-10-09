@@ -10,8 +10,8 @@ function minimumMoves(grid) {
         seen.add(serial);
         nextQueue.push([r1, c1, r2, c2]);
     }
-    const n = grid.length, seen = new Set();
     let moves = 1, queue = [[0, 0, 0, 1]];
+    const n = grid.length, seen = new Set();
     while (queue.length) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
@@ -36,8 +36,7 @@ function minimumMoves(grid) {
                 serialize(r1, c1, r1 + 1, c1, nextQueue);
             }
         }
-        moves++;
-        queue = nextQueue;
+        moves++, queue = nextQueue;
     }
     return -1;
 }

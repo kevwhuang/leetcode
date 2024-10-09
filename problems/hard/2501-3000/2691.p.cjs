@@ -41,7 +41,7 @@ class ImmutableHelper {
                     if (cur[prop] === undefined) cur[prop] = {};
                     return this.#partialClone(target[prop], cur[prop]);
                 }
-                return cur[prop] === undefined ? Reflect.get(target, prop) : cur[prop];
+                return prop in cur ? cur[prop] : Reflect.get(target, prop);
             },
             set: (target, prop, value) => {
                 if (target[prop] === value) return;

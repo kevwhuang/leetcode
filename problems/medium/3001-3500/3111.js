@@ -5,8 +5,7 @@ function minRectanglesToCoverPoints(points, w) {
     let rectangles = 0, end;
     for (let i = 0; i < points.length; i++) {
         if (points[i][0] <= end) continue;
-        rectangles++;
-        end = points[i][0] + w;
+        rectangles++, end = points[i][0] + w;
     }
     return rectangles;
 }

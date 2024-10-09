@@ -29,8 +29,7 @@ function minFlips(mat) {
             }
         }
         if (nextQueue.length === 0) return -1;
-        steps++;
-        queue = nextQueue;
+        steps++, queue = nextQueue;
     }
     return steps;
 }

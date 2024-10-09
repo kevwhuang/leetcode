@@ -2,11 +2,11 @@
 
 function productOfArray(nums) {
     function multiply(nums) {
-        if (!nums.length) return;
-        product *= nums.pop();
+        if (nums.length === 0) return;
+        prod *= nums.pop();
         multiply(nums);
     }
-    let product = 1;
+    let prod = 1;
     multiply(nums);
-    return product;
+    return prod;
 }

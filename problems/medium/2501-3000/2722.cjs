@@ -7,12 +7,9 @@ function join(arr1, arr2) {
     }
     for (let i = 0; i < arr2.length; i++) {
         const id = arr2[i].id;
-        if (id in obj) {
-            for (const key in arr2[i]) {
-                obj[id][key] = arr2[i][key];
-            }
-        } else {
-            obj[id] = arr2[i];
+        if (!(id in obj)) obj[id] = arr2[i], arr2[i] = null;
+        for (const key in arr2[i]) {
+            obj[id][key] = arr2[i][key];
         }
     }
     return Object.values(obj);

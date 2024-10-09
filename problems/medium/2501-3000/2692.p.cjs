@@ -1,17 +1,19 @@
 // 2692 - Make Object Immutable
 
 function makeImmutable(obj) {
-    const veto = new Set(['pop', 'push', 'shift', 'unshift']);
-    veto.add('splice').add('sort').add('reverse');
+    const veto = new Set(['pop', 'push', 'shift', 'unshift', 'splice']);
+    veto.add('sort').add('reverse');
     const handler = {
         apply(target, thisArg, args) {
-            if (veto.has(target.name)) throw `Error Calling Method: ${target.name}`;
+            const err = `Error Calling Method: ${target.name}`;
+            if (veto.has(target.name)) throw err;
             return target.apply(thisArg, args);
         },
         get(target, prop) {
             const cur = target[prop];
             if (prop === 'prototype' || cur === null) return cur;
-            if (typeof cur !== 'object' && typeof cur !== 'function') return cur;
+            const type = typeof cur;
+            if (type !== 'object' && type !== 'function') return cur;
             return new Proxy(cur, this);
         },
         set(target, prop) {

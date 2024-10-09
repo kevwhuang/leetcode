@@ -12,15 +12,10 @@ function maximumGap(nums) {
         }
         return nums;
     }
-    if (nums.length < 2) return 0;
-    let maxNum = -Infinity;
-    for (let i = 0; i < nums.length; i++) {
-        maxNum = Math.max(nums[i], maxNum);
-    }
-    nums = radixSort(nums, ~~(Math.log10(maxNum)));
-    let maxDiff = 0;
+    nums = radixSort(nums, ~~(Math.log10(Math.max(...nums))));
+    let max = 0;
     for (let i = 1; i < nums.length; i++) {
-        maxDiff = Math.max(nums[i] - nums[i - 1], maxDiff);
+        max = Math.max(nums[i] - nums[i - 1], max);
     }
-    return maxDiff;
+    return max;
 }

@@ -9,15 +9,16 @@ function tictactoe(moves) {
     for (let i = 1; i < moves.length; i += 2) {
         board[moves[i][0]][moves[i][1]] = 'B';
     }
+    const M = board;
     for (const player of ['AAA', 'BBB']) {
-        if (board[0][0] + board[0][1] + board[0][2] === player) return player[0];
-        if (board[1][0] + board[1][1] + board[1][2] === player) return player[0];
-        if (board[2][0] + board[2][1] + board[2][2] === player) return player[0];
-        if (board[0][0] + board[1][0] + board[2][0] === player) return player[0];
-        if (board[0][1] + board[1][1] + board[2][1] === player) return player[0];
-        if (board[0][2] + board[1][2] + board[2][2] === player) return player[0];
-        if (board[0][0] + board[1][1] + board[2][2] === player) return player[0];
-        if (board[0][2] + board[1][1] + board[2][0] === player) return player[0];
+        if (M[0][0] + M[0][1] + M[0][2] === player) return player[0];
+        if (M[1][0] + M[1][1] + M[1][2] === player) return player[0];
+        if (M[2][0] + M[2][1] + M[2][2] === player) return player[0];
+        if (M[0][0] + M[1][0] + M[2][0] === player) return player[0];
+        if (M[0][1] + M[1][1] + M[2][1] === player) return player[0];
+        if (M[0][2] + M[1][2] + M[2][2] === player) return player[0];
+        if (M[0][0] + M[1][1] + M[2][2] === player) return player[0];
+        if (M[0][2] + M[1][1] + M[2][0] === player) return player[0];
     }
     return moves.length === 9 ? 'Draw' : 'Pending';
 }

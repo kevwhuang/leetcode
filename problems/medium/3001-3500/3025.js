@@ -8,8 +8,7 @@ function numberOfPairs(points) {
         for (let j = i + 1; j < points.length; j++) {
             const y = points[j][1];
             if (points[i][1] < y || y <= height) continue;
-            height = y;
-            pairs++;
+            pairs++, height = y;
         }
     }
     return pairs;

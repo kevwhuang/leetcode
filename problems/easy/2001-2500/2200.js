@@ -7,7 +7,7 @@ function findKDistantIndices(nums, key, k) {
         const lower = Math.max(i - k, indices.at(-1) || 0);
         const upper = Math.min(i + k, nums.length - 1);
         for (let j = lower; j <= upper; j++) {
-            j > (indices.at(-1) || -1) && indices.push(j);
+            if (j > (indices.at(-1) || -1)) indices.push(j);
         }
     }
     return indices;

@@ -38,22 +38,20 @@ class TweetCounts {
         this.tweets.get(tweetName).set(time, freq);
     }
     #binarySearchAtLeast(arr, tgt, l, r) {
-        let idx;
         while (l <= r) {
             const m = l + r >> 1;
             if (arr[m][0] < tgt) l = m + 1;
-            else r = (idx = m) - 1;
+            else r = m - 1;
         }
-        return idx;
+        return r + 1;
     }
     #binarySearchAtMost(arr, tgt, l, r) {
-        let idx;
         while (l <= r) {
             const m = l + r >> 1;
-            if (arr[m][0] > tgt) r = m - 1;
-            else l = (idx = m) + 1;
+            if (arr[m][0] <= tgt) l = m + 1;
+            else r = m - 1;
         }
-        return idx;
+        return l - 1;
     }
     #init(tweetName) {
         if (!this.tweets.has(tweetName)) return [];

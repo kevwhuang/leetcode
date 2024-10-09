@@ -10,13 +10,12 @@ function deepFilter(obj, fn) {
             const val = deepFilter(obj[i], fn);
             if (val !== undefined) filtered.push(val);
         }
-        if (filtered.length) return filtered;
-    } else {
-        const filtered = {};
-        for (const key in obj) {
-            const val = deepFilter(obj[key], fn);
-            if (val !== undefined) filtered[key] = val;
-        }
-        if (Object.keys(filtered).length) return filtered;
+        return filtered.length ? filtered : undefined;
     }
+    const filtered = {};
+    for (const key in obj) {
+        const val = deepFilter(obj[key], fn);
+        if (val !== undefined) filtered[key] = val;
+    }
+    if (Object.keys(filtered).length) return filtered;
 }

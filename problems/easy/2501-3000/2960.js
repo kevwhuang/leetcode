@@ -4,8 +4,7 @@ function countTestedDevices(batteryPercentages) {
     let devices = 0, penalty = 0;
     for (let i = 0; i < batteryPercentages.length; i++) {
         if (batteryPercentages[i] <= penalty) continue;
-        devices++;
-        penalty++;
+        devices++, penalty++;
     }
     return devices;
 }

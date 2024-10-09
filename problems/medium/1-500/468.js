@@ -16,7 +16,7 @@ function validIPAddress(queryIP) {
     if (queryIP.length !== 8) return 'Neither';
     const re = /[0-9ABCDEFabcdef]+/;
     for (let i = 0; i < 8; i++) {
-        const str = queryIP[i].match(re)?.at(0);
+        const str = queryIP[i].match(re)?.[0];
         if (!str) return 'Neither';
         if (str.length > 4 || str.length !== queryIP[i].length) {
             return 'Neither';

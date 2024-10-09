@@ -3,7 +3,7 @@
 function maxProbability(n, edges, succProb, start_node, end_node) {
     const adj = {};
     const weights = new Array(n).fill(0);
-    while (--n >= 0) adj[n] = [];
+    while (~--n) adj[n] = [];
     for (let i = 0; i < edges.length; i++) {
         adj[edges[i][0]].push([edges[i][1], succProb[i]]);
         adj[edges[i][1]].push([edges[i][0], succProb[i]]);

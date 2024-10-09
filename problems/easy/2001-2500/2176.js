@@ -4,7 +4,7 @@ function countPairs(nums, k) {
     let pairs = 0;
     for (i = 0; i < nums.length; i++) {
         for (j = i + 1; j < nums.length; j++) {
-            nums[i] === nums[j] && i * j % k === 0 && pairs++;
+            if (nums[i] === nums[j] && i * j % k === 0) pairs++;
         }
     }
     return pairs;

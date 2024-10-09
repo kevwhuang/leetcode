@@ -19,8 +19,8 @@ function shortestPathAllKeys(grid) {
     const isLowercase = char => 'a' <= char && char <= 'z';
     const isUppercase = char => 'A' <= char && char <= 'Z';
     const bit = (char, offset) => 2 ** (char.charCodeAt() - offset);
-    const m = grid.length, n = grid[0].length;
     let target = 0, queue;
+    const m = grid.length, n = grid[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             const cur = grid[r][c];
@@ -49,8 +49,7 @@ function shortestPathAllKeys(grid) {
                 serialize(r, c, bitmask, nextQueue);
             }
         }
-        moves++;
-        queue = nextQueue;
+        moves++, queue = nextQueue;
     }
     return -1;
 }

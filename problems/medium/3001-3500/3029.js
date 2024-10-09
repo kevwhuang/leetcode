@@ -9,7 +9,7 @@ function minimumTimeToInitialState(word, k) {
             match = false;
             break;
         }
-        if (match === true) break;
+        if (match) break;
         time++;
     }
     return time;

@@ -5,7 +5,6 @@ function minOperations(k) {
     while (true) {
         const mults = Math.ceil(k / (adds + 1)) - 1;
         if (mults > prev - 1) return adds + prev - 1;
-        adds++;
-        prev = mults;
+        adds++, prev = mults;
     }
 }

@@ -10,17 +10,17 @@ function unmarkedSumArray(nums, queries) {
     }
     arr.sort((a, b) => a[0] - b[0]);
     for (let i = 0, j = -1; i < queries.length; i++) {
-        const index = queries[i][0];
-        if (nums[index][1] !== true) {
-            nums[index][1] = true;
-            sum -= nums[index][0];
+        const idx = queries[i][0];
+        if (nums[idx][1] !== true) {
+            nums[idx][1] = true;
+            sum -= nums[idx][0];
         }
-        let remaining = queries[i][1];
-        while (remaining && ++j < arr.length) {
+        let rem = queries[i][1];
+        while (rem && ++j < arr.length) {
             if (arr[j][1] === true) continue;
             arr[j][1] = true;
             sum -= arr[j][0];
-            remaining--;
+            rem--;
         }
         queries[i] = sum;
     }

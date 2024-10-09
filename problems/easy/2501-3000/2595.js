@@ -3,7 +3,7 @@
 function evenOddBit(n) {
     let even = 0, odd = 0, isEven = true;
     while (n) {
-        n & 1 && (isEven ? even++ : odd++);
+        if (n & 1) isEven ? even++ : odd++;
         n >>= 1;
         isEven = !isEven;
     }

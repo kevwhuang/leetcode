@@ -3,7 +3,7 @@
 function prefixCount(words, pref) {
     let count = 0;
     for (let i = 0; i < words.length; i++) {
-        words[i].startsWith(pref) && count++;
+        if (words[i].startsWith(pref)) count++;
     }
     return count;
 }

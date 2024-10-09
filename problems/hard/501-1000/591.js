@@ -2,7 +2,7 @@
 
 function isValid(code) {
     const stack = [], len = code.length;
-    let i = 0, tagged = false;
+    let i = 0, tagged;
     while (i < len) {
         if (code[i] !== '<') {
             if (!tagged) return false;
@@ -28,5 +28,5 @@ function isValid(code) {
             i = end + 1, tagged = true;
         }
     }
-    return !stack.length;
+    return stack.length === 0;
 }
