@@ -3,8 +3,12 @@
 function mostWordsFound(sentences) {
     let max = 0;
     for (let i = 0; i < sentences.length; i++) {
-        const replaced = sentences[i].replaceAll(' ', '');
-        max = Math.max(sentences[i].length - replaced.length + 1, max);
+        const cur = sentences[i];
+        let count = 1;
+        for (let j = 0; j < cur.length; j++) {
+            if (cur[j] === ' ') count++;
+        }
+        max = Math.max(count, max);
     }
     return max;
 }

@@ -1,11 +1,10 @@
 // 2103 - Rings and Rods
 
 function countPoints(rings) {
-    const freq = new Array(10).fill('');
-    for (let i = 0; i < rings.length - 1; i += 2) {
-        if (!freq[rings[i + 1]].includes(rings[i])) {
-            freq[rings[i + 1]] += rings[i];
-        }
+    const arr = new Array(10).fill('');
+    for (let i = 1; i < rings.length; i += 2) {
+        if (arr[rings[i]].includes(rings[i - 1])) continue;
+        arr[rings[i]] += rings[i - 1];
     }
-    return freq.reduce((s, e) => e.length === 3 ? s + 1 : s, 0);
+    return arr.reduce((s, e) => e.length === 3 ? s + 1 : s, 0);
 }

@@ -3,9 +3,8 @@
 function finalValueAfterOperations(operations) {
     let x = 0;
     for (let i = 0; i < operations.length; i++) {
-        const operation = operations[i];
-        if (operation === '++X' || operation === 'X++') x++;
-        else x--;
+        const cur = operations[i];
+        cur === '++X' || cur === 'X++' ? x++ : x--;
     }
     return x;
 }

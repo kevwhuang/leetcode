@@ -5,7 +5,7 @@ function targetIndices(nums, target) {
     const indices = [];
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] > target) break;
-        nums[i] === target && indices.push(i);
+        if (nums[i] === target) indices.push(i);
     }
     return indices;
 }

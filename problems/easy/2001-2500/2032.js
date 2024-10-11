@@ -1,15 +1,13 @@
 // 2032 - Two Out of Three
 
 function twoOutOfThree(nums1, nums2, nums3) {
-    const freq = new Array(100).fill(0);
-    for (const nums of [nums1, nums2, nums3]) {
-        for (const n of new Set(nums).keys()) {
-            freq[n - 1]++;
-        }
+    const bucket = new Array(101).fill(0);
+    new Set(nums1).forEach(e => bucket[e]++);
+    new Set(nums2).forEach(e => bucket[e]++);
+    new Set(nums3).forEach(e => bucket[e]++);
+    const res = [];
+    for (let n = 1; n <= 100; n++) {
+        if (bucket[n] >= 2) res.push(n);
     }
-    const distinct = [];
-    for (let i = 0; i < 100; i++) {
-        freq[i] >= 2 && distinct.push(i + 1);
-    }
-    return distinct;
+    return res;
 }

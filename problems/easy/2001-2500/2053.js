@@ -3,11 +3,11 @@
 function kthDistinct(arr, k) {
     const map = new Map();
     for (let i = 0; i < arr.length; i++) {
-        map.set(arr[i], map.get(arr[i]) + 1 || 1);
+        map.set(arr[i], (map.get(arr[i]) ?? 0) + 1);
     }
-    for (const e of map.entries()) {
-        e[1] === 1 && k--;
-        if (!k) return e[0];
+    for (const e of map) {
+        if (e[1] === 1) k--;
+        if (k === 0) return e[0];
     }
     return '';
 }

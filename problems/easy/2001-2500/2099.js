@@ -1,13 +1,9 @@
 // 2099 - Find Subsequence of Length K With the Largest Sum
 
 function maxSubsequence(nums, k) {
-    const arr = new Array(nums.length);
-    for (let i = 0; i < nums.length; i++) {
-        arr[i] = [i, nums[i]];
-    }
-    return arr
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, k)
-        .sort((a, b) => a[0] - b[0])
-        .map(e => e[1]);
+    nums = nums.map((e, i) => [e, i]);
+    nums.sort((a, b) => b[0] - a[0]);
+    nums = nums.slice(0, k);
+    nums.sort((a, b) => a[1] - b[1]);
+    return nums.map(e => e[0]);
 }
