@@ -2,12 +2,9 @@
 
 function maximumBeauty(nums, k) {
     k *= 2;
-    const bucket = new Array(Math.max(...nums) + 1);
+    const bucket = new Array(Math.max(...nums) + 1).fill(0);
     if (k >= bucket.length) return nums.length;
-    bucket.fill(0);
-    for (let i = 0; i < nums.length; i++) {
-        bucket[nums[i]]++;
-    }
+    nums.forEach(e => bucket[e]++);
     let window = 0;
     for (let n = 0; n <= k; n++) {
         window += bucket[n];
@@ -15,7 +12,7 @@ function maximumBeauty(nums, k) {
     let beauty = window;
     for (let n = k + 1; n < bucket.length; n++) {
         window += bucket[n] - bucket[n - k - 1];
-        if (window > beauty) beauty = window;
+        beauty = Math.max(window, beauty);
     }
     return beauty;
 }

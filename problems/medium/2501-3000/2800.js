@@ -9,13 +9,8 @@ function minimumString(a, b, c) {
     function merge(a, b) {
         for (let i = 0; i < a.length; i++) {
             let j = 0;
-            while (i + j < a.length && j < b.length) {
-                if (a[i + j] !== b[j]) break;
-                j++;
-            }
-            if (i + j === a.length || j === b.length) {
-                return a + b.slice(j);
-            }
+            while (i + j < a.length && j < b.length && a[i + j] === b[j]) j++;
+            if (i + j === a.length || j === b.length) return a + b.slice(j);
         }
         return a + b;
     }

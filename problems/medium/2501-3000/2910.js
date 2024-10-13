@@ -5,11 +5,7 @@ function minGroupsForValidAssignment(balls) {
     for (let i = 0; i < balls.length; i++) {
         map.set(balls[i], (map.get(balls[i]) ?? 0) + 1);
     }
-    let size = Infinity;
-    for (const freq of map.values()) {
-        if (freq < size) size = freq;
-    }
-    size += 2;
+    let size = Math.min(...map.values()) + 2;
     L: while (--size >= 2) {
         let boxes = 0;
         for (const freq of map.values()) {

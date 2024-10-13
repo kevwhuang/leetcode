@@ -14,20 +14,19 @@ function maximumSafenessFactor(grid) {
         }
     }
     let dist = 1;
-    const dr = [-1, 1, 0, 0], dc = [0, 0, -1, 1];
+    const d = [0, -1, 0, 1, 0];
     while (queue.length) {
         const nextQueue = [];
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < queue.length; j++) {
-                const r = dr[i] + queue[j][0], c = dc[i] + queue[j][1];
+                const r = queue[j][0] + d[i], c = queue[j][1] + d[i + 1];
                 if (!validate(r, c)) continue;
                 if (safety[r][c] <= dist) continue;
                 safety[r][c] = dist;
                 nextQueue.push([r, c]);
             }
         }
-        dist++;
-        queue = nextQueue;
+        dist++, queue = nextQueue;
     }
     let l = 0, r = dist - 1;
     L: while (l < r) {
@@ -40,7 +39,7 @@ function maximumSafenessFactor(grid) {
             const nextQueue = [];
             for (let i = 0; i < 4; i++) {
                 for (let j = 0; j < queue.length; j++) {
-                    const r = dr[i] + queue[j][0], c = dc[i] + queue[j][1];
+                    const r = queue[j][0] + d[i], c = queue[j][1] + d[i + 1];
                     if (!validate(r, c)) continue;
                     if (safety[r][c] < m) continue;
                     if (r === nn && c === nn) { l = m + 1; continue L; }

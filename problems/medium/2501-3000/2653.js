@@ -1,7 +1,7 @@
 // 2653 - Sliding Subarray Beauty
 
 function getSubarrayBeauty(nums, k, x) {
-    function checkBeauty(index) {
+    function beauty(index) {
         let count = 0;
         for (let n = 0; n < 50; n++) {
             count += bucket[n];
@@ -14,13 +14,13 @@ function getSubarrayBeauty(nums, k, x) {
         if (num < 50) bucket[num]++;
     }
     const res = new Int8Array(nums.length - k + 1);
-    checkBeauty(0);
+    beauty(0);
     for (let i = k; i < nums.length; i++) {
         const head = nums[i] + 50;
         if (head < 50) bucket[head]++;
         const tail = nums[i - k] + 50;
         if (tail < 50) bucket[tail]--;
-        checkBeauty(i - k + 1);
+        beauty(i - k + 1);
     }
     return res;
 }

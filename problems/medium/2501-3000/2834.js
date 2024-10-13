@@ -5,5 +5,5 @@ function minimumPossibleSum(n, target) {
     let sum = BigInt((1 + count) * count / 2);
     n = BigInt(n - count);
     sum += (2n * BigInt(target) + n - 1n) * n / 2n;
-    return sum % 1_000_000_007n;
+    return Number(sum % 1000000007n);
 }

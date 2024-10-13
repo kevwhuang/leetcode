@@ -3,50 +3,29 @@
 class ImmutableHelper {
     constructor(obj) {
         this.obj = obj;
-        this.mutated = false;
     }
     produce(mutator) {
-        const cur = {};
-        mutator(this.#partialClone(this.obj, cur));
-        if (this.mutated) {
-            this.mutated = false;
-            return this.#clone(this.obj, cur);
-        }
-        return this.obj;
+        const setter = (prop, val) => obj[prop] = val;
+        const obj = { clone: this.obj };
+        mutator(this.#profixy(obj, obj, setter).clone);
+        return obj.clone;
     }
-    #clone(obj, cur) {
-        if (typeof obj !== 'object' || typeof cur !== 'object') return cur;
-        if (obj === null) return cur;
-        let copy;
-        const entries = Object.entries(cur);
-        if (Array.isArray(obj)) {
-            copy = [...obj];
-            for (let i = 0; i < entries.length; i++) {
-                const key = Number(entries[i][0]);
-                copy[key] = this.#clone(obj[key], entries[i][1]);
-            }
-        } else {
-            copy = { ...obj };
-            for (let i = 0; i < entries.length; i++) {
-                const key = entries[i][0];
-                copy[key] = this.#clone(obj[key], entries[i][1]);
-            }
-        }
-        return copy;
-    }
-    #partialClone(obj, cur) {
+    #profixy(obj, orig, setter) {
         const handler = {
-            get: (target, prop) => {
-                if (typeof target[prop] === 'object' && target[prop] !== null) {
-                    if (cur[prop] === undefined) cur[prop] = {};
-                    return this.#partialClone(target[prop], cur[prop]);
-                }
-                return prop in cur ? cur[prop] : Reflect.get(target, prop);
+            get: (_, prop) => {
+                let val = obj[prop];
+                if (!val || typeof val !== 'object') return val;
+                return this.#profixy(val, orig[prop], (nextProp, nextVal) => {
+                    if (val === orig[prop]) {
+                        val = Array.isArray(val) ? [...val] : { ...val };
+                        obj = setter(prop, val);
+                    }
+                    val[nextProp] = nextVal;
+                    return val;
+                });
             },
-            set: (target, prop, value) => {
-                if (target[prop] === value) return;
-                cur[prop] = value;
-                this.mutated = true;
+            set: (_, prop, val) => {
+                obj = setter(prop, val);
             },
         };
         return new Proxy(obj, handler);

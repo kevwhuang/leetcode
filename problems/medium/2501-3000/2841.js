@@ -12,8 +12,8 @@ function maxSum(nums, m, k) {
         const head = nums[i], tail = nums[i - k];
         window += head - tail;
         map.set(head, (map.get(head) ?? 0) + 1);
-        const nextFreq = map.get(tail) - 1;
-        if (nextFreq) map.set(tail, nextFreq);
+        const freq = map.get(tail) - 1;
+        if (freq) map.set(tail, freq);
         else map.delete(tail);
         if (map.size >= m) max = Math.max(window, max);
     }

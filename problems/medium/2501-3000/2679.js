@@ -1,12 +1,9 @@
 // 2679 - Sum in a Matrix
 
 function matrixSum(nums) {
-    const m = nums.length;
-    for (let r = 0; r < m; r++) {
-        nums[r] = new Uint16Array(nums[r]).sort();
-    }
+    nums.forEach((row, r) => nums[r] = new Uint16Array(row).sort());
     let score = 0;
-    const n = nums[0].length;
+    const m = nums.length, n = nums[0].length;
     for (let c = 0; c < n; c++) {
         let max = 0;
         for (let r = 0; r < m; r++) {

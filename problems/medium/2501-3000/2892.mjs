@@ -5,8 +5,7 @@ function minArrayLength(nums, k) {
     for (let i = 0; i < nums.length; i++) {
         let prod = nums[i];
         while (i + 1 < nums.length && prod * nums[i + 1] <= k) {
-            merges++;
-            prod *= nums[++i];
+            merges++, prod *= nums[++i];
             if (prod === 0) return 1;
         }
     }

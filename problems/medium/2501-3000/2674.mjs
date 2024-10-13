@@ -8,7 +8,8 @@ function splitCircularLinkedList(list) {
         len++;
     }
     const tail = slow;
-    slow = list, len = Math.ceil(len / 2);
+    slow = list;
+    len = Math.ceil(len / 2);
     while (--len) slow = slow.next;
     const head = slow.next;
     tail.next = head;

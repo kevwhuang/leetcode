@@ -2,14 +2,10 @@
 
 function longestEqualSubarray(nums, k) {
     let max = 1;
-    const map = new Map();
+    const bucket = new Array(nums.length + 1).fill(0);
     for (let l = 0, r = 0; r < nums.length; r++) {
-        const freq = map.get(nums[r]) + 1 || 1;
-        map.set(nums[r], freq);
-        if (freq > max) max = freq;
-        while (r - l - max >= k) {
-            map.set(nums[l], map.get(nums[l++]) - 1);
-        }
+        max = Math.max(++bucket[nums[r]], max);
+        while (r - l - max >= k) bucket[nums[l++]]--;
     }
     return max;
 }

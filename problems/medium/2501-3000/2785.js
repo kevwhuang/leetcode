@@ -2,14 +2,14 @@
 
 function sortVowels(s) {
     s = s.split('');
-    const dict = new Set(['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']);
     const vowels = [];
+    const set = new Set(['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']);
     for (let i = 0; i < s.length; i++) {
-        if (dict.has(s[i])) vowels.push(s[i]);
+        if (set.has(s[i])) vowels.push(s[i]);
     }
     vowels.sort();
     for (let i = 0, j = 0; i < s.length; i++) {
-        if (dict.has(s[i])) s[i] = vowels[j++];
+        if (set.has(s[i])) s[i] = vowels[j++];
     }
     return s.join('');
 }

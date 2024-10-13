@@ -6,7 +6,7 @@ function differenceOfDistinctValues(grid) {
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             const topLeft = new Set(), bottomRight = new Set();
-            for (let d = 1; r - d >= 0 && c - d >= 0; d++) {
+            for (let d = 1; r >= d && c >= d; d++) {
                 topLeft.add(grid[r - d][c - d]);
             }
             for (let d = 1; r + d < m && c + d < n; d++) {

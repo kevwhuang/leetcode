@@ -1,8 +1,8 @@
 // 2645 - Minimum Additions to Make Valid String
 
 function addMinimum(word) {
-    const dict = { a: 'b', b: 'c', c: 'a' };
     let res = 0, cur = 'a', i = 0;
+    const dict = { a: 'b', b: 'c', c: 'a' };
     while (i < word.length) {
         if (word[i] === cur) i++;
         else res++;

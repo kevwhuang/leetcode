@@ -10,8 +10,8 @@ function countGood(nums, k) {
         while (pairs >= k) {
             const nextFreq = map.get(nums[l]) - 1;
             map.set(nums[l++], nextFreq);
-            pairs -= nextFreq;
             subarrays += n - r;
+            pairs -= nextFreq;
         }
     }
     return subarrays;

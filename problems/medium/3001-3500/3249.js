@@ -2,17 +2,17 @@
 
 function countGoodNodes(edges) {
     function dfs(node, prev) {
-        let count = 1, target;
+        let count = 1, tgt;
         const neighbors = adj[node];
         for (let i = 0; i < neighbors.length; i++) {
             if (neighbors[i] === prev) continue;
             const subcount = dfs(neighbors[i], node);
             count += subcount;
-            if (target === false) continue;
-            if (target === undefined) target = subcount;
-            else if (target !== subcount) target = false;
+            if (tgt === false) continue;
+            if (tgt === undefined) tgt = subcount;
+            else if (tgt !== subcount) tgt = false;
         }
-        if (target !== false) good++;
+        if (tgt !== false) good++;
         return count;
     }
     const adj = Array.from({ length: edges.length + 1 }, () => []);

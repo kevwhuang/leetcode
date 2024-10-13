@@ -12,10 +12,9 @@ function continuousSubarrays(nums) {
                 if (num > max) max = num;
             }
             if (max - min <= 2) break;
-            const nextFreq = map.get(nums[l]) - 1;
-            if (nextFreq) map.set(nums[l], nextFreq);
-            else map.delete(nums[l]);
-            l++;
+            const freq = map.get(nums[l]) - 1;
+            if (freq) map.set(nums[l++], freq);
+            else map.delete(nums[l++]);
         }
         subarrays += r - l + 1;
     }

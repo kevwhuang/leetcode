@@ -7,5 +7,5 @@ function relocateMarbles(nums, moveFrom, moveTo) {
         set.add(moveTo[i]);
         set.delete(moveFrom[i]);
     }
-    return [...set].sort((a, b) => a - b);
+    return new Uint32Array(set).sort();
 }
