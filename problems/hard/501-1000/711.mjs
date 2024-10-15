@@ -27,9 +27,9 @@ function numDistinctIslands2(grid) {
                 mat[4][i] = [-c, -r], mat[5][i] = [-c, r];
                 mat[6][i] = [c, -r], mat[7][i] = [c, r];
             }
-            mat.forEach(e => e.sort((a, b) => a[0] - b[0] || a[1] - b[1]));
             let base;
             for (let i = 0; i < 8; i++) {
+                mat[i].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
                 const r = mat[i][0][0], c = mat[i][0][1];
                 for (let j = 1; j < len; j++) {
                     mat[i][j][0] -= r, mat[i][j][1] -= c;

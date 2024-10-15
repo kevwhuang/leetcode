@@ -5,13 +5,9 @@ function simplifyPath(path) {
     const stack = [];
     for (let i = 0; i < path.length; i++) {
         const cur = path[i];
-        if (cur === '') continue;
-        if (cur === '.') continue;
-        if (cur === '..') {
-            if (stack.length) stack.pop();
-        } else {
-            stack.push(cur);
-        }
+        if (cur === '' || cur === '.') continue;
+        if (cur === '..') stack.length && stack.pop();
+        else stack.push(cur);
     }
     return '/' + stack.join('/');
 }

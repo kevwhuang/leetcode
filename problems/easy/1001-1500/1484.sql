@@ -6,7 +6,7 @@ SELECT
     GROUP_CONCAT(
         DISTINCT product
         ORDER BY
-            product SEPARATOR ','
+            product
     ) AS products
 FROM
     Activities
