@@ -17,18 +17,12 @@ SELECT
 FROM
     CTE
 WHERE
-    CTE.people >= 100
+    people >= 100
     AND (
-        (
-            CTE.prev2 >= 100
-            AND CTE.prev1 >= 100
-        )
-        OR (
-            CTE.prev1 >= 100
-            AND CTE.next1 >= 100
-        )
-        OR (
-            CTE.next1 >= 100
-            AND CTE.next2 >= 100
-        )
+        prev2 >= 100
+        AND prev1 >= 100
+        OR prev1 >= 100
+        AND next1 >= 100
+        OR next1 >= 100
+        AND next2 >= 100
     );
