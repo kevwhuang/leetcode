@@ -7,7 +7,7 @@ SELECT
 FROM
     Products
 WHERE
-    store1 IS NOT NULL
+    store1
 UNION
 SELECT
     product_id,
@@ -16,7 +16,7 @@ SELECT
 FROM
     Products
 WHERE
-    store2 IS NOT NULL
+    store2
 UNION
 SELECT
     product_id,
@@ -25,4 +25,4 @@ SELECT
 FROM
     Products
 WHERE
-    store3 IS NOT NULL;
+    store3;
