@@ -12,8 +12,8 @@ FROM
     JOIN Steps S2 USING(user_id)
     JOIN Steps S3 USING(user_id)
 WHERE
-    S1.steps_date + 1 = S2.steps_date
-    AND S2.steps_date + 1 = S3.steps_date
+    DATEDIFF(S2.steps_date, S1.steps_date) = 1
+    AND DATEDIFF(S3.steps_date, S2.steps_date) = 1
 ORDER BY
     user_id,
     steps_date;
