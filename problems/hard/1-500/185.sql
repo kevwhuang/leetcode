@@ -9,7 +9,7 @@ WITH CTE AS (
             PARTITION BY D.name
             ORDER BY
                 salary DESC
-        ) AS 'rank'
+        ) AS r
     FROM
         Employee E
         JOIN Department D ON E.departmentId = D.id
@@ -21,4 +21,4 @@ SELECT
 FROM
     CTE
 WHERE
-    CTE.rank <= 3;
+    r <= 3;
