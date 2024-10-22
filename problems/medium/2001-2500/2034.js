@@ -2,34 +2,27 @@
 
 class StockPrice {
     constructor() {
-        this.records = new Map();
-        this.latest = [0, null];
-        this.minHeap = new PriorityQueue({ compare: (a, b) => a[1] - b[1] });
-        this.maxHeap = new PriorityQueue({ compare: (a, b) => b[1] - a[1] });
+        this.map = new Map();
+        this.arr = [0, null];
+        this.pq1 = new PriorityQueue({ compare: (a, b) => b[1] - a[1] });
+        this.pq2 = new PriorityQueue({ compare: (a, b) => a[1] - b[1] });
     }
     current() {
-        return this.latest[1];
+        return this.arr[1];
     }
     maximum() {
-        return this.maxHeap.front()[1];
+        return this.pq1.front()[1];
     }
     minimum() {
-        return this.minHeap.front()[1];
+        return this.pq2.front()[1];
     }
     update(timestamp, price) {
-        this.records.set(timestamp, price);
-        if (timestamp >= this.latest[0]) this.latest = [timestamp, price];
-        this.minHeap.enqueue([timestamp, price]);
-        this.maxHeap.enqueue([timestamp, price]);
-        let front = this.minHeap.front();
-        while (this.records.get(front[0]) !== front[1]) {
-            this.minHeap.dequeue();
-            front = this.minHeap.front();
-        }
-        front = this.maxHeap.front();
-        while (this.records.get(front[0]) !== front[1]) {
-            this.maxHeap.dequeue();
-            front = this.maxHeap.front();
-        }
+        if (timestamp >= this.arr[0]) this.arr = [timestamp, price];
+        const map = this.map, pq1 = this.pq1, pq2 = this.pq2;
+        map.set(timestamp, price);
+        pq1.enqueue([timestamp, price]);
+        while (map.get(pq1.front()[0]) !== pq1.front()[1]) pq1.dequeue();
+        pq2.enqueue([timestamp, price]);
+        while (map.get(pq2.front()[0]) !== pq2.front()[1]) pq2.dequeue();
     }
 }

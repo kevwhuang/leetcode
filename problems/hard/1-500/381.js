@@ -2,28 +2,29 @@
 
 class RandomizedCollection {
     constructor() {
+        this.map = new Map();
         this.nums = [];
-        this.indices = new Map();
     }
     getRandom() {
-        return this.nums[~~(this.nums.length * Math.random())];
+        return this.nums[this.nums.length * Math.random() >> 0];
     }
     insert(val) {
-        if (!this.indices.has(val)) this.indices.set(val, new Set());
-        this.indices.get(val).add(this.nums.length);
-        this.nums.push(val);
-        return this.indices.get(val).size === 1;
+        const map = this.map, nums = this.nums;
+        if (!map.has(val)) map.set(val, new Set());
+        map.get(val).add(nums.length);
+        nums.push(val);
+        return map.get(val).size === 1;
     }
     remove(val) {
-        const map = this.indices;
-        if (!map.has(val) || !map.get(val).size) return false;
+        const map = this.map, nums = this.nums;
+        if (!map.has(val) || map.get(val).size === 0) return false;
         const idx = map.get(val).keys().next().value;
         map.get(val).delete(idx);
-        const tail = this.nums.at(-1);
+        const tail = nums.at(-1);
         map.get(tail).add(idx);
-        map.get(tail).delete(this.nums.length - 1);
-        this.nums[idx] = tail;
-        this.nums.pop();
+        map.get(tail).delete(nums.length - 1);
+        nums[idx] = tail;
+        nums.pop();
         return true;
     }
 }
