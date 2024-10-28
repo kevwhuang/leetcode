@@ -6,9 +6,9 @@
  */
 
 function maxProfit(prices) {
-    let max = 0, buy = prices[0];
-    for (let i = 1; i < prices.length; i++) {
-        if (prices[i] < buy) buy = prices[i];
+    let max = 0, buy = Infinity;
+    for (let i = 0; i < prices.length; i++) {
+        buy = Math.min(prices[i], buy);
         max = Math.max(prices[i] - buy, max);
     }
     return max;

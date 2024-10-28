@@ -12,16 +12,16 @@ function checkIfPrerequisite(numCourses, prerequisites, queries) {
     for (let n = 0; n < numCourses; n++) {
         if (!indegree[n]) queue.push(n);
     }
-    const memo = Array.from({ length: numCourses }, mapper);
+    const mat = Array.from({ length: numCourses }, mapper);
     while (queue.length) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
             const u = queue[i], neighbors = adj[u];
             for (let j = 0; j < neighbors.length; j++) {
                 const v = neighbors[j];
-                memo[u][v] = 1;
+                mat[u][v] = 1;
                 for (let n = 0; n < numCourses; n++) {
-                    if (memo[n][u]) memo[n][v] = 1;
+                    if (mat[n][u]) mat[n][v] = 1;
                 }
                 if (!--indegree[v]) nextQueue.push(v);
             }
@@ -29,7 +29,7 @@ function checkIfPrerequisite(numCourses, prerequisites, queries) {
         queue = nextQueue;
     }
     for (let i = 0; i < queries.length; i++) {
-        queries[i] = memo[queries[i][0]][queries[i][1]];
+        queries[i] = mat[queries[i][0]][queries[i][1]];
     }
     return queries;
 }

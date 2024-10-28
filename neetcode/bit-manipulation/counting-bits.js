@@ -6,14 +6,9 @@
  */
 
 function countBits(n) {
-    const res = new Array(n + 1);
+    const res = new Uint8Array(n + 1);
     for (let i = 0; i <= n; i++) {
-        let num = i, count = 0;
-        while (num) {
-            num & 1 && count++;
-            num >>= 1;
-        }
-        res[i] = count;
+        res[i] = res[i >> 1] + (i & 1);
     }
     return res;
 }

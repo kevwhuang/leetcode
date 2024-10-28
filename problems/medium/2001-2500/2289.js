@@ -2,12 +2,11 @@
 
 function totalSteps(nums) {
     let steps = 0;
-    const dp = new Uint32Array(nums.length);
-    const stack = [];
+    const stack = [], arr = new Uint32Array(nums.length);
     for (let i = nums.length - 1; ~i; i--) {
         while (stack.length && nums[i] > nums[stack.at(-1)]) {
-            dp[i] = Math.max(dp[stack.pop()], dp[i] + 1);
-            if (dp[i] > steps) steps = dp[i];
+            arr[i] = Math.max(arr[stack.pop()], arr[i] + 1);
+            if (arr[i] > steps) steps = arr[i];
         }
         stack.push(i);
     }
