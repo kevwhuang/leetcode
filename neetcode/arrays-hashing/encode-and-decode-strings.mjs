@@ -6,7 +6,7 @@
  */
 
 function encode(strs) {
-    return strs.join('<delim>');
+    return strs.join('<~>');
 }
 
 /**
@@ -15,7 +15,7 @@ function encode(strs) {
  */
 
 function decode(s) {
-    return s.split('<delim>');
+    return s.split('<~>');
 }
 
 module.exports = { encode, decode };

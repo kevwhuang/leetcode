@@ -5,16 +5,15 @@ function topKFrequent(nums, k) {
     for (let i = 0; i < nums.length; i++) {
         map.set(nums[i], (map.get(nums[i]) ?? 0) + 1);
     }
-    const bucket = [];
+    const B = [];
     for (const e of map) {
-        bucket[e[1]] ??= [];
-        bucket[e[1]].push(e[0]);
+        B[e[1]] ??= [];
+        B[e[1]].push(e[0]);
     }
     const res = new Int16Array(k);
-    let i = 0, j = bucket.length - 1;
-    while (i < k) {
-        while (j && !bucket[j]) j--;
-        bucket[j--].forEach(e => res[i++] = e);
+    for (let i = B.length - 1, j = 0; j < k; i--) {
+        while (i && !B[i]) i--;
+        B[i].forEach(e => res[j++] = e);
     }
     return res;
 }

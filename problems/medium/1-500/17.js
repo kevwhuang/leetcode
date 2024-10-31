@@ -1,17 +1,16 @@
 // 17 - Letter Combinations of a Phone Number
 
 function letterCombinations(digits) {
-    function backtrack(i, str) {
-        if (i === digits.length) return combos.push(str);
-        const letters = arr[digits[i]];
-        for (let j = 0; j < letters.length; j++) {
-            backtrack(i + 1, str + letters[j]);
+    function backtrack(i, cur) {
+        if (i === digits.length) return res.push(cur);
+        const str = dict[digits[i] - 2];
+        for (let j = 0; j < str.length; j++) {
+            backtrack(i + 1, cur + str[j]);
         }
     }
     if (digits.length === 0) return [];
-    const arr = [null, null, 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs'];
-    arr.push('tuv', 'wxyz');
-    const combos = [];
+    const res = [];
+    const dict = ['abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'];
     backtrack(0, '');
-    return combos;
+    return res;
 }

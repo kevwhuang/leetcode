@@ -2,7 +2,7 @@
 
 function subsetsWithDup(nums) {
     function backtrack(i) {
-        res.push([...cur]);
+        res.push(new Int8Array(cur));
         for (let j = i; j < nums.length; j++) {
             if (j > i && nums[j - 1] === nums[j]) continue;
             cur.push(nums[j]);

@@ -7,7 +7,7 @@
 
 function subsets(nums) {
     function backtrack(i) {
-        res.push([...cur]);
+        res.push(new Int8Array(cur));
         while (i < nums.length) {
             cur.push(nums[i]);
             backtrack(++i);

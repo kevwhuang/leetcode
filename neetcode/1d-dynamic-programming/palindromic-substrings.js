@@ -6,14 +6,14 @@
  */
 
 function countSubstrings(s) {
-    let substrings = 0;
+    let res = 0;
     for (let i = 0; i < s.length; i++) {
         let l = i, r = i;
-        while (~l && r < s.length && s[l--] === s[r++]) substrings++;
+        while (~l && r < s.length && s[l--] === s[r++]) res++;
         l = i, r = i + 1;
-        while (~l && r < s.length && s[l--] === s[r++]) substrings++;
+        while (~l && r < s.length && s[l--] === s[r++]) res++;
     }
-    return substrings;
+    return res;
 }
 
 module.exports = countSubstrings;

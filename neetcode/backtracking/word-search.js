@@ -7,33 +7,31 @@
  */
 
 function exist(board, word) {
-    function dfs(r, c, i) {
-        if (i === len) return true;
+    function dfs(i, r, c) {
+        if (i === word.length) return true;
         if (r === -1 || r === m || c === -1 || c === n) return;
-        if (board[r][c] !== word[i]) return;
-        if (seen[r][c]) return;
-        seen[r][c] = true;
-        const up = dfs(r - 1, c, i + 1);
-        const down = dfs(r + 1, c, i + 1);
-        const left = dfs(r, c - 1, i + 1);
-        const right = dfs(r, c + 1, i + 1);
-        seen[r][c] = false;
-        return left || right || up || down;
+        if (seen[r][c] || board[r][c] !== word[i]) return;
+        seen[r][c] = 1;
+        const up = dfs(i + 1, r - 1, c);
+        const down = dfs(i + 1, r + 1, c);
+        const left = dfs(i + 1, r, c - 1);
+        const right = dfs(i + 1, r, c + 1);
+        seen[r][c] = 0;
+        return up || down || left || right;
     }
-    const obj = {}, m = board.length, n = board[0].length;
+    const B = {}, m = board.length, n = board[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            obj[board[r][c]] = (obj[board[r][c]] ?? 0) + 1;
+            B[board[r][c]] = (B[board[r][c]] ?? 0) + 1;
         }
     }
-    const len = word.length;
-    for (let i = 0; i < len; i++) {
-        if (!obj[word[i]]--) return false;
+    for (let i = 0; i < word.length; i++) {
+        if (!B[word[i]]--) return false;
     }
-    const seen = Array.from({ length: m }, () => new Array(n));
+    const seen = Array.from({ length: m }, () => new Uint8Array(n));
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (dfs(r, c, 0)) return true;
+            if (dfs(0, r, c)) return true;
         }
     }
     return false;

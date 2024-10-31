@@ -2,14 +2,15 @@
 
 function permute(nums) {
     function backtrack(i) {
-        if (i === nums.length) return permutations.push([...nums]);
+        if (i === nums.length) res.push(new Int8Array(nums));
         for (let j = i; j < nums.length; j++) {
-            [nums[i], nums[j]] = [nums[j], nums[i]];
+            const swap = nums[i];
+            nums[i] = nums[j], nums[j] = swap;
             backtrack(i + 1);
-            [nums[i], nums[j]] = [nums[j], nums[i]];
+            nums[j] = nums[i], nums[i] = swap;
         }
     }
-    const permutations = [];
+    const res = [];
     backtrack(0);
-    return permutations;
+    return res;
 }
