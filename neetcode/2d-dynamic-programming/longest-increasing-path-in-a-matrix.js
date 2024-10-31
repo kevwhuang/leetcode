@@ -16,9 +16,9 @@ function longestIncreasingPath(matrix) {
         const right = dfs(r, c + 1, matrix[r][c]);
         return memo[r][c] = Math.max(top, bottom, left, right) + 1;
     }
+    let max = 1;
     const m = matrix.length, n = matrix[0].length;
     const memo = Array.from({ length: m }, () => new Array(n));
-    let max = 1;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             max = Math.max(dfs(r, c, -1), max);

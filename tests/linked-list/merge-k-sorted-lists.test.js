@@ -22,9 +22,9 @@ describe('Main', () => {
         }
     });
     test('Case 2', () => {
-        expect(mergeKLists([])).toStrictEqual(null);
+        expect(mergeKLists([])).toBeNull();
     });
     test('Case 3', () => {
-        expect(mergeKLists([null])).toStrictEqual(null);
+        expect(mergeKLists([null])).toBeNull();
     });
 });

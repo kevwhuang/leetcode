@@ -21,15 +21,13 @@ describe('Main', () => {
         }
     });
     test('Case 2', () => {
-        const head = new ListNode(1);
-        head.next = new ListNode(2);
-        let results = reverseList(head);
+        let results = reverseList(new ListNode(1, new ListNode(2)));
         for (const e of [2, 1]) {
             expect(results.val).toStrictEqual(e);
             results = results.next;
         }
     });
     test('Case 3', () => {
-        expect(reverseList(null)).toStrictEqual(null);
+        expect(reverseList(null)).toBeNull();
     });
 });

@@ -10,17 +10,14 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        const root = new TreeNode(3);
+        const root = new TreeNode(3, null, new TreeNode(4));
         root.left = new TreeNode(1, null, new TreeNode(2));
-        root.right = new TreeNode(4);
         expect(kthSmallest(root, 1)).toStrictEqual(1);
     });
     test('Case 2', () => {
-        const root = new TreeNode(5);
-        root.left = new TreeNode(3);
+        const root = new TreeNode(5, null, new TreeNode(6));
+        root.left = new TreeNode(3, null, new TreeNode(4));
         root.left.left = new TreeNode(2, new TreeNode(1));
-        root.left.right = new TreeNode(4);
-        root.right = new TreeNode(6);
         expect(kthSmallest(root, 3)).toStrictEqual(3);
     });
 });

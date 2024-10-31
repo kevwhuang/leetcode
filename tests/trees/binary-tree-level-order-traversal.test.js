@@ -10,17 +10,14 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        const root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
+        const root = new TreeNode(3, new TreeNode(9));
+        root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
         expect(levelOrder(root)).toStrictEqual([[3], [9, 20], [15, 7]]);
     });
     test('Case 2', () => {
         expect(levelOrder(new TreeNode(1))).toStrictEqual([[1]]);
     });
     test('Case 3', () => {
-        expect(levelOrder()).toStrictEqual([]);
+        expect(levelOrder(null)).toStrictEqual([]);
     });
 });

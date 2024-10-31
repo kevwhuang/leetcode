@@ -1,17 +1,18 @@
 // 313 - Super Ugly Number
 
 function nthSuperUglyNumber(n, primes) {
-    const nums = [1];
+    const dp = new Uint32Array(n);
+    dp[0] = 1;
     const indices = new Uint16Array(primes.length);
-    while (nums.length < n) {
-        let next = Infinity;
-        for (let i = 0; i < primes.length; i++) {
-            next = Math.min(primes[i] * nums[indices[i]], next);
+    for (let i = 1; i < n; i++) {
+        let min = Infinity;
+        for (let j = 0; j < primes.length; j++) {
+            min = Math.min(primes[j] * dp[indices[j]], min);
         }
-        nums.push(next);
-        for (let i = 0; i < primes.length; i++) {
-            if (next === primes[i] * nums[indices[i]]) indices[i]++;
+        for (let j = 0; j < primes.length; j++) {
+            if (min === primes[j] * dp[indices[j]]) indices[j]++;
         }
+        dp[i] = min;
     }
-    return nums[n - 1];
+    return dp[n - 1];
 }

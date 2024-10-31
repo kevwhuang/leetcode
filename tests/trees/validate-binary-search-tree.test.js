@@ -10,14 +10,12 @@ class TreeNode {
 
 describe('Main', () => {
     test('Case 1', () => {
-        expect(isValidBST(new TreeNode(2, new TreeNode(1), new TreeNode(3)))).toBeTruthy();
+        const root = new TreeNode(2, new TreeNode(1), new TreeNode(3));
+        expect(isValidBST(root)).toBeTruthy();
     });
     test('Case 2', () => {
-        const root = new TreeNode(5);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(4);
-        root.right.left = new TreeNode(3);
-        root.right.right = new TreeNode(6);
+        const root = new TreeNode(5, new TreeNode(1));
+        root.right = new TreeNode(4, new TreeNode(3), new TreeNode(6));
         expect(isValidBST(root)).toBeFalsy();
     });
 });

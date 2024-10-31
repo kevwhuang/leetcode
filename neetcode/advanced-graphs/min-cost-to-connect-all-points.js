@@ -6,28 +6,27 @@
  */
 
 function minCostConnectPoints(points) {
-    let min = 0;
-    const len = points.length;
-    const seen = new Set();
-    const costs = new Array(len).fill(Infinity);
+    let res = 0;
+    const n = points.length;
+    const seen = new Uint8Array(n);
+    const costs = new Array(n).fill(Infinity);
     costs[0] = 0;
-    for (let i = 0; i < len; i++) {
-        let u, localMin = Infinity;
-        for (let v = 0; v < len; v++) {
-            if (seen.has(v) || costs[v] >= localMin) continue;
-            u = v;
-            localMin = costs[v];
+    for (let i = 0; i < n; i++) {
+        let u, min = Infinity;
+        for (let v = 0; v < n; v++) {
+            if (seen[v] || costs[v] >= min) continue;
+            u = v, min = costs[u];
         }
-        seen.add(u);
-        min += costs[u];
-        for (let v = 0; v < len; v++) {
-            if (seen.has(v)) continue;
-            let manhattan = Math.abs(points[v][0] - points[u][0]);
-            manhattan += Math.abs(points[v][1] - points[u][1]);
-            costs[v] = Math.min(manhattan, costs[v]);
+        res += costs[u], seen[u] = 1;
+        const x1 = points[u][0], y1 = points[u][1];
+        for (let v = 0; v < n; v++) {
+            if (seen[v]) continue;
+            const x2 = points[v][0], y2 = points[v][1];
+            const dist = Math.abs(x1 - x2) + Math.abs(y1 - y2);
+            costs[v] = Math.min(dist, costs[v]);
         }
     }
-    return min;
+    return res;
 }
 
 module.exports = minCostConnectPoints;

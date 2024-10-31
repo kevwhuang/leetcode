@@ -22,7 +22,6 @@ describe('Main', () => {
         expect(hasCycle(head)).toBeTruthy();
     });
     test('Case 3', () => {
-        const head = new ListNode(1);
-        expect(hasCycle(head)).toBeFalsy();
+        expect(hasCycle(new ListNode(1))).toBeFalsy();
     });
 });

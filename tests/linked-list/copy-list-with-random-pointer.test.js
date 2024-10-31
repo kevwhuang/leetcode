@@ -50,13 +50,10 @@ describe('Main', () => {
         head.next.random = head;
         head.next.next.random = null;
         let results = copyRandomList(head);
-        expect(results.val).toStrictEqual(3);
-        expect(results.random).toBeNull();
-        results = results.next;
-        expect(results.val).toStrictEqual(3);
-        expect(results.random.val).toStrictEqual(3);
-        results = results.next;
-        expect(results.val).toStrictEqual(3);
-        expect(results.random).toBeNull();
+        for (const e of [[3, null], [3, 3], [3, null]]) {
+            expect(results.val).toStrictEqual(e[0]);
+            expect(results.random?.val ?? null).toStrictEqual(e[1]);
+            results = results.next;
+        }
     });
 });

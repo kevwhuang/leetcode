@@ -4,16 +4,14 @@ function findCheapestPrice(n, flights, src, dst, k) {
     const adj = {};
     for (let i = 0; i < flights.length; i++) {
         const from = flights[i][0];
-        if (!(from in adj)) {
-            adj[from] = new Array(n).fill(-1);
-        }
+        adj[from] ??= new Array(n).fill(-1);
         adj[from][from] = 0;
         adj[from][flights[i][1]] = flights[i][2];
     }
-    if (!(src in adj)) return -1;
+    if (!adj[src]) return -1;
     const prices = new Array(n).fill(Infinity);
     let queue = [[src, 0]];
-    while (queue.length && k-- !== -1) {
+    while (queue.length && ~k--) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
             const price = queue[i][1];
@@ -23,7 +21,7 @@ function findCheapestPrice(n, flights, src, dst, k) {
                 const nextCost = price + costs[v];
                 if (nextCost >= prices[v]) continue;
                 prices[v] = nextCost;
-                if (!(v in adj)) continue;
+                if (!adj[v]) continue;
                 nextQueue.push([v, nextCost]);
             }
         }

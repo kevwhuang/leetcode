@@ -22,7 +22,7 @@ describe('Main', () => {
         }
     });
     test('Case 2', () => {
-        expect(mergeTwoLists(null, null)).toStrictEqual(null);
+        expect(mergeTwoLists(null, null)).toBeNull();
     });
     test('Case 3', () => {
         expect(mergeTwoLists(null, new ListNode(0)).val).toStrictEqual(0);

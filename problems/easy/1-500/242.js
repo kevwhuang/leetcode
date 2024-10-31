@@ -2,13 +2,12 @@
 
 function isAnagram(s, t) {
     if (s.length !== t.length) return false;
-    const map = new Map();
+    const bucket = new Array(26).fill(0);
     for (let i = 0; i < s.length; i++) {
-        map.set(s[i], map.get(s[i]) + 1 || 1);
+        bucket[s.charCodeAt(i) - 97]++;
     }
     for (let i = 0; i < t.length; i++) {
-        if (!map.get(t[i])) return false;
-        map.set(t[i], map.get(t[i]) - 1);
+        if (--bucket[t.charCodeAt(i) - 97] < 0) return false;
     }
-    return true;
+    return bucket.every(e => e === 0);
 }

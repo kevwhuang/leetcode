@@ -1,4 +1,4 @@
-const { decode, encode } = require('../../neetcode/arrays-hashing/encode-and-decode-strings');
+const { encode, decode } = require('../../neetcode/arrays-hashing/encode-and-decode-strings');
 
 describe('Main', () => {
     test('Case 1', () => {

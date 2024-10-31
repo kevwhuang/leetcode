@@ -8,7 +8,8 @@ describe('Main', () => {
             ['i', 'h', 'k', 'r'],
             ['i', 'f', 'l', 'v'],
         ];
-        expect(findWords(board, ['oath', 'pea', 'eat', 'rain'])).toStrictEqual(['oath', 'eat']);
+        const words = ['oath', 'pea', 'eat', 'rain'];
+        expect(findWords(board, words)).toStrictEqual(['oath', 'eat']);
     });
     test('Case 2', () => {
         expect(findWords([['a', 'b'], ['c', 'd']], ['abcb'])).toStrictEqual([]);

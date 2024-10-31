@@ -1,4 +1,4 @@
-const config = {
+const eslint = {
     ignores: ['tests/**'],
     rules: {
         indent: [2, 4, { SwitchCase: 1 }],
@@ -18,4 +18,4 @@ const config = {
     },
 };
 
-export default [config];
+export default [eslint];

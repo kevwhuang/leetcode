@@ -18,4 +18,4 @@ function deserialize(data) {
     return data;
 }
 
-module.exports = { deserialize, serialize };
+module.exports = { serialize, deserialize };

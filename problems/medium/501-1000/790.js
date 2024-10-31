@@ -1,11 +1,14 @@
 // 790 - Domino and Tromino Tiling
 
 function numTilings(n) {
-    const dp = new Array(n + 1);
-    dp[1] = 1n, dp[2] = 2n, dp[3] = 5n;
-    if (n <= 3) return dp[n];
-    for (let i = 4; i <= n; i++) {
-        dp[i] = dp[i - 3] + 2n * dp[i - 1];
+    function init() {
+        memo = new Uint32Array(1001);
+        memo[1] = 1, memo[2] = 2, memo[3] = 5;
+        for (let i = 4; i <= 1000; i++) {
+            memo[i] = memo[i - 3] + 2 * memo[i - 1];
+            memo[i] %= 1000000007;
+        }
     }
-    return Number(dp[n] % BigInt(1e9 + 7));
+    if (this.memo === undefined) init();
+    return memo[n];
 }

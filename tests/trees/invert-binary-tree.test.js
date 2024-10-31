@@ -24,6 +24,6 @@ describe('Main', () => {
         expect(invertTree(root)).toStrictEqual(solution);
     });
     test('Case 3', () => {
-        expect(invertTree(new TreeNode())).toStrictEqual(new TreeNode());
+        expect(invertTree(null)).toBeNull();
     });
 });

@@ -14,7 +14,7 @@ function groupAnagrams(strs) {
             bucket[cur.charCodeAt(j) - 97]++;
         }
         const key = bucket.join('-');
-        if (map.has(key)) map.set(key, map.get(key).concat(cur));
+        if (map.has(key)) map.get(key).push(cur);
         else map.set(key, [cur]);
     }
     return [...map.values()];

@@ -15,11 +15,11 @@ class KthLargest {
 
 describe('Main', () => {
     test('Case 1', () => {
-        const kth = new KthLargest(3, [4, 5, 8, 2]);
-        expect(kth.add(3)).toStrictEqual(4);
-        expect(kth.add(5)).toStrictEqual(5);
-        expect(kth.add(10)).toStrictEqual(5);
-        expect(kth.add(9)).toStrictEqual(8);
-        expect(kth.add(4)).toStrictEqual(8);
+        const kthLargest = new KthLargest(3, [4, 5, 8, 2]);
+        expect(kthLargest.add(3)).toStrictEqual(4);
+        expect(kthLargest.add(5)).toStrictEqual(5);
+        expect(kthLargest.add(10)).toStrictEqual(5);
+        expect(kthLargest.add(9)).toStrictEqual(8);
+        expect(kthLargest.add(4)).toStrictEqual(8);
     });
 });

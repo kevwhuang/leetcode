@@ -1,4 +1,4 @@
-const { deserialize, serialize } = require('../../neetcode/trees/serialize-and-deserialize-binary-tree');
+const { serialize, deserialize } = require('../../neetcode/trees/serialize-and-deserialize-binary-tree');
 
 class TreeNode {
     constructor(val) {
