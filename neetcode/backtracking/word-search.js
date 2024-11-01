@@ -7,15 +7,15 @@
  */
 
 function exist(board, word) {
-    function dfs(i, r, c) {
+    function backtrack(i, r, c) {
         if (i === word.length) return true;
         if (r === -1 || r === m || c === -1 || c === n) return;
         if (seen[r][c] || board[r][c] !== word[i]) return;
         seen[r][c] = 1;
-        const up = dfs(i + 1, r - 1, c);
-        const down = dfs(i + 1, r + 1, c);
-        const left = dfs(i + 1, r, c - 1);
-        const right = dfs(i + 1, r, c + 1);
+        const up = backtrack(i + 1, r - 1, c);
+        const down = backtrack(i + 1, r + 1, c);
+        const left = backtrack(i + 1, r, c - 1);
+        const right = backtrack(i + 1, r, c + 1);
         seen[r][c] = 0;
         return up || down || left || right;
     }
@@ -31,7 +31,7 @@ function exist(board, word) {
     const seen = Array.from({ length: m }, () => new Uint8Array(n));
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (dfs(0, r, c)) return true;
+            if (backtrack(0, r, c)) return true;
         }
     }
     return false;

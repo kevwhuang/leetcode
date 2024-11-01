@@ -7,19 +7,15 @@
  */
 
 function uniquePaths(m, n) {
-    function init() {
-        memo = Array.from({ length: 100 }, () => new Uint32Array(100));
-        for (let r = 0; r < 100; r++) {
-            memo[r][0] = memo[0][r] = 1;
-        }
-        for (let r = 1; r < 100; r++) {
-            for (let c = 1; c < 100; c++) {
-                memo[r][c] = memo[r - 1][c] + memo[r][c - 1];
-            }
+    const dp = Array.from({ length: m }, () => new Uint32Array(n));
+    dp[0] = new Uint32Array(n).fill(1);
+    for (let r = 1; r < m; r++) {
+        dp[r][0] = 1;
+        for (let c = 1; c < n; c++) {
+            dp[r][c] = dp[r - 1][c] + dp[r][c - 1];
         }
     }
-    if (this.memo === undefined) init();
-    return memo[m - 1][n - 1];
+    return dp[m - 1][n - 1];
 }
 
 module.exports = uniquePaths;

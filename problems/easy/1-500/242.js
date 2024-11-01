@@ -7,7 +7,7 @@ function isAnagram(s, t) {
         B[s.charCodeAt(i) - 97]++;
     }
     for (let i = 0; i < t.length; i++) {
-        if (--B[t.charCodeAt(i) - 97] === -1) return false;
+        if (B[t.charCodeAt(i) - 97]-- === 0) return false;
     }
     return B.every(e => e === 0);
 }

@@ -6,18 +6,17 @@
  */
 
 function maxCoins(nums) {
-    const n = nums.length;
-    const dp = Array.from({ length: n + 2 }, () => new Array(n + 2).fill(0));
-    for (let j = 1; j <= n; j++) {
-        for (let i = j; i; i--) {
+    nums = [1, ...nums, 1];
+    const n = nums.length - 2;
+    const dp = Array.from({ length: n + 2 }, () => new Uint32Array(n + 2));
+    for (let r = n; r; r--) {
+        for (let c = r; c <= n; c++) {
             let max = 0;
-            for (let k = i; k <= j; k++) {
-                const a = i ? nums[i - 1] : 1;
-                const b = k < n ? nums[k] : 1;
-                const c = j + 1 < n ? nums[j + 1] : 1;
-                max = Math.max(a * b * c + dp[i][k - 1] + dp[k + 1][j], max);
+            for (let i = r; i <= c; i++) {
+                const prod = nums[r - 1] * nums[i] * nums[c + 1];
+                max = Math.max(prod + dp[r][i - 1] + dp[i + 1][c], max);
             }
-            dp[i][j] = max;
+            dp[r][c] = max;
         }
     }
     return dp[1][n];

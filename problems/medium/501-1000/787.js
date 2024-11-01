@@ -3,29 +3,26 @@
 function findCheapestPrice(n, flights, src, dst, k) {
     const adj = {};
     for (let i = 0; i < flights.length; i++) {
-        const from = flights[i][0];
-        adj[from] ??= new Array(n).fill(-1);
-        adj[from][from] = 0;
-        adj[from][flights[i][1]] = flights[i][2];
+        const v = flights[i][0];
+        adj[v] ??= new Uint16Array(n);
+        adj[v][flights[i][1]] = flights[i][2];
     }
     if (!adj[src]) return -1;
-    const prices = new Array(n).fill(Infinity);
-    let queue = [[src, 0]];
-    while (queue.length && ~k--) {
+    const M = new Uint32Array(n).fill(1e9);
+    let queue = [[0, adj[src]]];
+    while (~k-- && queue.length) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
-            const price = queue[i][1];
-            const costs = adj[queue[i][0]];
+            const cost = queue[i][0], costs = queue[i][1];
             for (let v = 0; v < n; v++) {
-                if (costs[v] <= 0) continue;
-                const nextCost = price + costs[v];
-                if (nextCost >= prices[v]) continue;
-                prices[v] = nextCost;
-                if (!adj[v]) continue;
-                nextQueue.push([v, nextCost]);
+                if (costs[v] === 0) continue;
+                const nextCost = cost + costs[v];
+                if (nextCost >= M[v]) continue;
+                M[v] = nextCost;
+                if (adj[v]) nextQueue.push([nextCost, adj[v]]);
             }
         }
         queue = nextQueue;
     }
-    return prices[dst] === Infinity ? -1 : prices[dst];
+    return M[dst] === 1e9 ? -1 : M[dst];
 }
