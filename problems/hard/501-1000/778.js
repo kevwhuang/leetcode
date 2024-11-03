@@ -10,11 +10,11 @@ function swimInWater(grid) {
     }
     const n = grid.length, nn = n - 1;
     let l = 0, r = n * n - 1, m, seen;
-    while (l <= r) {
+    while (l < r) {
         m = l + r >> 1;
         seen = Array.from({ length: n }, () => new Uint8Array(n));
         if (!dfs(0, 0)) l = m + 1;
-        else r = m - 1;
+        else r = m;
     }
     return l;
 }

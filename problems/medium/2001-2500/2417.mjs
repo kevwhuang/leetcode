@@ -11,12 +11,12 @@ function closestFair(n) {
     const bound = Number('9'.repeat(digits));
     while (true) {
         if (n === bound) return obj[digits + 1];
-        let odd = 0, even = 0, num = n;
+        let even = 0, odd = 0, num = n;
         while (num) {
             num % 2 ? odd++ : even++;
             num = num / 10 >> 0;
         }
-        if (odd === even) return n;
+        if (even === odd) return n;
         n++;
     }
 }

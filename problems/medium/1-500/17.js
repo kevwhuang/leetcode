@@ -3,9 +3,9 @@
 function letterCombinations(digits) {
     function backtrack(i, cur) {
         if (i === digits.length) return res.push(cur);
-        const str = dict[digits[i] - 2];
-        for (let j = 0; j < str.length; j++) {
-            backtrack(i + 1, cur + str[j]);
+        const s = dict[digits[i] - 2];
+        for (let j = 0; j < s.length; j++) {
+            backtrack(i + 1, cur + s[j]);
         }
     }
     if (digits.length === 0) return [];
