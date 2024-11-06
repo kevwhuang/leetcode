@@ -1,9 +1,10 @@
 // 66 - Plus One
 
 function plusOne(digits) {
-    digits = String(BigInt(digits.join('')) + 1n).split('');
-    for (let i = 0; i < digits.length; i++) {
-        digits[i] = Number(digits[i]);
+    for (let i = digits.length - 1; ~i; i--) {
+        digits[i] = (digits[i] + 1) % 10;
+        if (digits[i]) break;
     }
+    if (digits[0] === 0) digits.unshift(1);
     return digits;
 }

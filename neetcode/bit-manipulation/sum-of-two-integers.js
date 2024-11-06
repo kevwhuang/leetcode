@@ -7,13 +7,8 @@
  */
 
 function getSum(a, b) {
-    let carry;
-    while (b) {
-        carry = (a & b) << 1;
-        a = a ^ b;
-        b = carry;
-    }
-    return a;
+    while (a) [a, b] = [(a & b) << 1, a ^ b];
+    return b;
 }
 
 module.exports = getSum;

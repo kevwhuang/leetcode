@@ -2,9 +2,8 @@
 
 function lastStoneWeight(stones) {
     while (stones.length > 1) {
-        stones.sort((a, b) => b - a);
-        stones[1] = stones[0] - stones[1];
-        stones.shift();
+        stones.sort((a, b) => a - b);
+        stones.push(stones.pop() - stones.pop());
     }
     return stones[0];
 }

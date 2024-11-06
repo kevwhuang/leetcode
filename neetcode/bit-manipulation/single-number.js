@@ -6,11 +6,7 @@
  */
 
 function singleNumber(nums) {
-    let unique = 0;
-    for (let i = 0; i < nums.length; i++) {
-        unique ^= nums[i];
-    }
-    return unique;
+    return nums.reduce((s, e) => s ^ e);
 }
 
 module.exports = singleNumber;
