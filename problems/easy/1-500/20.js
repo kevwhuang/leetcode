@@ -2,14 +2,10 @@
 
 function isValid(s) {
     const stack = [];
-    const obj = { ')': '(', ']': '[', '}': '{' };
+    const dict = { ')': '(', ']': '[', '}': '{' };
     for (let i = 0; i < s.length; i++) {
-        if (s[i] in obj) {
-            if (obj[s[i]] === stack.at(-1)) stack.pop();
-            else return false;
-        } else {
-            stack.push(s[i]);
-        }
+        if (!dict[s[i]]) stack.push(s[i]);
+        else if (dict[s[i]] !== stack.pop()) return false;
     }
-    return !stack.length;
+    return stack.length === 0;
 }

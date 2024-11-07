@@ -6,11 +6,10 @@
  */
 
 function hasCycle(head) {
-    let slow = head;
+    let cur = head;
     while (head && head.next) {
-        head = head.next.next;
-        slow = slow.next;
-        if (head === slow) return true;
+        cur = cur.next, head = head.next.next;
+        if (cur === head) return true;
     }
     return false;
 }

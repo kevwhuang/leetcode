@@ -2,21 +2,21 @@
 
 class MinStack {
     constructor() {
-        this.stack = [];
-        this.min = [];
+        this.stack1 = [];
+        this.stack2 = [];
     }
     getMin() {
-        return this.min.at(-1);
+        return this.stack2.at(-1);
     }
     pop() {
-        const last = this.stack.pop();
-        if (last === this.min.at(-1)) this.min.pop();
+        if (this.stack1.pop() === this.stack2.at(-1)) this.stack2.pop();
     }
     push(val) {
-        this.stack.push(val);
-        if (val <= this.min.at(-1) || !this.min.length) this.min.push(val);
+        this.stack1.push(val);
+        if (this.stack2.length === 0) this.stack2.push(val);
+        else if (val <= this.stack2.at(-1)) this.stack2.push(val);
     }
     top() {
-        return this.stack.at(-1);
+        return this.stack1.at(-1);
     }
 }
