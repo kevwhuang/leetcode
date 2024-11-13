@@ -1,16 +1,15 @@
 // 300 - Longest Increasing Subsequence
 
 function lengthOfLIS(nums) {
-    const subsequence = [];
+    const dp = [];
     for (let i = 0; i < nums.length; i++) {
-        const num = nums[i];
-        if (num > subsequence.at(-1)) {
-            subsequence.push(num);
-        } else {
-            let j = 0;
-            while (num > subsequence[j]) j++;
-            subsequence[j] = num;
+        let l = 0, r = dp.length - 1;
+        while (l <= r) {
+            const m = l + r >> 1;
+            if (dp[m] < nums[i]) l = m + 1;
+            else r = m - 1;
         }
+        dp[l] = nums[i];
     }
-    return subsequence.length;
+    return dp.length;
 }
