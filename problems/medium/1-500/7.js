@@ -1,7 +1,7 @@
 // 7 - Reverse Integer
 
 function reverse(x) {
-    let rvs = parseInt(x.toString().split('').reverse().join(''));
-    if (x < 0) rvs *= -1;
-    return rvs > 2147483647 || rvs < -2147483647 ? 0 : rvs;
+    let res = 0;
+    while (x) res = 10 * res + x % 10, x = x / 10 >> 0;
+    return -2147483647 < res && res < 2147483647 ? res : 0;
 }

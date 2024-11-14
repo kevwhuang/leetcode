@@ -1,12 +1,13 @@
 // 22 - Generate Parentheses
 
 function generateParenthesis(n) {
-    function backtrack(str, open, closed) {
-        if (str.length === n * 2) return res.push(str);
-        if (open < n) backtrack(str + '(', open + 1, closed);
-        if (closed < open) backtrack(str + ')', open, closed + 1);
+    function backtrack(cur) {
+        if (cur.length === tgt) res.push(cur);
+        if (a < n) ++a && backtrack(cur + '(') || a--;
+        if (a > b) ++b && backtrack(cur + ')') || b--;
     }
-    const res = [];
-    backtrack('', 0, 0);
+    const res = [], tgt = n + n;
+    let a = 0, b = 0;
+    backtrack('');
     return res;
 }

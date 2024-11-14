@@ -1,24 +1,14 @@
 // 150 - Evaluate Reverse Polish Notation
 
 function evalRPN(tokens) {
-    const stack = [];
+    const S = [];
     for (let i = 0; i < tokens.length; i++) {
-        switch (tokens[i]) {
-            case '+':
-                stack.push(stack.pop() + stack.pop());
-                break;
-            case '-':
-                stack.push(-stack.pop() + stack.pop());
-                break;
-            case '*':
-                stack.push(stack.pop() * stack.pop());
-                break;
-            case '/':
-                stack.push(Math.trunc(1 / (stack.pop() / stack.pop())));
-                break;
-            default:
-                stack.push(Number(tokens[i]));
-        }
+        const cur = tokens[i];
+        if (cur === '+') S.push(S.pop() + S.pop());
+        else if (cur === '-') S.push(-S.pop() + S.pop());
+        else if (cur === '*') S.push(S.pop() * S.pop());
+        else if (cur === '/') S.push(1 / (S.pop() / S.pop()) >> 0);
+        else S.push(Number(cur));
     }
-    return stack[0];
+    return S[0];
 }

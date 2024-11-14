@@ -11,10 +11,7 @@ function removeNthFromEnd(head, n) {
     while (n--) fast = fast.next;
     if (!fast) return head.next;
     let slow = head;
-    while (fast.next) {
-        slow = slow.next;
-        fast = fast.next;
-    }
+    while (fast.next) slow = slow.next, fast = fast.next;
     slow.next = slow.next.next;
     return head;
 }

@@ -2,8 +2,8 @@
 
 class MinStack {
     constructor() {
-        this.stack1 = [];
-        this.stack2 = [];
+        this.S1 = [];
+        this.S2 = [];
     }
 
     /**
@@ -11,7 +11,7 @@ class MinStack {
      */
 
     getMin() {
-        return this.stack2.at(-1);
+        return this.S2.at(-1);
     }
 
     /**
@@ -19,7 +19,7 @@ class MinStack {
      */
 
     pop() {
-        if (this.stack1.pop() === this.stack2.at(-1)) this.stack2.pop();
+        if (this.S1.pop() === this.S2.at(-1)) this.S2.pop();
     }
 
     /**
@@ -28,9 +28,9 @@ class MinStack {
      */
 
     push(val) {
-        this.stack1.push(val);
-        if (this.stack2.length === 0) this.stack2.push(val);
-        else if (val <= this.stack2.at(-1)) this.stack2.push(val);
+        this.S1.push(val);
+        if (this.S2.length === 0) this.S2.push(val);
+        else if (val <= this.S2.at(-1)) this.S2.push(val);
     }
 
     /**
@@ -38,7 +38,7 @@ class MinStack {
      */
 
     top() {
-        return this.stack1.at(-1);
+        return this.S1.at(-1);
     }
 }
 

@@ -6,13 +6,12 @@
  */
 
 function isValid(s) {
-    const stack = [];
-    const dict = { ')': '(', ']': '[', '}': '{' };
+    const S = [], dict = { ')': '(', ']': '[', '}': '{' };
     for (let i = 0; i < s.length; i++) {
-        if (!dict[s[i]]) stack.push(s[i]);
-        else if (dict[s[i]] !== stack.pop()) return false;
+        if (!dict[s[i]]) S.push(s[i]);
+        else if (dict[s[i]] !== S.pop()) return false;
     }
-    return stack.length === 0;
+    return S.length === 0;
 }
 
 module.exports = isValid;

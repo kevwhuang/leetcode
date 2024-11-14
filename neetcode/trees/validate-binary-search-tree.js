@@ -8,11 +8,9 @@
 function isValidBST(root) {
     function dfs(node, min, max) {
         if (!node) return true;
-        if (node.val <= min) return false;
-        if (node.val >= max) return false;
-        const left = dfs(node.left, min, node.val);
-        const right = dfs(node.right, node.val, max);
-        return left && right;
+        const val = node.val;
+        if (val <= min || val >= max) return false;
+        return dfs(node.left, min, val) && dfs(node.right, val, max);
     }
     return dfs(root, -Infinity, Infinity);
 }
