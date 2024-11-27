@@ -2,12 +2,11 @@
 
 function confusingNumber(n) {
     n = n.toString();
-    const map = { 0: 0, 1: 1, 6: 9, 8: 8, 9: 6 };
-    let diff = false;
-    for (let i = 0, cur; i < n.length; i++) {
-        cur = map[n[i]];
-        if (cur === undefined) return false;
-        if (!diff && cur != n[n.length - 1 - i]) diff = true;
+    let res = false;
+    const dict = { 0: '0', 1: '1', 6: '9', 8: '8', 9: '6' };
+    for (let i = 0; i < n.length; i++) {
+        if (dict[n[i]] === undefined) return false;
+        if (dict[n[i]] !== n[n.length - i - 1]) res = true;
     }
-    return diff;
+    return res;
 }

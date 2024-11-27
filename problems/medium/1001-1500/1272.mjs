@@ -5,12 +5,12 @@ function removeInterval(intervals, toBeRemoved) {
     for (let i = 0; i < intervals.length; i++) {
         const l = intervals[i][0], r = intervals[i][1];
         if (ll < l && r < rr) continue;
-        else if (r <= ll || rr <= l) res.push(intervals[i]);
+        if (r <= ll || rr <= l) res.push(intervals[i]);
         else if (ll < r && r < rr) res.push([l, ll]);
         else if (ll < l && l < rr) res.push([rr, r]);
         else {
             if (l !== ll) res.push([l, ll]);
-            if (r != rr) res.push([rr, r]);
+            if (r !== rr) res.push([rr, r]);
         }
     }
     return res;

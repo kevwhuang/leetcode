@@ -1,7 +1,15 @@
 {
     "name": "leetcode",
+    "version": "24.11.27",
     "author": "Kevin Huang",
+    "scripts": {
+        "lint": "eslint"
+    },
     "dependencies": {
         "@datastructures-js/priority-queue": "latest"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin": "latest",
+        "eslint": "latest"
     }
 }
