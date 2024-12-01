@@ -10,7 +10,7 @@ class SQL {
     deleteRow(name, rowId) { }
     insertRow(name, row) {
         const table = this.lib[name];
-        table[++table['id']] = row;
+        table[++table.id] = row;
     }
     selectCell(name, rowId, columnId) {
         return this.lib[name][rowId][columnId - 1];

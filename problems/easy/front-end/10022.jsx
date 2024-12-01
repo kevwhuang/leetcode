@@ -6,8 +6,8 @@ export function RadioGroup({ name, options, onChange }) {
             {options.map(({ label, value }) =>
                 <label>
                     <input
-                        type="radio"
                         name={name}
+                        type="radio"
                         value={value}
                         onChange={() => onChange(value)}
                     />

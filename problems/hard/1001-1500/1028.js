@@ -7,7 +7,7 @@ function recoverFromPreorder(traversal) {
         while (S[i] === '-') dep++, i++;
         while (i < n && S[i] !== '-') val = +S[i++] + 10 * val;
         A[dep] = new TreeNode(val);
-        if (dep--) A[dep][A[dep].left ? 'right' : 'left'] = A[++dep];
+        if (dep--) A[dep][A[dep].left ? 'right' : 'left'] = A[dep + 1];
     }
     return A[0];
 }

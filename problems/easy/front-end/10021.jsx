@@ -13,8 +13,8 @@ export function CheckboxGroup({ name, options, onChange }) {
             {options.map(({ label, value }) =>
                 <label>
                     <input
-                        type="checkbox"
                         name={name}
+                        type="checkbox"
                         value={value}
                         onChange={handleChange}
                     />

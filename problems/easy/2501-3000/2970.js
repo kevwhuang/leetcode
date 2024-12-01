@@ -8,7 +8,7 @@ function incremovableSubarrayCount(nums) {
             for (let ll = 1; ll < l; ll++) {
                 if (nums[ll - 1] >= nums[ll]) continue L;
             }
-            if (l && r + 1 < n && nums[l - 1] >= nums[r + 1]) continue L;
+            if (l && r + 1 < n && nums[l - 1] >= nums[r + 1]) continue;
             for (let rr = r + 2; rr < n; rr++) {
                 if (nums[rr - 1] >= nums[rr]) continue L;
             }

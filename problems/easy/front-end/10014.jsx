@@ -18,9 +18,9 @@ export function PhoneNumberInput() {
     const [digits, setDigits] = React.useState('');
     return (
         <input
+            maxLength={14}
             placeholder="mobile number"
             value={digits}
-            maxLength={14}
             onChange={e => handleChange(e.target.value)}
         />
     );

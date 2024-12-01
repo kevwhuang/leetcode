@@ -5,7 +5,7 @@ function calculateTax(brackets, income) {
     for (let i = 0; i < brackets.length; i++) {
         const prev = i ? brackets[i - 1][0] : 0;
         if (income <= brackets[i][0]) {
-            return tax += (income - prev) * brackets[i][1] / 100;
+            return tax + (income - prev) * brackets[i][1] / 100;
         }
         tax += (brackets[i][0] - prev) * brackets[i][1] / 100;
     }

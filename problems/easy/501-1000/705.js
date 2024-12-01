@@ -5,7 +5,7 @@ class MyHashSet {
         this[key] = null;
     }
     contains(key) {
-        return this.hasOwnProperty(key);
+        return key in this;
     }
     remove(key) {
         delete this[key];

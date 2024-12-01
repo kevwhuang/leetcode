@@ -6,7 +6,7 @@ function isDecomposable(s) {
         if (s[i] !== s[i + 1]) return false;
         if (s[i] === s[i + 2]) i += 3;
         else if (seen) return false;
-        else (seen = true) && (i += 2);
+        else (i += 2) && (seen = true);
     }
     return seen;
 }

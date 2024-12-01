@@ -17,7 +17,7 @@ function isInterleave(s1, s2, s3) {
     }
     for (let i = len1 - 1; i >= 0; i--) {
         for (let j = len2; j >= 0; j--) {
-            dp[j] = dp[j] && s1[i] === s3[i + j];
+            dp[j] &&= s1[i] === s3[i + j];
             if (dp[j] || j === len2) continue;
             dp[j] = dp[j + 1] && s2[j] === s3[i + j];
         }

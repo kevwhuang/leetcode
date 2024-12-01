@@ -22,7 +22,7 @@ function primeSubOperation(nums) {
         if (diff <= 2 && (prev = nums[i])) continue;
         let j = 1;
         while (j < primes.length && primes[j] < diff) j++;
-        prev = nums[i] - primes[--j];
+        prev = nums[i] - primes[j - 1];
     }
     return true;
 }
