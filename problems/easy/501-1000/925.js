@@ -1,12 +1,11 @@
 // 925 - Long Pressed Name
 
 function isLongPressedName(name, typed) {
-    let j = 0;
-    for (let i = 0, cnt; i < name.length; i++) {
-        cnt = 1;
-        for (; name[i] === name[i + 1]; i++, cnt++) { }
-        for (; name[i] === typed[j]; j++, cnt--) { }
-        if (cnt > 0) return false;
+    let i = 0, j = 0;
+    while (j < typed.length) {
+        if (i < name.length && name[i] === typed[j]) i++, j++;
+        else if (i && name[i - 1] === typed[j]) j++;
+        else return false;
     }
-    return j === typed.length;
+    return i === name.length;
 }
