@@ -5,11 +5,11 @@ function maxPathSum(root) {
         if (!node) return 0;
         const left = dfs(node.left) + node.val;
         const right = dfs(node.right) + node.val;
-        const both = left + right - node.val;
-        max = Math.max(node.val, left, right, both, max);
-        return Math.max(node.val, left, right);
+        const sum = left + right - node.val;
+        max = Math.max(left, right, node.val, sum, max);
+        return Math.max(left, right, node.val);
     }
-    let max = -1000;
+    let max = -Infinity;
     dfs(root);
     return max;
 }

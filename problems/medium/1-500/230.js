@@ -2,12 +2,12 @@
 
 function kthSmallest(root, k) {
     function dfs(node) {
-        if (!node || !k) return;
-        dfs(node.left);
-        if (!--k) smallest = node.val;
-        dfs(node.right);
+        if (k <= 0) return;
+        if (node.left) dfs(node.left);
+        if (--k === 0) res = node.val;
+        if (node.right) dfs(node.right);
     }
-    let smallest;
+    let res;
     dfs(root);
-    return smallest;
+    return res;
 }

@@ -12,10 +12,12 @@ describe('Main', () => {
     test('Case 1', () => {
         const root = new TreeNode(3, new TreeNode(9));
         root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
-        expect(levelOrder(root)).toStrictEqual([[3], [9, 20], [15, 7]]);
+        const results = levelOrder(root).map(e => Array.from(e));
+        expect(results).toStrictEqual([[3], [9, 20], [15, 7]]);
     });
     test('Case 2', () => {
-        expect(levelOrder(new TreeNode(1))).toStrictEqual([[1]]);
+        const results = levelOrder(new TreeNode(1)).map(e => Array.from(e));
+        expect(results).toStrictEqual([[1]]);
     });
     test('Case 3', () => {
         expect(levelOrder(null)).toStrictEqual([]);

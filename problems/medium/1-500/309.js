@@ -1,12 +1,12 @@
 // 309 - Best Time to Buy and Sell Stock With Cooldown
 
 function maxProfit(prices) {
-    let sold = 0, rest = 0, hold = -Infinity;
+    let a = 0, b = 0, c = -Infinity;
     for (let i = 0; i < prices.length; i++) {
-        const prev = sold;
-        sold = hold + prices[i];
-        hold = Math.max(rest - prices[i], hold);
-        rest = Math.max(prev, rest);
+        const cur = a;
+        a = c + prices[i];
+        c = Math.max(b - prices[i], c);
+        b = Math.max(cur, b);
     }
-    return Math.max(sold, rest);
+    return Math.max(a, b);
 }

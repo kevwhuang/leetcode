@@ -11,14 +11,14 @@ function levelOrder(root) {
     let queue = [root];
     while (queue.length) {
         const nextQueue = [];
-        const level = new Array(queue.length);
+        const arr = new Int16Array(queue.length);
         for (let i = 0; i < queue.length; i++) {
             const node = queue[i];
-            level[i] = node.val;
+            arr[i] = node.val;
             if (node.left) nextQueue.push(node.left);
             if (node.right) nextQueue.push(node.right);
         }
-        res.push(level);
+        res.push(arr);
         queue = nextQueue;
     }
     return res;

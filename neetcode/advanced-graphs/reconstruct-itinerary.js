@@ -14,10 +14,10 @@ function findItinerary(tickets) {
     for (const key in adj) {
         adj[key].sort().reverse();
     }
-    const res = [], stack = ['JFK'];
-    while (stack.length) {
-        while (adj[stack.at(-1)]?.length) stack.push(adj[stack.at(-1)].pop());
-        res.push(stack.pop());
+    const res = [], S = ['JFK'];
+    while (S.length) {
+        while (adj[S.at(-1)]?.length) S.push(adj[S.at(-1)].pop());
+        res.push(S.pop());
     }
     return res.reverse();
 }

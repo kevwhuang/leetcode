@@ -1,9 +1,9 @@
 // 49 - Group Anagrams
 
 function groupAnagrams(strs) {
+    const map = new Map();
     const dict = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];
     dict.push(43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101);
-    const map = new Map();
     for (let i = 0; i < strs.length; i++) {
         let key = 1;
         const s = strs[i];

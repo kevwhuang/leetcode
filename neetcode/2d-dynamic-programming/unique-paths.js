@@ -8,7 +8,7 @@
 
 function uniquePaths(m, n) {
     const dp = Array.from({ length: m }, () => new Uint32Array(n));
-    dp[0] = new Uint32Array(n).fill(1);
+    dp[0].fill(1);
     for (let r = 1; r < m; r++) {
         dp[r][0] = 1;
         for (let c = 1; c < n; c++) {

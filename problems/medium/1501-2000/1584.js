@@ -15,9 +15,9 @@ function minCostConnectPoints(points) {
         res += costs[u], seen[u] = 1;
         for (let v = 0; v < n; v++) {
             if (seen[v]) continue;
-            const dx = Math.abs(points[u][0] - points[v][0]);
-            const dy = Math.abs(points[u][1] - points[v][1]);
-            costs[v] = Math.min(dx + dy, costs[v]);
+            const dr = Math.abs(points[u][0] - points[v][0]);
+            const dc = Math.abs(points[u][1] - points[v][1]);
+            costs[v] = Math.min(dr + dc, costs[v]);
         }
     }
     return res;

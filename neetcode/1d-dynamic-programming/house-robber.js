@@ -6,12 +6,12 @@
  */
 
 function rob(nums) {
-    let rob1 = 0, rob2 = 0;
+    let a = 0, b = 0;
     for (let i = 0; i < nums.length; i++) {
-        const max = Math.max(rob1 + nums[i], rob2);
-        rob1 = rob2, rob2 = max;
+        const max = Math.max(a + nums[i], b);
+        a = b, b = max;
     }
-    return rob2;
+    return b;
 }
 
 module.exports = rob;

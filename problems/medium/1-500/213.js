@@ -2,12 +2,12 @@
 
 function rob(nums) {
     if (nums.length <= 3) return Math.max(...nums);
-    let rob1 = 0, rob2 = 0, rob3 = 0, rob4 = 0;
+    let max, a = 0, b = 0, c = 0, d = 0;
     for (let i = 1; i < nums.length; i++) {
-        let max = Math.max(rob1 + nums[i - 1], rob2);
-        rob1 = rob2, rob2 = max;
-        max = Math.max(rob3 + nums[i], rob4);
-        rob3 = rob4, rob4 = max;
+        max = Math.max(a + nums[i - 1], b);
+        a = b, b = max;
+        max = Math.max(c + nums[i], d);
+        c = d, d = max;
     }
-    return Math.max(rob2, rob4);
+    return Math.max(b, d);
 }

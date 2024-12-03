@@ -6,8 +6,8 @@ function isValidSudoku(board) {
         if (seen.has(board[r][c])) return true;
         seen.add(board[r][c]);
     }
-    for (let r = 0; r < 9; r++) {
-        let seen = new Set(), c = -1;
+    for (let seen, r = 0; r < 9; r++) {
+        seen = new Set(), c = -1;
         while (++c < 9) if (invalid(r, c, seen)) return false;
         seen = new Set(), c = -1;
         while (++c < 9) if (invalid(c, r, seen)) return false;

@@ -8,8 +8,8 @@
 function solveNQueens(n) {
     function backtrack(r) {
         if (r === n) return res.push(M.map(e => e.join('')));
-        for (let c = 0; c < n; c++) {
-            let rr = r - 1, cc;
+        for (let rr, cc, c = 0; c < n; c++) {
+            rr = r - 1;
             while (~rr && M[rr][c] !== 'Q') rr--;
             if (~rr) continue;
             rr = r - 1, cc = c - 1;
