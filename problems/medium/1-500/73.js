@@ -1,24 +1,23 @@
 // 73 - Set Matrix Zeros
 
 function setZeroes(matrix) {
-    const m = matrix.length, n = matrix[0].length;
+    const M = matrix, m = M.length, n = M[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (matrix[r][c] !== 0) continue;
-            let rr = r, cc = c;
-            while (rr > 0) matrix[--rr][cc] && (matrix[rr][cc] = null);
+            if (M[r][c] !== 0) continue;
+            let rr = r;
+            while (~--rr) M[rr][c] &&= null;
             rr = r;
-            while (rr < m - 1) matrix[++rr][cc] && (matrix[rr][cc] = null);
-            rr = r;
-            while (cc > 0) matrix[rr][--cc] && (matrix[rr][cc] = null);
+            while (++rr < m) M[rr][c] &&= null;
+            let cc = c;
+            while (~--cc) M[r][cc] &&= null;
             cc = c;
-            while (cc < n - 1) matrix[rr][++cc] && (matrix[rr][cc] = null);
+            while (++cc < n) M[r][cc] &&= null;
         }
     }
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            matrix[r][c] ??= 0;
+            M[r][c] ??= 0;
         }
     }
-    return matrix;
 }

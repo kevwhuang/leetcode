@@ -6,17 +6,18 @@
  */
 
 function reorderList(head) {
-    const vals = [];
-    let cur = head;
-    while (cur) vals.push(cur.val) && (cur = cur.next);
-    cur = head;
-    let forward = true, i = 0, j = vals.length - 1;
-    while (cur) {
-        cur.val = forward ? vals[i++] : vals[j--];
-        cur = cur.next;
-        forward = !forward;
+    let slow = head, fast = head;
+    while (fast && fast.next) slow = slow.next, fast = fast.next.next;
+    let node = null;
+    while (slow) {
+        const cur = slow;
+        slow = slow.next, cur.next = node, node = cur;
     }
-    return head;
+    while (node.next) {
+        const next = node.next;
+        node.next = head.next, head.next = node;
+        head = node.next, node = next;
+    }
 }
 
 module.exports = reorderList;

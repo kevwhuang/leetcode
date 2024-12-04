@@ -15,16 +15,14 @@ function numIslands(grid) {
         dfs(r, c - 1);
         dfs(r, c + 1);
     }
+    let res = 0;
     const m = grid.length, n = grid[0].length;
-    let islands = 0;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (grid[r][c] === '0') continue;
-            islands++;
-            dfs(r, c);
+            if (grid[r][c] === '1') ++res && dfs(r, c);
         }
     }
-    return islands;
+    return res;
 }
 
 module.exports = numIslands;

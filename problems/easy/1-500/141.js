@@ -1,10 +1,10 @@
 // 141 - Linked List Cycle
 
 function hasCycle(head) {
-    let cur = head;
+    let node = head;
     while (head && head.next) {
-        cur = cur.next, head = head.next.next;
-        if (cur === head) return true;
+        node = node.next, head = head.next.next;
+        if (node === head) return true;
     }
     return false;
 }

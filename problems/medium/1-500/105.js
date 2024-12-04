@@ -1,14 +1,10 @@
 // 105 - Construct Binary Tree From Preorder and Inorder Traversal
 
 function buildTree(preorder, inorder) {
-    function build(bound) {
-        if (inorder[j] === bound) return null;
-        const root = new TreeNode(preorder[i++]);
-        root.left = build(root.val);
-        j++;
-        root.right = build(bound);
-        return root;
+    function dfs(cur) {
+        if (inorder[j] === cur) return null;
+        return new TreeNode(preorder[i], dfs(preorder[i++]), dfs(cur, j++));
     }
     let i = 0, j = 0;
-    return build();
+    return dfs();
 }
