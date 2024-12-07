@@ -3,16 +3,15 @@
 function rightSideView(root) {
     if (!root) return [];
     const res = [];
-    let queue = [root];
-    while (queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const node = queue[i];
-            if (node.left) nextQueue.push(node.left);
-            if (node.right) nextQueue.push(node.right);
+    let Q = [root];
+    while (Q.length) {
+        res.push(Q.at(-1).val);
+        const QQ = [];
+        for (let i = 0; i < Q.length; i++) {
+            if (Q[i].left) QQ.push(Q[i].left);
+            if (Q[i].right) QQ.push(Q[i].right);
         }
-        res.push(queue.at(-1).val);
-        queue = nextQueue;
+        Q = QQ;
     }
     return res;
 }

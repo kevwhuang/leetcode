@@ -3,18 +3,17 @@
 function levelOrder(root) {
     if (!root) return [];
     const res = [];
-    let queue = [root];
-    while (queue.length) {
-        const nextQueue = [];
-        const arr = new Int16Array(queue.length);
-        for (let i = 0; i < queue.length; i++) {
-            const node = queue[i];
+    let Q = [root];
+    while (Q.length) {
+        const arr = new Int16Array(Q.length), QQ = [];
+        for (let i = 0; i < Q.length; i++) {
+            const node = Q[i];
             arr[i] = node.val;
-            if (node.left) nextQueue.push(node.left);
-            if (node.right) nextQueue.push(node.right);
+            if (node.left) QQ.push(node.left);
+            if (node.right) QQ.push(node.right);
         }
         res.push(arr);
-        queue = nextQueue;
+        Q = QQ;
     }
     return res;
 }

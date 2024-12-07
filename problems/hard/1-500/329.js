@@ -3,21 +3,21 @@
 function longestIncreasingPath(matrix) {
     function dfs(r, c, prev) {
         if (r === -1 || r === m || c === -1 || c === n) return 0;
-        if (matrix[r][c] <= prev) return 0;
+        if (M[r][c] <= prev) return 0;
         if (memo[r][c]) return memo[r][c];
-        const up = dfs(r - 1, c, matrix[r][c]);
-        const down = dfs(r + 1, c, matrix[r][c]);
-        const left = dfs(r, c - 1, matrix[r][c]);
-        const right = dfs(r, c + 1, matrix[r][c]);
+        const up = dfs(r - 1, c, M[r][c]);
+        const down = dfs(r + 1, c, M[r][c]);
+        const left = dfs(r, c - 1, M[r][c]);
+        const right = dfs(r, c + 1, M[r][c]);
         return memo[r][c] = Math.max(up, down, left, right) + 1;
     }
-    let max = 1;
-    const m = matrix.length, n = matrix[0].length;
+    let res = 1;
+    const M = matrix, m = M.length, n = M[0].length;
     const memo = Array.from({ length: m }, () => new Uint16Array(n));
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            max = Math.max(dfs(r, c, -1), max);
+            res = Math.max(dfs(r, c, -1), res);
         }
     }
-    return max;
+    return res;
 }

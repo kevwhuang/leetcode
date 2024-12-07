@@ -8,20 +8,20 @@
  */
 
 function networkDelayTime(times, n, k) {
-    const bf = new Uint32Array(n + 1).fill(1e9);
-    bf[k] = 0;
+    const C = new Uint32Array(n + 1).fill(1e9);
+    C[k] = 0;
     for (let i = 1; i < n; i++) {
         for (let j = 0; j < times.length; j++) {
             const v = times[j][1];
-            bf[v] = Math.min(bf[times[j][0]] + times[j][2], bf[v]);
+            C[v] = Math.min(C[times[j][0]] + times[j][2], C[v]);
         }
     }
-    let max = -1;
-    for (let i = 1; i <= n; i++) {
-        max = Math.max(bf[i], max);
-        if (max === 1e9) return -1;
+    let res = 0;
+    for (let v = 1; v <= n; v++) {
+        res = Math.max(C[v], res);
+        if (res === 1e9) return -1;
     }
-    return max;
+    return res;
 }
 
 module.exports = networkDelayTime;

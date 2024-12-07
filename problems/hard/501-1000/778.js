@@ -9,10 +9,10 @@ function swimInWater(grid) {
         return dfs(r - 1, c) || dfs(r + 1, c) || dfs(r, c - 1) || dfs(r, c + 1);
     }
     const n = grid.length, nn = n - 1;
-    let l = 0, r = n * n - 1, m, seen;
+    let l = 0, r = n * n - 1, seen, m;
     while (l < r) {
-        m = l + r >> 1;
         seen = Array.from({ length: n }, () => new Uint8Array(n));
+        m = l + r >> 1;
         if (!dfs(0, 0)) l = m + 1;
         else r = m;
     }

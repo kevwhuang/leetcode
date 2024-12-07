@@ -7,15 +7,13 @@
  */
 
 function uniquePaths(m, n) {
-    const dp = Array.from({ length: m }, () => new Uint32Array(n));
-    dp[0].fill(1);
+    const dp = new Array(n).fill(1);
     for (let r = 1; r < m; r++) {
-        dp[r][0] = 1;
         for (let c = 1; c < n; c++) {
-            dp[r][c] = dp[r - 1][c] + dp[r][c - 1];
+            dp[c] += dp[c - 1];
         }
     }
-    return dp[m - 1][n - 1];
+    return dp[n - 1];
 }
 
 module.exports = uniquePaths;

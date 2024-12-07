@@ -8,15 +8,15 @@
 function maxPathSum(root) {
     function dfs(node) {
         if (!node) return 0;
-        const left = dfs(node.left) + node.val;
-        const right = dfs(node.right) + node.val;
-        const sum = left + right - node.val;
-        max = Math.max(left, right, node.val, sum, max);
-        return Math.max(left, right, node.val);
+        const cur = node.val;
+        const left = dfs(node.left) + cur;
+        const right = dfs(node.right) + cur;
+        res = Math.max(left, right, cur, left + right - cur, res);
+        return Math.max(left, right, cur);
     }
-    let max = -Infinity;
+    let res = -Infinity;
     dfs(root);
-    return max;
+    return res;
 }
 
 module.exports = maxPathSum;

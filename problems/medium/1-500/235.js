@@ -2,9 +2,9 @@
 
 function lowestCommonAncestor(root, p, q) {
     while (true) {
-        const val = root.val;
-        if (val > p.val && val > q.val) root = root.left;
-        else if (val < p.val && val < q.val) root = root.right;
+        const cur = root.val;
+        if (cur > p.val && cur > q.val) root = root.left;
+        else if (cur < p.val && cur < q.val) root = root.right;
         else return root;
     }
 }

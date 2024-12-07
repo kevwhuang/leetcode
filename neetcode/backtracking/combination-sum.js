@@ -8,8 +8,8 @@
 
 function combinationSum(candidates, target) {
     function backtrack(i, acc) {
-        if (acc === target) res.push(new Uint8Array(cur));
-        if (acc >= target || i === candidates.length) return;
+        if (i === candidates.length || acc > target) return;
+        if (acc === target) return res.push(new Uint8Array(cur));
         cur.push(candidates[i]);
         backtrack(i, acc + candidates[i]);
         cur.pop();

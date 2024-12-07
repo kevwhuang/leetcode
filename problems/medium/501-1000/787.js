@@ -7,21 +7,21 @@ function findCheapestPrice(n, flights, src, dst, k) {
         adj[flights[i][0]][flights[i][1]] = flights[i][2];
     }
     if (!adj[src]) return -1;
-    const M = new Uint32Array(n).fill(1e9);
-    let queue = [[0, adj[src]]];
-    while (~k-- && queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const cost = queue[i][0], costs = queue[i][1];
+    const C = new Uint32Array(n).fill(1e9);
+    let Q = [[0, adj[src]]];
+    while (~k-- && Q.length) {
+        const QQ = [];
+        for (let i = 0; i < Q.length; i++) {
+            const cur = Q[i][0], arr = Q[i][1];
             for (let v = 0; v < n; v++) {
-                if (costs[v] === 0) continue;
-                const next = cost + costs[v];
-                if (next >= M[v]) continue;
-                M[v] = next;
-                if (adj[v]) nextQueue.push([next, adj[v]]);
+                if (arr[v] === 0) continue;
+                const next = cur + arr[v];
+                if (next >= C[v]) continue;
+                C[v] = next;
+                if (adj[v]) QQ.push([next, adj[v]]);
             }
         }
-        queue = nextQueue;
+        Q = QQ;
     }
-    return M[dst] === 1e9 ? -1 : M[dst];
+    return C[dst] === 1e9 ? -1 : C[dst];
 }

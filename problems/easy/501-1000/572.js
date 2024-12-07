@@ -1,10 +1,10 @@
 // 572 - Subtree of Another Tree
 
 function isSubtree(root, subRoot) {
-    function dfs(q, r) {
-        if (!q && !r) return true;
-        if (!q || !r || q.val !== r.val) return false;
-        return dfs(q.left, r.left) && dfs(q.right, r.right);
+    function dfs(p, q) {
+        if (!p && !q) return true;
+        if (!p || !q || p.val !== q.val) return false;
+        return dfs(p.left, q.left) && dfs(p.right, q.right);
     }
     if (!root) return false;
     if (dfs(root, subRoot)) return true;

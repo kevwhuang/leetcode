@@ -6,7 +6,7 @@
  */
 
 function encode(strs) {
-    return strs.join('<~>');
+    return strs.join`<~>`;
 }
 
 /**
@@ -15,7 +15,7 @@ function encode(strs) {
  */
 
 function decode(s) {
-    return s.split('<~>');
+    return s.split`<~>`;
 }
 
 module.exports = { encode, decode };

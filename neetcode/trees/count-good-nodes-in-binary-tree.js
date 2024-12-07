@@ -7,8 +7,8 @@
 
 function goodNodes(root) {
     function dfs(node, max) {
-        if (node.val >= max) res++;
         max = Math.max(node.val, max);
+        if (node.val >= max) res++;
         if (node.left) dfs(node.left, max);
         if (node.right) dfs(node.right, max);
     }

@@ -8,9 +8,7 @@
 
 function topKFrequent(nums, k) {
     const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        map.set(nums[i], (map.get(nums[i]) ?? 0) + 1);
-    }
+    nums.forEach(e => map.set(e, (map.get(e) ?? 0) + 1));
     const B = [];
     for (const e of map) {
         B[e[1]] ??= [];

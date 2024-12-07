@@ -10,31 +10,32 @@ function alienOrder(words) {
     }
     for (let i = 1; i < words.length; i++) {
         const s = words[i - 1], t = words[i];
-        if (s > t && s.startsWith(t)) return '';
         const min = Math.min(s.length, t.length);
-        for (let j = 0; j < min; j++) {
-            if (s[j] === t[j]) continue;
+        let j = 0;
+        while (j < min) {
+            if (s[j] === t[j] && ++j) continue;
             adj.get(s[j]).push(t[j]);
             adj.get(t[j])[0]++;
             break;
         }
+        if (s.length > j && j === min) return '';
     }
-    let queue = [];
+    let Q = [];
     for (const e of adj) {
-        if (e[1][0] === 0) queue.push(e[0]);
+        if (e[1][0] === 0) Q.push(e[0]);
     }
     let res = '';
-    while (queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            res += queue[i];
-            const next = adj.get(queue[i]);
-            for (let j = 1; j < next.length; j++) {
-                if (--adj.get(next[j])[0]) continue;
-                nextQueue.push(next[j]);
+    while (Q.length) {
+        const QQ = [];
+        for (let i = 0; i < Q.length; i++) {
+            res += Q[i];
+            const arr = adj.get(Q[i]);
+            for (let j = 1; j < arr.length; j++) {
+                if (--adj.get(arr[j])[0]) continue;
+                QQ.push(arr[j]);
             }
         }
-        queue = nextQueue;
+        Q = QQ;
     }
     return res.length === adj.size ? res : '';
 }

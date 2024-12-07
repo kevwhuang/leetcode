@@ -13,11 +13,11 @@ class MedianFinder {
 
     addNum(num) {
         const heap1 = this.heap1, heap2 = this.heap2;
-        if (heap1.front() < num) heap1.enqueue(num);
+        if (num > heap1.front()) heap1.enqueue(num);
         else heap2.enqueue(num);
-        const size1 = heap1.size(), size2 = heap2.size();
-        if (size1 + 1 < size2) heap1.enqueue(heap2.dequeue());
-        else if (size1 - 1 > size2) heap2.enqueue(heap1.dequeue());
+        const a = heap1.size(), b = heap2.size();
+        if (a + 1 < b) heap1.enqueue(heap2.dequeue());
+        else if (a - 1 > b) heap2.enqueue(heap1.dequeue());
     }
 
     /**
