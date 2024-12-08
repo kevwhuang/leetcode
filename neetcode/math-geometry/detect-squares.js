@@ -2,7 +2,7 @@
 
 class DetectSquares {
     constructor() {
-        this.points = new Map();
+        this.B = new Map();
     }
 
     /**
@@ -11,9 +11,9 @@ class DetectSquares {
      */
 
     add(point) {
-        const points = this.points, x = point[0], y = point[1];
-        if (!points.has(x)) points.set(x, new Map());
-        points.get(x).set(y, (points.get(x).get(y) ?? 0) + 1);
+        const B = this.B, r = point[0], c = point[1];
+        if (!B.has(r)) B.set(r, new Map());
+        B.get(r).set(c, (B.get(r).get(c) ?? 0) + 1);
     }
 
     /**
@@ -22,20 +22,18 @@ class DetectSquares {
      */
 
     count(point) {
-        const points = this.points, x = point[0], y = point[1];
-        if (!this.points.has(x)) return 0;
-        let ways = 0;
-        for (const yy of points.get(x).keys()) {
-            if (y === yy) continue;
-            let f2_1 = 0, f2_2 = 0, f3_1 = 0, f3_2 = 0;
-            const xx1 = x + y - yy, xx2 = x + yy - y;
-            if (points.has(xx1)) f2_1 = points.get(xx1).get(y) ?? 0;
-            if (points.has(xx2)) f2_2 = points.get(xx2).get(y) ?? 0;
-            if (f2_1 && points.has(xx1)) f3_1 = points.get(xx1).get(yy) ?? 0;
-            if (f2_2 && points.has(xx2)) f3_2 = points.get(xx2).get(yy) ?? 0;
-            ways += points.get(x).get(yy) * (f2_1 * f3_1 + f2_2 * f3_2);
+        const B = this.B, r = point[0], c = point[1];
+        if (!B.has(r)) return 0;
+        let res = 0, rr;
+        for (const cc of B.get(r).keys()) {
+            if (cc === c) continue;
+            const a = B.get(r).get(cc);
+            rr = r + c - cc;
+            res += a * B.get(rr)?.get(c) * B.get(rr)?.get(cc) || 0;
+            rr = r + cc - c;
+            res += a * B.get(rr)?.get(c) * B.get(rr)?.get(cc) || 0;
         }
-        return ways;
+        return res;
     }
 }
 

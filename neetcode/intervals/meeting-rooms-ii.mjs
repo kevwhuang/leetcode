@@ -6,13 +6,14 @@
  */
 
 function minMeetingRooms(intervals) {
-    const starts = intervals.sort((a, b) => a[0] - b[0]);
-    const ends = intervals.map(e => e[1]).sort((a, b) => a - b);
-    let j = 0;
-    for (let i = 0; i < intervals.length; i++) {
-        if (starts[i][0] >= ends[j]) j++;
-    }
-    return intervals.length - j;
+    const n = intervals.length;
+    const arr1 = new Uint32Array(n), arr2 = new Uint32Array(n);
+    intervals.forEach((e, i) => (arr1[i] = e[0], arr2[i] = e[1]));
+    arr1.sort();
+    arr2.sort();
+    let i = 0, j = 0;
+    while (i < n) if (arr1[i++] >= arr2[j]) j++;
+    return n - j;
 }
 
 module.exports = minMeetingRooms;

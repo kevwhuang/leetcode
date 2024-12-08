@@ -2,14 +2,14 @@
 
 function cloneGraph(node) {
     function dfs(node) {
-        const val = node.val;
-        if (!graph.has(val)) {
-            graph.set(val, new Node(val));
-            graph.get(val).neighbors = node.neighbors.map(dfs);
+        const cur = node.val;
+        if (!arr[cur]) {
+            arr[cur] = new Node(cur);
+            arr[cur].neighbors = node.neighbors.map(dfs);
         }
-        return graph.get(val);
+        return arr[cur];
     }
     if (!node) return null;
-    const graph = new Map();
+    const arr = new Array(100);
     return dfs(node);
 }

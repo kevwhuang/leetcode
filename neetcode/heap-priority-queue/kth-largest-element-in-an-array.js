@@ -7,14 +7,11 @@
  */
 
 function findKthLargest(nums, k) {
-    const bucket = new Uint32Array(20001);
-    for (let i = 0; i < nums.length; i++) {
-        bucket[nums[i] + 10000]++;
-    }
-    for (let i = 20000; ~i; i--) {
-        k -= bucket[i];
-        if (k <= 0) return i - 10000;
-    }
+    const B = new Uint32Array(20001);
+    nums.forEach(e => B[e + 10000]++);
+    let i = 20000;
+    while (k > 0) k -= B[i--];
+    return i - 9999;
 }
 
 module.exports = findKthLargest;
