@@ -2,33 +2,25 @@
 
 class Trie {
     constructor() {
-        this.children = {};
+        this.trie = {};
     }
     insert(word) {
-        let node = this;
+        let node = this.trie;
         for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (!(char in node.children)) node.children[char] = new Trie();
-            node = node.children[char];
+            node[word[i]] ??= {};
+            node = node[word[i]];
         }
-        node.isWord = true;
+        node.end = true;
     }
-    search(word) {
-        let node = this;
+    search(word, base) {
+        let node = this.trie;
         for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (!(char in node.children)) return false;
-            node = node.children[char];
+            if (!node[word[i]]) return false;
+            node = node[word[i]];
         }
-        return node.isWord ?? false;
+        return node.end ?? base ?? false;
     }
     startsWith(prefix) {
-        let node = this;
-        for (let i = 0; i < prefix.length; i++) {
-            const char = prefix[i];
-            if (!(char in node.children)) return false;
-            node = node.children[char];
-        }
-        return true;
+        return this.search(prefix, true);
     }
 }
