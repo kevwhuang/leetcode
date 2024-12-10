@@ -1,24 +1,30 @@
 // 3305 - Count of Substrings Containing Every Vowel and K Consonants I
 
 function countOfSubstrings(word, k) {
-    const next = new Uint8Array(word.length);
-    const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
-    for (let i = word.length - 1, prev = word.length; ~i; i--) {
-        next[i] = prev;
-        if (!vowels.has(word[i])) prev = i;
-    }
-    let substrings = 0, count = 0;
-    const map = new Map();
-    for (let l = -1, r = 0; r < word.length; r++) {
-        if (!vowels.has(word[r])) count++;
-        else map.set(word[r], (map.get(word[r]) ?? 0) + 1);
-        while (count >= k && map.size === 5 && ~++l) {
-            if (count === k) substrings += next[r] - r;
-            const f = map.get(word[l]);
-            if (f > 1) map.set(word[l], f - 1);
-            else if (f) map.delete(word[l]);
-            else count--;
+    function count() {
+        let res = 0, a = 0, e = 0, i = 0, o = 0, u = 0, acc = 0;
+        for (let l = 0, r = 0; r < word.length; r++) {
+            switch (word[r]) {
+                case 'a': a++; break;
+                case 'e': e++; break;
+                case 'i': i++; break;
+                case 'o': o++; break;
+                case 'u': u++; break;
+                default: acc++;
+            }
+            while (a && e && i && o && u && acc > k) {
+                switch (word[l++]) {
+                    case 'a': a--; break;
+                    case 'e': e--; break;
+                    case 'i': i--; break;
+                    case 'o': o--; break;
+                    case 'u': u--; break;
+                    default: acc--;
+                }
+            }
+            res -= l;
         }
+        return res;
     }
-    return substrings;
+    return count() - count(--k);
 }

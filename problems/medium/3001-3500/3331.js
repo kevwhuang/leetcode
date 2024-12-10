@@ -16,7 +16,7 @@ function findSubtreeSizes(parent, s) {
     const adj = Array.from({ length: parent.length }, () => []);
     parent.forEach((e, i) => ~e && adj[e].push(i));
     const res = parent.fill(1);
-    const prev = new Array(26).fill(-1);
+    const prev = new Int32Array(26).fill(-1);
     dfs(0);
     return res;
 }
