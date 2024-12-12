@@ -9,7 +9,7 @@ function findSafeWalk(grid, health) {
     pq.enqueue([0, 0, grid[0][0]]);
     const mm = m - 1, nn = n - 1, d = [0, -1, 0, 1, 0];
     while (pq.size()) {
-        const [r, c, cost] = pq.dequeue();
+        const r = pq.front()[0], c = pq.front()[1], cost = pq.dequeue()[2];
         for (let i = 0; i < 4; i++) {
             const rr = r + d[i], cc = c + d[i + 1];
             if (rr === -1 || rr === m || cc === -1 || cc === n) continue;
