@@ -2,10 +2,10 @@
 
 function eraseOverlapIntervals(intervals) {
     intervals.sort((a, b) => a[1] - b[1]);
-    let removed = 0;
-    for (let i = 0, bound = -Infinity; i < intervals.length; i++) {
-        if (intervals[i][0] < bound) removed++;
-        else bound = intervals[i][1];
+    let res = 0, prev;
+    for (let i = 0; i < intervals.length; i++) {
+        if (intervals[i][0] < prev) res++;
+        else prev = intervals[i][1];
     }
-    return removed;
+    return res;
 }

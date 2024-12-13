@@ -6,12 +6,13 @@
  */
 
 function jump(nums) {
-    let jumps = 0, max = 0, pos = 0;
-    for (let i = 0; i < nums.length - 1; i++) {
+    let res = 0, max = 0, i = 0, j = 0;
+    const lim = nums.length - 1;
+    while (i < lim) {
         max = Math.max(i + nums[i], max);
-        if (i === pos) jumps++, pos = max;
+        if (i++ === j) res++, j = max;
     }
-    return jumps;
+    return res;
 }
 
 module.exports = jump;

@@ -2,7 +2,7 @@
 
 function mergeSort(arr, comparator = (a, b) => a < b ? -1 : 1) {
     if (arr.length <= 1) return arr;
-    const m = ~~(arr.length >> 1);
+    const m = arr.length >> 1;
     const left = mergeSort(arr.slice(0, m), comparator);
     const right = mergeSort(arr.slice(m), comparator);
     return merge(left, right, comparator);

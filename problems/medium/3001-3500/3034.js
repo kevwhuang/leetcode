@@ -1,20 +1,22 @@
 // 3034 - Number of Subarrays That Match a Pattern I
 
 function countMatchingSubarrays(nums, pattern) {
-    let subarrays = 0;
-    const bound = nums.length - pattern.length;
-    for (let i = 0; i < bound; i++) {
-        let k = -1;
-        while (++k < pattern.length) {
-            if (pattern[k] === 1) {
-                if (nums[i + k + 1] <= nums[i + k]) break;
-            } else if (pattern[k] === -1) {
-                if (nums[i + k + 1] >= nums[i + k]) break;
-            } else {
-                if (nums[i + k + 1] !== nums[i + k]) break;
-            }
-        }
-        if (k === pattern.length) subarrays++;
+    const m = pattern.length, n = nums.length;
+    const lps = new Uint32Array(m);
+    let l = 0, r = 1;
+    while (r < m) {
+        if (pattern[l] === pattern[r]) lps[r++] = ++l;
+        else if (l) l = lps[l - 1];
+        else r++;
     }
-    return subarrays;
+    let res = 0, i = 1, j = 0;
+    while (i < n) {
+        const a = nums[i - 1], b = nums[i], c = pattern[j];
+        if ((a < b && c > 0) || (a === b && !c) || (a > b && c < 0)) {
+            if (++i && ++j === m && ++res) j = lps[j - 1];
+        }
+        else if (j) j = lps[j - 1];
+        else i++;
+    }
+    return res;
 }

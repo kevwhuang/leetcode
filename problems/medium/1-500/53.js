@@ -1,10 +1,10 @@
 // 53 - Maximum Subarray
 
 function maxSubArray(nums) {
-    let max = -Infinity, running = 0;
+    let res = -Infinity, acc = 0;
     for (let i = 0; i < nums.length; i++) {
-        running = Math.max(nums[i], nums[i] + running);
-        max = Math.max(running, max);
+        acc = Math.max(nums[i], acc + nums[i]);
+        res = Math.max(acc, res);
     }
-    return max;
+    return res;
 }
