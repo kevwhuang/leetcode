@@ -32,7 +32,7 @@ export default [
             'id-match': 2,
             'logical-assignment-operators': 2,
             'max-lines': 2,
-            'max-lines-per-function': [2, { max: 100 }],
+            'max-lines-per-function': [2, { max: 80 }],
             'max-nested-callbacks': 2,
             'new-cap': [2, { properties: false }],
             'no-alert': 2,

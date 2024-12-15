@@ -2,17 +2,12 @@
 
 function copyRandomList(head) {
     const map = new Map([[null, null]]);
-    let cur = head;
-    while (cur) {
-        map.set(cur, new Node(cur.val));
-        cur = cur.next;
+    for (let node = head; node; node = node.next) {
+        map.set(node, new ListNode(node.val));
     }
-    cur = head;
-    while (cur) {
-        const node = map.get(cur);
-        node.next = map.get(cur.next);
-        node.random = map.get(cur.random);
-        cur = cur.next;
+    for (let node = head; node; node = node.next) {
+        map.get(node).next = map.get(node.next);
+        map.get(node).random = map.get(node.random);
     }
     return map.get(head);
 }

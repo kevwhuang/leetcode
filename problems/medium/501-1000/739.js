@@ -1,14 +1,13 @@
 // 739 - Daily Temperatures
 
 function dailyTemperatures(temperatures) {
-    const res = new Array(temperatures.length).fill(0);
-    const stack = [];
-    for (let i = 0, cur; i < temperatures.length; i++) {
-        while (stack.length && temperatures[i] > temperatures[stack.at(-1)]) {
-            cur = stack.pop();
-            res[cur] = i - cur;
+    const res = new Uint32Array(temperatures.length);
+    const S = [], arr = temperatures;
+    for (let i = 0; i < arr.length; i++) {
+        while (S.length && arr[S.at(-1)] < arr[i]) {
+            res[S.at(-1)] = i - S.pop();
         }
-        stack.push(i);
+        S.push(i);
     }
     return res;
 }

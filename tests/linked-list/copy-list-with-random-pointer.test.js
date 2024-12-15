@@ -1,6 +1,6 @@
 const copyRandomList = require('../../neetcode/linked-list/copy-list-with-random-pointer');
 
-class Node {
+class ListNode {
     constructor(val, next, random) {
         this.val = val;
         this.next = next;
@@ -10,11 +10,11 @@ class Node {
 
 describe('Main', () => {
     test('Case 1', () => {
-        const head = new Node(7);
-        head.next = new Node(13);
-        head.next.next = new Node(11);
-        head.next.next.next = new Node(10);
-        head.next.next.next.next = new Node(1);
+        const head = new ListNode(7);
+        head.next = new ListNode(13);
+        head.next.next = new ListNode(11);
+        head.next.next.next = new ListNode(10);
+        head.next.next.next.next = new ListNode(1);
         head.random = null;
         head.next.random = head;
         head.next.next.random = head.next.next.next.next;
@@ -31,8 +31,8 @@ describe('Main', () => {
         }
     });
     test('Case 2', () => {
-        const head = new Node(1);
-        head.next = new Node(2);
+        const head = new ListNode(1);
+        head.next = new ListNode(2);
         head.random = head.next;
         head.next.random = head.next;
         let results = copyRandomList(head);
@@ -43,9 +43,9 @@ describe('Main', () => {
         }
     });
     test('Case 3', () => {
-        const head = new Node(3);
-        head.next = new Node(3);
-        head.next.next = new Node(3);
+        const head = new ListNode(3);
+        head.next = new ListNode(3);
+        head.next.next = new ListNode(3);
         head.random = null;
         head.next.random = head;
         head.next.next.random = null;

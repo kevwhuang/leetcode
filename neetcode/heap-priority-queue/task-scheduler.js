@@ -7,21 +7,11 @@
  */
 
 function leastInterval(tasks, n) {
-    const freqs = new Array(26).fill(0);
-    for (let i = 0; i < tasks.length; i++) {
-        freqs[tasks[i].charCodeAt(0) - 65]++;
-    }
-    let maxFreq = 0, maxCount = 0;
-    for (let i = 0; i < 26; i++) {
-        const freq = freqs[i];
-        if (freq === maxFreq) {
-            maxCount++;
-        } else if (freq > maxFreq) {
-            maxFreq = freq;
-            maxCount = 1;
-        }
-    }
-    return Math.max(tasks.length, (maxFreq - 1) * (n + 1) + maxCount);
+    const B = new Array(26).fill(0);
+    tasks.forEach(e => B[e.charCodeAt() - 65]++);
+    const max = Math.max(...B);
+    const sum = B.reduce((s, e) => s + (e === max), 0);
+    return Math.max((n + 1) * (max - 1) + sum, tasks.length);
 }
 
 module.exports = leastInterval;
