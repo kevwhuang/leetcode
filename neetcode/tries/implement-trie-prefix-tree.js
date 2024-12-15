@@ -11,8 +11,8 @@ class Trie {
      */
 
     insert(word) {
-        let node = this.trie;
-        for (let i = 0; i < word.length; i++) {
+        let node = this.trie, i = -1;
+        while (++i < word.length) {
             node[word[i]] ??= {};
             node = node[word[i]];
         }
@@ -25,8 +25,8 @@ class Trie {
      */
 
     search(word, base) {
-        let node = this.trie;
-        for (let i = 0; i < word.length; i++) {
+        let node = this.trie, i = -1;
+        while (++i < word.length) {
             if (!node[word[i]]) return false;
             node = node[word[i]];
         }

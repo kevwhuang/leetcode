@@ -7,16 +7,16 @@
  */
 
 function wordBreak(s, wordDict) {
-    const dp = new Array(s.length + 1).fill(0);
-    dp[s.length] = 1;
-    for (let i = s.length - 1; i >= 0; i--) {
+    const dp = new Uint8Array(s.length + 1);
+    dp[0] = 1;
+    for (let i = 0; i < s.length; i++) {
         for (let j = 0; j < wordDict.length; j++) {
             if (!s.startsWith(wordDict[j], i)) continue;
-            dp[i] = dp[i + wordDict[j].length];
-            if (dp[i]) break;
+            dp[i + wordDict[j].length] ||= dp[i];
+            if (dp[s.length]) return true;
         }
     }
-    return Boolean(dp[0]);
+    return false;
 }
 
 module.exports = wordBreak;

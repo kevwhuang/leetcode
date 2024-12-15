@@ -9,8 +9,8 @@ function networkDelayTime(times, n, k) {
             C[v] = Math.min(C[times[j][0]] + times[j][2], C[v]);
         }
     }
-    let res = 0;
-    for (let v = 1; v <= n; v++) {
+    let res = 0, v = 0;
+    while (++v <= n) {
         res = Math.max(C[v], res);
         if (res === 1e9) return -1;
     }

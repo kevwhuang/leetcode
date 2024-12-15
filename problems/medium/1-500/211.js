@@ -5,8 +5,8 @@ class WordDictionary {
         this.trie = {};
     }
     addWord(word) {
-        let node = this.trie;
-        for (let i = 0; i < word.length; i++) {
+        let node = this.trie, i = -1;
+        while (++i < word.length) {
             node[word[i]] ??= {};
             node = node[word[i]];
         }

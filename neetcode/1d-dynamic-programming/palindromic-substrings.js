@@ -6,8 +6,8 @@
  */
 
 function countSubstrings(s) {
-    let res = 0;
-    for (let l, r, i = 0; i < s.length; i++) {
+    let res = 0, i = -1, l, r;
+    while (++i < s.length) {
         l = i, r = i;
         while (~l && r < s.length && s[l--] === s[r++]) res++;
         l = i, r = i + 1;
