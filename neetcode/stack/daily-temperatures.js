@@ -7,9 +7,9 @@
 
 function dailyTemperatures(temperatures) {
     const res = new Uint32Array(temperatures.length);
-    const S = [], arr = temperatures;
-    for (let i = 0; i < arr.length; i++) {
-        while (S.length && arr[S.at(-1)] < arr[i]) {
+    const S = [];
+    for (let i = 0; i < temperatures.length; i++) {
+        while (S.length && temperatures[S.at(-1)] < temperatures[i]) {
             res[S.at(-1)] = i - S.pop();
         }
         S.push(i);

@@ -2,12 +2,12 @@
 
 function numDistinct(s, t) {
     const dp = new Uint32Array(t.length);
-    for (let i = s.length - 1; ~i; i--) {
-        for (let prev = 1, j = t.length - 1; ~j; j--) {
+    for (let i = 0; i < s.length; i++) {
+        for (let prev = 1, j = 0; j < t.length; j++) {
             const cur = dp[j];
             if (s[i] === t[j]) dp[j] += prev;
             prev = cur;
         }
     }
-    return dp[0];
+    return dp[t.length - 1];
 }

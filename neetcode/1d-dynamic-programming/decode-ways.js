@@ -6,17 +6,14 @@
  */
 
 function numDecodings(s) {
-    if (s[0] === '0') return 0;
-    const dp = new Uint32Array(s.length + 1);
-    dp[s.length] = 1;
-    for (let i = s.length - 1; ~i; i--) {
-        if (s[i] === '0') continue;
-        dp[i] = dp[i + 1];
-        if (i + 2 === dp.length) continue;
-        if (s[i] > '2' || s[i] === '2' && s[i + 1] > '6') continue;
-        dp[i] += dp[i + 2];
+    let a = 1, b = s.at(-1) > 0 ? 1 : 0, i = s.length - 1;
+    while (~--i) {
+        let next = s[i] > 0 ? b : 0;
+        if (s[i] === '1') next += a;
+        else if (s[i] === '2' && s[i + 1] < 7) next += a;
+        a = b, b = next;
     }
-    return dp[0];
+    return b;
 }
 
 module.exports = numDecodings;
