@@ -8,22 +8,22 @@ class BinaryIndexedTree {
             this.tree[p] += this.tree[i];
         }
     }
-    getSum(start, end) {
-        let sum = 0;
+    sum(start, end) {
+        let res = 0;
         for (let i = end + 1; i; i -= i & -i) {
-            sum += this.tree[i];
+            res += this.tree[i];
         }
         for (let i = start; i; i -= i & -i) {
-            sum -= this.tree[i];
+            res -= this.tree[i];
         }
-        return sum;
+        return res;
     }
-    update(index, val) {
-        const delta = val - this.nums[index];
-        for (let i = index + 1; i < this.tree.length; i += i & -i) {
-            this.tree[i] += delta;
+    update(idx, val) {
+        const d = val - this.vals[idx];
+        for (let i = idx + 1; i < this.tree.length; i += i & -i) {
+            this.tree[i] += d;
         }
-        this.nums[index] = val;
+        return this.vals[idx] = val;
     }
 }
 

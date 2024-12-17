@@ -1,10 +1,3 @@
-class ListNode {
-    constructor(val, next) {
-        this.val = val === undefined ? 0 : val;
-        this.next = next === undefined ? null : next;
-    }
-}
-
 class LinkedList {
     constructor() {
         this.head = null;
@@ -21,7 +14,7 @@ class LinkedList {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return this.unshift(val);
         if (index === this.length) return this.push(val);
-        const node = new ListNode(val);
+        const node = new Node(val);
         const cur = this.get(index - 1);
         [node.next, cur.next] = [cur.next, node];
         this.length++;
@@ -45,7 +38,7 @@ class LinkedList {
         return node;
     }
     push(val) {
-        const node = new ListNode(val);
+        const node = new Node(val);
         if (this.head) {
             this.tail.next = node;
             this.tail = node;
@@ -82,11 +75,18 @@ class LinkedList {
     }
     unshift(val) {
         if (!this.head) return this.push(val);
-        const node = new ListNode(val);
+        const node = new Node(val);
         node.next = this.head;
         this.head = node;
         this.length++;
         return this;
+    }
+}
+
+class Node {
+    constructor(val, next) {
+        this.val = val === undefined ? null : val;
+        this.next = next === undefined ? null : next;
     }
 }
 

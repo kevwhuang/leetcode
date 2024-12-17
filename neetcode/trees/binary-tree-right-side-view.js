@@ -11,12 +11,12 @@ function rightSideView(root) {
     let Q = [root];
     while (Q.length) {
         res.push(Q.at(-1).val);
-        const QQ = [];
+        const N = [];
         for (let i = 0; i < Q.length; i++) {
-            if (Q[i].left) QQ.push(Q[i].left);
-            if (Q[i].right) QQ.push(Q[i].right);
+            if (Q[i].left) N.push(Q[i].left);
+            if (Q[i].right) N.push(Q[i].right);
         }
-        Q = QQ;
+        Q = N;
     }
     return res;
 }

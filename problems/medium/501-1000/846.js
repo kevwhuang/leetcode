@@ -2,19 +2,15 @@
 
 function isNStraightHand(hand, groupSize) {
     if (hand.length % groupSize) return false;
-    hand.sort((a, b) => a - b);
-    if (hand[0] + groupSize - 1 > hand.at(-1)) return false;
-    const map = new Map();
+    hand = new Uint32Array(hand).sort();
+    const B = new Map();
+    hand.forEach(e => B.set(e, (B.get(e) ?? 0) + 1));
     for (let i = 0; i < hand.length; i++) {
-        map.set(hand[i], (map.get(hand[i]) || 0) + 1);
-    }
-    for (let i = 0; i < hand.length; i++) {
-        const cur = hand[i];
-        if (map.get(cur) === 0) continue;
-        let size = -1;
-        while (++size < groupSize) {
-            if (!map.get(cur + size)) return false;
-            map.set(cur + size, map.get(cur + size) - 1);
+        const cur = hand[i], d = B.get(cur);
+        if (d === 0) continue;
+        for (let j = 0; j < groupSize; j++) {
+            if (!B.get(cur + j)) return false;
+            B.set(cur + j, B.get(cur + j) - d);
         }
     }
     return true;

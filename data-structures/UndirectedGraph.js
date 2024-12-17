@@ -1,123 +1,98 @@
 class UndirectedGraph {
-    constructor() {
-        this.adj = {};
+    constructor(edges) {
+        this.graph = {};
+        for (let i = 0; i < edges.length; i++) {
+            this.insertEdge(...edges[i]);
+        }
     }
     bfs(v) {
-        v = this.#setEntry(v);
-        if (v === undefined) return [];
-        const res = [];
+        if (!this.graph[v]) return [];
         const seen = new Set([v]);
-        let queue = [v];
-        while (queue.length) {
-            const nextQueue = [];
-            for (let i = 0; i < queue.length; i++) {
-                const vert = queue[i];
-                res.push(vert);
-                const edges = this.adj[vert];
-                for (let j = 0; j < edges.length; j++) {
-                    const neighbor = edges[j];
-                    if (seen.has(neighbor)) continue;
-                    seen.add(neighbor);
-                    nextQueue.push(neighbor);
+        let Q = [v];
+        while (Q.length) {
+            const N = [];
+            for (let i = 0; i < Q.length; i++) {
+                const u = Q[i];
+                for (const v of this.graph[u].keys()) {
+                    if (seen.has(v)) continue;
+                    seen.add(v);
+                    N.push(v);
                 }
             }
-            queue = nextQueue;
+            Q = N;
         }
-        return res;
+        return [...seen];
     }
     dfs(v) {
-        function traverse(vert) {
-            res.push(vert);
-            seen.add(vert);
-            const edges = adj[vert];
-            for (let i = 0; i < edges.length; i++) {
-                if (!seen.has(edges[i])) traverse(edges[i]);
-            }
-        }
-        v = this.#setEntry(v);
-        if (v === undefined) return [];
-        const res = [];
-        const seen = new Set();
-        const adj = this.adj;
-        traverse(v);
-        return res;
-    }
-    dfsIterative(v) {
-        v = this.#setEntry(v);
-        if (v === undefined) return [];
-        const res = [];
+        if (!this.graph[v]) return [];
         const seen = new Set([v]);
-        const stack = [v];
-        while (stack.length) {
-            const node = stack.pop();
-            res.push(node);
-            const edges = this.adj[node];
-            for (let i = 0; i < edges.length; i++) {
-                const neighbor = edges[i];
-                if (seen.has(neighbor)) continue;
-                seen.add(neighbor);
-                stack.push(neighbor);
+        const S = [v];
+        while (S.length) {
+            const u = S.pop();
+            for (const v of this.graph[u].keys()) {
+                if (seen.has(v)) continue;
+                seen.add(v);
+                S.push(v);
             }
         }
-        return res;
+        return [...seen];
     }
-    insertEdge(v1, v2) {
-        if (!this.adj[v1] || !this.adj[v2]) return false;
-        this.adj[v1].push(v2);
-        this.adj[v2].push(v1);
-        return this;
+    dijkstra(u, v) {
+        if (!this.graph[u] || !this.graph[v]) return null;
+        const C = { [u]: 0 };
+        const pq = new (require('./PriorityQueue'))((a, b) => a[1] < b[1]);
+        pq.enqueue([u, 0]);
+        while (pq.size()) {
+            const u = pq.front()[0], w = pq.dequeue()[1];
+            if (u === v) return w;
+            for (const v of this.graph[u].keys()) {
+                const next = w + this.graph[u].get(v);
+                if (next >= C[v]) continue;
+                C[v] = next;
+                pq.enqueue([v, next]);
+            }
+        }
+        return null;
+    }
+    insertEdge(u, v, w = 0) {
+        this.insertVertex(u);
+        this.insertVertex(v);
+        this.graph[u].set(v, w);
+        this.graph[v].set(u, w);
+        return [this.graph[u], this.graph[v]];
     }
     insertVertex(v) {
-        if (this.adj[v]) return false;
-        this.adj[v] = [];
-        return this;
+        return this.graph[v] ??= new Map();
     }
-    removeEdge(v1, v2) {
-        if (!this.adj[v1] || !this.adj[v2]) return false;
-        this.adj[v1] = this.adj[v1].filter(v => v !== v2);
-        this.adj[v2] = this.adj[v2].filter(v => v !== v1);
-        return this;
+    removeEdge(u, v) {
+        if (!this.graph[u] || !this.graph[v]) return null;
+        this.graph[u].delete(v);
+        this.graph[v].delete(u);
+        return [this.graph[u], this.graph[v]];
     }
     removeVertex(v) {
-        if (!this.adj[v]) return false;
-        while (this.adj[v].length) this.removeEdge(v, this.adj[v].pop());
-        delete this.adj[v];
-        return this;
+        if (!this.graph[v]) return null;
+        for (const u of this.graph[v].keys()) {
+            this.removeEdge(u, v);
+        }
+        delete this.graph[v];
+        return v;
     }
-    unionFind() {
-        function union(v1, v2) {
-            const p1 = find(v1);
-            const p2 = find(v2);
-            if (p1 < p2) uf[p2] = p1;
-            else uf[p1] = p2;
+    union() {
+        const find = v => v === uf[v] ? v : uf[v] = find(uf[v]);
+        const uf = {};
+        for (const v in this.graph) {
+            uf[v] = Number(v);
         }
-        function find(v) {
-            while (v !== uf[v]) {
-                uf[v] = uf[uf[v]];
-                v = uf[v];
+        for (const u in this.graph) {
+            for (const v of this.graph[u].keys()) {
+                uf[find(u)] = find(v);
             }
-            return v;
         }
-        const edges = this.#getEdges();
-        const n = edges.at(-1)[1] + 1;
-        const uf = Array.from({ length: n }, (_, i) => i);
-        for (let i = 0; i < edges.length; i++) {
-            union(edges[i][0], edges[i][1]);
+        for (const v in this.graph) {
+            find(v);
         }
         return uf;
-    }
-    #getEdges() {
-        const edges = new Set();
-        for (const v in this.adj) {
-            for (const neighbor of this.adj[v]) {
-                edges.add([+v, neighbor].sort((a, b) => a - b).join(','));
-            }
-        }
-        return [...edges].map(v => v.split(',').map(v => +v));
-    }
-    #setEntry(v) {
-        if (v === undefined) return;
-        return this.adj[v] ? v : Object.keys(obj)[0];
     }
 }
 

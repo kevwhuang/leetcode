@@ -1,91 +1,79 @@
-class TreeNode {
-    constructor(val, left, right) {
-        this.val = val === undefined ? 0 : val;
-        this.left = left === undefined ? null : left;
-        this.right = right === undefined ? null : right;
-    }
-}
-
 class BinarySearchTree {
     constructor() {
-        this.root = null;
+        this.tree = null;
     }
     bfs() {
-        if (!this.root) return [];
+        if (!this.tree) return [];
         const res = [];
-        let queue = [this.root];
-        while (queue.length) {
-            const nextQueue = [];
-            for (let i = 0; i < queue.length; i++) {
-                const node = queue[i];
+        let Q = [this.tree];
+        while (Q.length) {
+            const N = [];
+            for (let i = 0; i < Q.length; i++) {
+                const node = Q[i];
                 res.push(node.val);
-                if (node.left) nextQueue.push(node.left);
-                if (node.right) nextQueue.push(node.right);
+                if (node.left) N.push(node.left);
+                if (node.right) N.push(node.right);
             }
-            queue = nextQueue;
+            Q = N;
         }
         return res;
     }
-    dfs(type = 'pre') {
-        if (!this.root) return [];
+    dfs(type = 'in') {
         const res = [];
-        if (type === 'pre') this.#traversePre(this.root, res);
-        else if (type === 'in') this.#traverseIn(this.root, res);
-        else if (type === 'post') this.#traversePost(this.root, res);
-        else return false;
+        if (type === 'pre') this.#preorder(this.tree, res);
+        else if (type === 'in') this.#inorder(this.tree, res);
+        else if (type === 'post') this.#postorder(this.tree, res);
         return res;
     }
     find(val) {
-        if (!this.root) return false;
-        let node = this.root;
+        let node = this.tree;
         while (node) {
             if (val < node.val) node = node.left;
             else if (val > node.val) node = node.right;
             else return node;
         }
-        return false;
+        return null;
     }
     insert(val) {
-        if (!this.root) {
-            this.root = new TreeNode(val);
-            return this;
-        }
-        let node = this.root;
+        if (!this.tree) return this.tree = new Node(val);
+        let node = this.tree;
         while (true) {
             if (val < node.val) {
-                if (!node.left) {
-                    node.left = new TreeNode(val);
-                    return this;
-                }
+                if (!node.left) return node.left = new Node(val);
                 node = node.left;
             } else if (val > node.val) {
-                if (!node.right) {
-                    node.right = new TreeNode(val);
-                    return this;
-                }
+                if (!node.right) return node.right = new Node(val);
                 node = node.right;
             } else {
-                return false;
+                return node;
             }
         }
     }
-    #traverseIn(cur, arr) {
-        if (!cur) return;
-        this.#traverseIn(cur.left, arr);
-        arr.push(cur.val);
-        this.#traverseIn(cur.right, arr);
+    #inorder(node, vals) {
+        if (!node) return;
+        this.#inorder(node.left, vals);
+        vals.push(node.val);
+        this.#inorder(node.right, vals);
     }
-    #traversePost(cur, arr) {
-        if (!cur) return;
-        this.#traversePost(cur.left, arr);
-        this.#traversePost(cur.right, arr);
-        arr.push(cur.val);
+    #postorder(node, vals) {
+        if (!node) return;
+        this.#postorder(node.left, vals);
+        this.#postorder(node.right, vals);
+        vals.push(node.val);
     }
-    #traversePre(cur, arr) {
-        if (!cur) return;
-        arr.push(cur.val);
-        this.#traversePre(cur.left, arr);
-        this.#traversePre(cur.right, arr);
+    #preorder(node, vals) {
+        if (!node) return;
+        vals.push(node.val);
+        this.#preorder(node.left, vals);
+        this.#preorder(node.right, vals);
+    }
+}
+
+class Node {
+    constructor(val, left, right) {
+        this.val = val === undefined ? null : val;
+        this.left = left === undefined ? null : left;
+        this.right = right === undefined ? null : right;
     }
 }
 

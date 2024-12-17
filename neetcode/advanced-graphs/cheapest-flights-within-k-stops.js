@@ -19,18 +19,18 @@ function findCheapestPrice(n, flights, src, dst, k) {
     const C = new Uint32Array(n).fill(1e9);
     let Q = [[0, adj[src]]];
     while (~k-- && Q.length) {
-        const QQ = [];
+        const N = [];
         for (let i = 0; i < Q.length; i++) {
-            const cur = Q[i][0], arr = Q[i][1];
+            const w = Q[i][0], arr = Q[i][1];
             for (let v = 0; v < n; v++) {
                 if (arr[v] === 0) continue;
-                const next = cur + arr[v];
+                const next = w + arr[v];
                 if (next >= C[v]) continue;
                 C[v] = next;
-                if (adj[v]) QQ.push([next, adj[v]]);
+                if (adj[v]) N.push([next, adj[v]]);
             }
         }
-        Q = QQ;
+        Q = N;
     }
     return C[dst] === 1e9 ? -1 : C[dst];
 }

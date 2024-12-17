@@ -1,44 +1,35 @@
 class Trie {
     constructor() {
-        this.children = {};
+        this.trie = {};
     }
-    find(word) {
-        let node = this;
+    add(word) {
+        let node = this.trie;
         for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (!(char in node.children)) return false;
-            node = node.children[char];
+            node[word[i]] ??= {};
+            node = node[word[i]];
         }
-        return node.isWord ?? false;
+        node.end = true;
+        return word;
     }
-    insert(word) {
-        let node = this;
+    exists(word, base) {
+        let node = this.trie;
         for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (!(char in node.children)) node.children[char] = new Trie();
-            node = node.children[char];
+            if (!node[word[i]]) return false;
+            node = node[word[i]];
         }
-        node.isWord = true;
-        return this;
+        return node.end ?? base ?? false;
     }
     remove(word) {
-        let node = this;
+        let node = this.trie;
         for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (!(char in node.children)) return this;
-            node = node.children[char];
+            if (!node[word[i]]) return null;
+            node = node[word[i]];
         }
-        node.isWord = false;
-        return this;
+        delete node.end;
+        return word;
     }
     startsWith(prefix) {
-        let node = this;
-        for (let i = 0; i < prefix.length; i++) {
-            const char = prefix[i];
-            if (!(char in node.children)) return false;
-            node = node.children[char];
-        }
-        return true;
+        return this.exists(prefix, true);
     }
 }
 

@@ -5,15 +5,15 @@ class TimeMap {
         this.map = new Map();
     }
     get(key, timestamp) {
-        const arr = this.map.get(key);
-        if (!arr || arr[0][1] > timestamp) return '';
-        let l = 0, r = arr.length - 1;
+        const M = this.map.get(key);
+        if (!M || M[0][1] > timestamp) return '';
+        let l = 0, r = M.length - 1;
         while (l < r) {
             const m = l + r >> 1;
-            if (arr[m][1] < timestamp) l = m + 1;
+            if (M[m][1] < timestamp) l = m + 1;
             else r = m;
         }
-        return arr[r][1] > timestamp ? arr[r - 1][0] : arr[r][0];
+        return M[r][1] > timestamp ? M[r - 1][0] : M[r][0];
     }
     set(key, value, timestamp) {
         if (!this.map.has(key)) this.map.set(key, []);

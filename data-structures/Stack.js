@@ -1,29 +1,28 @@
-class StackNode {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
 class Stack {
     constructor() {
-        this.first = null;
-        this.last = null;
+        this.head = null;
+        this.tail = null;
         this.size = 0;
     }
     pop() {
-        if (!this.first) return null;
-        const node = this.first;
-        this.first = this.first.next;
+        if (!this.head) return null;
+        const res = this.head.val;
+        this.head = this.head.next;
+        if (!this.head) this.tail = null;
         this.size--;
-        if (!this.first) this.last = null;
-        return node.val;
+        return res;
     }
     push(val) {
-        const node = new StackNode(val);
-        if (this.first) [this.first, this.first.next] = [node, this.first];
-        else this.first = this.last = node;
+        if (this.head) this.head = new Node(val, this.head);
+        else this.head = this.tail = new Node(val);
         return ++this.size;
+    }
+}
+
+class Node {
+    constructor(val, next) {
+        this.val = val === undefined ? null : val;
+        this.next = next === undefined ? null : next;
     }
 }
 

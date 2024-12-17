@@ -2,57 +2,56 @@ class HashTable {
     constructor(size, prime) {
         if (!Number.isInteger(size) || size <= 1 || size >= 1e6) size = 193;
         if (!Number.isInteger(prime) || prime <= 1 || prime >= 1e6) prime = 53;
-        this.map = new Array(size);
+        this.hash = new Array(size);
         this.prime = prime;
     }
     get(key) {
-        const index = this.#hash(key);
-        if (!this.map[index]) return false;
-        for (let i = 0; i < this.map.length; i++) {
-            if (this.map[index][i][0] === key) return this.map[index][i][1];
+        const idx = this.#hash(key);
+        if (!this.hash[idx]) return null;
+        for (let i = 0; i < this.hash.length; i++) {
+            if (this.hash[idx][i][0] === key) return this.hash[idx][i][1];
         }
-        return false;
+        return null;
     }
     keys() {
         const res = [];
-        for (let i = 0; i < this.map.length; i++) {
-            if (!this.map[i]) continue;
-            for (let j = 0; j < this.map[i].length; j++) {
-                res.push(this.map[i][j][0]);
+        for (let i = 0; i < this.hash.length; i++) {
+            if (!this.hash[i]) continue;
+            for (let j = 0; j < this.hash[i].length; j++) {
+                res.push(this.hash[i][j][0]);
             }
         }
         return res;
     }
     set(key, val) {
-        const index = this.#hash(key);
-        if (!this.map[index]) this.map[index] = [];
-        for (let i = 0; i < this.map[index].length; i++) {
-            if (this.map[index][i][0] !== key) continue;
-            this.map[index][i][1] = val;
-            return true;
+        const idx = this.#hash(key);
+        this.hash[idx] ??= [];
+        for (let i = 0; i < this.hash[idx].length; i++) {
+            if (this.hash[idx][i][0] !== key) continue;
+            return this.hash[idx][i][1] = val;
         }
-        this.map[index].push([key, val]);
-        return true;
+        this.hash[idx].push([key, val]);
+        return val;
     }
     values() {
         const res = [];
-        for (let i = 0; i < this.map.length; i++) {
-            if (!this.map[i]) continue;
-            for (let j = 0; j < this.map[i].length; j++) {
-                if (res.includes(this.map[i][j][1])) continue;
-                res.push(this.map[i][j][1]);
+        for (let i = 0; i < this.hash.length; i++) {
+            if (!this.hash[i]) continue;
+            for (let j = 0; j < this.hash[i].length; j++) {
+                if (res.includes(this.hash[i][j][1])) continue;
+                res.push(this.hash[i][j][1]);
             }
         }
         return res;
     }
     #hash(key) {
-        let index = 0;
+        let res = 0;
         for (let i = 0; i < Math.min(key.length, 100); i++) {
-            index *= this.prime;
-            index += key.charCodeAt(i);
-            index %= this.map.length;
+            res *= this.prime;
+            res += key.charCodeAt(i);
+            res %= this.hash.length;
         }
-        return index;
+        return res;
     }
 }
 

@@ -1,33 +1,33 @@
 class SegmentTree {
     constructor(vals) {
-        this.n = vals.length;
-        this.tree = new Array(vals.length).concat(vals);
-        this.tree[0] = null;
+        this.size = vals.length;
+        this.tree = [null, ...new Array(vals.length), ...vals];
         for (let i = vals.length - 1; i; i--) {
             this.tree[i] = Math.max(this.tree[2 * i], this.tree[2 * i + 1]);
         }
     }
-    getMax(start, end) {
-        start += this.n;
-        end += this.n + 1;
-        let max = -Infinity;
+    max(start, end) {
+        start += this.size;
+        end += this.size + 1;
+        let res = -Infinity;
         while (start < end) {
-            if (start & 1) max = Math.max(this.tree[start++], max);
-            if (end & 1) max = Math.max(this.tree[--end], max);
+            if (start & 1) res = Math.max(this.tree[start++], res);
+            if (end & 1) res = Math.max(this.tree[--end], res);
             start >>= 1;
             end >>= 1;
         }
-        return max;
+        return res;
     }
-    update(index, val) {
-        index += this.n;
-        this.tree[index] = val;
-        while (index > 1) {
-            index >>= 1;
-            const max = Math.max(this.tree[2 * index], this.tree[2 * index + 1]);
-            if (this.tree[index] === max) break;
-            this.tree[index] = max;
+    update(idx, val) {
+        idx += this.size;
+        this.tree[idx] = val;
+        while (idx > 1) {
+            idx >>= 1;
+            const max = Math.max(this.tree[2 * idx], this.tree[2 * idx + 1]);
+            if (this.tree[idx] === max) break;
+            this.tree[idx] = max;
         }
+        return val;
     }
 }
 

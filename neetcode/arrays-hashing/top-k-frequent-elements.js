@@ -7,17 +7,17 @@
  */
 
 function topKFrequent(nums, k) {
-    const map = new Map();
-    nums.forEach(e => map.set(e, (map.get(e) ?? 0) + 1));
-    const B = [];
-    for (const e of map) {
-        B[e[1]] ??= [];
-        B[e[1]].push(e[0]);
+    const B = new Map();
+    nums.forEach(e => B.set(e, (B.get(e) ?? 0) + 1));
+    const M = [];
+    for (const e of B) {
+        M[e[1]] ??= [];
+        M[e[1]].push(e[0]);
     }
     const res = new Int16Array(k);
-    for (let i = B.length - 1, j = 0; j < k; i--) {
-        while (i && !B[i]) i--;
-        B[i].forEach(e => res[j++] = e);
+    for (let i = M.length - 1, j = 0; j < k; i--) {
+        while (i && !M[i]) i--;
+        M[i].forEach(e => res[j++] = e);
     }
     return res;
 }

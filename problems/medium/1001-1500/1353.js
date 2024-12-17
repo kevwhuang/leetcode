@@ -2,14 +2,14 @@
 
 function maxEvents(events) {
     events.sort((a, b) => a[0] - b[0]);
+    let res = 0, acc = 1, i = 0;
     const pq = new PriorityQueue({ compare: (a, b) => a[1] - b[1] });
-    const len = events.length;
-    let count = 0, i = 0, n = 1;
-    while (i < len || pq.size()) {
-        while (i < len && events[i][0] === n) pq.enqueue(events[i++]);
-        if (!pq.isEmpty() && pq.dequeue()) count++;
-        while (!pq.isEmpty() && pq.front()[1] === n) pq.dequeue();
-        n++;
+    const n = events.length;
+    while (i < n || pq.size()) {
+        while (i < n && events[i][0] === acc) pq.enqueue(events[i++]);
+        if (pq.size() && pq.dequeue()) res++;
+        while (pq.size() && pq.front()[1] === acc) pq.dequeue();
+        acc++;
     }
-    return count;
+    return res;
 }

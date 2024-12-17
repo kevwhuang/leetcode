@@ -244,8 +244,14 @@ export default [
         files: ['problems/medium/2001-2500/2304.js'],
         rules: { 'no-unmodified-loop-condition': 0 },
     }, {
-        files: ['**/*.jsx'],
+        files: ['problems/**/*.jsx'],
         rules: { '@stylistic/comma-dangle': 0 },
+    }, {
+        files: ['problems/**/*.jsx'],
+        rules: { '@stylistic/max-len': [2, { code: 100 }] },
+    }, {
+        files: ['problems/**/*.{js,cjs,mjs}'],
+        rules: { '@stylistic/max-len': [2, { code: 90 }] },
     }, {
         files: ['tests/**'],
         rules: { '@stylistic/max-len': [2, { code: 121 }] },

@@ -1,29 +1,37 @@
 class MaxHeap {
     constructor() {
-        this.vals = [null];
+        this.heap = [null];
     }
     dequeue() {
-        if (this.vals.length === 1) return null;
-        if (this.vals.length === 2) return this.vals.pop();
-        const val = this.vals[1];
-        this.vals[1] = this.vals.pop();
-        let top = 1, l = 2, r = 3;
-        let next = !this.vals[r] || this.vals[l] > this.vals[r] ? l : r;
-        while (this.vals[top] < this.vals[next]) {
-            [this.vals[top], this.vals[next]] = [this.vals[next], this.vals[top]];
-            [top, l, r] = [next, 2 * next, 2 * next + 1];
-            next = !this.vals[r] || this.vals[l] > this.vals[r] ? l : r;
+        if (this.heap.length === 1) return null;
+        if (this.heap.length === 2) return this.heap.pop();
+        const res = this.heap[1];
+        this.heap[1] = this.heap.pop();
+        if (this.heap.length === 2) return res;
+        let p = 1, l = 2, r = 3, cur;
+        let pp = this.heap.length === 3 || this.heap[l] > this.heap[r] ? l : r;
+        while (this.heap[p] < this.heap[pp]) {
+            cur = this.heap[p], this.heap[p] = this.heap[pp], this.heap[pp] = cur;
+            p = pp, l = 2 * pp, r = l + 1;
+            if (r >= this.heap.length) break;
+            pp = this.heap[l] > this.heap[r] ? l : r;
+        }
+        return res;
+    }
+    enqueue(val) {
+        this.heap.push(val);
+        let i = this.heap.length - 1, p = i >> 1;
+        while (p && this.heap[p] < val) {
+            this.heap[i] = this.heap[p], this.heap[p] = val;
+            i = p, p >>= 1;
         }
         return val;
     }
-    enqueue(val) {
-        this.vals.push(val);
-        let index = this.vals.length - 1, parent = ~~(index / 2);
-        while (parent && val > this.vals[parent]) {
-            [this.vals[index], this.vals[parent]] = [this.vals[parent], val];
-            [index, parent] = [parent, ~~(parent / 2)];
-        }
-        return val;
+    front() {
+        return this.heap.length > 1 ? this.heap[1] : null;
+    }
+    size() {
+        return this.heap.length - 1;
     }
 }
 

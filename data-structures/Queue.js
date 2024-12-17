@@ -1,34 +1,28 @@
-class QueueNode {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
 class Queue {
     constructor() {
-        this.first = null;
-        this.last = null;
+        this.head = null;
+        this.tail = null;
         this.size = 0;
     }
     dequeue() {
-        if (!this.first) return null;
-        const node = this.first;
-        this.first = this.first.next;
+        if (!this.head) return null;
+        const res = this.head.val;
+        this.head = this.head.next;
+        if (!this.head) this.tail = null;
         this.size--;
-        if (!this.first) this.last = null;
-        return node.val;
+        return res;
     }
     enqueue(val) {
-        const node = new QueueNode(val);
-        if (this.first) {
-            this.last.next = node;
-            this.last = node;
-        } else {
-            this.first = node;
-            this.last = this.first;
-        }
+        if (this.head) this.tail = this.tail.next = new Node(val);
+        else this.tail = this.head = new Node(val);
         return ++this.size;
+    }
+}
+
+class Node {
+    constructor(val) {
+        this.val = val === undefined ? null : val;
+        this.next = null;
     }
 }
 
