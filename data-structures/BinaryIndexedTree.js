@@ -18,12 +18,13 @@ class BinaryIndexedTree {
         }
         return res;
     }
-    update(idx, val) {
+    set(idx, val) {
         const d = val - this.vals[idx];
         for (let i = idx + 1; i < this.tree.length; i += i & -i) {
             this.tree[i] += d;
         }
-        return this.vals[idx] = val;
+        this.vals[idx] = val;
+        return true;
     }
 }
 

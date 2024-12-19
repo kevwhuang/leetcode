@@ -4,46 +4,41 @@ class MyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
-        this.length = 0;
+        this.size = 0;
     }
     addAtHead(val) {
         if (!this.head) return this.addAtTail(val);
         const node = new ListNode(val);
         node.next = this.head;
         this.head = node;
-        this.length++;
+        this.size++;
     }
     addAtIndex(index, val) {
-        if (index > this.length) return;
+        if (index > this.size) return;
         if (index === 0) return this.addAtHead(val);
-        if (index === this.length) return this.addAtTail(val);
+        if (index === this.size) return this.addAtTail(val);
         const node = new ListNode(val);
-        const cur = this.#getNode(index - 1);
-        [node.next, cur.next] = [cur.next, node];
-        this.length++;
+        const prev = this.#getNode(index - 1);
+        node.next = prev.next;
+        prev.next = node;
+        this.size++;
     }
     addAtTail(val) {
-        const node = new ListNode(val);
-        if (this.head) {
-            this.tail.next = node;
-            this.tail = node;
-        } else {
-            this.head = node;
-            this.tail = this.head;
-        }
-        this.length++;
+        if (this.head) this.tail = this.tail.next = new ListNode(val);
+        else this.head = this.tail = new ListNode(val);
+        this.size++;
     }
     deleteAtIndex(index) {
-        if (index >= this.length) return;
+        if (index >= this.size) return;
         if (index === 0) return this.#shift();
-        if (index === this.length - 1) return this.#pop();
-        const cur = this.#getNode(index - 1);
-        const node = cur.next;
-        cur.next = node.next;
-        this.length--;
+        if (index === this.size - 1) return this.#pop();
+        const prev = this.#getNode(index - 1);
+        const res = prev.next;
+        prev.next = res.next;
+        this.size--;
     }
     get(index) {
-        if (index >= this.length) return -1;
+        if (index >= this.size) return -1;
         let node = this.head;
         while (index--) node = node.next;
         return node.val;
@@ -54,15 +49,19 @@ class MyLinkedList {
         return node;
     }
     #pop() {
-        let cur = this.head;
-        while (cur.next.next) cur = cur.next;
-        cur.next = null;
-        this.tail = cur;
-        this.length--;
+        if (this.size === 1) {
+            this.head = this.tail = null;
+        } else {
+            let node = this.head;
+            while (node.next.next) node = node.next;
+            node.next = null;
+            this.tail = node;
+        }
+        this.size--;
     }
     #shift() {
         this.head = this.head.next;
-        this.length--;
         if (!this.head) this.tail = null;
+        this.size--;
     }
 }

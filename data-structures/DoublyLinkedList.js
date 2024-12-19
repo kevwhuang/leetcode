@@ -1,104 +1,85 @@
-class DoublyListNode {
-    constructor(val, next, prev) {
-        this.val = val === undefined ? 0 : val;
-        this.next = next === undefined ? null : next;
-        this.prev = prev === undefined ? null : prev;
-    }
-}
-
 class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
-        this.length = 0;
+        this.size = 0;
     }
-    get(index) {
-        if (index < 0 || index >= this.length) return null;
-        let node = this.head;
-        if (index < this.length / 2) {
-            while (index--) node = node.next;
-        } else {
-            node = this.tail;
-            while (index++ < this.length - 1) node = node.prev;
-        }
-        return node;
+    get(idx) {
+        if (idx >= this.size) return null;
+        let res = idx < this.size / 2 ? this.head : this.tail;
+        if (res === this.head) while (idx--) res = res.next;
+        else while (++idx < this.size) res = res.prev;
+        return res;
     }
-    insert(index, val) {
-        if (index < 0 || index > this.length) return false;
-        if (index === 0) return this.unshift(val);
-        if (index === this.length) return this.push(val);
-        const node = new DoublyListNode(val);
-        const cur = this.get(index - 1);
-        [node.prev, node.next] = [cur, cur.next];
-        [cur.next.prev, cur.next] = [node, node];
-        this.length++;
-        return this;
+    insert(idx, val) {
+        if (idx > this.size) return null;
+        if (idx === 0) return this.unshift(val);
+        if (idx === this.size) return this.push(val);
+        const res = new Node(val);
+        const prev = this.get(idx - 1);
+        res.prev = prev;
+        res.next = prev.next;
+        prev.next = prev.next.prev = res;
+        this.size++;
+        return res;
     }
     pop() {
         if (!this.head) return null;
-        const node = this.tail;
-        if (this.length === 1) {
-            this.head = null;
-            this.tail = null;
-        } else {
-            this.tail = this.tail.prev;
-            this.tail.next = null;
-            node.prev = null;
-        }
-        this.length--;
-        return node;
+        const res = this.tail;
+        if (this.size === 1) this.head = this.tail = null;
+        if (this.size > 1) this.tail = res.prev;
+        if (this.size > 1) this.tail.next = null;
+        this.size--;
+        return res;
     }
     push(val) {
-        const node = new DoublyListNode(val);
-        if (this.head) {
-            this.tail.next = node;
-            node.prev = this.tail;
-            this.tail = node;
-        } else {
-            this.head = node;
-            this.tail = this.head;
-        }
-        this.length++;
-        return this;
+        const res = new Node(val);
+        if (this.head) res.prev = this.tail;
+        if (this.head) this.tail = this.tail.next = res;
+        else this.head = this.tail = res;
+        this.size++;
+        return res;
     }
-    remove(index) {
-        if (index < 0 || index >= this.length) return false;
-        if (index === 0) return this.shift();
-        if (index === this.length - 1) return this.pop();
-        const node = this.get(index);
-        [node.prev.next, node.next.prev] = [node.next, node.prev];
-        [node.prev, node.next] = [null, null];
-        this.length--;
-        return node;
+    remove(idx) {
+        if (idx >= this.size) return null;
+        if (idx === 0) return this.shift();
+        if (idx === this.size - 1) return this.pop();
+        const res = this.get(idx);
+        res.prev.next = res.next;
+        res.next.prev = res.prev;
+        this.size--;
+        return res;
     }
-    set(index, val) {
-        const node = this.get(index);
-        if (!node) return false;
-        node.val = val;
-        return true;
+    set(idx, val) {
+        const res = this.get(idx);
+        if (!res) return null;
+        res.val = val;
+        return res;
     }
     shift() {
         if (!this.head) return null;
-        const node = this.head;
-        if (this.length === 1) {
-            this.head = null;
-            this.tail = null;
-        } else {
-            this.head = this.head.next;
-            this.head.prev = null;
-            node.next = null;
-        }
-        this.length--;
-        return node;
+        const res = this.head;
+        this.head = this.head.next;
+        if (this.head) this.head.prev = null;
+        else this.tail = null;
+        this.size--;
+        return res;
     }
     unshift(val) {
         if (!this.head) return this.push(val);
-        const node = new DoublyListNode(val);
-        node.next = this.head;
-        this.head.prev = node;
-        this.head = node;
-        this.length++;
-        return this;
+        const res = new Node(val);
+        res.next = this.head;
+        this.head = this.head.prev = res;
+        this.size++;
+        return res;
+    }
+}
+
+class Node {
+    constructor(val) {
+        this.val = val ?? null;
+        this.prev = null;
+        this.next = null;
     }
 }
 

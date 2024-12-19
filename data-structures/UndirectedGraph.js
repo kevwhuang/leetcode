@@ -6,7 +6,7 @@ class UndirectedGraph {
         }
     }
     bfs(v) {
-        if (!this.graph[v]) return [];
+        if (!this.graph[v]) return null;
         const seen = new Set([v]);
         let Q = [v];
         while (Q.length) {
@@ -24,7 +24,7 @@ class UndirectedGraph {
         return [...seen];
     }
     dfs(v) {
-        if (!this.graph[v]) return [];
+        if (!this.graph[v]) return null;
         const seen = new Set([v]);
         const S = [v];
         while (S.length) {
@@ -54,7 +54,7 @@ class UndirectedGraph {
         }
         return null;
     }
-    insertEdge(u, v, w = 0) {
+    insertEdge(u, v, w) {
         this.insertVertex(u);
         this.insertVertex(v);
         this.graph[u].set(v, w);
@@ -75,8 +75,7 @@ class UndirectedGraph {
         for (const u of this.graph[v].keys()) {
             this.removeEdge(u, v);
         }
-        delete this.graph[v];
-        return v;
+        return delete this.graph[v];
     }
     union() {
         const find = v => v === uf[v] ? v : uf[v] = find(uf[v]);

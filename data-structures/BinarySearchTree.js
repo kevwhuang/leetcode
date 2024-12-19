@@ -25,29 +25,26 @@ class BinarySearchTree {
         else if (type === 'post') this.#postorder(this.tree, res);
         return res;
     }
-    find(val) {
-        let node = this.tree;
-        while (node) {
-            if (val < node.val) node = node.left;
-            else if (val > node.val) node = node.right;
-            else return node;
+    get(val) {
+        let res = this.tree;
+        while (res && res.val !== val) {
+            res = res.val > val ? res.left : res.right;
         }
-        return null;
+        return res;
     }
     insert(val) {
         if (!this.tree) return this.tree = new Node(val);
-        let node = this.tree;
-        while (true) {
-            if (val < node.val) {
-                if (!node.left) return node.left = new Node(val);
-                node = node.left;
-            } else if (val > node.val) {
-                if (!node.right) return node.right = new Node(val);
-                node = node.right;
+        let res = this.tree;
+        while (res && res !== res.val) {
+            if (res.val > val) {
+                if (!res.left) return res.left = new Node(val);
+                res = res.left;
             } else {
-                return node;
+                if (!res.right) return res.right = new Node(val);
+                res = res.right;
             }
         }
+        return res;
     }
     #inorder(node, vals) {
         if (!node) return;
@@ -70,10 +67,10 @@ class BinarySearchTree {
 }
 
 class Node {
-    constructor(val, left, right) {
-        this.val = val === undefined ? null : val;
-        this.left = left === undefined ? null : left;
-        this.right = right === undefined ? null : right;
+    constructor(val) {
+        this.val = val ?? null;
+        this.left = null;
+        this.right = null;
     }
 }
 

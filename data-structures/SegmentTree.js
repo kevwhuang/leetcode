@@ -16,9 +16,9 @@ class SegmentTree {
             start >>= 1;
             end >>= 1;
         }
-        return res;
+        return res === -Infinity ? null : res;
     }
-    update(idx, val) {
+    set(idx, val) {
         idx += this.size;
         this.tree[idx] = val;
         while (idx > 1) {
@@ -27,7 +27,7 @@ class SegmentTree {
             if (this.tree[idx] === max) break;
             this.tree[idx] = max;
         }
-        return val;
+        return true;
     }
 }
 

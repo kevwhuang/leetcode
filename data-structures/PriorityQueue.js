@@ -26,7 +26,7 @@ class PriorityQueue {
             this.pq[i] = this.pq[p], this.pq[p] = val;
             i = p, p >>= 1;
         }
-        return val;
+        return true;
     }
     front() {
         return this.pq.length > 1 ? this.pq[1] : null;

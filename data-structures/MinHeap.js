@@ -25,7 +25,7 @@ class MinHeap {
             this.heap[i] = this.heap[p], this.heap[p] = val;
             i = p, p >>= 1;
         }
-        return val;
+        return true;
     }
     front() {
         return this.heap.length > 1 ? this.heap[1] : null;
