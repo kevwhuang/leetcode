@@ -8,7 +8,7 @@
 
 function isAnagram(s, t) {
     if (s.length !== t.length) return false;
-    const B = new Array(26).fill(0);
+    const B = new Uint16Array(26);
     for (let i = 0; i < s.length; i++) {
         B[s.charCodeAt(i) - 97]++;
     }

@@ -1,14 +1,11 @@
 // 134 - Gas Station
 
 function canCompleteCircuit(gas, cost) {
-    let total = 0, cur = 0, start = 0;
-    for (let i = 0; i < gas.length; i++) {
-        const net = gas[i] - cost[i];
-        total += net;
-        cur += net;
-        if (cur >= 0) continue;
-        start = i + 1;
-        cur = 0;
+    let res = 0, sum = 0, acc = 0, i = -1;
+    while (++i < gas.length) {
+        sum += gas[i] - cost[i];
+        acc += gas[i] - cost[i];
+        if (acc < 0) res = i + 1, acc = 0;
     }
-    return total >= 0 ? start : -1;
+    return sum < 0 ? -1 : res;
 }

@@ -23,13 +23,10 @@ function alienOrder(words) {
             adj.get(t[j])[0]++;
             break;
         }
-        if (s.length > j && j === min) return '';
+        if (j < s.length && j === min) return '';
     }
-    let Q = [];
-    for (const e of adj) {
-        if (e[1][0] === 0) Q.push(e[0]);
-    }
-    let res = '';
+    let res = '', Q = [];
+    adj.forEach((e, key) => e[0] === 0 && Q.push(key));
     while (Q.length) {
         const N = [];
         for (let i = 0; i < Q.length; i++) {

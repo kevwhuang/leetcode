@@ -2,28 +2,25 @@
 
 class Twitter {
     constructor() {
-        this.users = {};
-        this.tweets = [];
+        this.M = Array.from({ length: 501 }, () => []);
+        this.arr = Array.from({ length: 501 }, () => new Set());
+        this.dict = new Uint16Array(10001);
+        this.acc = 0;
     }
     follow(followerId, followeeId) {
-        if (followerId in this.users) this.users[followerId].add(followeeId);
-        else this.users[followerId] = new Set([followeeId]);
+        this.arr[followerId].add(followeeId);
     }
     getNewsFeed(userId) {
-        const feed = [];
-        let i = this.tweets.length, author;
-        while (feed.length < 10 && --i >= 0) {
-            author = this.tweets[i][0];
-            if (author === userId || this.users[userId]?.has(author)) {
-                feed.push(this.tweets[i][1]);
-            }
-        }
-        return feed;
+        const res = [...this.M[userId]];
+        this.arr[userId].forEach(e => res.push(...this.M[e]));
+        res.sort((a, b) => this.dict[b] - this.dict[a]);
+        return res.slice(0, 10);
     }
     postTweet(userId, tweetId) {
-        this.tweets.push([userId, tweetId]);
+        this.M[userId].push(tweetId);
+        this.dict[tweetId] = this.acc++;
     }
     unfollow(followerId, followeeId) {
-        if (followerId in this.users) this.users[followerId].delete(followeeId);
+        this.arr[followerId].delete(followeeId);
     }
 }

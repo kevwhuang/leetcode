@@ -1,6 +1,6 @@
 {
     "name": "leetcode",
-    "version": "24.12.18",
+    "version": "24.12.19",
     "author": "Kevin Huang",
     "scripts": {
         "lint": "bun eslint"
