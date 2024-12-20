@@ -1,17 +1,15 @@
 // 494 - Target Sum
 
 function findTargetSumWays(nums, target) {
-    const sum = nums.reduce((s, e) => s + e);
-    if (Math.abs(target) > sum) return 0;
-    const m = (sum + target) / 2;
-    if (!Number.isInteger(m)) return 0;
-    const dp = new Array(m + 1).fill(0);
+    const n = nums.reduce((s, e) => s + e, target) / 2;
+    if (n < 0 || n > n >> 0) return 0;
+    const dp = new Uint32Array(n + 1);
     dp[0] = 1;
     for (let i = 0; i < nums.length; i++) {
-        const num = nums[i];
-        for (let j = m; j >= num; j--) {
-            dp[j] += dp[j - num];
+        const cur = nums[i];
+        for (let j = n; j >= cur; j--) {
+            dp[j] += dp[j - cur];
         }
     }
-    return dp[m];
+    return dp[n];
 }

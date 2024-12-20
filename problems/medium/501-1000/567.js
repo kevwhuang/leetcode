@@ -8,10 +8,11 @@ function checkInclusion(s1, s2) {
         B[s1.charCodeAt(i) - 97]++;
         B[s2.charCodeAt(i) - 97]--;
     }
+    let acc = B.reduce((s, e) => s + (e > 0), 0);
     for (let i = m; i < n; i++) {
-        if (B.every(e => e === 0)) return true;
-        B[s2.charCodeAt(i) - 97]--;
-        B[s2.charCodeAt(i - m) - 97]++;
+        if (acc === 0) return true;
+        if (--B[s2.charCodeAt(i) - 97] === 0) acc--;
+        if (B[s2.charCodeAt(i - m) - 97]++ === 0) acc++;
     }
-    return B.every(e => e === 0);
+    return acc === 0;
 }

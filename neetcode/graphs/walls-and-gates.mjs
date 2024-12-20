@@ -6,30 +6,28 @@
  */
 
 function wallsAndGates(rooms) {
-    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
+    let Q = [];
     const m = rooms.length, n = rooms[0].length;
-    const dirs = [0, -1, 0, 1, 0];
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (rooms[r][c] !== 0) continue;
-            let dist = 1, queue = [[r, c]];
-            while (queue.length) {
-                const nextQueue = [];
-                for (let i = 0; i < queue.length; i++) {
-                    for (let j = 0; j < 4; j++) {
-                        const rr = queue[i][0] + dirs[j];
-                        const cc = queue[i][1] + dirs[j + 1];
-                        if (!validate(rr, cc)) continue;
-                        if (rooms[rr][cc] <= dist) continue;
-                        rooms[rr][cc] = dist;
-                        nextQueue.push([rr, cc]);
-                    }
-                }
-                dist++, queue = nextQueue;
-            }
+            if (rooms[r][c] === 0) Q.push([r, c]);
         }
     }
-    return rooms;
+    let acc = 0;
+    const D = [0, -1, 0, 1, 0];
+    while (Q.length && ++acc) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            for (let j = 0; j < 4; j++) {
+                const r = Q[i][0] + D[j], c = Q[i][1] + D[j + 1];
+                if (r === -1 || r === m || c === -1 || c === n) continue;
+                if (rooms[r][c] <= acc) continue;
+                rooms[r][c] = acc;
+                N.push([r, c]);
+            }
+        }
+        Q = N;
+    }
 }
 
 module.exports = wallsAndGates;

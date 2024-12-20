@@ -8,28 +8,20 @@
 
 function minWindow(s, t) {
     if (s.length < t.length) return '';
-    const map = new Map();
+    const B = new Uint32Array(58);
     for (let i = 0; i < t.length; i++) {
-        map.set(t[i], (map.get(t[i]) ?? 0) + 1);
+        B[t.charCodeAt(i) - 65]++;
     }
-    let min = Infinity, left, right;
-    L: for (let l = 0, r = 0; r < s.length; r++) {
-        if (!map.has(s[r])) continue;
-        map.set(s[r], map.get(s[r]) - 1);
-        while (l < r) {
-            if (!map.has(s[l]) && ++l) continue;
-            const f = map.get(s[l]) + 1;
-            if (f > 0) break;
-            map.set(s[l++], f);
+    let left = 0, right = Infinity, l = 0, r = -1;
+    let acc = B.reduce((s, e) => s + (e > 0), 0);
+    while (++r < s.length) {
+        if (--B[s.charCodeAt(r) - 65] === 0) acc--;
+        while (acc === 0) {
+            if (r - l < right - left) left = l, right = r;
+            if (B[s.charCodeAt(l++) - 65]++ === 0) acc++;
         }
-        for (const f of map.values()) {
-            if (f > 0) continue L;
-        }
-        const len = r - l + 1;
-        if (len >= min) continue;
-        min = len, left = l, right = r;
     }
-    return min === Infinity ? '' : s.slice(left, right + 1);
+    return right - left === Infinity ? '' : s.slice(left, right + 1);
 }
 
 module.exports = minWindow;
