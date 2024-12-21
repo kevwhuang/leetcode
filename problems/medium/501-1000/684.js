@@ -6,6 +6,6 @@ function findRedundantConnection(edges) {
     for (let i = 0; i < edges.length; i++) {
         const u = edges[i][0], v = edges[i][1];
         if (find(u) === find(v)) return edges[i];
-        uf[find(u)] = find(v);
+        uf[uf[u]] = uf[v];
     }
 }

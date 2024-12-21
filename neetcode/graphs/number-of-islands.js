@@ -19,7 +19,7 @@ function numIslands(grid) {
     const m = grid.length, n = grid[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (grid[r][c] === '1') dfs(r, c) & res++;
+            if (grid[r][c] === '1') dfs(r, c) || res++;
         }
     }
     return res;

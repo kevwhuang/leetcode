@@ -1,13 +1,14 @@
 // 115 - Distinct Subsequences
 
 function numDistinct(s, t) {
-    const dp = new Uint32Array(t.length);
-    for (let i = 0; i < s.length; i++) {
-        for (let prev = 1, j = 0; j < t.length; j++) {
+    const m = s.length, n = t.length;
+    const dp = new Uint32Array(n);
+    for (let i = 0; i < m; i++) {
+        for (let prev = 1, j = 0; j < n; j++) {
             const cur = dp[j];
-            if (s[i] === t[j]) dp[j] += prev;
+            dp[j] += s[i] === t[j] && prev;
             prev = cur;
         }
     }
-    return dp[t.length - 1];
+    return dp[n - 1];
 }

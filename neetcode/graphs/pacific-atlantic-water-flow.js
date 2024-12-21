@@ -6,36 +6,27 @@
  */
 
 function pacificAtlantic(heights) {
-    function dfs(r, c, prev, mat) {
+    function dfs(r, c, prev, seen) {
         if (r === -1 || r === m || c === -1 || c === n) return;
-        if (heights[r][c] < prev || mat[r][c]) return;
-        mat[r][c] = true;
-        dfs(r - 1, c, heights[r][c], mat);
-        dfs(r + 1, c, heights[r][c], mat);
-        dfs(r, c - 1, heights[r][c], mat);
-        dfs(r, c + 1, heights[r][c], mat);
+        if (seen[r][c] || M[r][c] < prev) return;
+        seen[r][c] = 1;
+        dfs(r - 1, c, M[r][c], seen);
+        dfs(r + 1, c, M[r][c], seen);
+        dfs(r, c - 1, M[r][c], seen);
+        dfs(r, c + 1, M[r][c], seen);
     }
-    const m = heights.length, n = heights[0].length;
-    const atlantic = [], pacific = [];
-    for (let r = 0; r < m; r++) {
-        atlantic.push(new Array(n).fill(false));
-        pacific.push(new Array(n).fill(false));
-    }
-    for (let r = 0; r < m; r++) {
-        dfs(r, n - 1, -1, atlantic);
-        dfs(r, 0, -1, pacific);
-    }
-    for (let c = 0; c < n; c++) {
-        dfs(m - 1, c, -1, atlantic);
-        dfs(0, c, -1, pacific);
-    }
-    const coords = [];
+    const M = heights, m = M.length, n = M[0].length;
+    const seen1 = Array.from({ length: m }, () => new Uint8Array(n));
+    const seen2 = Array.from({ length: m }, () => new Uint8Array(n));
+    M.forEach((_, r) => dfs(r, 0, -1, seen1) || dfs(r, n - 1, -1, seen2));
+    M[0].forEach((_, c) => dfs(0, c, -1, seen1) || dfs(m - 1, c, -1, seen2));
+    const res = [];
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (atlantic[r][c] && pacific[r][c]) coords.push([r, c]);
+            if (seen1[r][c] && seen2[r][c]) res.push([r, c]);
         }
     }
-    return coords;
+    return res;
 }
 
 module.exports = pacificAtlantic;

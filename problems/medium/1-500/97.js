@@ -1,19 +1,18 @@
 // 97 - Interleaving String
 
 function isInterleave(s1, s2, s3) {
-    const len1 = s1.length, len2 = s2.length;
-    if (len1 + len2 !== s3.length) return false;
-    const dp = new Array(len2 + 1);
-    dp[len2] = true;
-    for (let j = len2 - 1; j >= 0; j--) {
-        dp[j] = dp[j + 1] && s2[j] === s3[len1 + j];
+    const m = s1.length, n = s2.length;
+    if (m + n !== s3.length) return false;
+    const dp = new Uint8Array(n + 1);
+    dp[0] = 1;
+    for (let i = 0; i < n; i++) {
+        dp[i + 1] = dp[i] && s2[i] === s3[i];
     }
-    for (let i = len1 - 1; i >= 0; i--) {
-        for (let j = len2; j >= 0; j--) {
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j <= n; j++) {
             dp[j] &&= s1[i] === s3[i + j];
-            if (dp[j] || j === len2) continue;
-            dp[j] = dp[j + 1] && s2[j] === s3[i + j];
+            dp[j] ||= j && dp[j - 1] && s2[j - 1] === s3[i + j];
         }
     }
-    return dp[0];
+    return dp[n];
 }

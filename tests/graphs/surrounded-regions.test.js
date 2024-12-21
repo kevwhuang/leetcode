@@ -14,9 +14,12 @@ describe('Main', () => {
             ['X', 'X', 'X', 'X'],
             ['X', 'O', 'X', 'X'],
         ];
-        expect(solve(board)).toStrictEqual(solution);
+        solve(board);
+        expect(board).toStrictEqual(solution);
     });
     test('Case 2', () => {
-        expect(solve([['X']])).toStrictEqual([['X']]);
+        const board = [['X']];
+        solve(board);
+        expect(board).toStrictEqual([['X']]);
     });
 });

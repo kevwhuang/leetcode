@@ -7,24 +7,15 @@
  */
 
 function validTree(n, edges) {
-    function dfs(vert) {
-        seen.add(vert);
-        const neighbors = adj[vert];
-        for (let i = 0; i < neighbors.length; i++) {
-            if (seen.has(neighbors[i])) continue;
-            dfs(neighbors[i]);
-        }
-    }
-    if (edges.length !== n - 1) return false;
-    const adj = Array.from({ length: n }, () => []);
+    const find = v => v === uf[v] ? v : uf[v] = find(uf[v]);
+    if (n - 1 !== edges.length) return false;
+    const uf = Array.from({ length: n }, (_, i) => i);
     for (let i = 0; i < edges.length; i++) {
-        const [v1, v2] = edges[i];
-        adj[v1].push(v2);
-        adj[v2].push(v1);
+        const u = edges[i][0], v = edges[i][1];
+        if (find(u) === find(v)) return false;
+        uf[uf[u]] = uf[v];
     }
-    const seen = new Set();
-    dfs(0);
-    return seen.size === n;
+    return true;
 }
 
 module.exports = validTree;

@@ -10,9 +10,6 @@ function networkDelayTime(times, n, k) {
         }
     }
     let res = 0, v = 0;
-    while (++v <= n) {
-        res = Math.max(C[v], res);
-        if (res === 1e9) return -1;
-    }
-    return res;
+    while (res < 1e9 && ++v <= n) res = Math.max(C[v], res);
+    return res === 1e9 ? -1 : res;
 }

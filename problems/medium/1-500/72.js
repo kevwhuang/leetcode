@@ -2,19 +2,14 @@
 
 function minDistance(word1, word2) {
     const m = word1.length, n = word2.length;
-    const dp = Array.from({ length: m + 1 }, () => new Uint16Array(n + 1));
-    for (let r = m; r >= 0; r--) {
-        dp[r][n] = m - r;
-    }
-    for (let c = n; c >= 0; c--) {
-        dp[m][c] = n - c;
-    }
-    for (let r = m - 1; r >= 0; r--) {
-        for (let c = n - 1; c >= 0; c--) {
-            dp[r][c] = word1[r] === word2[c]
-                ? dp[r + 1][c + 1]
-                : 1 + Math.min(dp[r + 1][c], dp[r + 1][c + 1], dp[r][c + 1]);
+    const dp = Array.from({ length: n + 1 }, (_, i) => i);
+    for (let i = 1; i <= m; i++) {
+        for (let prev = dp[0]++, j = 1; j <= n; j++) {
+            const cur = dp[j];
+            if (word1[i - 1] === word2[j - 1]) dp[j] = prev;
+            else dp[j] = Math.min(prev, dp[j - 1], dp[j]) + 1;
+            prev = cur;
         }
     }
-    return dp[0][0];
+    return dp[n];
 }

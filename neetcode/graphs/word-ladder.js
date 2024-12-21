@@ -10,30 +10,24 @@
 function ladderLength(beginWord, endWord, wordList) {
     wordList = new Set(wordList);
     if (!wordList.has(endWord)) return 0;
-    const letters = new Set();
-    for (let code = 97; code <= 122; code++) {
-        letters.add(String.fromCharCode(code));
-    }
-    let set1 = new Set([beginWord]);
-    let set2 = new Set([endWord]);
-    let steps = 0;
-    while (set1.size && ++steps) {
-        const nextSet = new Set();
-        for (const word of set1) {
-            for (let i = 0; i < word.length; i++) {
-                const pre = word.slice(0, i);
-                const post = word.slice(i + 1);
-                for (const char of letters) {
-                    const nextWord = pre + char + post;
-                    if (set2.has(nextWord)) return steps + 1;
-                    if (!wordList.has(nextWord)) continue;
-                    wordList.delete(nextWord);
-                    nextSet.add(nextWord);
+    let res = 1, Q1 = new Set([beginWord]), Q2 = new Set([endWord]);
+    const s = 'abcdefghijklmnopqrstuvwxyz';
+    while (Q1.size && res++) {
+        const N = new Set();
+        for (const t of Q1) {
+            for (let i = 0; i < t.length; i++) {
+                const left = t.slice(0, i), right = t.slice(i + 1);
+                for (let j = 0; j < 26; j++) {
+                    const next = `${left}${s[j]}${right}`;
+                    if (Q2.has(next)) return res;
+                    if (!wordList.has(next)) continue;
+                    wordList.delete(next);
+                    N.add(next);
                 }
             }
         }
-        if (nextSet.size <= set2.size) set1 = nextSet;
-        else set1 = set2, set2 = nextSet;
+        if (N.size <= Q2.size) Q1 = N;
+        else Q1 = Q2, Q2 = N;
     }
     return 0;
 }

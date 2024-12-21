@@ -14,13 +14,13 @@ function checkInclusion(s1, s2) {
         B[s1.charCodeAt(i) - 97]++;
         B[s2.charCodeAt(i) - 97]--;
     }
-    let acc = B.reduce((s, e) => s + (e > 0), 0);
+    let res = B.reduce((s, e) => s + (e > 0), 0);
     for (let i = m; i < n; i++) {
-        if (acc === 0) return true;
-        if (--B[s2.charCodeAt(i) - 97] === 0) acc--;
-        if (B[s2.charCodeAt(i - m) - 97]++ === 0) acc++;
+        if (res === 0) return true;
+        if (--B[s2.charCodeAt(i) - 97] === 0) res--;
+        if (B[s2.charCodeAt(i - m) - 97]++ === 0) res++;
     }
-    return acc === 0;
+    return res === 0;
 }
 
 module.exports = checkInclusion;

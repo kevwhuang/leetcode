@@ -1,28 +1,11 @@
 // 323 - Number of Connected Components in an Undirected Graph
 
 function countComponents(n, edges) {
-    function traverse(vert) {
-        seen.add(vert);
-        const edges = adj.get(vert);
-        for (let i = 0; i < edges.length; i++) {
-            if (seen.has(edges[i])) continue;
-            traverse(edges[i]);
-        }
-    }
-    const adj = new Map();
+    const find = v => v === uf[v] ? v : uf[v] = find(uf[v]);
+    const uf = Array.from({ length: n }, (_, i) => i);
     for (let i = 0; i < edges.length; i++) {
-        const [v1, v2] = edges[i];
-        if (!adj.has(v1)) adj.set(v1, []);
-        if (!adj.has(v2)) adj.set(v2, []);
-        adj.get(v1).push(v2);
-        adj.get(v2).push(v1);
+        const u = edges[i][0], v = edges[i][1];
+        if (find(u) !== find(v)) uf[uf[u]] = uf[v], n--;
     }
-    let components = n - adj.size;
-    const seen = new Set();
-    for (const vert of adj.keys()) {
-        if (seen.has(vert)) continue;
-        components++;
-        traverse(vert);
-    }
-    return components;
+    return n;
 }

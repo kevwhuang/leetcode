@@ -8,23 +8,25 @@
 
 function isMatch(s, p) {
     const m = s.length, n = p.length;
-    const dp = Array.from({ length: m + 1 }, () => new Uint8Array(n + 1));
-    dp[0][0] = 1;
-    for (let j = 0; j < n; j++) {
-        if (p[j] === '*') dp[0][j + 1] = dp[0][j - 1];
+    const dp = new Uint8Array(n + 1);
+    dp[0] = 1;
+    for (let i = 2; i <= n; i++) {
+        dp[i] = p[i - 1] === '*' && dp[i - 2];
     }
+    dp[0] = 0;
     for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (p[j] === '*') {
-                dp[i + 1][j + 1] = dp[i + 1][j - 1];
-                if (s[i] !== p[j - 1] && p[j - 1] !== '.') continue;
-                dp[i + 1][j + 1] ||= dp[i][j + 1];
-            } else if (s[i] === p[j] || p[j] === '.') {
-                dp[i + 1][j + 1] = dp[i][j];
-            }
+        for (let prev = i === 0, j = 1; j <= n; j++) {
+            const cur = dp[j];
+            dp[j] = s[i] === p[j - 1] && prev;
+            dp[j] ||= p[j - 1] === '.' && prev;
+            prev = cur;
+            if (p[j - 1] !== '*') continue;
+            dp[j] ||= dp[j - 2];
+            dp[j] ||= s[i] === p[j - 2] && cur;
+            dp[j] ||= p[j - 2] === '.' && cur;
         }
     }
-    return dp[m][n];
+    return dp[n];
 }
 
 module.exports = isMatch;
