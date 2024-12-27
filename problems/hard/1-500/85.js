@@ -1,21 +1,23 @@
 // 85 - Maximal Rectangle
 
 function maximalRectangle(matrix) {
-    let area = 0;
-    const m = matrix.length, n = matrix[0].length;
-    const dp = new Array(n + 1).fill(0);
-    for (let r = 0; r < m; r++) {
-        for (let c = 0; c < n; c++) {
-            dp[c] = matrix[r][c] === '1' ? dp[c] + 1 : 0;
-        }
-        const stack = [-1, 0];
-        for (let i = 1; i < dp.length; i++) {
-            while (stack.length >= 2 && dp[i] < dp[stack.at(-1)]) {
-                const newArea = dp[stack.pop()] * (i - stack.at(-1) - 1);
-                area = Math.max(newArea, area);
+    let res = 0;
+    const M = matrix, dp = M[0], m = M.length, n = M[0].length;
+    dp.push(0);
+    for (let acc = 0, c = 0; c < n; c++) {
+        if (dp[c] == 0) acc = 0;
+        else res = Math.max(++acc, res);
+    }
+    const S = new Array(n + 1);
+    S[0] = -1;
+    for (let r = 1; r < m; r++) {
+        for (let i = 0, c = 0; c <= n; c++) {
+            if (c < n) dp[c] = M[r][c] == 0 ? 0 : ++dp[c];
+            while (i && dp[S[i]] >= dp[c]) {
+                res = Math.max(dp[S[i--]] * (c - S[i] - 1), res);
             }
-            stack.push(i);
+            S[++i] = c;
         }
     }
-    return area;
+    return res;
 }
