@@ -1,7 +1,7 @@
 // 875 - Koko Eating Bananas
 
 function minEatingSpeed(piles, h) {
-    let l = 1, r = Math.max(...piles);
+    let l = 1, r = piles.reduce((s, e) => Math.max(e, s));
     while (l < r) {
         let acc = 0;
         const m = l + r >> 1;
