@@ -3,15 +3,11 @@
 function countBalls(lowLimit, highLimit) {
     let max = 1;
     const map = new Map();
-    while (lowLimit <= highLimit) {
-        let sum = 0, num = lowLimit++;
-        while (num) {
-            sum += num % 10;
-            num = num / 10 >> 0;
-        }
-        const freq = map.get(sum) + 1 || 1;
-        map.set(sum, freq);
-        if (freq > max) max++;
+    for (let i = lowLimit; i <= highLimit; i++) {
+        let sum = 0, num = i;
+        while (num) sum += num % 10, num = num / 10 >> 0;
+        map.set(sum, (map.get(sum) ?? 0) + 1);
+        max = Math.max(map.get(sum), max);
     }
     return max;
 }

@@ -1,15 +1,15 @@
 // 1796 - Second Largest Digit in a String
 
 function secondHighest(s) {
-    let largest = -1, secondLargest = -1;
+    const arr = new Uint8Array(10);
     for (let i = 0; i < s.length; i++) {
-        const num = Number(s.charAt(i));
-        if (num > largest) {
-            secondLargest = largest;
-            largest = num;
-        } else if (secondLargest < num && num < largest) {
-            secondLargest = num;
-        }
+        const key = s.charCodeAt(i) - 48;
+        if (0 <= key && key <= 9) arr[key] = 1;
     }
-    return secondLargest;
+    for (let seen, n = 9; ~n; n--) {
+        if (arr[n] === 0) continue;
+        if (seen) return n;
+        seen = true;
+    }
+    return -1;
 }

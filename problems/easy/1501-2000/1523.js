@@ -1,6 +1,6 @@
 // 1523 - Count Odd Numbers in an Interval Range
 
 function countOdds(low, high) {
-    const count = Math.floor((high - low) / 2);
-    return low % 2 === 0 && high % 2 === 0 ? count : count + 1;
+    const count = high - low >> 1;
+    return low % 2 || high % 2 ? count + 1 : count;
 }

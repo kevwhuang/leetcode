@@ -2,24 +2,24 @@
 
 function numSpecial(mat) {
     let count = 0;
-    for (let i = 0; i < mat.length; i++) {
-        loop: for (let j = 0; j < mat[0].length; j++) {
-            if (mat[i][j] === 1) {
-                for (let y = i - 1; y >= 0; y--) {
-                    if (mat[y][j] === 1) break loop;
-                }
-                for (let y = i + 1; y < mat.length; y++) {
-                    if (mat[y][j] === 1) break loop;
-                }
-                for (let x = j - 1; x >= 0; x--) {
-                    if (mat[i][x] === 1) break loop;
-                }
-                for (let x = j + 1; x < mat[0].length; x++) {
-                    if (mat[i][x] === 1) break loop;
-                }
-                count++;
-                break;
+    const M = mat, m = M.length, n = M[0].length;
+    for (let r = 0; r < m; r++) {
+        L: for (let c = 0; c < n; c++) {
+            if (M[r][c] === 0) continue;
+            for (let rr = r - 1; ~rr; rr--) {
+                if (M[rr][c]) break L;
             }
+            for (let rr = r + 1; rr < m; rr++) {
+                if (M[rr][c]) break L;
+            }
+            for (let cc = c - 1; ~cc; cc--) {
+                if (M[r][cc]) break L;
+            }
+            for (let cc = c + 1; cc < n; cc++) {
+                if (M[r][cc]) break L;
+            }
+            count++;
+            break;
         }
     }
     return count;

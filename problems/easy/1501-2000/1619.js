@@ -1,11 +1,11 @@
 // 1619 - Mean of Array After Removing Some Elements
 
 function trimMean(arr) {
-    arr.sort((a, b) => a - b);
-    const delta = arr.length / 20;
+    arr = new Uint32Array(arr).sort();
     let sum = 0;
-    for (let i = delta; i < arr.length - delta; i++) {
+    const d = arr.length / 20;
+    for (let i = d; i < arr.length - d; i++) {
         sum += arr[i];
     }
-    return sum / (arr.length - 2 * delta);
+    return sum / (arr.length - d - d);
 }

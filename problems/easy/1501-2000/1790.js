@@ -1,12 +1,12 @@
 // 1790 - Check If One String Swap Can Make Strings Equal
 
 function areAlmostEqual(s1, s2) {
-    const diff = [];
+    const arr = [];
     for (let i = 0; i < s1.length; i++) {
-        s1[i] !== s2[i] && diff.push(s1[i], s2[i]);
-        if (diff.length > 4) return false;
+        if (s1[i] !== s2[i]) arr.push(s1[i], s2[i]);
+        if (arr.length === 6) return false;
     }
-    if (diff.length === 0) return true;
-    if (diff.length === 2) return false;
-    return diff[0] === diff[3] && diff[1] === diff[2];
+    if (arr.length === 0) return true;
+    if (arr.length === 2) return false;
+    return arr[0] === arr[3] && arr[1] === arr[2];
 }

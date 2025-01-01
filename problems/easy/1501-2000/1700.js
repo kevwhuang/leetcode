@@ -1,19 +1,17 @@
 // 1700 - Number of Students Unable to Eat Lunch
 
 function countStudents(students, sandwiches) {
-    const total = sandwiches.length;
-    let pos = 0;
+    let idx = 0;
+    const n = sandwiches.length;
     while (true) {
-        let delta = 0;
+        let d = 0;
         for (let i = 0; i < students.length; i++) {
-            if (students[i] === sandwiches[pos]) {
-                delete students[i];
-                pos++;
-                delta++;
-            }
+            if (students[i] !== sandwiches[idx]) continue;
+            delete students[i];
+            idx++, d++;
         }
-        if (pos === total) return 0;
-        if (delta === 0) return total - pos;
+        if (idx === n) return 0;
+        if (d === 0) return n - idx;
         students = students.flat();
     }
 }

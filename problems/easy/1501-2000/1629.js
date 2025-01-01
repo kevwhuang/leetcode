@@ -1,15 +1,13 @@
 // 1629 - Slowest Key
 
 function slowestKey(releaseTimes, keysPressed) {
-    let maxTime = releaseTimes[0], maxKey = keysPressed[0];
-    for (let i = 1, time; i < releaseTimes.length; i++) {
-        time = releaseTimes[i] - releaseTimes[i - 1];
-        if (time === maxTime) {
-            if (keysPressed[i] > maxKey) maxKey = keysPressed[i];
-        } else if (time > maxTime) {
-            maxTime = time;
-            maxKey = keysPressed[i];
-        }
+    let max = releaseTimes[0], key = keysPressed[0], i = 0;
+    while (++i < releaseTimes.length) {
+        const time = releaseTimes[i] - releaseTimes[i - 1];
+        if (time < max) continue;
+        if (time > max) max = time, key = keysPressed[i];
+        if (time > max) continue;
+        if (keysPressed[i] > key) key = keysPressed[i];
     }
-    return maxKey;
+    return key;
 }

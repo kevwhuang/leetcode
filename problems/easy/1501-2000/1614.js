@@ -1,10 +1,10 @@
 // 1614 - Maximum Nesting Depth of the Parentheses
 
 function maxDepth(s) {
-    let maxDepth = 0, depth = 0;
+    let max = 0, acc = 0;
     for (let i = 0; i < s.length; i++) {
-        if (s[i] === '(') maxDepth = Math.max(++depth, maxDepth);
-        else if (s[i] === ')') depth--;
+        if (s[i] === '(') max = Math.max(++acc, max);
+        else if (s[i] === ')') acc--;
     }
-    return maxDepth;
+    return max;
 }

@@ -1,12 +1,9 @@
 // 1708 - Largest Subarray Length K
 
 function largestSubarray(nums, k) {
-    let pos, largest = -Infinity;
-    for (let i = 0; i <= nums.length - k; i++) {
-        if (nums[i] > largest) {
-            largest = nums[i];
-            pos = i;
-        }
+    let res = 0;
+    for (let i = 1; i <= nums.length - k; i++) {
+        if (nums[i] > nums[res]) res = i;
     }
-    return nums.slice(pos, pos + k);
+    return nums.slice(res, res + k);
 }

@@ -1,18 +1,16 @@
 // 1608 - Special Array With X Elements Greater Than or Equal X
 
 function specialArray(nums) {
-    function binarySearch(target) {
-        let l = 0, r = nums.length - 1;
+    nums = new Uint16Array(nums).sort();
+    const n = nums.length;
+    for (let i = 0; i <= n; i++) {
+        let l = 0, r = n - 1;
         while (l <= r) {
-            const m = ~~((l + r) / 2);
-            if (nums[m] < target) l = m + 1;
-            else if (nums[m] >= target) r = m - 1;
+            const m = l + r >> 1;
+            if (nums[m] < i) l = m + 1;
+            else if (nums[m] >= i) r = m - 1;
         }
-        return l;
-    }
-    nums.sort((a, b) => a - b);
-    for (let i = 1; i <= nums.length; i++) {
-        if (i === nums.length - binarySearch(i)) return i;
+        if (i === n - l) return i;
     }
     return -1;
 }

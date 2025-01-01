@@ -1,22 +1,20 @@
 // 1652 - Defuse the Bomb
 
 function decrypt(code, k) {
-    if (k === 0) return code.map(() => 0);
-    let forward = true;
+    if (k === 0) return code.fill(0);
+    let flag = true;
     if (k < 0) {
-        forward = false;
+        flag = false, k *= -1;
         code.reverse();
-        k *= -1;
     }
-    const arr = new Array(code.length);
-    let win = 0;
+    let acc = 0;
     for (let i = 0; i < k; i++) {
-        win += code[i];
+        acc += code[i];
     }
+    const arr = new Uint16Array(code.length);
     for (let i = 0, j = k - 1; i < code.length; i++) {
-        j === code.length - 1 ? j = 0 : j++;
-        win += code[j] - code[i];
-        arr[i] = win;
+        if (j++ === code.length - 1) j = 0;
+        arr[i] = acc += code[j] - code[i];
     }
-    return forward ? arr : arr.reverse();
+    return flag ? arr : arr.reverse();
 }

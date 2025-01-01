@@ -1,13 +1,12 @@
 // 1544 - Make the String Great
 
 function makeGood(s) {
-    const stack = [];
+    const S = [];
     for (let i = 0; i < s.length; i++) {
-        const code = s.charCodeAt(i);
-        const delta = (97 <= code && code <= 122) ? -32 : 32;
-        String.fromCharCode(code + delta) === stack.at(-1)
-            ? stack.pop()
-            : stack.push(s[i]);
+        const key = s.charCodeAt(i);
+        const d = 97 <= key && key <= 122 ? -32 : 32;
+        if (S.length && String.fromCharCode(key + d) === S.at(-1)) S.pop();
+        else S.push(s[i]);
     }
-    return stack.join('');
+    return S.join('');
 }

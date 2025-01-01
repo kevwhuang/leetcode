@@ -1,12 +1,11 @@
 // 1556 - Thousand Separator
 
 function thousandSeparator(n) {
-    n = n.toString();
-    let pos = n.length % 3, str = n.slice(0, pos);
-    const bound = Math.floor(n.length / 3);
-    for (let i = 0; i < bound; i++) {
-        str += '.' + n.slice(pos, pos + 3);
-        pos += 3;
+    n = String(n);
+    let idx = n.length % 3, s = n.slice(0, idx);
+    const lim = n.length / 3 >> 0;
+    for (let i = 0; i < lim; i++) {
+        s += '.' + n.slice(idx, idx += 3);
     }
-    return str[0] === '.' ? str.slice(1) : str;
+    return s[0] === '.' ? s.slice(1) : s;
 }

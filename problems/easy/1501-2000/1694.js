@@ -1,18 +1,15 @@
 // 1694 - Reformat Phone Number
 
 function reformatNumber(number) {
-    number = number.replaceAll(/[ -]/g, '');
-    let formatted = '';
-    for (let i = 0; ; i += 3) {
-        const remaining = number.length - i;
-        if (remaining === 2 || remaining === 3) {
-            formatted += number.slice(i);
-            break;
-        } else if (remaining === 4) {
-            formatted += number.slice(i, i + 2) + '-' + number.slice(i + 2);
-            break;
-        }
-        formatted += number.slice(i, i + 3) + '-';
+    number = number.replace(/[ -]/g, '');
+    let res = '', i = 0;
+    while (true) {
+        const rem = number.length - i;
+        if (rem === 2 || rem === 3) res += number.slice(i);
+        else if (rem === 4) res += number.slice(i, i + 2) + '-' + number.slice(i + 2);
+        if (rem === 2 || rem === 3 || rem === 4) break;
+        res += number.slice(i, i + 3) + '-';
+        i += 3;
     }
-    return formatted;
+    return res;
 }

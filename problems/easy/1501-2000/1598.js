@@ -5,7 +5,7 @@ function minOperations(logs) {
     for (let i = 0; i < logs.length; i++) {
         const cur = logs[i];
         if (cur === './') continue;
-        else if (cur === '../') depth = Math.max(0, depth - 1);
+        if (cur === '../') depth = Math.max(0, depth - 1);
         else depth++;
     }
     return depth;

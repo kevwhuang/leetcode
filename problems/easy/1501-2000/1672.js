@@ -2,8 +2,8 @@
 
 function maximumWealth(accounts) {
     let max = 0;
-    for (const customer of accounts) {
-        max = Math.max(customer.reduce((s, i) => s + i, 0), max);
+    for (let i = 0; i < accounts.length; i++) {
+        max = Math.max(accounts[i].reduce((s, e) => s + e), max);
     }
     return max;
 }
