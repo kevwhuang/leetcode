@@ -2,11 +2,12 @@
 
 function countQuadruplets(nums) {
     let quads = 0;
-    for (let i = 0; i < nums.length - 3; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            for (let k = j + 1; k < nums.length; k++) {
-                for (let l = k + 1; l < nums.length; l++) {
-                    nums[i] + nums[j] + nums[k] === nums[l] && quads++;
+    const n = nums.length;
+    for (let i = 0; i < n - 3; i++) {
+        for (let j = i + 1; j < n; j++) {
+            for (let k = j + 1; k < n; k++) {
+                for (let l = k + 1; l < n; l++) {
+                    if (nums[i] + nums[j] + nums[k] === nums[l]) quads++;
                 }
             }
         }

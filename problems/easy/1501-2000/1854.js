@@ -1,19 +1,15 @@
 // 1854 - Maximum Population Year
 
 function maximumPopulation(logs) {
-    const populations = new Array(101).fill(0);
+    const arr = new Uint8Array(101);
     for (let i = 0; i < logs.length; i++) {
         for (let j = logs[i][0]; j < logs[i][1]; j++) {
-            populations[j - 1950]++;
+            arr[j - 1950]++;
         }
     }
-    let maxYear = 1950, maxPopulation = 0;
-    for (let i = 0; i < populations.length; i++) {
-        const pop = populations[i];
-        if (pop > maxPopulation) {
-            maxYear = i + 1950;
-            maxPopulation = pop;
-        }
+    let res = 0;
+    for (let i = 0; i < 101; i++) {
+        if (arr[i] > arr[res]) res = i;
     }
-    return maxYear;
+    return res + 1950;
 }

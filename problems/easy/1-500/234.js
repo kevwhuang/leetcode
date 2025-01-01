@@ -6,14 +6,14 @@ function isPalindrome(head) {
         slow = slow.next;
         fast = fast.next.next;
     }
-    let reversed = null, cur;
+    let rvs = null, cur;
     while (slow) {
         cur = slow;
         slow = slow.next;
-        cur.next = reversed;
-        reversed = cur;
+        cur.next = rvs;
+        rvs = cur;
     }
-    slow = reversed;
+    slow = rvs;
     fast = head;
     while (slow) {
         if (slow.val !== fast.val) return false;

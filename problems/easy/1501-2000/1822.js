@@ -3,9 +3,8 @@
 function arraySign(nums) {
     let sign = 1;
     for (let i = 0; i < nums.length; i++) {
-        const n = nums[i];
-        if (n < 0) sign = -sign;
-        else if (n === 0) return 0;
+        if (nums[i] === 0) return 0;
+        if (nums[i] < 0) sign = -sign;
     }
     return sign;
 }

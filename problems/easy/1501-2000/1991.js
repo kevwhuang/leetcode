@@ -1,12 +1,11 @@
 // 1991 - Find the Middle Index in Array
 
 function findMiddleIndex(nums) {
-    let leftSum = 0;
-    let rightSum = nums.reduce((s, e) => s + e, 0);
+    let left = 0, right = nums.reduce((s, e) => s + e);
     for (let i = 0; i < nums.length; i++) {
-        leftSum += nums[i - 1] || 0;
-        rightSum -= nums[i];
-        if (leftSum === rightSum) return i;
+        if (i) left += nums[i - 1];
+        right -= nums[i];
+        if (left === right) return i;
     }
     return -1;
 }

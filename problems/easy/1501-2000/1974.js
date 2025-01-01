@@ -6,8 +6,7 @@ function minTimeToType(word) {
         const code = word.charCodeAt(i);
         let moves = Math.abs(code - pos);
         if (moves > 13) moves = 26 - moves;
-        time += moves;
-        pos = code;
+        time += moves, pos = code;
     }
     return time;
 }

@@ -2,10 +2,10 @@
 
 function replaceDigits(s) {
     if (s.length === 1) return s;
-    let output = '';
-    for (let i = 0; i < s.length - 1; i += 2) {
-        output += s[i] + String.fromCharCode(s.charCodeAt(i) + +s[i + 1]);
+    let res = '';
+    for (let i = 1; i < s.length; i += 2) {
+        const code = s.charCodeAt(i - 1) + Number(s[i]);
+        res += s[i - 1] + String.fromCharCode(code);
     }
-    if (s.length % 2) output += s.at(-1);
-    return output;
+    return s.length % 2 ? res + s.at(-1) : res;
 }

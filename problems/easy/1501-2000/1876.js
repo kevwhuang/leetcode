@@ -2,11 +2,11 @@
 
 function countGoodSubstrings(s) {
     let count = 0;
-    for (let i = 0; i < s.length - 2; i++) {
-        s[i] !== s[i + 1]
-            && s[i + 1] !== s[i + 2]
-            && s[i + 2] !== s[i]
-            && count++;
+    for (let i = 2; i < s.length; i++) {
+        if (s[i - 2] === s[i - 1]) continue;
+        if (s[i - 2] === s[i]) continue;
+        if (s[i - 1] === s[i]) continue;
+        count++;
     }
     return count;
 }
