@@ -2,9 +2,10 @@
 
 function removeDuplicates(s) {
     s = s.split('');
-    let pos = 0;
+    let idx = 0;
     for (let i = 0; i < s.length; i++) {
-        s[i] !== s[pos - 1] ? (s[pos++] = s[i]) : pos--;
+        if (idx && s[i] === s[idx - 1]) idx--;
+        else s[idx++] = s[i];
     }
-    return s.slice(0, pos).join('');
+    return s.slice(0, idx).join('');
 }

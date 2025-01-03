@@ -1,14 +1,14 @@
 // 119 - Pascal's Triangle II
 
 function getRow(rowIndex) {
-    let row = [1];
+    let cur = [1];
     while (rowIndex--) {
-        const current = [1];
-        for (let i = 0; i < row.length - 1; i++) {
-            current.push(row[i] + row[i + 1]);
+        const n = cur.length;
+        const next = new Uint32Array(n + 1);
+        for (let i = 1; i < n; i++) {
+            next[i] = cur[i - 1] + cur[i];
         }
-        current.push(1);
-        row = current;
+        cur = next, next[0] = next[n] = 1;
     }
-    return row;
+    return cur;
 }

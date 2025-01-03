@@ -2,20 +2,15 @@
 
 class TwoSum {
     constructor() {
-        this.nums = new Map();
+        this.B = new Map();
     }
     add(number) {
-        this.nums.set(number, this.nums.get(number) + 1 || 1);
+        this.B.set(number, (this.B.get(number) ?? 0) + 1);
     }
     find(value) {
-        for (const e of this.nums.keys()) {
-            if (this.nums.has(value - e)) {
-                if (value === 2 * e) {
-                    if (this.nums.get(e) >= 2) return true;
-                } else {
-                    return true;
-                }
-            }
+        for (const e of this.B.keys()) {
+            if (!this.B.has(value - e)) continue;
+            if (value !== e + e || this.B.get(e) >= 2) return true;
         }
         return false;
     }

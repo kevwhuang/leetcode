@@ -2,23 +2,22 @@
 
 function tictactoe(moves) {
     if (moves.length < 5) return 'Pending';
-    const board = [['', '', ''], ['', '', ''], ['', '', '']];
+    const arr = new Int8Array(9);
     for (let i = 0; i < moves.length; i += 2) {
-        board[moves[i][0]][moves[i][1]] = 'A';
+        arr[3 * moves[i][0] + moves[i][1]] = 1;
     }
     for (let i = 1; i < moves.length; i += 2) {
-        board[moves[i][0]][moves[i][1]] = 'B';
+        arr[3 * moves[i][0] + moves[i][1]] = -1;
     }
-    const M = board;
-    for (const player of ['AAA', 'BBB']) {
-        if (M[0][0] + M[0][1] + M[0][2] === player) return player[0];
-        if (M[1][0] + M[1][1] + M[1][2] === player) return player[0];
-        if (M[2][0] + M[2][1] + M[2][2] === player) return player[0];
-        if (M[0][0] + M[1][0] + M[2][0] === player) return player[0];
-        if (M[0][1] + M[1][1] + M[2][1] === player) return player[0];
-        if (M[0][2] + M[1][2] + M[2][2] === player) return player[0];
-        if (M[0][0] + M[1][1] + M[2][2] === player) return player[0];
-        if (M[0][2] + M[1][1] + M[2][0] === player) return player[0];
+    const D = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6],
+    ];
+    for (let i = 0; i < 8; i++) {
+        const sum = arr[D[i][0]] + arr[D[i][1]] + arr[D[i][2]];
+        if (sum === 3) return 'A';
+        if (sum === -3) return 'B';
     }
     return moves.length === 9 ? 'Draw' : 'Pending';
 }

@@ -1,13 +1,10 @@
 // 485 - Max Consecutive Ones
 
 function findMaxConsecutiveOnes(nums) {
-    let window = 0, max = 0;
+    let max = 0, acc = 0;
     for (let i = 0; i < nums.length; i++) {
-        if (nums[i]) window++;
-        else {
-            max = Math.max(window, max);
-            window = 0;
-        }
+        if (nums[i]) max = Math.max(++acc, max);
+        else max = Math.max(acc, max), acc = 0;
     }
-    return Math.max(window, max);
+    return max;
 }

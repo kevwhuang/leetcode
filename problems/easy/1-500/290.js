@@ -8,6 +8,5 @@ function wordPattern(pattern, s) {
         if (map.has(pattern[i]) && map.get(pattern[i]) !== s[i]) return false;
         map.set(pattern[i], s[i]);
     }
-    const values = [...map.values()];
-    return values.length === new Set(values).size;
+    return map.size === new Set(map.values()).size;
 }

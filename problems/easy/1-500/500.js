@@ -1,24 +1,16 @@
 // 500 - Keyboard Row
 
 function findWords(words) {
-    const output = [];
-    const keyboard = [
-        'qwertyuiopQWERTYUIOP',
-        'asdfghjklASDFGHJKL',
-        'zxcvbnmZXCVBNM',
-    ];
-    outer: for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-        let letters = keyboard[0];
-        if (keyboard[1].includes(word[0])) {
-            letters = keyboard[1];
-        } else if (keyboard[2].includes(word[0])) {
-            letters = keyboard[2];
-        }
-        for (let j = 1; j < word.length; j++) {
-            if (!letters.includes(word[j])) continue outer;
-        }
-        output.push(words[i]);
+    const res = [];
+    const set1 = new Set('QWERTYUIOPqwertyuiop');
+    const set2 = new Set('ASDFGHJKLasdfghjkl');
+    const set3 = new Set('ZXCVBNMzxcvbnm');
+    for (let i = 0; i < words.length; i++) {
+        const s = words[i];
+        const set = set1.has(s[0]) ? set1 : set2.has(s[0]) ? set2 : set3;
+        let j = 0;
+        while (++j < s.length) if (!set.has(s[j])) j = Infinity;
+        if (j < Infinity) res.push(s);
     }
-    return output;
+    return res;
 }

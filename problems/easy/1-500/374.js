@@ -2,11 +2,11 @@
 
 function guessNumber(n) {
     let l = 1, r = n;
-    while (l <= r) {
-        const m = ~~((l + r) / 2);
-        const ans = guess(m);
-        if (ans === 1) l = m + 1;
-        else if (ans === -1) r = m - 1;
+    while (true) {
+        const m = Math.floor((l + r) / 2);
+        const res = guess(m);
+        if (res === 1) l = m + 1;
+        else if (res === -1) r = m - 1;
         else return m;
     }
 }

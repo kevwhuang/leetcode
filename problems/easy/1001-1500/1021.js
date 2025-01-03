@@ -1,11 +1,10 @@
 // 1021 - Remove Outermost Parentheses
 
 function removeOuterParentheses(s) {
-    let [inner, res] = [-1, ''];
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '(') {
-            if (inner++ !== -1) res += '(';
-        } else if (inner-- !== 0) res += ')';
+    let res = '', acc = 0, i = -1;
+    while (++i < s.length) {
+        if (s[i] === '(' && acc++ !== 0) res += '(';
+        else if (s[i] === ')' && acc-- !== 1) res += ')';
     }
     return res;
 }

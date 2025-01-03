@@ -1,13 +1,13 @@
 // 94 - Binary Tree Inorder Traversal
 
 function inorderTraversal(root) {
-    function traverse(cur) {
-        cur.left && traverse(cur.left);
-        res.push(cur.val);
-        cur.right && traverse(cur.right);
+    function dfs(node) {
+        if (!node) return;
+        dfs(node.left);
+        res.push(node.val);
+        dfs(node.right);
     }
-    if (!root) return [];
     const res = [];
-    traverse(root);
+    dfs(root);
     return res;
 }

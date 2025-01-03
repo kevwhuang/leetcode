@@ -1,11 +1,12 @@
 // 1469 - Find All the Lonely Nodes
 
 function getLonelyNodes(root) {
-    function dfs(cur) {
-        cur.left && dfs(cur.left);
-        cur.right && dfs(cur.right);
-        cur.left && !cur.right && res.push(cur.left.val);
-        cur.right && !cur.left && res.push(cur.right.val);
+    function dfs(node) {
+        if (!node) return;
+        dfs(node.left);
+        dfs(node.right);
+        if (node.left && !node.right) res.push(node.left.val);
+        if (node.right && !node.left) res.push(node.right.val);
     }
     const res = [];
     dfs(root);

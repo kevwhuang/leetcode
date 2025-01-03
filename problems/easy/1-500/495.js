@@ -2,11 +2,10 @@
 
 function findPoisonedDuration(timeSeries, duration) {
     let time = duration;
-    for (let i = 0, cur, next; i < timeSeries.length - 1; i++) {
-        cur = timeSeries[i];
-        next = timeSeries[i + 1];
-        if (cur + duration <= next) time += duration;
-        else time += next - cur;
+    for (let i = 1; i < timeSeries.length; i++) {
+        const prev = timeSeries[i - 1], cur = timeSeries[i];
+        if (cur >= prev + duration) time += duration;
+        else time += cur - prev;
     }
     return time;
 }

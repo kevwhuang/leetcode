@@ -1,12 +1,12 @@
 // 257 - Binary Tree Paths
 
 function binaryTreePaths(root) {
-    function dfs(root, str) {
-        if (!root) return;
-        str = str ? `${str}->${root.val}` : `${root.val}`;
-        !root.left && !root.right && paths.push(str);
-        dfs(root.left, str);
-        dfs(root.right, str);
+    function dfs(node, str) {
+        if (!node) return;
+        str = str ? `${str}->${node.val}` : `${node.val}`;
+        if (!node.left && !node.right) paths.push(str);
+        dfs(node.left, str);
+        dfs(node.right, str);
     }
     const paths = [];
     dfs(root);

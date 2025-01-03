@@ -1,19 +1,14 @@
 // 1243 - Array Transformation
 
 function transformArray(arr) {
-    while (true) {
-        const copy = [...arr];
-        let isOperated = false;
-        for (let i = 1; i < arr.length - 1; i++) {
-            const num = copy[i];
-            if (num < copy[i - 1] && num < copy[i + 1]) {
-                arr[i]++;
-                isOperated = true;
-            } else if (num > copy[i - 1] && num > copy[i + 1]) {
-                arr[i]--;
-                isOperated = true;
-            }
-        }
-        if (!isOperated) return arr;
+    let flag, i = 0;
+    const n = arr.length - 1, N = new Uint8Array(n + 1);
+    while (++i < n) {
+        const l = arr[i - 1], m = arr[i], r = arr[i + 1];
+        if (m < l && m < r) N[i] = m + 1, flag = true;
+        else if (m > l && m > r) N[i] = m - 1, flag = true;
+        else N[i] = m;
     }
+    N[0] = arr[0], N[n] = arr[n];
+    return flag ? transformArray(N) : N;
 }

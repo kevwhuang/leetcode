@@ -1,17 +1,13 @@
 // 2113 - Elements in Array After Removing and Replacing Elements
 
 function elementInNums(nums, queries) {
-    const ans = new Array(queries.length);
-    const divisor = 2 * nums.length;
-    for (let i = 0; i < queries.length; i++) {
-        let bound = nums.length;
-        let index = queries[i][0] % divisor;
-        if (index > nums.length) {
-            bound = index - nums.length;
-            index = 0;
-        }
-        index += queries[i][1];
-        ans[i] = index < bound ? nums[index] : -1;
+    const m = nums.length, n = queries.length, mm = m + m;
+    const res = new Int8Array(n);
+    for (let i = 0; i < n; i++) {
+        let idx = queries[i][0] % mm, lim = m;
+        if (idx > m) lim = idx - m, idx = 0;
+        idx += queries[i][1];
+        res[i] = idx < lim ? nums[idx] : -1;
     }
-    return ans;
+    return res;
 }

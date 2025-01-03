@@ -1,11 +1,11 @@
 // 1099 - Two Sum Less Than K
 
 function twoSumLessThanK(nums, k) {
-    nums.sort((a, b) => a - b);
-    let max = -1, l = 0, r = nums.length - 1, sum;
+    nums = new Uint16Array(nums).sort();
+    let max = -1, l = 0, r = nums.length - 1;
     while (l < r) {
-        sum = nums[l] + nums[r];
-        if (sum < k) (max = Math.max(sum, max)) && l++;
+        const sum = nums[l] + nums[r];
+        if (sum < k && ++l) max = Math.max(sum, max);
         else r--;
     }
     return max;

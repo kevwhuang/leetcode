@@ -1,20 +1,12 @@
 // 1030 - Matrix Cells in Distance Order
 
 function allCellsDistOrder(rows, cols, rCenter, cCenter) {
-    const obj = {};
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const distance = Math.abs(i - rCenter) + Math.abs(j - cCenter);
-            if (obj[distance]) obj[distance].push([i, j]);
-            else obj[distance] = [[i, j]];
-        }
-    }
+    const dist = (a, b) => Math.abs(a - rCenter) + Math.abs(b - cCenter);
     const res = [];
-    for (const key in obj) {
-        const coords = obj[key];
-        for (let i = 0; i < coords.length; i++) {
-            res.push(coords[i]);
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            res.push([r, c]);
         }
     }
-    return res;
+    return res.sort((a, b) => dist(a[0], a[1]) - dist(b[0], b[1]));
 }

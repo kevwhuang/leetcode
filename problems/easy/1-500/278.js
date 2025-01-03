@@ -2,11 +2,11 @@
 
 function solution(isBadVersion) {
     function find(n) {
-        let l = 0, r = n, m;
+        let l = 0, r = n;
         while (l < r) {
-            m = ~~((l + r) / 2);
-            if (isBadVersion(m)) r = m;
-            else l = m + 1;
+            const m = Math.floor((l + r) / 2);
+            if (!isBadVersion(m)) l = m + 1;
+            else r = m;
         }
         return l;
     }

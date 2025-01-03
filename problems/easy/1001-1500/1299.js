@@ -1,11 +1,9 @@
 // 1299 - Replace Elements With Greatest Element on Right Side
 
 function replaceElements(arr) {
-    let greatest = arr.at(-1);
-    for (let i = arr.length - 2; i >= 0; i--) {
-        const current = arr[i];
-        arr[i] = greatest;
-        if (current > greatest) greatest = current;
+    for (let max = arr.at(-1), i = arr.length - 2; ~i; i--) {
+        const cur = arr[i];
+        arr[i] = max, max = Math.max(cur, max);
     }
     arr[arr.length - 1] = -1;
     return arr;

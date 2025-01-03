@@ -8,6 +8,6 @@ class NumArray {
         }
     }
     sumRange(left, right) {
-        return this.nums[right] - (this.nums[left - 1] || 0);
+        return this.nums[right] - (left ? this.nums[left - 1] : 0);
     }
 }

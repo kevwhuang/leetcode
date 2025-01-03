@@ -1,15 +1,15 @@
 // 496 - Next Greater Element I
 
 function nextGreaterElement(nums1, nums2) {
-    for (let i = 0; i < nums1.length; i++) {
-        const index = nums2.indexOf(nums1[i]);
-        let greater = -1;
-        for (let j = index + 1; j < nums2.length; j++) {
+    const m = nums1.length, n = nums2.length;
+    for (let i = 0; i < m; i++) {
+        let idx = -1;
+        for (let j = nums2.indexOf(nums1[i]) + 1; j < n; j++) {
             if (nums2[j] <= nums1[i]) continue;
-            greater = nums2[j];
+            idx = nums2[j];
             break;
         }
-        nums1[i] = greater;
+        nums1[i] = idx;
     }
     return nums1;
 }

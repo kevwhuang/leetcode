@@ -1,14 +1,9 @@
 // 350 - Intersection of Two Arrays II
 
 function intersect(nums1, nums2) {
-    const freq = {};
-    for (let i = 0; i < nums1.length; i++) {
-        freq[nums1[i]] = (freq[nums1[i]] + 1) || 1;
-    }
-    const output = [];
-    for (let i = 0; i < nums2.length; i++) {
-        const num = nums2[i];
-        freq[num] > 0 && freq[num]-- && output.push(num);
-    }
-    return output;
+    const B = new Int16Array(1001);
+    nums1.forEach(e => B[e]++);
+    const res = [];
+    nums2.forEach(e => --B[e] >= 0 && res.push(e));
+    return res;
 }

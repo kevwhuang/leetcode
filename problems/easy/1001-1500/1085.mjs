@@ -1,10 +1,10 @@
 // 1085 - Sum of Digits in the Minimum Number
 
 function sumOfDigits(nums) {
-    const min = Math.min.apply(null, nums).toString();
     let sum = 0;
-    for (let i = 0; i < min.length; i++) {
-        sum += +min[i];
+    const str = Math.min(...nums).toString();
+    for (let i = 0; i < str.length; i++) {
+        sum += Number(str[i]);
     }
     return sum % 2 ? 0 : 1;
 }

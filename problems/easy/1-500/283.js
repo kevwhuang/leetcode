@@ -1,12 +1,12 @@
 // 283 - Move Zeros
 
 function moveZeroes(nums) {
-    let zeros = 0;
-    for (let i = 0, left = 0; i < nums.length; i++) {
-        if (nums[i] === 0) zeros++;
-        else nums[left++] = nums[i];
+    let acc = 0;
+    for (let l = 0, r = 0; r < nums.length; r++) {
+        if (nums[r]) nums[l++] = nums[r];
+        else acc++;
     }
-    for (let i = nums.length - zeros; i < nums.length; i++) {
+    for (let i = nums.length - acc; i < nums.length; i++) {
         nums[i] = 0;
     }
 }

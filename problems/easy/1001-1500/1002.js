@@ -1,20 +1,21 @@
 // 1002 - Find Common Characters
 
 function commonChars(words) {
-    let output = words[0].split('');
-    for (let i = 1; i < words.length; i++) {
-        const word = words[i];
-        let arr = [...output];
-        for (let j = 0; j < word.length; j++) {
-            const pos = arr.indexOf(word[j]);
-            pos !== -1 && delete arr[pos];
+    const arr = new Uint8Array(26).fill(100);
+    const B = new Uint8Array(26);
+    for (let i = 0; i < words.length; i++) {
+        B.fill(0);
+        const s = words[i];
+        for (let j = 0; j < s.length; j++) {
+            B[s.charCodeAt(j) - 97]++;
         }
-        arr = arr.flat();
-        for (let j = 0; j < arr.length; j++) {
-            const pos = output.indexOf(arr[j]);
-            pos !== -1 && delete output[pos];
+        for (let j = 0; j < 26; j++) {
+            arr[j] = Math.min(B[j], arr[j]);
         }
-        output = output.flat();
     }
-    return output;
+    const res = [];
+    for (let i = 0; i < 26; i++) {
+        while (arr[i]--) res.push(String.fromCharCode(i + 97));
+    }
+    return res;
 }

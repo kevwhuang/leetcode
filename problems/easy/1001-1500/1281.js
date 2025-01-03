@@ -2,11 +2,10 @@
 
 function subtractProductAndSum(n) {
     n = String(n);
-    let product = 1, sum = 0;
+    let prod = 1, sum = 0;
     for (let i = 0; i < n.length; i++) {
-        const digit = Number(n.charAt(i));
-        product *= digit;
-        sum += digit;
+        const digit = Number(n[i]);
+        prod *= digit, sum += digit;
     }
-    return product - sum;
+    return prod - sum;
 }

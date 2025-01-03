@@ -1,15 +1,15 @@
 // 513 - Find Bottom Left Tree Value
 
 function findBottomLeftValue(root) {
-    let queue = [root];
-    while (queue.length) {
-        const newQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const node = queue[i];
-            node.left && newQueue.push(node.left);
-            node.right && newQueue.push(node.right);
+    let Q = [root];
+    while (Q.length) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const node = Q[i];
+            if (node.left) N.push(node.left);
+            if (node.right) N.push(node.right);
         }
-        if (newQueue.length === 0) return queue[0].val;
-        queue = newQueue;
+        if (N.length === 0) return Q[0].val;
+        Q = N;
     }
 }

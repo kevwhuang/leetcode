@@ -1,18 +1,17 @@
 // 1496 - Path Crossing
 
 function isPathCrossing(path) {
-    const set = new Set(['0,0']);
-    let x = 0, y = 0;
-    for (let i = 0; i < path.length; i++) {
+    const seen = new Set(['0,0']);
+    for (let r = 0, c = 0, i = 0; i < path.length; i++) {
         switch (path[i]) {
-            case 'N': y++; break;
-            case 'S': y--; break;
-            case 'E': x++; break;
-            case 'W': x--;
+            case 'N': r--; break;
+            case 'S': r++; break;
+            case 'E': c--; break;
+            default: c++;
         }
-        const coords = `${x},${y}`;
-        if (set.has(coords)) return true;
-        set.add(coords);
+        const key = `${r},${c}`;
+        if (seen.has(key)) return true;
+        seen.add(key);
     }
     return false;
 }

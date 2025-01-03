@@ -1,13 +1,11 @@
 // 27 - Remove Element
 
 function removeElement(nums, val) {
-    let remaining = nums.length;
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === val) {
-            delete nums[i];
-            remaining--;
-        }
+    let l = 0, r = 0;
+    while (true) {
+        while (r < nums.length && nums[r] === val) r++;
+        if (r === nums.length) break;
+        nums[l++] = nums[r++];
     }
-    nums.sort();
-    return remaining;
+    return l;
 }

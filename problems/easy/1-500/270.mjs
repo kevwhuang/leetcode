@@ -1,13 +1,14 @@
 // 270 - Closest Binary Search Tree Value
 
 function closestValue(root, target) {
-    let val, closest = root.val, diff1, diff2;
+    let res = Infinity;
     while (root) {
-        val = root.val;
-        diff1 = Math.abs(target - val);
-        diff2 = Math.abs(target - closest);
-        if (diff1 < diff2 || (diff1 === diff2 && val < closest)) closest = val;
+        const val = root.val;
+        const abs1 = Math.abs(val - target);
+        const abs2 = Math.abs(res - target);
+        if (abs1 === abs2) res = Math.min(val, res);
+        else if (abs1 < abs2) res = val;
         root = target < val ? root.left : root.right;
     }
-    return closest;
+    return res;
 }

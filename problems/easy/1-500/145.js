@@ -1,13 +1,13 @@
 // 145 - Binary Tree Postorder Traversal
 
 function postorderTraversal(root) {
-    function traverse(cur) {
-        cur.left && traverse(cur.left);
-        cur.right && traverse(cur.right);
-        res.push(cur.val);
+    function dfs(node) {
+        if (!node) return;
+        dfs(node.left);
+        dfs(node.right);
+        res.push(node.val);
     }
-    if (!root) return [];
     const res = [];
-    traverse(root);
+    dfs(root);
     return res;
 }

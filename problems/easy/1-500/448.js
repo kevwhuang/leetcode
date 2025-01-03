@@ -1,12 +1,13 @@
 // 448 - Find All Numbers Disappeared in an Array
 
 function findDisappearedNumbers(nums) {
-    const res = new Array(nums.length);
     for (let i = 0; i < nums.length; i++) {
-        res[i] = i + 1;
+        const abs = Math.abs(nums[i]) - 1;
+        nums[abs] = -Math.abs(nums[abs]);
     }
-    for (let i = 0; i < nums.length; i++) {
-        delete res[nums[i] - 1];
+    let l = 0, r = -1;
+    while (++r < nums.length) {
+        if (nums[r] > 0) nums[l++] = r + 1;
     }
-    return res.filter(Boolean);
+    return nums.slice(0, l);
 }

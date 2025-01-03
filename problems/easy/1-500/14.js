@@ -1,18 +1,12 @@
 // 14 - Longest Common Prefix
 
 function longestCommonPrefix(strs) {
-    let prefix = strs[0];
+    let len = strs[0].length;
     for (let i = 1; i < strs.length; i++) {
-        if (strs[i].length < prefix.length) prefix = strs[i];
+        const min = Math.min(len, strs[i].length);
+        let j = 0;
+        while (j < min && strs[0][j] === strs[i][j]) j++;
+        len = j;
     }
-    if (prefix.length === 0) return '';
-    L: while (prefix.length) {
-        for (let i = 0; i < strs.length; i++) {
-            if (strs[i].startsWith(prefix)) continue;
-            prefix = prefix.slice(0, prefix.length - 1);
-            continue L;
-        }
-        break;
-    }
-    return prefix;
+    return strs[0].slice(0, len);
 }

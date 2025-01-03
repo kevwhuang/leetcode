@@ -1,11 +1,9 @@
 // 171 - Excel Sheet Column Number
 
 function titleToNumber(columnTitle) {
-    let column = 0;
-    for (let i = columnTitle.length - 1; i >= 0; i--) {
-        const letterCode = columnTitle.charCodeAt(i) - 64;
-        const power = 26 ** (columnTitle.length - i - 1);
-        column += letterCode * power;
+    let res = 0;
+    for (let k = 1, i = columnTitle.length - 1; ~i; k *= 26, i--) {
+        res += k * (columnTitle.charCodeAt(i) - 64);
     }
-    return column;
+    return res;
 }

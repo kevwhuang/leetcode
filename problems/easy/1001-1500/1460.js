@@ -8,8 +8,7 @@ function canBeEqual(target, arr) {
     for (let i = 0; i < arr.length; i++) {
         const freq = map.get(arr[i]);
         if (!freq) return false;
-        else if (freq === 1) map.delete(arr[i]);
-        else map.set(arr[i], freq - 1);
+        map.set(arr[i], freq - 1);
     }
     return true;
 }

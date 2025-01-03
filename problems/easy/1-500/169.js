@@ -1,16 +1,11 @@
 // 169 - Majority Element
 
 function majorityElement(nums) {
-    let majority, max = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (!max) {
-            majority = nums[i];
-            max++;
-        } else if (nums[i] === majority) {
-            max++;
-        } else {
-            max--;
-        }
+    let res = 0, max = 0, i = -1;
+    while (++i < nums.length) {
+        if (max === 0) res = nums[i], max = 1;
+        else if (nums[i] === res) max++;
+        else max--;
     }
-    return majority;
+    return res;
 }

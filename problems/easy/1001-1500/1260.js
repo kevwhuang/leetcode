@@ -1,18 +1,14 @@
 // 1260 - Shift 2D Grid
 
 function shiftGrid(grid, k) {
-    const m = grid.length, n = grid[0].length;
-    k %= m * n;
+    const m = grid.length, n = grid[0].length, mod = m * n;
+    k %= mod;
     if (k === 0) return grid;
-    const res = Array.from({ length: m }, () => new Array(n));
-    let rr = ~~(k / n), cc = k - n * rr;
+    const res = Array.from({ length: m }, () => new Int16Array(n));
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            res[rr][cc] = grid[r][c];
-            if (++cc !== n) continue;
-            if (rr === m - 1) rr = 0;
-            else rr++;
-            cc = 0;
+            res[k / n >> 0][cc = k % n] = grid[r][c];
+            k = (k + 1) % mod;
         }
     }
     return res;

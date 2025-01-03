@@ -2,6 +2,10 @@
 
 function maxDepth(root) {
     if (!root) return 0;
-    if (!root.children.length) return 1;
-    return Math.max.apply(null, root.children.map(node => maxDepth(node) + 1));
+    let max = 1;
+    const next = root.children;
+    for (let i = 0; i < next.length; i++) {
+        max = Math.max(maxDepth(next[i]) + 1, max);
+    }
+    return max;
 }

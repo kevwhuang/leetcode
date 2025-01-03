@@ -1,24 +1,16 @@
 // 1252 - Cells With Odd Values in a Matrix
 
 function oddCells(m, n, indices) {
-    const matrix = [];
-    const row = new Array(n).fill(false);
-    for (let i = 0; i < m; i++) {
-        matrix.push([...row]);
-    }
+    const rows = new Uint8Array(m);
+    const cols = new Uint8Array(n);
     for (let i = 0; i < indices.length; i++) {
-        const [row, col] = indices[i];
-        for (let j = 0; j < n; j++) {
-            matrix[row][j] = !matrix[row][j];
-        }
-        for (let j = 0; j < m; j++) {
-            matrix[j][col] = !matrix[j][col];
-        }
+        rows[indices[i][0]]++;
+        cols[indices[i][1]]++;
     }
     let count = 0;
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            matrix[i][j] && count++;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if ((rows[r] + cols[c]) % 2) count++;
         }
     }
     return count;

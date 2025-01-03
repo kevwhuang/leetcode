@@ -2,10 +2,9 @@
 
 function convertToTitle(columnNumber) {
     let title = '';
-    while (columnNumber) {
-        columnNumber--;
+    while (columnNumber--) {
         title = String.fromCharCode(columnNumber % 26 + 65) + title;
-        columnNumber = Math.floor(columnNumber / 26);
+        columnNumber = columnNumber / 26 >> 0;
     }
     return title;
 }

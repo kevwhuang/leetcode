@@ -1,13 +1,10 @@
 // 293 - Flip Game
 
 function generatePossibleNextMoves(currentState) {
-    const states = [];
-    for (let i = 0; i < currentState.length - 1; i++) {
-        if (currentState[i] === '+' && currentState[i + 1] === '+') {
-            const before = currentState.slice(0, i);
-            const after = currentState.slice(i + 2);
-            states.push(`${before}--${after}`);
-        }
+    const res = [];
+    for (let i = 1; i < currentState.length; i++) {
+        if (currentState[i - 1] !== '+' || currentState[i] !== '+') continue;
+        res.push(`${currentState.slice(0, i - 1)}--${currentState.slice(i + 1)}`);
     }
-    return states;
+    return res;
 }

@@ -2,6 +2,6 @@
 
 function lengthOfLastWord(s) {
     s = s.trim();
-    const pos = s.lastIndexOf(' ');
-    return pos === -1 ? s.length : s.length - pos - 1;
+    const idx = s.lastIndexOf(' ');
+    return idx === -1 ? s.length : s.length - idx - 1;
 }

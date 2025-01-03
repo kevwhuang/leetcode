@@ -1,14 +1,12 @@
 // 1013 - Partition Array Into Three Parts With Equal Sum
 
 function canThreePartsEqualSum(arr) {
-    let partitions = 0;
-    const target = arr.reduce((s, e) => s + e) / 3;
-    for (let i = 0, sum = 0; i < arr.length; i++) {
-        sum += arr[i];
-        if (sum === target) {
-            sum = 0;
-            partitions++;
-        }
+    const tgt = arr.reduce((s, e) => s + e) / 3;
+    if (tgt !== tgt >> 0) return false;
+    let count = 0, acc = 0, i = 0;
+    while (i < arr.length) {
+        acc += arr[i++];
+        if (acc === tgt) count++, acc = 0;
     }
-    return partitions >= 3;
+    return count >= 3;
 }

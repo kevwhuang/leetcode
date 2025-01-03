@@ -1,16 +1,16 @@
 // 1474 - Delete N Nodes After M Nodes of a Linked List
 
 function deleteNodes(head, m, n) {
-    let cur = head;
-    while (cur) {
-        for (let i = 0; i < m - 1 && cur; i++) {
-            cur = cur.next;
+    let node = head;
+    while (node) {
+        for (let i = 1; node && i < m; i++) {
+            node = node.next;
         }
-        let prev = cur;
-        for (let i = 0; i < n + 1 && cur; i++) {
-            cur = cur.next;
+        const cur = node;
+        for (let i = 0; node && i <= n; i++) {
+            node = node.next;
         }
-        if (prev) prev.next = cur;
+        if (cur) cur.next = node;
     }
     return head;
 }

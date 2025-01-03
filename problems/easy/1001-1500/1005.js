@@ -7,10 +7,9 @@ function largestSumAfterKNegations(nums, k) {
         nums[i] *= -1;
     }
     let sum = 0, min = Infinity;
-    for (let i = 0, cur; i < nums.length; i++) {
-        cur = nums[i];
-        min = Math.min(cur, min);
-        sum += cur;
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        min = Math.min(nums[i], min);
     }
-    return k % 2 ? sum - 2 * min : sum;
+    return k % 2 ? sum - min - min : sum;
 }

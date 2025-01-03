@@ -1,13 +1,13 @@
 // 144 - Binary Tree Preorder Traversal
 
 function preorderTraversal(root) {
-    function traverse(cur) {
-        res.push(cur.val);
-        cur.left && traverse(cur.left);
-        cur.right && traverse(cur.right);
+    function dfs(node) {
+        if (!node) return;
+        res.push(node.val);
+        dfs(node.left);
+        dfs(node.right);
     }
-    if (!root) return [];
     const res = [];
-    traverse(root);
+    dfs(root);
     return res;
 }

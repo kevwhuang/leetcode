@@ -2,16 +2,15 @@
 
 function minDepth(root) {
     if (!root) return 0;
-    const queue = [root];
-    let len, cur, depth = 1;
-    while (queue.length) {
-        len = queue.length;
-        for (let i = 0; i < len; i++) {
-            cur = queue.shift();
-            if (!cur.left && !cur.right) return depth;
-            cur.left && queue.push(cur.left);
-            cur.right && queue.push(cur.right);
+    let depth = 0, Q = [root];
+    while (++depth) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const node = Q[i];
+            if (!node.left && !node.right) return depth;
+            if (node.left) N.push(node.left);
+            if (node.right) N.push(node.right);
         }
-        depth++;
+        Q = N;
     }
 }
