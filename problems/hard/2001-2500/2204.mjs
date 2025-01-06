@@ -2,46 +2,46 @@
 
 function distanceToCycle(n, edges) {
     const adj = Array.from({ length: n }, () => []);
-    const indegree = new Uint32Array(n);
+    const deg = new Uint32Array(n);
     for (let i = 0; i < edges.length; i++) {
         const u = edges[i][0], v = edges[i][1];
         adj[u].push(v) && adj[v].push(u);
-        ++indegree[u] && ++indegree[v];
+        ++deg[u], ++deg[v];
     }
     let queue = [];
     for (let v = 0; v < n; v++) {
-        if (indegree[v] === 1) queue.push(v);
+        if (deg[v] === 1) queue.push(v);
     }
     while (queue.length) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
-            --indegree[queue[i]];
+            --deg[queue[i]];
             const next = adj[queue[i]];
             for (let j = 0; j < next.length; j++) {
                 const v = next[j];
-                if (indegree[v] === 0) continue;
-                if (--indegree[v] === 1) nextQueue.push(v);
+                if (deg[v] === 0) continue;
+                if (--deg[v] === 1) nextQueue.push(v);
             }
         }
         queue = nextQueue;
     }
     for (let v = 0; v < n; v++) {
-        if (indegree[v]) queue.push(v);
+        if (deg[v]) queue.push(v);
     }
     const res = new Uint32Array(n);
-    let dist = 1;
+    let acc = 1;
     while (queue.length) {
         const nextQueue = [];
         for (let i = 0; i < queue.length; i++) {
             const next = adj[queue[i]];
             for (let j = 0; j < next.length; j++) {
                 const v = next[j];
-                if (res[v] || indegree[v]) continue;
-                res[v] = dist;
+                if (res[v] || deg[v]) continue;
+                res[v] = acc;
                 nextQueue.push(v);
             }
         }
-        dist++, queue = nextQueue;
+        acc++, queue = nextQueue;
     }
     return res;
 }

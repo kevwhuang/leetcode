@@ -5,8 +5,8 @@ function maxScoreWords(words, letters, score) {
         if (i === words.length) return max = Math.max(acc, max);
         backtrack(i + 1);
         for (let j = i; j < words.length; j++) {
-            const word = words[j];
             let flag = true;
+            const word = words[j];
             for (let k = 0; k < 26; k++) {
                 if (word[k] <= bucket[k]) continue;
                 flag = false;
@@ -27,8 +27,8 @@ function maxScoreWords(words, letters, score) {
         }
     }
     for (let i = 0; i < words.length; i++) {
-        const word = words[i];
         const arr = new Uint8Array(26);
+        const word = words[i];
         for (let j = 0; j < word.length; j++) {
             arr[word.charCodeAt(j) - 97]++;
         }

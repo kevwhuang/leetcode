@@ -3,15 +3,15 @@
 function isValid(word) {
     if (word.length < 3) return false;
     word = word.toLowerCase();
-    const veto = new Set(['@', '#', '$']);
-    const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
-    let hasVowel = false, hasConsonant = false;
+    let flag1, flag2;
+    const set = new Set(['@', '#', '$']);
+    const dict = new Set(['a', 'e', 'i', 'o', 'u']);
     for (let i = 0; i < word.length; i++) {
-        const char = word[i];
-        if (veto.has(char)) return false;
-        if (parseInt(char)) continue;
-        if (vowels.has(char)) hasVowel = true;
-        else hasConsonant = true;
+        const s = word[i];
+        if (set.has(s)) return false;
+        if (parseInt(s)) continue;
+        if (dict.has(s)) flag1 = true;
+        else flag2 = true;
     }
-    return hasVowel && hasConsonant;
+    return flag1 && flag2 || false;
 }

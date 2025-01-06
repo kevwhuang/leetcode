@@ -1,6 +1,6 @@
 // 3242 - Design Neighbor Sum Service
 
-class neighborSum {
+class NeighborSum {
     constructor(grid) {
         this.grid = grid;
         this.m = grid.length;

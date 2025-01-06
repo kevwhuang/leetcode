@@ -1,40 +1,36 @@
 // 723 - Candy Crush
 
 function candyCrush(board) {
-    const m = board.length, n = board[0].length;
+    const M = board, m = M.length, n = M[0].length;
     while (true) {
-        let isStable = true;
+        let flag;
         for (let r = 0; r < m; r++) {
-            for (let c = 0; c < n - 2;) {
-                const cur = board[r][c];
-                if (cur === 0) { c++; continue; }
-                if (board[r][c + 1] === cur && board[r][c + 2] === cur) {
-                    isStable = false;
-                    while (c < n && board[r][c] === cur) {
-                        board[r][c++] = -cur;
-                    }
-                } else c++;
+            let c = 0;
+            while (c < n - 2) {
+                const cur = M[r][c];
+                if (cur === 0 && ++c) continue;
+                const a = M[r][c + 1], b = M[r][c + 2];
+                if ((a !== cur || b !== cur) && ++c) continue;
+                while (c < n && M[r][c] === cur) M[r][c++] = -cur;
+                flag = true;
             }
         }
         for (let c = 0; c < n; c++) {
-            for (let r = 0; r < m - 2;) {
-                const cur = Math.abs(board[r][c]);
-                if (cur === 0) { r++; continue; }
-                if (Math.abs(board[r + 1][c]) === cur
-                    && Math.abs(board[r + 2][c]) === cur) {
-                    isStable = false;
-                    while (r < m && Math.abs(board[r][c]) === cur) {
-                        board[r++][c] = -cur;
-                    }
-                } else r++;
+            let r = 0;
+            while (r < m - 2) {
+                const cur = Math.abs(M[r][c]);
+                if (cur === 0 && ++r) continue;
+                const a = Math.abs(M[r + 1][c]), b = Math.abs(M[r + 2][c]);
+                if ((a !== cur || b !== cur) && ++r) continue;
+                while (r < m && Math.abs(M[r][c]) === cur) M[r++][c] = -cur;
+                flag = true;
             }
         }
-        if (isStable) return board;
+        if (!flag) return M;
         for (let c = 0; c < n; c++) {
-            for (let r = m - 1, rr = m - 1; r >= 0; r--) {
-                board[r][c] > 0
-                    ? [board[r][c], board[rr--][c]] = [board[rr][c], board[r][c]]
-                    : board[r][c] = 0;
+            for (let r = m - 1, rr = m - 1; ~r; r--) {
+                if (M[r][c] <= 0) M[r][c] = 0;
+                else ([M[r][c], M[rr--][c]] = [M[rr][c], M[r][c]]);
             }
         }
     }

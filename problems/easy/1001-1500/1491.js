@@ -1,12 +1,10 @@
 // 1491 - Average Salary Excluding the Minimum and Maximum Salary
 
 function average(salary) {
-    let total = 0, min = Infinity, max = -Infinity;
+    let sum = 0, min = Infinity, max = -Infinity;
     for (let i = 0; i < salary.length; i++) {
         const cur = salary[i];
-        total += cur;
-        if (cur < min) min = cur;
-        if (cur > max) max = cur;
+        sum += cur, min = Math.min(cur, min), max = Math.max(cur, max);
     }
-    return (total - min - max) / (salary.length - 2);
+    return (sum - min - max) / (salary.length - 2);
 }

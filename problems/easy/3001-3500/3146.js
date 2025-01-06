@@ -5,9 +5,9 @@ function findPermutationDifference(s, t) {
     for (let i = 0; i < s.length; i++) {
         map.set(s[i], i);
     }
-    let diff = 0;
+    let acc = 0;
     for (let i = 0; i < t.length; i++) {
-        diff += Math.abs(i - map.get(t[i]));
+        acc += Math.abs(i - map.get(t[i]));
     }
-    return diff;
+    return acc;
 }

@@ -4,14 +4,14 @@ function uniquePathsIII(grid) {
     function dfs(r, c, cells) {
         if (r === -1 || r === m || c === -1 || c === n) return;
         if (grid[r][c] === -1) return;
-        if (grid[r][c] === 2 && cells === 0) return walks++;
-        const orig = grid[r][c];
+        if (grid[r][c] === 2 && cells === 0) return res++;
+        const cur = grid[r][c];
         grid[r][c] = -1;
         dfs(r - 1, c, cells - 1);
         dfs(r + 1, c, cells - 1);
         dfs(r, c - 1, cells - 1);
         dfs(r, c + 1, cells - 1);
-        grid[r][c] = orig;
+        grid[r][c] = cur;
     }
     const m = grid.length, n = grid[0].length;
     let start, cells = 1;
@@ -21,7 +21,7 @@ function uniquePathsIII(grid) {
             else if (grid[r][c] === 1) start = [r, c];
         }
     }
-    let walks = 0;
+    let res = 0;
     dfs(start[0], start[1], cells);
-    return walks;
+    return res;
 }

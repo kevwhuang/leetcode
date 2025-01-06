@@ -229,20 +229,8 @@ export default [
         files: ['udemy/**'],
         rules: { 'logical-assignment-operators': 0 },
     }, {
-        files: ['problems/medium/2001-2500/2408.mjs'],
-        rules: { 'no-empty-function': 0 },
-    }, {
         files: ['problems/medium/2501-3000/2847.mjs'],
         rules: { 'no-loss-of-precision': 0 },
-    }, {
-        files: ['problems/medium/1001-1500/1500.mjs'],
-        rules: { 'no-object-constructor': 0 },
-    }, {
-        files: ['problems/medium/3001-3500/3094.mjs'],
-        rules: { 'no-self-compare': 0 },
-    }, {
-        files: ['problems/medium/2001-2500/2304.js'],
-        rules: { 'no-unmodified-loop-condition': 0 },
     }, {
         files: ['problems/**/*.jsx'],
         rules: { '@stylistic/comma-dangle': 0 },

@@ -1,14 +1,11 @@
 // 3300 - Minimum Element After Replacement With Digit Sum
 
 function minElement(nums) {
-    let min = Infinity;
+    let res = Infinity;
     for (let i = 0; i < nums.length; i++) {
-        let sum = 0, num = nums[i];
-        while (num) {
-            sum += num % 10;
-            num = num / 10 >> 0;
-        }
-        min = Math.min(sum, min);
+        let acc = 0, cur = nums[i];
+        while (cur) acc += cur % 10, cur = cur / 10 >> 0;
+        res = Math.min(acc, res);
     }
-    return min;
+    return res;
 }

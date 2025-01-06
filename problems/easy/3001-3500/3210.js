@@ -1,10 +1,10 @@
 // 3210 - Find the Encrypted String
 
 function getEncryptedString(s, k) {
-    let encrypted = '';
-    const len = s.length;
-    for (let i = 0; i < len; i++) {
-        encrypted += s[(i + k) % len];
+    let res = '';
+    const n = s.length;
+    for (let i = 0; i < n; i++) {
+        res += s[(i + k) % n];
     }
-    return encrypted;
+    return res;
 }

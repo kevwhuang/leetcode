@@ -1,9 +1,10 @@
 // 3094 - Guess the Number Using Bitwise Questions II
 
 function findNumber() {
-    let n = 0, num = 1;
-    for (let bit = 0; bit <= 29; bit++, num *= 2) {
-        if (commonBits(num) > commonBits(num)) n += num;
+    let res = 0;
+    for (let cur = 1, i = 0; i <= 29; cur *= 2, i++) {
+        const a = commonBits(cur), b = commonBits(cur);
+        if (a > b) res += cur;
     }
-    return n;
+    return res;
 }

@@ -2,23 +2,19 @@
 
 function friendRequests(n, restrictions, requests) {
     function find(v) {
-        while (v !== uf[v]) {
-            uf[v] = uf[uf[v]];
-            v = uf[v];
-        }
+        while (v !== uf[v]) uf[v] = uf[uf[v]], v = uf[v];
         return v;
     }
     const uf = Array.from({ length: n }, (_, i) => i);
     for (let i = 0; i < requests.length; i++) {
-        const p1 = find(requests[i][0]), p2 = find(requests[i][1]);
+        const u = find(requests[i][0]), v = find(requests[i][1]);
         for (let j = 0; j < restrictions.length; j++) {
-            const q1 = find(restrictions[j][0]), q2 = find(restrictions[j][1]);
-            if ((p1 === q1 && p2 === q2) || (p1 === q2 && p2 === q1)) {
-                requests[i] = false, j = Infinity;
-            }
+            const uu = find(restrictions[j][0]), vv = find(restrictions[j][1]);
+            if (u === uu && v === vv) requests[i] = false, j = Infinity;
+            else if (u === vv && v === uu) requests[i] = false, j = Infinity;
         }
         if (requests[i] === false) continue;
-        requests[i] = true, uf[p1] = p2;
+        requests[i] = true, uf[u] = v;
     }
     return requests;
 }

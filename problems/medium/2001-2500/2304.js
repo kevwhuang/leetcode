@@ -6,7 +6,7 @@ function minPathCost(grid, moveCost) {
     for (let r = 1; r < m; r++) {
         for (let c = 0; c < n; c++) {
             let min = Infinity;
-            for (cc = 0; cc < n; cc++) {
+            for (let cc = 0; cc < n; cc++) {
                 const cost = moveCost[grid[r - 1][cc]][c];
                 min = Math.min(dp[r - 1][cc] + cost, min);
             }

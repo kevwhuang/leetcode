@@ -1,15 +1,11 @@
 // 455 - Assign Cookies
 
 function findContentChildren(g, s) {
-    g.sort((a, b) => a - b);
-    s.sort((a, b) => a - b);
-    let count = 0, pg = 0, ps = 0;
-    while (pg < g.length & ps < s.length) {
-        if (s[ps] >= g[pg]) {
-            pg++;
-            count++;
-        }
-        ps++;
+    g = new Uint32Array(g).sort();
+    s = new Uint32Array(s).sort();
+    let res = 0, i = 0, j = -1;
+    while (i < g.length && ++j < s.length) {
+        if (g[i] <= s[j]) res++, i++;
     }
-    return count;
+    return res;
 }

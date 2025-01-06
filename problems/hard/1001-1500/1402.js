@@ -2,11 +2,11 @@
 
 function maxSatisfaction(satisfaction) {
     satisfaction.sort((a, b) => b - a);
-    let sum = 0, running = 0;
+    let res = 0, acc = 0;
     for (let i = 0; i < satisfaction.length; i++) {
-        running += satisfaction[i];
-        if (running <= 0) break;
-        sum += running;
+        acc += satisfaction[i];
+        if (acc <= 0) break;
+        res += acc;
     }
-    return sum;
+    return res;
 }

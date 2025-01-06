@@ -1,12 +1,12 @@
 // 1063 - Number of Valid Subarrays
 
 function validSubarrays(nums) {
-    let subarrays = 0;
-    const stack = [];
+    let res = 0;
+    const S = [];
     for (let i = 0; i < nums.length; i++) {
-        while (stack.at(-1) > nums[i]) stack.pop();
-        stack.push(nums[i]);
-        subarrays += stack.length;
+        while (S.at(-1) > nums[i]) S.pop();
+        S.push(nums[i]);
+        res += S.length;
     }
-    return subarrays;
+    return res;
 }

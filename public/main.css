@@ -1,10 +1,7 @@
 body {
     animation: fade 3s ease-in;
     background: #111;
-    font-family:
-        'Courier New',
-        monospace,
-    ;
+    font-family: 'Courier New', monospace;
 }
 
 iframe {

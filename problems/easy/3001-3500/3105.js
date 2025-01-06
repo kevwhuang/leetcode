@@ -1,17 +1,12 @@
 // 3105 - Longest Strictly Increasing or Strictly Decreasing Subarray
 
 function longestMonotonicSubarray(nums) {
-    let max = 1, inc = 1, dec = 1;
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i - 1] < nums[i]) {
-            max = Math.max(++inc, max);
-            dec = 1;
-        } else if (nums[i - 1] > nums[i]) {
-            max = Math.max(++dec, max);
-            inc = 1;
-        } else {
-            inc = dec = 1;
-        }
+    let res = 1, acc1 = 1, acc2 = 1, i = 0;
+    while (++i < nums.length) {
+        const a = nums[i - 1], b = nums[i];
+        if (a < b) res = Math.max(++acc1, res), acc2 = 1;
+        else if (a > b) res = Math.max(++acc2, res), acc1 = 1;
+        else acc1 = acc2 = 1;
     }
-    return max;
+    return res;
 }

@@ -1,7 +1,7 @@
 // 273 - Integer to English Words
 
 function numberToWords(num) {
-    function traverse(word) {
+    function check(word) {
         num = num / 1000 >> 0;
         if (num % 1000) concat(word);
         if (num) convert(num % 1000);
@@ -34,8 +34,8 @@ function numberToWords(num) {
     ];
     let res = '';
     convert(num % 1000);
-    traverse('Thousand');
-    traverse('Million');
-    traverse('Billion');
+    check('Thousand');
+    check('Million');
+    check('Billion');
     return res;
 }

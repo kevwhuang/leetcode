@@ -12,16 +12,14 @@ function numIslands2(m, n, positions) {
             positions[i] = islands;
             continue;
         }
-        islands++;
-        uf[root] = root;
+        islands++, uf[root] = root;
         for (let j = 0; j < 4; j++) {
             const rr = r + dr[j], cc = c + dc[j];
             if (rr === -1 || rr === m || cc === -1 || cc === n) continue;
             const neighbor = n * rr + cc;
             if (uf[neighbor] === undefined) continue;
             if (root === find(neighbor)) continue;
-            islands--;
-            uf[root] = root = uf[neighbor];
+            islands--, uf[root] = root = uf[neighbor];
         }
         positions[i] = islands;
     }

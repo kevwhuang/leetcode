@@ -2,9 +2,9 @@
 
 function stableMountains(height, threshold) {
     height.pop();
-    const indices = [];
+    const res = [];
     for (let i = 0; i < height.length; i++) {
-        if (height[i] > threshold) indices.push(i + 1);
+        if (height[i] > threshold) res.push(i + 1);
     }
-    return indices;
+    return res;
 }

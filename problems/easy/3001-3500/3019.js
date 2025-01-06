@@ -1,11 +1,10 @@
 // 3019 - Number of Changing Keys
 
 function countKeyChanges(s) {
-    let count = 0, cur = s[0].toLowerCase();
-    for (let i = 1; i < s.length; i++) {
+    let res = 0, cur = s[0].toLowerCase(), i = 0;
+    while (++i < s.length) {
         if (s[i].toLowerCase() === cur) continue;
-        cur = s[i].toLowerCase();
-        count++;
+        res++, cur = s[i].toLowerCase();
     }
-    return count;
+    return res;
 }

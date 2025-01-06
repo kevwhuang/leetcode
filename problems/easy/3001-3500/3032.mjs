@@ -1,16 +1,15 @@
 // 3032 - Count Numbers With Unique Digits II
 
 function numberCount(a, b) {
-    let count = 0;
-    for (let n = a; n <= b; n++) {
-        let num = n, digits = 0;
+    let res = 0;
+    while (a <= b) {
+        let cur = a++, acc = 0;
         const set = new Set();
-        while (num) {
-            set.add(num % 10);
-            digits++;
-            num = num / 10 >> 0;
+        while (cur) {
+            set.add(cur % 10);
+            cur = cur / 10 >> 0, acc++;
         }
-        if (digits === set.size) count++;
+        if (acc === set.size) res++;
     }
-    return count;
+    return res;
 }

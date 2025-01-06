@@ -1,8 +1,8 @@
 // 1002 - Find Common Characters
 
 function commonChars(words) {
-    const arr = new Uint8Array(26).fill(100);
     const B = new Uint8Array(26);
+    const arr = new Uint8Array(26).fill(100);
     for (let i = 0; i < words.length; i++) {
         B.fill(0);
         const s = words[i];

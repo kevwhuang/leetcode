@@ -3,28 +3,29 @@
 function fractionAddition(expression) {
     const lcm = (a, b) => a * b / gcd(a, b);
     const gcd = (a, b) => !a ? b : gcd(b % a, a);
-    if (expression[0] !== '-') expression = '+' + expression;
-    const numerators = [], denominators = [];
-    for (let i = 0; i < expression.length;) {
+    const s = expression[0] === '-' ? expression : '+' + expression;
+    const arr1 = [], arr2 = [];
+    let i = 0;
+    while (i < s.length) {
         let end1, end2, j = i;
-        while (++j < expression.length && (!end1 || !end2)) {
-            const char = expression[j];
-            if (char === '/') end1 = j;
-            else if (char === '+' || char === '-') end2 = j;
+        while (++j < s.length && (!end1 || !end2)) {
+            const t = s[j];
+            if (t === '/') end1 = j;
+            else if (t === '+' || t === '-') end2 = j;
         }
-        end2 ??= expression.length;
-        numerators.push(Number(expression.slice(i, end1)));
-        denominators.push(Number(expression.slice(end1 + 1, end2)));
+        end2 ??= s.length;
+        arr1.push(Number(s.slice(i, end1)));
+        arr2.push(Number(s.slice(end1 + 1, end2)));
         i = end2;
     }
-    let denominator = 1;
-    for (let i = 0; i < denominators.length; i++) {
-        denominator = lcm(denominators[i], denominator);
+    let cur = 1;
+    for (let i = 0; i < arr2.length; i++) {
+        cur = lcm(arr2[i], cur);
     }
-    for (let i = 0; i < numerators.length; i++) {
-        numerators[i] *= denominator / denominators[i];
+    for (let i = 0; i < arr1.length; i++) {
+        arr1[i] *= cur / arr2[i];
     }
-    const numerator = numerators.reduce((s, e) => s + e);
-    const divisor = Math.abs(gcd(numerator, denominator));
-    return `${numerator / divisor}/${denominator / divisor}`;
+    const a = arr1.reduce((s, e) => s + e);
+    const b = Math.abs(gcd(a, cur));
+    return `${a / b}/${cur / b}`;
 }

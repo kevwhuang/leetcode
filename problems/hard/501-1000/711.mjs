@@ -19,26 +19,26 @@ function numDistinctIslands2(grid) {
             dfs(r, c);
             const len = island.length;
             if (len <= 2 && set.add(len)) continue;
-            const mat = Array.from({ length: 8 }, () => new Array(len));
+            const M = Array.from({ length: 8 }, () => new Array(len));
             for (let i = 0; i < len; i++) {
                 const r = island[i][0], c = island[i][1];
-                mat[0][i] = [-r, -c], mat[1][i] = [-r, c];
-                mat[2][i] = [r, -c], mat[3][i] = [r, c];
-                mat[4][i] = [-c, -r], mat[5][i] = [-c, r];
-                mat[6][i] = [c, -r], mat[7][i] = [c, r];
+                M[0][i] = [-r, -c], M[1][i] = [-r, c];
+                M[2][i] = [r, -c], M[3][i] = [r, c];
+                M[4][i] = [-c, -r], M[5][i] = [-c, r];
+                M[6][i] = [c, -r], M[7][i] = [c, r];
             }
-            let base;
+            let key;
             for (let i = 0; i < 8; i++) {
-                mat[i].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
-                const r = mat[i][0][0], c = mat[i][0][1];
+                M[i].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+                const r = M[i][0][0], c = M[i][0][1];
                 for (let j = 1; j < len; j++) {
-                    mat[i][j][0] -= r, mat[i][j][1] -= c;
+                    M[i][j][0] -= r, M[i][j][1] -= c;
                 }
-                mat[i][0][0] = mat[i][0][1] = 0;
-                const serial = JSON.stringify(mat[i]);
-                if (!base || serial < base) base = serial;
+                M[i][0][0] = M[i][0][1] = 0;
+                const serial = JSON.stringify(M[i]);
+                if (!key || serial < key) key = serial;
             }
-            set.add(base);
+            set.add(key);
         }
     }
     return set.size;

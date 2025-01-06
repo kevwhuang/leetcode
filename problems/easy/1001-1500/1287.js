@@ -1,11 +1,11 @@
 // 1287 - Element Appearing More Than 25% in Sorted Array
 
 function findSpecialInteger(arr) {
-    let count = 0;
+    let res = 0, i = 0;
     const tgt = arr.length / 4;
-    for (let i = 0; i < arr.length; i++) {
-        if (i && arr[i - 1] === arr[i]) count++;
-        else count = 1;
-        if (count > tgt) return arr[i];
+    while (true) {
+        res = i && arr[i - 1] === arr[i] ? res + 1 : 1;
+        if (res > tgt) return arr[i];
+        i++;
     }
 }

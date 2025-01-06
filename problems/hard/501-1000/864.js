@@ -1,55 +1,44 @@
 // 864 - Shortest Path to Get All Keys
 
 function shortestPathAllKeys(grid) {
-    function serialize(r, c, bitmask, nextQueue) {
-        const serial = `${r}-${c}-${bitmask}`;
-        if (seen.has(serial)) return;
-        seen.add(serial);
-        nextQueue.push([r, c, bitmask]);
-    }
-    function count(num) {
-        let bits = 0;
-        while (num) {
-            if (num & 1) bits++;
-            num >>= 1;
-        }
-        return bits;
-    }
-    const validate = (r, c) => r >= 0 && r < m && c >= 0 && c < n;
-    const isLowercase = char => 'a' <= char && char <= 'z';
-    const isUppercase = char => 'A' <= char && char <= 'Z';
-    const bit = (char, offset) => 2 ** (char.charCodeAt() - offset);
-    let target = 0, queue;
-    const m = grid.length, n = grid[0].length;
+    let tgt = 0, Q;
+    const M = grid, m = M.length, n = M[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            const cur = grid[r][c];
+            const cur = M[r][c];
             if (cur === '#') continue;
-            if (cur === '@') queue = [[r, c, 0]];
-            else if (isLowercase(cur)) target++;
+            if (cur === '@') Q = [[r, c, 0]];
+            else if ('a' <= cur && cur <= 'z') tgt++;
         }
     }
-    let moves = 1;
-    const seen = new Set([`${queue[0][0]}-${queue[0][1]}-0`]);
-    const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-    while (queue.length) {
-        const nextQueue = [];
+    let res = 1;
+    const seen = new Set([`${Q[0][0]}-${Q[0][1]}-0`]);
+    const D = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    while (Q.length) {
+        const N = [];
         for (let i = 0; i < 4; i++) {
-            const dr = dirs[i][0], dc = dirs[i][1];
-            for (let j = 0; j < queue.length; j++) {
-                const r = queue[j][0] + dr, c = queue[j][1] + dc;
-                if (!validate(r, c) || grid[r][c] === '#') continue;
-                let cur = grid[r][c], bitmask = queue[j][2];
-                if (isLowercase(cur)) {
-                    bitmask |= bit(cur, 97);
-                    if (count(bitmask) === target) return moves;
-                } else if (isUppercase(cur)) {
-                    if (!(bitmask & bit(cur, 65))) continue;
+            const dr = D[i][0], dc = D[i][1];
+            for (let j = 0; j < Q.length; j++) {
+                const r = Q[j][0] + dr, c = Q[j][1] + dc;
+                if (r === -1 || r === m || c === -1 || c === n) continue;
+                const cur = M[r][c];
+                if (cur === '#') continue;
+                let mask = Q[j][2];
+                if ('a' <= cur && cur <= 'z') {
+                    mask |= 2 ** (cur.charCodeAt() - 97);
+                    let acc = 0, num = mask;
+                    while (num) acc += num & 1, num >>= 1;
+                    if (acc === tgt) return res;
+                } else if ('A' <= cur && cur <= 'Z') {
+                    if (!(mask & 2 ** (cur.charCodeAt() - 65))) continue;
                 }
-                serialize(r, c, bitmask, nextQueue);
+                const key = `${r}-${c}-${mask}`;
+                if (seen.has(key)) continue;
+                seen.add(key);
+                N.push([r, c, mask]);
             }
         }
-        moves++, queue = nextQueue;
+        res++, Q = N;
     }
     return -1;
 }
