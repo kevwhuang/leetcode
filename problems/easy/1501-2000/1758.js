@@ -1,10 +1,10 @@
 // 1758 - Minimum Changes to Make Alternating Binary String
 
 function minOperations(s) {
-    let count0 = 0, count1 = 0;
+    let acc1 = 0, acc2 = 0;
     for (let i = 0; i < s.length; i++) {
-        if (i & 1) s[i] == 0 ? count0++ : count1++;
-        else s[i] == 0 ? count1++ : count0++;
+        if (i & 1) s[i] === '0' ? acc1++ : acc2++;
+        else s[i] === '0' ? acc2++ : acc1++;
     }
-    return Math.min(count0, count1);
+    return Math.min(acc1, acc2);
 }

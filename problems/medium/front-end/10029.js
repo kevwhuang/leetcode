@@ -4,18 +4,16 @@ export function getNextRightSibling(targetNode) {
     if (!targetNode) return null;
     let root = targetNode;
     while (root.parentElement) root = root.parentElement;
-    let queue = [root];
+    let Q = [root];
     while (true) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const node = queue[i];
-            if (node === targetNode) {
-                return i === queue.length - 1 ? null : queue[i + 1];
-            }
-            for (const child of node.children) {
-                if (child.nodeType === 1) nextQueue.push(child);
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const node = Q[i];
+            if (node === targetNode) return i < Q.length - 1 ? Q[i + 1] : null;
+            for (const e of node.children) {
+                if (e.nodeType === 1) N.push(e);
             }
         }
-        queue = nextQueue;
+        Q = N;
     }
 }

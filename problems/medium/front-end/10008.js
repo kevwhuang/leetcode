@@ -1,10 +1,10 @@
 // 10008 - Path to Node in DOM Tree
 
 export function buildNodePath(node) {
-    const path = [];
+    const res = [];
     while (node?.tagName) {
-        path.push(node.tagName.toLowerCase());
+        res.push(node.tagName.toLowerCase());
         node = node.parentNode;
     }
-    return node === document ? path.reverse() : [];
+    return node === document ? res.reverse() : [];
 }

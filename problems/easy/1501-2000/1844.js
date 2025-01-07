@@ -1,7 +1,6 @@
 // 1844 - Replace All Digits With Characters
 
 function replaceDigits(s) {
-    if (s.length === 1) return s;
     let res = '';
     for (let i = 1; i < s.length; i += 2) {
         const code = s.charCodeAt(i - 1) + Number(s[i]);

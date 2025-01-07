@@ -1,20 +1,22 @@
 // 812 - Largest Triangle Area
 
 function largestTriangleArea(points) {
-    function computeArea(c1, c2, c3) {
-        const term1 = c1[0] * (c2[1] - c3[1]);
-        const term2 = c2[0] * (c3[1] - c1[1]);
-        const term3 = c3[0] * (c1[1] - c2[1]);
-        return Math.abs(term1 + term2 + term3) / 2;
+    function calc(a, b, c) {
+        const prod1 = a[0] * (b[1] - c[1]);
+        const prod2 = b[0] * (c[1] - a[1]);
+        const prod3 = c[0] * (a[1] - b[1]);
+        return Math.abs(prod1 + prod2 + prod3) / 2;
     }
-    const len = points.length;
-    let area = 0;
-    for (let i = 0; i < len - 2; i++) {
-        for (let j = i + 1; j < len; j++) {
-            for (let k = j + 1; k < len; k++) {
-                area = Math.max(computeArea(points[i], points[j], points[k]), area);
+    let res = 0;
+    const n = points.length;
+    for (let i = 0; i < n - 2; i++) {
+        const a = points[i];
+        for (let j = i + 1; j < n; j++) {
+            const b = points[j];
+            for (let k = j + 1; k < n; k++) {
+                res = Math.max(calc(a, b, points[k]), res);
             }
         }
     }
-    return area;
+    return res;
 }

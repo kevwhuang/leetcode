@@ -12,18 +12,18 @@ function validTicTacToe(board) {
         if (M[0][2] === $ && M[1][1] === $ && M[2][0] === $) return true;
         return false;
     }
-    let xCount = 0, oCount = 0;
+    let acc1 = 0, acc2 = 0;
     const M = board;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-            if (M[i][j] === 'X') xCount++;
-            else if (M[i][j] === 'O') oCount++;
+            if (M[i][j] === 'X') acc1++;
+            else if (M[i][j] === 'O') acc2++;
         }
     }
-    const xWinner = checkWin('X'), oWinner = checkWin('O');
-    if (!xWinner && !oWinner && xCount !== oCount && xCount - 1 !== oCount) return false;
-    if (xWinner && oWinner) return false;
-    if (xWinner && xCount - 1 !== oCount) return false;
-    if (oWinner && xCount !== oCount) return false;
+    const a = checkWin('X'), b = checkWin('O');
+    if (!a && !b && acc1 !== acc2 && acc1 - 1 !== acc2) return false;
+    if (a && b) return false;
+    if (a && acc1 - 1 !== acc2) return false;
+    if (b && acc1 !== acc2) return false;
     return true;
 }

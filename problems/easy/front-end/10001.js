@@ -2,6 +2,6 @@
 
 export function createDomNode() {
     const div = document.createElement('div');
-    div.innerText = 'Hello World';
+    div.textContent = 'Hello World';
     return div;
 }

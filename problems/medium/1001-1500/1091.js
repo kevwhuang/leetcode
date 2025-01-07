@@ -1,30 +1,25 @@
 // 1091 - Shortest Path in Binary Matrix
 
 function shortestPathBinaryMatrix(grid) {
-    const validate = (r, c) => r >= 0 && r < n && c >= 0 && c < n;
-    const n = grid.length;
-    if (n === 1 && grid[0][0] === 0) return 1;
-    if (grid[0][0] === 1 || grid[n - 1][n - 1] === 1) return -1;
-    const dirs = [
-        { dr: -1, dc: -1 }, { dr: -1, dc: 0 }, { dr: -1, dc: 1 }, { dr: 0, dc: -1 },
-        { dr: 0, dc: 1 }, { dr: 1, dc: -1 }, { dr: 1, dc: 0 }, { dr: 1, dc: 1 },
-    ];
-    let queue = [[0, 0]], len = 2;
-    while (queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const r = queue[i][0], c = queue[i][1];
+    const M = grid, n = M.length, nn = n - 1;
+    if (n === 1 && M[0][0] === 0) return 1;
+    if (M[0][0] || M[nn][nn]) return -1;
+    let res = 2, Q = [[0, 0]];
+    const D1 = [-1, -1, -1, 0, 0, 1, 1, 1], D2 = [-1, 0, 1, -1, 1, -1, 0, 1];
+    while (Q.length) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const r = Q[i][0], c = Q[i][1];
             for (let j = 0; j < 8; j++) {
-                const rr = r + dirs[j].dr, cc = c + dirs[j].dc;
-                if (!validate(rr, cc)) continue;
-                if (grid[rr][cc] === 1) continue;
-                if (rr === n - 1 && cc === n - 1) return len;
-                grid[rr][cc] = 1;
-                nextQueue.push([rr, cc]);
+                const rr = r + D1[j], cc = c + D2[j];
+                if (rr === nn && cc === nn) return res;
+                if (rr === -1 || rr === n || cc === -1 || cc === n) continue;
+                if (M[rr][cc]) continue;
+                M[rr][cc] = 1;
+                N.push([rr, cc]);
             }
         }
-        queue = nextQueue;
-        len++;
+        res++, Q = N;
     }
     return -1;
 }

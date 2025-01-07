@@ -6,26 +6,26 @@ export function TreeView({ items }) {
     function Tree({ items }) {
         return (
             <ul style={{ listStyle: 'none' }}>
-                {items.map(item => <TreeItem item={item} />)}
+                {items.map(e => <TreeItem item={e} />)}
             </ul>
         );
     }
     function TreeItem({ item }) {
         function handleClick() {
-            if (expanded.has(item)) expanded.delete(item) && setCollapsed(true);
-            else expanded.add(item) && setCollapsed(false);
+            if (set.has(item)) set.delete(item) && setCollapsed(true);
+            else set.add(item) && setCollapsed(false);
         }
-        const hasChildren = Boolean(item.children?.length);
-        const [collapsed, setCollapsed] = React.useState(!expanded.has(item));
+        const [collapsed, setCollapsed] = React.useState(!set.has(item));
+        const flag = Boolean(item.children?.length);
         return (
             <li>
                 <span onClick={handleClick}>
-                    {hasChildren && (collapsed ? '+' : '-')} {item.name}
+                    {flag && (collapsed ? '+' : '-')} {item.name}
                 </span>
-                {hasChildren && !collapsed && <Tree items={item.children} />}
+                {flag && !collapsed && <Tree items={item.children} />}
             </li>
         );
     }
-    const expanded = new WeakSet();
+    const set = new WeakSet();
     return <Tree items={items} />;
 }

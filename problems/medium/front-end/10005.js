@@ -1,11 +1,11 @@
 // 10005 - Count Leaf Nodes
 
 export function countLeafNodes(node) {
-    let leaves = 0;
-    const treeWalker = document.createTreeWalker(node);
-    while (treeWalker.nextNode()) {
-        if (treeWalker.currentNode.childNodes.length) continue;
-        leaves++;
+    let res = 0;
+    const walker = document.createTreeWalker(node);
+    while (walker.nextNode()) {
+        if (walker.currentNode.childNodes.length) continue;
+        res++;
     }
-    return leaves || 1;
+    return res || 1;
 }

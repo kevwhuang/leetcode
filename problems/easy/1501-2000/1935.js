@@ -1,13 +1,13 @@
 // 1935 - Maximum Number of Words You Can Type
 
 function canBeTypedWords(text, brokenLetters) {
-    text = text.split(' ');
-    brokenLetters = new Set(brokenLetters);
-    let count = 0;
-    for (let i = 0; i < text.length; i++) {
+    let res = 0;
+    const arr = text.split(' '), set = new Set(brokenLetters);
+    for (let i = 0; i < arr.length; i++) {
         let j = 0;
-        while (j < text[i].length && !brokenLetters.has(text[i][j])) j++;
-        if (j === text[i].length) count++;
+        const n = arr[i].length;
+        while (j < n && !set.has(arr[i][j])) j++;
+        if (j === n) res++;
     }
-    return count;
+    return res;
 }

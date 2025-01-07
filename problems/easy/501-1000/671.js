@@ -1,16 +1,16 @@
 // 671 - Second Minimum Node in a Binary Tree
 
 function findSecondMinimumValue(root) {
-    let bound = Infinity, queue = [root];
-    while (queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const node = queue[i];
-            if (node.val !== root.val && node.val < bound) bound = node.val;
-            if (node.left && node.left.val < bound) nextQueue.push(node.left);
-            if (node.right && node.right.val < bound) nextQueue.push(node.right);
+    let res = Infinity, Q = [root];
+    while (Q.length) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const node = Q[i];
+            if (node.val !== root.val) res = Math.min(node.val, res);
+            if (node.left && node.left.val < res) N.push(node.left);
+            if (node.right && node.right.val < res) N.push(node.right);
         }
-        queue = nextQueue;
+        Q = N;
     }
-    return bound === Infinity ? -1 : bound;
+    return res === Infinity ? -1 : res;
 }

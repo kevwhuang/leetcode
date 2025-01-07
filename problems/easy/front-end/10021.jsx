@@ -2,11 +2,11 @@
 
 export function CheckboxGroup({ name, options, onChange }) {
     function handleChange() {
-        const checked = [...document.querySelectorAll('input:checked')];
-        for (let i = 0; i < checked.length; i++) {
-            checked[i] = checked[i].value;
+        const arr = [...document.querySelectorAll('input:checked')];
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].value;
         }
-        onChange(checked);
+        onChange(arr);
     }
     return (
         <div>

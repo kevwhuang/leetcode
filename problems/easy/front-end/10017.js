@@ -1,12 +1,7 @@
 // 10017 - Mutation Observer
 
 export function observeMutations(node, callback) {
-    function action(mutations) {
-        for (const mutation of mutations) {
-            callback(mutation);
-        }
-    }
-    const config = {
+    const obj = {
         attributes: true,
         attributeOldValue: true,
         childList: true,
@@ -14,7 +9,7 @@ export function observeMutations(node, callback) {
         characterDataOldValue: true,
         subtree: true,
     };
-    const obs = new MutationObserver(action);
-    obs.observe(node, config);
+    const obs = new MutationObserver(e => e.forEach(callback));
+    obs.observe(node, obj);
     return obs;
 }

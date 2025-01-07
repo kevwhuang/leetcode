@@ -6,9 +6,9 @@ export function TicTacToe() {
     function handleClick(e) {
         const id = e.target.id.slice(5);
         if (status.startsWith('W') || board[id]) return;
-        const A = [...board];
-        A[id] = marker;
-        setBoard(A);
+        const arr = [...board];
+        arr[id] = marker;
+        setBoard(arr);
         if (marker === 'X') {
             setMarker('O');
             setStatus('Next Player: O');
@@ -16,12 +16,12 @@ export function TicTacToe() {
             setMarker('X');
             setStatus('Next Player: X');
         }
-        if (!A.includes(null)) {
+        if (!arr.includes(null)) {
             setStatus('Draw');
         } else {
             for (const [a, b, c] of lines) {
-                if (A[a] && A[a] === A[b] && A[b] === A[c]) {
-                    return setStatus(`Winner: ${A[a]}`);
+                if (arr[a] && arr[a] === arr[b] && arr[b] === arr[c]) {
+                    return setStatus(`Winner: ${arr[a]}`);
                 }
             }
         }

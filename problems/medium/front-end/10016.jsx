@@ -1,25 +1,21 @@
 // 10016 - Auto Focus Switch
 
 export function AutoFocusSwitch({ elements }) {
-    function handleKeyDown(e, maxLength) {
+    function handleKeyDown(e, max) {
         e.preventDefault();
-        let chars = e.target.value;
+        const input = e.target;
         if (e.key === 'Backspace') {
-            if (chars) {
-                e.target.value = chars.slice(0, -1);
+            if (input.value) {
+                input.value = input.value.slice(0, -1);
             } else {
-                if (!e.target.previousSibling) return;
-                chars = e.target.previousSibling.value;
-                e.target.previousSibling.value = chars.slice(0, -1);
-                e.target.previousSibling.focus();
+                if (!input.previousSibling) return;
+                const prev = input.previousSibling.value;
+                input.previousSibling.value = prev.slice(0, -1);
+                input.previousSibling.focus();
             }
         } else if (e.key.match(/\d/)) {
-            if (e.target.value.length < maxLength) {
-                e.target.value = chars + e.key;
-            }
-            if (e.target.value.length === maxLength) {
-                e.target.nextSibling?.focus();
-            }
+            if (input.value.length < max) input.value += e.key;
+            if (input.value.length === max) input.nextSibling?.focus();
         }
     }
     return (

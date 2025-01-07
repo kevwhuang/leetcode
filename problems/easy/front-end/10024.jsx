@@ -7,8 +7,8 @@ export function FormHandler() {
         e.preventDefault();
         try {
             const res = await fetch('/contact-us', {
-                method: 'POST',
                 body: JSON.stringify({ message, name }),
+                method: 'POST',
             });
             const data = await res.json();
             setSuccess(data.ok);
@@ -35,7 +35,7 @@ export function FormHandler() {
                         onChange={e => setMessage(e.target.value)}
                     />
                     <button>Send</button>
-                    <p>{success === false && 'Something went wrong'}</p>
+                    <p>{!success && 'Something went wrong'}</p>
                 </form>
             }
         </div>

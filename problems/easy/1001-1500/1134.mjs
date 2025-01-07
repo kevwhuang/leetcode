@@ -1,10 +1,10 @@
 // 1134 - Armstrong Number
 
 function isArmstrong(n) {
-    n = n.toString();
+    let exp = 0, cur = n;
+    while (cur) exp++, cur = cur / 10 >> 0;
+    cur = n;
     let sum = 0;
-    for (let i = 0; i < n.length; i++) {
-        sum += n[i] ** n.length;
-    }
-    return +n === sum;
+    while (cur) sum += (cur % 10) ** exp, cur = cur / 10 >> 0;
+    return sum === n;
 }

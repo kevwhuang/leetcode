@@ -1,27 +1,16 @@
 // 1122 - Relative Sort Array
 
 function relativeSortArray(arr1, arr2) {
-    const freqs = new Map();
-    for (let i = 0; i < arr1.length; i++) {
-        freqs.set(arr1[i], freqs.get(arr1[i]) + 1 || 1);
+    const B = new Uint16Array(1001);
+    let i = -1, j = -1;
+    while (++i < arr1.length) B[arr1[i]]++;
+    i = 0;
+    while (++j < arr2.length) {
+        while (B[arr2[j]]) arr1[i++] = arr2[j], B[arr2[j]]--;
     }
-    let index = 0;
-    for (let i = 0; i < arr2.length; i++) {
-        const num = arr2[i];
-        const freq = freqs.get(num);
-        freqs.delete(num);
-        for (let j = 0; j < freq; j++) {
-            arr1[index++] = num;
-        }
-    }
-    const remaining = [...freqs.entries()];
-    remaining.sort((a, b) => a[0] - b[0]);
-    for (let i = 0; i < remaining.length; i++) {
-        const num = remaining[i][0];
-        const freq = remaining[i][1];
-        for (let j = 0; j < freq; j++) {
-            arr1[index++] = num;
-        }
+    j = -1;
+    while (++j < 1001) {
+        while (B[j]) arr1[i++] = j, B[j]--;
     }
     return arr1;
 }

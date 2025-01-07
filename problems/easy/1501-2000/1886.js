@@ -1,15 +1,16 @@
 // 1886 - Determine Whether Matrix Can Be Obtained by Rotation
 
 function findRotation(mat, target) {
+    let flag1 = true, flag2 = true, flag3 = true, flag4 = true;
     const m = mat.length, n = mat[0].length;
-    let rot0 = true, rot90 = true, rot180 = true, rot270 = true;
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (rot0 && mat[i][j] !== target[i][j]) rot0 = false;
-            if (rot90 && mat[i][j] !== target[j][m - i - 1]) rot90 = false;
-            if (rot180 && mat[i][j] !== target[m - i - 1][n - j - 1]) rot180 = false;
-            if (rot270 && mat[i][j] !== target[n - j - 1][i]) rot270 = false;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            const cur = mat[r][c];
+            if (flag1 && cur !== target[r][c]) flag1 = false;
+            if (flag2 && cur !== target[c][m - r - 1]) flag2 = false;
+            if (flag3 && cur !== target[m - r - 1][n - c - 1]) flag3 = false;
+            if (flag4 && cur !== target[n - c - 1][r]) flag4 = false;
         }
     }
-    return rot0 || rot90 || rot180 || rot270;
+    return flag1 || flag2 || flag3 || flag4;
 }

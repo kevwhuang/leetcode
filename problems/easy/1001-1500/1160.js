@@ -1,23 +1,19 @@
 // 1160 - Find Words That Can Be Formed by Characters
 
 function countCharacters(words, chars) {
-    function freqArr(str) {
-        const arr = new Array(26).fill(0);
-        for (let i = 0; i < str.length; i++) {
-            arr[str.charCodeAt(i) - 97]++;
-        }
-        return arr;
+    const B1 = new Uint8Array(26);
+    for (let i = 0; i < chars.length; i++) {
+        B1[chars.charCodeAt(i) - 97]++;
     }
-    const charsFreq = freqArr(chars);
-    let sum = 0;
-    outer: for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-        if (word.length > chars.length) continue;
-        const wordFreq = freqArr(word);
-        for (let j = 0; j < 26; j++) {
-            if (wordFreq[j] > charsFreq[j]) continue outer;
+    let res = 0;
+    const B2 = new Uint8Array(26);
+    for (let i = 0; i < words.length; i++) {
+        B2.fill(0);
+        const s = words[i];
+        for (let j = 0; j < s.length; j++) {
+            B2[s.charCodeAt(j) - 97]++;
         }
-        sum += word.length;
+        if (B1.every((e, i) => e >= B2[i])) res += s.length;
     }
-    return sum;
+    return res;
 }

@@ -1,13 +1,13 @@
 // 1165 - Single-Row Keyboard
 
 function calculateTime(keyboard, word) {
-    const obj = {};
+    const dict = {};
     for (let i = 0; i < 26; i++) {
-        obj[keyboard[i]] = i;
+        dict[keyboard[i]] = i;
     }
-    let time = obj[word[0]];
+    let res = dict[word[0]];
     for (let i = 1; i < word.length; i++) {
-        time += Math.abs(obj[word[i]] - obj[word[i - 1]]);
+        res += Math.abs(dict[word[i]] - dict[word[i - 1]]);
     }
-    return time;
+    return res;
 }

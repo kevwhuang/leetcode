@@ -1,15 +1,14 @@
 // 831 - Masking Personal Information
 
 function maskPII(s) {
-    const index = s.indexOf('@');
-    if (index !== -1) {
-        return `${s[0]}*****${s[index - 1]}@${s.slice(index + 1)}`.toLowerCase();
+    const idx = s.indexOf('@');
+    if (~idx) {
+        return `${s[0]}*****${s[idx - 1]}@${s.slice(idx + 1)}`.toLowerCase();
     }
     s = s.replace(/\D/g, '');
-    switch (s.length) {
-        case 10: return `***-***-${s.slice(-4)}`;
-        case 11: return `+*-***-***-${s.slice(-4)}`;
-        case 12: return `+**-***-***-${s.slice(-4)}`;
-        default: return `+***-***-***-${s.slice(-4)}`;
-    }
+    const n = s.length, t = s.slice(-4);
+    if (n === 10) return `***-***-${t}`;
+    if (n === 11) return `+*-***-***-${t}`;
+    if (n === 12) return `+**-***-***-${t}`;
+    return `+***-***-***-${t}`;
 }

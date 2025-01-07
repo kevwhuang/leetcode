@@ -2,13 +2,13 @@
 
 function getMaximumGenerated(n) {
     if (n === 0) return 0;
-    const nums = [0, 1];
     let max = 1, i = 0;
+    const arr = [0, 1];
     while (++i) {
         if (--n === 0) break;
-        max = Math.max(nums[2 * i] = nums[i], max);
+        max = Math.max(arr[i + i] = arr[i], max);
         if (--n === 0) break;
-        max = Math.max(nums[2 * i + 1] = nums[i] + nums[i + 1], max);
+        max = Math.max(arr[i + i + 1] = arr[i] + arr[i + 1], max);
     }
     return max;
 }

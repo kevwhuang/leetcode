@@ -1,46 +1,42 @@
 // 10026 - Mortgage Calculator
 
 export function MortgageCalculator() {
-    function handleCalculate() {
-        const error = document.querySelector('#error');
-        let input1 = document.querySelector('#input-1').value;
-        let input2 = document.querySelector('#input-2').value;
-        let input3 = document.querySelector('#input-3').value;
-        const cond1 = !input1 || input1 !== Number(input1).toString();
-        const cond2 = !input2 || input2 !== Number(input2).toString();
-        const cond3 = !input3 || input3 !== Number(input3).toString();
-        if (cond1 || cond2 || cond3) return error.innerText = 'Invalid values';
-        input1 = Number(input1), input2 = Number(input2), input3 = Number(input3);
-        if (input1 <= 0 || input2 <= 0 || input3 <= 0) {
-            return error.innerText = 'Values must be positive';
-        }
-        const i = input2 / 1200, n = input3 * 12;
-        let monthlyPayment = input1 * i * (1 + i) ** n / ((1 + i) ** n - 1);
-        let totalPayment = monthlyPayment * n;
-        let totalInterest = totalPayment - input1;
-        monthlyPayment = monthlyPayment.toFixed(2);
-        totalPayment = totalPayment.toFixed(2);
-        totalInterest = totalInterest.toFixed(2);
-        document.querySelector('#output-1').innerText = monthlyPayment;
-        document.querySelector('#output-2').innerText = totalPayment;
-        document.querySelector('#output-3').innerText = totalInterest;
-        error.innerText = '';
+    function handleClick() {
+        let a = document.querySelector('#input-1').value;
+        let b = document.querySelector('#input-2').value;
+        let c = document.querySelector('#input-3').value;
+        const flag1 = !a || a !== Number(a).toString();
+        const flag2 = !b || b !== Number(b).toString();
+        const flag3 = !c || c !== Number(c).toString();
+        const p = document.querySelector('#error');
+        if (flag1 || flag2 || flag3) return p.textContent = 'Invalid values';
+        a = Number(a), b = Number(b), c = Number(c);
+        const s = 'Values must be positive';
+        if (a <= 0 || b <= 0 || c <= 0) return p.textContent = s;
+        const aa = b / 1200, bb = c * 12;
+        let aaa = a * aa * (aa + 1) ** bb / ((aa + 1) ** bb - 1);
+        let bbb = aaa * bb, cc = bbb - a;
+        aaa = aaa.toFixed(2), bbb = bbb.toFixed(2), cc = cc.toFixed(2);
+        document.querySelector('#output-1').textContent = aaa;
+        document.querySelector('#output-2').textContent = bbb;
+        document.querySelector('#output-3').textContent = cc;
+        p.textContent = '';
     }
     function handleClear() {
         document.querySelector('#input-1').value = '';
         document.querySelector('#input-2').value = '';
         document.querySelector('#input-3').value = '';
-        document.querySelector('#output-1').innerText = '';
-        document.querySelector('#output-2').innerText = '';
-        document.querySelector('#output-3').innerText = '';
-        document.querySelector('#error').innerText = '';
+        document.querySelector('#output-1').textContent = '';
+        document.querySelector('#output-2').textContent = '';
+        document.querySelector('#output-3').textContent = '';
+        document.querySelector('#error').textContent = '';
     }
     return (
         <div>
             <input id="input-1" placeholder="Loan amount" />
             <input id="input-2" placeholder="Interest rate" />
             <input id="input-3" placeholder="Loan term" />
-            <button onClick={handleCalculate}>Calculate</button>
+            <button onClick={handleClick}>Calculate</button>
             <button onClick={handleClear}>Clear</button>
             <p>Monthly payment: $<span id="output-1" /></p>
             <p>Total payment: $<span id="output-2" /></p>

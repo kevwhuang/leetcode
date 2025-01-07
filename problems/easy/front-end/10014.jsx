@@ -3,14 +3,14 @@
 import React from 'react';
 
 export function PhoneNumberInput() {
-    function handleChange(val) {
-        const nums = val.replace(/\D/g, '');
-        if (nums.length >= 7) {
-            setDigits(`(${nums.slice(0, 3)}) ${nums.slice(3, 6)}-${nums.slice(6)}`);
-        } else if (nums.length >= 4) {
-            setDigits(`(${nums.slice(0, 3)}) ${nums.slice(3, 6)}`);
-        } else if (nums.length >= 1) {
-            setDigits(`(${nums}`);
+    function handleChange(e) {
+        const s = e.replace(/\D/g, '');
+        if (s.length >= 7) {
+            setDigits(`(${s.slice(0, 3)}) ${s.slice(3, 6)}-${s.slice(6)}`);
+        } else if (s.length >= 4) {
+            setDigits(`(${s.slice(0, 3)}) ${s.slice(3, 6)}`);
+        } else if (s.length) {
+            setDigits(`(${s}`);
         } else {
             setDigits('');
         }

@@ -1,8 +1,7 @@
 // 680 - Valid Palindrome II
 
 function validPalindrome(s) {
-    function isPalindrome(start, end) {
-        let l = start, r = end;
+    function check(l, r) {
         while (++l < --r) {
             if (s[l] !== s[r]) return false;
         }
@@ -10,7 +9,7 @@ function validPalindrome(s) {
     }
     let l = -1, r = s.length;
     while (++l < --r) {
-        if (s[l] !== s[r]) return isPalindrome(l, r + 1) || isPalindrome(l - 1, r);
+        if (s[l] !== s[r]) return check(l, r + 1) || check(l - 1, r);
     }
     return true;
 }

@@ -1,6 +1,6 @@
 // 10022 - Radio Group
 
-export function RadioGroup({ name, options, onChange }) {
+export function RadioGroup({ name, onChange, options }) {
     return (
         <div>
             {options.map(({ label, value }) =>

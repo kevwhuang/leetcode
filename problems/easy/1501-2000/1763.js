@@ -2,13 +2,13 @@
 
 function longestNiceSubstring(s) {
     if (s.length < 2) return '';
-    const arr = s.split('');
-    const set = new Set(arr);
+    const set = new Set(s);
     for (let i = 0; i < s.length; i++) {
-        if (set.has(arr[i].toLowerCase()) && set.has(arr[i].toUpperCase())) continue;
-        const div1 = longestNiceSubstring(s.slice(0, i));
-        const div2 = longestNiceSubstring(s.slice(i + 1));
-        return div1.length >= div2.length ? div1 : div2;
+        const str1 = s[i].toLowerCase(), str2 = s[i].toUpperCase();
+        if (set.has(str1) && set.has(str2)) continue;
+        const left = longestNiceSubstring(s.slice(0, i));
+        const right = longestNiceSubstring(s.slice(i + 1));
+        return left.length >= right.length ? left : right;
     }
     return s;
 }

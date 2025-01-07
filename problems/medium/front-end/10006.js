@@ -2,13 +2,12 @@
 
 export function getElementsByAttribute(attributeValue) {
     function dfs(node) {
-        if (node.getAttribute(attr) === val) elements.push(node);
+        if (node.getAttribute(key) === val) res.push(node);
         for (let i = 0; i < node.children.length; i++) {
             dfs(node.children[i]);
         }
     }
-    const elements = [];
-    const [attr, val] = attributeValue.split('=');
+    const res = [], [key, val] = attributeValue.split('=');
     dfs(document.body);
-    return elements;
+    return res;
 }

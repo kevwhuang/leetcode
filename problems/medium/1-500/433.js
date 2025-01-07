@@ -13,7 +13,8 @@ function minMutation(startGene, endGene, bank) {
             if (cur === endGene) return mutations;
             for (let j = 0; j < cur.length; j++) {
                 for (let k = 0; k < 4; k++) {
-                    const next = `${cur.slice(0, j)}${options[k]}${cur.slice(j + 1)}`;
+                    const s = cur.slice(0, j), t = cur.slice(j + 1);
+                    const next = `${s}${options[k]}${t}`;
                     if (!bank.has(next) || seen.has(next)) continue;
                     seen.add(next);
                     nextQueue.push(next);

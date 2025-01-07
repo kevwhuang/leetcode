@@ -5,8 +5,8 @@ function isDecomposable(s) {
     const n = s.length;
     while (i < n) {
         if (i + 1 === n || s[i] !== s[i + 1]) return false;
-        if (i + 2 < n || s[i] === s[i + 2]) i += 3;
-        else if (!seen) i += 2, seen = true;
+        if (i + 2 < n && s[i] === s[i + 2]) i += 3;
+        else if (!seen) seen = true, i += 2;
         else return false;
     }
     return seen;

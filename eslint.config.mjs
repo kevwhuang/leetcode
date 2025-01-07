@@ -226,19 +226,26 @@ export default [
             '@stylistic/yield-star-spacing': 2,
         },
     }, {
-        files: ['udemy/**'],
-        rules: { 'logical-assignment-operators': 0 },
-    }, {
         files: ['problems/medium/2501-3000/2847.mjs'],
         rules: { 'no-loss-of-precision': 0 },
     }, {
         files: ['problems/**/*.jsx'],
         rules: { '@stylistic/comma-dangle': 0 },
     }, {
-        files: ['problems/**/*.jsx'],
-        rules: { '@stylistic/max-len': [2, { code: 100 }] },
+        files: ['problems/**/*.{js,jsx,cjs,mjs}'],
+        rules: { '@stylistic/max-len': [2, { code: 80 }] },
     }, {
-        files: ['problems/**/*.{js,cjs,mjs}'],
+        files: [
+            'problems/easy/2001-2500/2383.js',
+            'problems/medium/1001-1500/1292.js',
+            'problems/medium/1001-1500/1334.js',
+            'problems/medium/1001-1500/1343.js',
+            'problems/medium/1001-1500/1430.mjs',
+            'problems/medium/1001-1500/1438.js',
+            'problems/medium/1001-1500/1452.js',
+            'problems/medium/1501-2000/1577.js',
+            'problems/medium/2501-3000/2512.js',
+        ],
         rules: { '@stylistic/max-len': [2, { code: 90 }] },
     }, {
         files: ['tests/**'],

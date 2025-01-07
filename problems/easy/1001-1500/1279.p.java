@@ -1,7 +1,7 @@
 // 1279 - Traffic Light Controlled Intersection
 
 class TrafficLight {
-    private int greenRoad = 1;
+    private int cur = 1;
     public void carArrived(
         int carId,
         int roadId,
@@ -10,9 +10,9 @@ class TrafficLight {
         Runnable crossCar
     ) {
         synchronized(this) {
-            if (this.greenRoad != roadId) {
+            if (this.cur != roadId) {
                 turnGreen.run();
-                this.greenRoad = roadId;
+                this.cur = roadId;
             }
             crossCar.run();
         }

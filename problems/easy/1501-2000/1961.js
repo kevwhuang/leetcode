@@ -1,13 +1,13 @@
 // 1961 - Check If String Is a Prefix of Array
 
 function isPrefixString(s, words) {
-    let idx = 0;
-    for (let i = 0; i < words.length; i++) {
-        for (let j = 0; j < words[i].length; j++) {
-            if (s[idx++] !== words[i][j]) return false;
-        }
-        if (idx === s.length) return true;
-        if (idx > s.length) return false;
+    let i = 0, j = -1;
+    const m = s.length, n = words.length;
+    while (i < m && ++j < n) {
+        const t = words[j], nn = t.length;
+        let k = 0;
+        while (i < m && k < nn && s[i] === t[k]) i++, k++;
+        if (k < nn) return false;
     }
-    return idx === s.length;
+    return i === m;
 }

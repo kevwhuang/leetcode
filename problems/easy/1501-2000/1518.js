@@ -1,12 +1,10 @@
 // 1518 - Water Bottles
 
 function numWaterBottles(numBottles, numExchange) {
-    let drank = 0, empty = 0;
-    while (numBottles) {
-        const exchange = Math.floor((empty + numBottles) / numExchange);
-        drank += numBottles;
-        empty = (empty + numBottles) % numExchange;
-        numBottles = exchange;
+    let res = 0, acc = 0, cur = numBottles;
+    while (cur) {
+        const d = (acc + cur) / numExchange >> 0;
+        res += cur, acc = (acc + cur) % numExchange, cur = d;
     }
-    return drank;
+    return res;
 }

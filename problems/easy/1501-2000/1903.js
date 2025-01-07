@@ -2,7 +2,7 @@
 
 function largestOddNumber(num) {
     let i = num.length;
-    while (i-- >= 0) {
+    while (~--i) {
         if (num[i] % 2) return num.slice(0, i + 1);
     }
     return '';

@@ -8,7 +8,8 @@ function reverseBetween(head, left, right) {
     while (--left > 0) prev = prev.next;
     let cur = prev.next;
     while (right--) {
-        [prev.next, cur.next.next, cur.next] = [cur.next, prev.next, cur.next.next];
+        const a = cur.next, b = prev.next, c = cur.next.next;
+        prev.next = a, cur.next.next = b, cur.next = c;
     }
     return sentinel.next;
 }

@@ -5,31 +5,31 @@ import React from 'react';
 export function SignUpFormValidation() {
     function handleClick(e) {
         e.preventDefault();
-        let validUsername = true;
+        let flag1 = true, flag2 = true;
         if (username.length === 0) {
-            validUsername = false;
+            flag1 = false;
             setErrorUsername('Username is required');
         } else if (username.match(/[^A-Za-z0-9]/)) {
-            validUsername = false;
-            setErrorUsername('Username must contain only alphanumeric characters');
+            flag1 = false;
+            const s = 'Username must contain only alphanumeric characters';
+            setErrorUsername(s);
         } else {
             setErrorUsername('');
         }
-        let validPassword = true;
-        const match = password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/\d/);
+        const s = password;
+        const match = s.match(/[A-Z]/) && s.match(/[a-z]/) && s.match(/\d/);
         if (password.length === 0) {
-            validPassword = false;
+            flag2 = false;
             setErrorPassword('Password is required');
         } else if (password.length < 8 || !match) {
-            validPassword = false;
-            let errorMsg = 'Password must contain at least 8 characters, ';
-            errorMsg += 'with uppercase, lowercase, and digit(s)';
-            setErrorPassword(errorMsg);
+            flag2 = false;
+            const s = 'Password must contain at least 8 characters, ';
+            const t = 'with uppercase, lowercase, and digit(s)';
+            setErrorPassword(s + t);
         } else {
             setErrorPassword('');
         }
-        if (validUsername && validPassword) setSuccess('Sign Up Successful');
-        else setSuccess('');
+        setSuccess(flag1 && flag2 ? 'Sign Up Successful' : '');
     }
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');

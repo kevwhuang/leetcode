@@ -21,7 +21,7 @@ class SnakeGame {
         }
         if (r === -1 || r === this.m || c === -1 || c === this.n) return -1;
         const snake = this.snake, queue = this.queue;
-        const tail = snake.length ? [...snake[snake.length - 1]] : [this.r, this.c];
+        const tail = snake.length ? [...snake.at(-1)] : [this.r, this.c];
         for (let i = 0, j = queue.length - 1; i < snake.length; i++, j--) {
             switch (queue[j]) {
                 case 'U': snake[i][0]--; break;

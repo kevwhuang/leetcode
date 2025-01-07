@@ -1,18 +1,15 @@
 // 1176 - Diet Plan Performance
 
 function dietPlanPerformance(calories, k, lower, upper) {
-    let window = 0;
+    let acc = 0;
     for (let i = 0; i < k; i++) {
-        window += calories[i];
+        acc += calories[i];
     }
-    let points = 0;
-    if (window < lower) points--;
-    else if (window > upper) points++;
+    let res = acc < lower ? -1 : acc > upper ? 1 : 0;
     for (let i = k; i < calories.length; i++) {
-        window -= calories[i - k];
-        window += calories[i];
-        if (window < lower) points--;
-        else if (window > upper) points++;
+        acc += calories[i] - calories[i - k];
+        if (acc < lower) res--;
+        else if (acc > upper) res++;
     }
-    return points;
+    return res;
 }
