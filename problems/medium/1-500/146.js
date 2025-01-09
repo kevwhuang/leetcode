@@ -3,7 +3,7 @@
 class LRUCache {
     constructor(capacity) {
         this.map = new Map();
-        this.capacity = capacity;
+        this.tgt = capacity;
     }
     get(key) {
         const res = this.map.get(key) ?? -1;
@@ -14,7 +14,7 @@ class LRUCache {
     put(key, value) {
         this.map.delete(key);
         this.map.set(key, value);
-        if (this.map.size <= this.capacity) return;
+        if (this.map.size <= this.tgt) return;
         this.map.delete(this.map.keys().next().value);
     }
 }

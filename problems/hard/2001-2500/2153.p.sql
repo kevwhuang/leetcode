@@ -19,7 +19,7 @@ CTE2 AS (
     SELECT
         bus_id,
         capacity,
-        arrivals - LAG(arrivals, 1, 0) OVER () AS diff,
+        arrivals - LAG(arrivals, 1, 0) OVER () AS delta,
         r
     FROM
         CTE1
@@ -27,8 +27,8 @@ CTE2 AS (
 CTE3 AS (
     SELECT
         bus_id,
-        LEAST(capacity, diff) AS passengers_cnt,
-        GREATEST(0, diff - capacity) AS rem,
+        LEAST(capacity, delta) AS passengers_cnt,
+        GREATEST(0, delta - capacity) AS rem,
         r
     FROM
         CTE2
@@ -37,8 +37,8 @@ CTE3 AS (
     UNION
     SELECT
         C2.bus_id,
-        LEAST(capacity, diff + rem),
-        GREATEST(0, diff + rem - capacity),
+        LEAST(capacity, delta + rem),
+        GREATEST(0, delta + rem - capacity),
         C2.r
     FROM
         CTE2 C2,

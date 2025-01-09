@@ -1,14 +1,20 @@
 -- 1543 - Fix Product Name Format
 
+WITH CTE AS (
+    SELECT
+        TRIM(LOWER(product_name)) AS product_name,
+        LEFT(sale_date, 7) AS sale_date
+    FROM
+        Sales
+)
 SELECT
-    TRIM(LOWER(product_name)) AS product_name,
-    LEFT(sale_date, 7) AS sale_date,
+    *,
     COUNT(*) AS total
 FROM
-    Sales
+    CTE
 GROUP BY
-    TRIM(LOWER(product_name)),
-    LEFT(sale_date, 7)
+    product_name,
+    sale_date
 ORDER BY
     product_name,
     sale_date;

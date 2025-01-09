@@ -1,33 +1,48 @@
 -- 3156 - Employee Task Duration and Concurrent Tasks
 
-WITH CTE AS (
+WITH CTE1 AS (
     SELECT
-        T1.employee_id,
-        SUM(
-            IF(
-                T1.task_id = T2.task_id,
-                TIMESTAMPDIFF(SECOND, T1.start_time, T1.end_time),
-                - TIMESTAMPDIFF(SECOND, T2.start_time, T1.end_time)
-            )
-        ) AS seconds,
-        COUNT(*) AS concurrent
-    FROM
-        Tasks T1,
-        Tasks T2
-    WHERE
-        T1.employee_id = T2.employee_id
-        AND T1.start_time <= T2.start_time
-        AND T1.end_time > T2.start_time
-    GROUP BY
         employee_id,
-        T1.task_id
+        start_time AS time,
+        1 AS delta
+    FROM
+        Tasks
+    UNION
+    ALL
+    SELECT
+        employee_id,
+        end_time,
+        -1
+    FROM
+        Tasks
+),
+CTE2 AS (
+    SELECT
+        employee_id,
+        time,
+        LEAD(time) OVER (
+            PARTITION BY employee_id
+            ORDER BY
+                time
+        ) AS next,
+        SUM(delta) OVER (
+            PARTITION BY employee_id
+            ORDER BY
+                time
+        ) AS concurrent
+    FROM
+        CTE1
 )
 SELECT
     employee_id,
-    FLOOR(SUM(seconds) / 3600) AS total_task_hours,
+    FLOOR(
+        SUM(
+            IF(concurrent, TIMESTAMPDIFF(MINUTE, time, next), 0)
+        ) / 60
+    ) AS total_task_hours,
     MAX(concurrent) AS max_concurrent_tasks
 FROM
-    CTE
+    CTE2
 GROUP BY
     employee_id
 ORDER BY

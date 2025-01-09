@@ -3,7 +3,7 @@
 SELECT
     T1.account_id,
     T1.day,
-    SUM(IF(T2.type = 'Deposit', T2.amount, - T2.amount)) AS balance
+    SUM(IF(T2.type = 'Deposit', T2.amount, -T2.amount)) AS balance
 FROM
     Transactions T1,
     Transactions T2
