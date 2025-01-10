@@ -1,11 +1,9 @@
 // 2677 - Chunk Array
 
 function chunk(arr, size) {
-    const chunked = [];
-    let i = 0;
-    while (i < arr.length) {
-        chunked.push(arr.slice(i, i + size));
-        i += size;
+    const res = new Array(Math.ceil(arr.length / size));
+    for (let i = 0, j = 0; i < res.length; i++, j += size) {
+        res[i] = arr.slice(j, j + size);
     }
-    return chunked;
+    return res;
 }

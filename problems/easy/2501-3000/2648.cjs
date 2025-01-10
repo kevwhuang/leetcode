@@ -1,9 +1,9 @@
 // 2648 - Generate Fibonacci Sequence
 
 function* fibGenerator() {
-    let a = 0, b = 1;
+    let a = 0, b = 1, cur;
     while (true) {
         yield a;
-        [a, b] = [b, a + b];
+        cur = a, a = b, b += cur;
     }
 }

@@ -2,13 +2,13 @@
 
 function expect(val) {
     return {
-        toBe: test => {
-            if (test === val) return true;
-            throw 'Not Equal';
+        notToBe: e => {
+            if (e === val) throw 'Equal';
+            return true;
         },
-        notToBe: test => {
-            if (test !== val) return true;
-            throw 'Equal';
+        toBe: e => {
+            if (e !== val) throw 'Not Equal';
+            return true;
         },
     };
 }

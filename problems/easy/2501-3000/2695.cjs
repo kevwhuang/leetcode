@@ -2,12 +2,12 @@
 
 class ArrayWrapper {
     constructor(nums) {
-        this.nums = nums;
+        this.arr = nums;
     }
     toString() {
-        return JSON.stringify(this.nums);
+        return JSON.stringify(this.arr);
     }
     valueOf() {
-        return this.nums.reduce((s, num) => s + num, 0);
+        return this.arr.reduce((s, e) => s + e, 0);
     }
 }

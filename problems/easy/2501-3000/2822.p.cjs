@@ -2,11 +2,10 @@
 
 function invertObject(obj) {
     const res = {};
-    for (const val in obj) {
-        const key = obj[val];
-        if (!res[key]) res[key] = val;
-        else if (Array.isArray(res[key])) res[key].push(val);
-        else res[key] = [res[key], val];
+    for (const key in obj) {
+        const cur = obj[key];
+        if (Array.isArray(res[cur])) res[cur].push(key);
+        else res[cur] = res[cur] ? [res[cur], key] : key;
     }
     return res;
 }

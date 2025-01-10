@@ -2,6 +2,6 @@
 
 function cancellable(fn, args, t) {
     fn(...args);
-    const interval = setInterval(() => fn(...args), t);
-    return () => clearInterval(interval);
+    const key = setInterval(() => fn(...args), t);
+    return () => clearInterval(key);
 }

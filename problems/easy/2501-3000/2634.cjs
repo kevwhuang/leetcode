@@ -2,8 +2,6 @@
 
 function filter(arr, fn) {
     const res = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (fn(arr[i], i)) res.push(arr[i]);
-    }
+    arr.forEach((e, i) => fn(e, i) && res.push(e));
     return res;
 }

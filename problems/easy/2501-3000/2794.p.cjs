@@ -1,10 +1,10 @@
 // 2794 - Create Object From Two Arrays
 
 function createObject(keysArr, valuesArr) {
-    const obj = {};
+    const res = {};
     for (let i = 0; i < keysArr.length; i++) {
-        const key = String(keysArr[i]);
-        if (!(key in obj)) obj[key] = valuesArr[i];
+        if (keysArr[i] in res) continue;
+        res[keysArr[i]] = valuesArr[i];
     }
-    return obj;
+    return res;
 }

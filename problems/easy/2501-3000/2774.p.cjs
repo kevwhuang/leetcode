@@ -7,5 +7,5 @@ Array.prototype.upperBound = function (target) {
         if (this[m] <= target) l = m + 1;
         else r = m - 1;
     }
-    return ~--l && this[l] === target ? l : -1;
+    return ~r && this[r] === target ? r : -1;
 };
