@@ -1,14 +1,14 @@
 // 2795 - Parallel Execution of Promises for Individual Results Retrieval
 
 function promiseAllSettled(functions) {
+    const arr = new Array(functions.length);
     return new Promise(res => {
-        const arr = new Array(functions.length);
-        let settled = 0;
+        let acc = 0;
         for (let i = 0; i < functions.length; i++) {
             functions[i]()
-                .then(value => arr[i] = { status: 'fulfilled', value })
-                .catch(reason => arr[i] = { status: 'rejected', reason })
-                .finally(() => ++settled === functions.length && res(arr));
+                .then(e => arr[i] = { status: 'fulfilled', value: e })
+                .catch(err => arr[i] = { status: 'rejected', reason: err })
+                .finally(() => ++acc === functions.length && res(arr));
         }
     });
 }

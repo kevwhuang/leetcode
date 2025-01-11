@@ -25,7 +25,7 @@ export default [
             '@stylistic/func-call-spacing': 2,
             '@stylistic/function-call-argument-newline': [2, 'consistent'],
             '@stylistic/function-call-spacing': 2,
-            '@stylistic/generator-star-spacing': [2, { before: false, after: true }],
+            '@stylistic/generator-star-spacing': [2, { after: true, before: false }],
             '@stylistic/indent': 2,
             '@stylistic/jsx-child-element-spacing': 2,
             '@stylistic/jsx-closing-bracket-location': 2,

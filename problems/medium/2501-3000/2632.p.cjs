@@ -1,9 +1,10 @@
 // 2632 - Curry
 
 function curry(fn) {
+    function dfs() {
+        arr.push(...arguments);
+        return arr.length === fn.length ? fn(...arr) : dfs;
+    }
     const arr = [];
-    return function curried(...args) {
-        arr.push(...args);
-        return arr.length === fn.length ? fn(...arr) : curried;
-    };
+    return dfs;
 }

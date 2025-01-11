@@ -1,20 +1,19 @@
 // 2650 - Design Cancellable Function
 
 function cancellable(generator) {
-    const cb = (_, rej) => cancel = () => rej('Cancelled');
-    let cancel;
-    const promise = (async function () {
-        const cancelPromise = new Promise(cb);
-        let next = generator.next();
-        while (!next.done) {
+    async function init() {
+        const fn = (_, rej) => res = () => rej('Cancelled');
+        const promise = new Promise(fn);
+        let cur = generator.next();
+        while (!cur.done) {
             try {
-                const race = Promise.race([next.value, cancelPromise]);
-                next = generator.next(await race);
-            } catch (e) {
-                next = generator.throw(e);
+                cur = generator.next(await Promise.race([cur.value, promise]));
+            } catch (err) {
+                cur = generator.throw(err);
             }
         }
-        return next.value;
-    }());
-    return [cancel, promise];
+        return cur.value;
+    }
+    let res;
+    return [init(), res].reverse();
 }

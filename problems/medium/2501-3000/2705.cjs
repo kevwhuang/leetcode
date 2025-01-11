@@ -1,21 +1,16 @@
 // 2705 - Compact Object
 
 function compactObject(obj) {
-    let clone;
+    if (typeof obj !== 'object') return obj;
+    const res = Array.isArray(obj) ? [] : {};
     if (Array.isArray(obj)) {
-        clone = [];
         for (let i = 0; i < obj.length; i++) {
-            const val = obj[i];
-            if (!val) continue;
-            clone.push(typeof val === 'object' ? compactObject(val) : val);
+            if (obj[i]) res.push(compactObject(obj[i]));
         }
     } else {
-        clone = {};
         for (const key in obj) {
-            const val = obj[key];
-            if (!val) continue;
-            clone[key] = typeof val === 'object' ? compactObject(val) : val;
+            if (obj[key]) res[key] = compactObject(obj[key]);
         }
     }
-    return clone;
+    return res;
 }

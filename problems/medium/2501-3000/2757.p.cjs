@@ -3,7 +3,7 @@
 function* cycleGenerator(arr, startIndex) {
     const n = arr.length;
     while (true) {
-        const shift = yield arr[startIndex];
-        startIndex = (startIndex + n + shift % n) % n;
+        const d = yield arr[startIndex];
+        startIndex = (startIndex + n + d % n) % n;
     }
 }

@@ -1,36 +1,32 @@
 // 2675 - Array of Objects to Matrix
 
 function jsonToMatrix(arr) {
-    function extract(obj) {
-        const keys = [];
-        for (const key in obj) {
-            const val = obj[key];
-            if (typeof val !== 'object' || val === null) {
-                keys[key] = val;
-            } else {
-                const sub = extract(val);
-                for (const subKey in sub) {
-                    keys[`${key}.${subKey}`] = sub[subKey];
-                }
+    function dfs(cur) {
+        const res = {};
+        for (const key1 in cur) {
+            const e = cur[key1];
+            if ((!e || typeof e !== 'object') && (res[key1] = e)) continue;
+            const next = dfs(e);
+            for (const key2 in next) {
+                res[`${key1}.${key2}`] = next[key2];
             }
         }
-        return keys;
+        return res;
     }
-    for (let i = 0; i < arr.length; i++) {
-        arr[i] = extract(arr[i]);
-    }
-    let keys = new Set();
+    arr.forEach((e, i) => arr[i] = dfs(e));
+    const set = new Set();
     for (let i = 0; i < arr.length; i++) {
         for (const key in arr[i]) {
-            keys.add(key);
+            set.add(key);
         }
     }
-    const mat = Array.from({ length: arr.length + 1 }, () => []);
-    mat[0] = keys = Array.from(keys).sort();
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < keys.length; j++) {
-            mat[i + 1][j] = keys[j] in arr[i] ? arr[i][keys[j]] : '';
+    const m = arr.length, n = set.size;
+    const res = Array.from({ length: m + 1 }, () => new Array(n));
+    const keys = res[0] = [...set].sort();
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            res[r + 1][c] = keys[c] in arr[r] ? arr[r][keys[c]] : '';
         }
     }
-    return mat;
+    return res;
 }

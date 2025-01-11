@@ -2,21 +2,20 @@
 
 class EventEmitter {
     constructor() {
-        this.events = new Map();
+        this.map = new Map();
     }
     emit(eventName, args) {
-        if (!this.events.has(eventName)) return [];
-        const res = [];
-        const listeners = this.events.get(eventName).values();
-        for (const listener of listeners) {
-            res.push(listener(...args));
+        if (!this.map.has(eventName)) return [];
+        const res = [], arr = this.map.get(eventName).values();
+        for (const e of arr) {
+            res.push(e(...args));
         }
         return res;
     }
     subscribe(eventName, callback) {
-        if (!this.events.has(eventName)) this.events.set(eventName, new Set());
-        const listeners = this.events.get(eventName);
-        listeners.add(callback);
-        return { unsubscribe: () => listeners.delete(callback) };
+        const map = this.map;
+        if (!map.has(eventName)) map.set(eventName, new Set());
+        map.get(eventName).add(callback);
+        return { unsubscribe: () => map.get(eventName).delete(callback) };
     }
 }

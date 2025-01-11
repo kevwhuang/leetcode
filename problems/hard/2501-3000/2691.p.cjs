@@ -5,29 +5,23 @@ class ImmutableHelper {
         this.obj = obj;
     }
     produce(mutator) {
-        const setter = (prop, val) => obj[prop] = val;
-        const obj = { clone: this.obj };
-        mutator(this.#profixy(obj, obj, setter).clone);
-        return obj.clone;
+        const res = { copy: this.obj };
+        mutator(this.#dfs(res, res, (key, e) => res[key] = e).copy);
+        return res.copy;
     }
-    #profixy(obj, orig, setter) {
-        const handler = {
-            get: (_, prop) => {
-                let val = obj[prop];
-                if (!val || typeof val !== 'object') return val;
-                return this.#profixy(val, orig[prop], (nextProp, nextVal) => {
-                    if (val === orig[prop]) {
-                        val = Array.isArray(val) ? [...val] : { ...val };
-                        obj = setter(prop, val);
-                    }
-                    val[nextProp] = nextVal;
-                    return val;
-                });
-            },
-            set: (_, prop, val) => {
-                obj = setter(prop, val);
-            },
-        };
-        return new Proxy(obj, handler);
+    #dfs(cur, prev, fn) {
+        function get(_, key1) {
+            let e = cur[key1];
+            if (!e || typeof e !== 'object') return e;
+            return this.#dfs(e, prev[key1], (key2, f) => {
+                const flag = e === prev[key1];
+                if (flag) e = Array.isArray(e) ? [...e] : { ...e };
+                if (flag) cur = fn(key1, e);
+                e[key2] = f;
+                return e;
+            });
+        }
+        const set = (_, key, e) => cur = fn(key, e);
+        return new Proxy(cur, { get: get.bind(this), set });
     }
 }

@@ -1,12 +1,11 @@
 // 2623 - Memoize
 
 function memoize(fn) {
+    function res(a, b) {
+        const key = a << 18 | b;
+        if (!memo.has(key)) memo.set(key, fn(a, b));
+        return memo.get(key);
+    }
     const memo = new Map();
-    return function (...args) {
-        const key = JSON.stringify(args);
-        if (memo.has(key)) return memo.get(key);
-        const res = fn(...args);
-        memo.set(key, res);
-        return res;
-    };
+    return res;
 }

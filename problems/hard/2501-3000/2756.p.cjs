@@ -2,38 +2,25 @@
 
 class QueryBatcher {
     constructor(queryMultiple, t) {
-        this.queryMultiple = queryMultiple;
-        this.t = t;
-        this.argBuffer = [];
-        this.queryBuffer = [];
-        this.free = true;
+        this.fn = queryMultiple;
+        this.arr1 = [];
+        this.arr2 = [];
+        this.flag = true;
+        this.k = t;
     }
     async getValue(key) {
-        if (this.free) {
-            this.#block();
-            return await this.queryMultiple([key]);
-        }
-        this.argBuffer.push(key);
-        const res = new Promise(resolve => this.queryBuffer.push(resolve));
-        return res;
+        if (this.flag) return this.#block() || await this.fn([key]);
+        return this.arr1.push(key) && new Promise(res => this.arr2.push(res));
     }
     #block() {
-        this.free = false;
-        setTimeout(() => {
-            this.free = true;
-            if (this.argBuffer.length) this.#resolveBuffer();
-        }, this.t);
+        this.flag = false;
+        setTimeout(() => this.flag = true, this.k);
+        setTimeout(() => this.arr1.length && this.#execute(), this.k);
     }
-    async #resolveBuffer() {
-        if (!this.argBuffer.length) return;
+    async #execute() {
         this.#block();
-        const args = this.argBuffer;
-        const queries = this.queryBuffer;
-        this.argBuffer = [];
-        this.queryBuffer = [];
-        const res = await this.queryMultiple(args);
-        for (let i = 0; i < res.length; i++) {
-            queries[i](res[i]);
-        }
+        const arr1 = this.arr1, arr2 = this.arr2;
+        this.arr1 = [], this.arr2 = [];
+        (await this.fn(arr1)).forEach((e, i) => arr2[i](e));
     }
 }

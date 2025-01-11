@@ -1,15 +1,13 @@
 // 2624 - Snail Traversal
 
 Array.prototype.snail = function (rowsCount, colsCount) {
-    if (this.length !== rowsCount * colsCount) return [];
-    const res = Array.from({ length: rowsCount }, () => []);
-    for (let i = 0, c = 0; i < this.length; c = i += rowsCount) {
-        let r = res[0].length % 2 ? rowsCount - 1 : 0;
-        const dr = r ? -1 : 1;
-        while (r >= 0 && r < rowsCount) {
-            res[r].push(this[c++]);
-            r += dr;
-        }
+    const n = rowsCount;
+    if (n * colsCount !== this.length) return [];
+    const res = Array.from({ length: n }, () => []);
+    for (let i = 0, c = 0; i < this.length; c = i += n) {
+        let r = res[0].length & 1 ? n - 1 : 0;
+        const d = r ? -1 : 1;
+        while (~r && r < n) res[r].push(this[c++]) && (r += d);
     }
     return res;
 };

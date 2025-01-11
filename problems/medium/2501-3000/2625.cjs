@@ -1,13 +1,13 @@
 // 2625 - Flatten Deeply Nested Array
 
 function flat(arr, n) {
-    function flatten(arr, n) {
+    function dfs(arr, acc) {
         for (let i = 0; i < arr.length; i++) {
-            if (Array.isArray(arr[i]) && n) flatten(arr[i], n - 1);
+            if (acc && Array.isArray(arr[i])) dfs(arr[i], acc - 1);
             else res.push(arr[i]);
         }
     }
     const res = [];
-    flatten(arr, n);
+    dfs(arr, n);
     return res;
 }

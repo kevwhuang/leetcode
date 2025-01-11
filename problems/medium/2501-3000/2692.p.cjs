@@ -1,25 +1,19 @@
 // 2692 - Make Object Immutable
 
 function makeImmutable(obj) {
-    const veto = new Set(['pop', 'push', 'shift', 'unshift', 'splice']);
-    veto.add('sort').add('reverse');
-    const handler = {
-        apply(target, thisArg, args) {
-            const err = `Error Calling Method: ${target.name}`;
-            if (veto.has(target.name)) throw err;
-            return target.apply(thisArg, args);
-        },
-        get(target, prop) {
-            const cur = target[prop];
-            if (prop === 'prototype' || cur === null) return cur;
-            const type = typeof cur;
-            if (type !== 'object' && type !== 'function') return cur;
-            return new Proxy(cur, this);
-        },
-        set(target, prop) {
-            if (Array.isArray(target)) throw `Error Modifying Index: ${prop}`;
-            throw `Error Modifying: ${prop}`;
-        },
-    };
-    return new Proxy(obj, handler);
+    function dfs(cur) {
+        for (const key in cur) {
+            const next = cur[key];
+            if (next && typeof next === 'object') cur[key] = dfs(next);
+        }
+        if (!Array.isArray(cur)) return new Proxy(cur, { set: set1 });
+        dict.forEach(e => cur[e] = new Proxy(cur[e], { apply }));
+        return new Proxy(cur, { set: set2 });
+    }
+    const apply = cur => { throw `Error Calling Method: ${cur.name}`; };
+    const set1 = (_, key) => { throw `Error Modifying: ${key}`; };
+    const set2 = (_, key) => { throw `Error Modifying Index: ${key}`; };
+    const dict = ['push', 'pop', 'unshift', 'shift'];
+    dict.push('splice', 'sort', 'reverse');
+    return dfs(obj);
 }

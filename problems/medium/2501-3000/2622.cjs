@@ -2,19 +2,19 @@
 
 class TimeLimitedCache {
     constructor() {
-        this.cache = new Map();
+        this.map = new Map();
     }
     count() {
-        return this.cache.size;
+        return this.map.size;
     }
     get(key) {
-        return this.cache.has(key) ? this.cache.get(key)[0] : -1;
+        return this.map.has(key) ? this.map.get(key)[0] : -1;
     }
     set(key, value, duration) {
-        const cb = () => this.cache.delete(key);
-        const exists = this.cache.has(key);
-        if (exists) clearTimeout(this.cache.get(key)[1]);
-        this.cache.set(key, [value, setTimeout(cb, duration)]);
-        return exists;
+        const fn = () => this.map.delete(key);
+        const res = this.map.has(key);
+        if (res) clearTimeout(this.map.get(key)[1]);
+        this.map.set(key, [value, setTimeout(fn, duration)]);
+        return res;
     }
 }

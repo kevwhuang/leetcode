@@ -1,15 +1,14 @@
 // 2676 - Throttle
 
 function throttle(fn, t) {
-    let prevArgs, timeout;
-    return function run(...args) {
-        if (timeout) return prevArgs = args;
-        fn(...args);
-        timeout = setTimeout(() => {
-            timeout = null;
-            if (!prevArgs) return;
-            run(...prevArgs);
-            prevArgs = null;
+    function dfs() {
+        if (key) return prev = arguments;
+        fn(...arguments);
+        key = setTimeout(() => {
+            key = null;
+            if (prev) dfs(...prev) || (prev = null);
         }, t);
-    };
+    }
+    let key, prev;
+    return dfs;
 }

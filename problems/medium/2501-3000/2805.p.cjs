@@ -1,15 +1,13 @@
 // 2805 - Custom Interval
 
 function customInterval(fn, delay, period) {
-    function lazyFn(calls) {
-        customInterval[id] = setTimeout(() => {
-            fn();
-            lazyFn(calls + 1);
-        }, delay + period * calls);
+    function lazy(acc) {
+        const sum = delay + period * acc;
+        customInterval[res] = setTimeout(() => fn() || lazy(acc + 1), sum);
     }
-    const id = Math.random();
-    lazyFn(0);
-    return id;
+    const res = Math.random();
+    lazy(0);
+    return res;
 }
 
 function customClearInterval(id) {
