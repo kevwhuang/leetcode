@@ -7,11 +7,11 @@ FROM
 WHERE
     id IN (
         SELECT
-            managerId
+            managerid
         FROM
             Employee
         GROUP BY
-            managerId
+            managerid
         HAVING
             COUNT(*) >= 5
     );

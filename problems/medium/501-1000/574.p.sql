@@ -4,9 +4,9 @@ SELECT
     name
 FROM
     Candidate C
-    JOIN Vote V ON C.id = candidateId
+    JOIN Vote ON C.id = candidateid
 GROUP BY
-    candidateId
+    candidateid
 ORDER BY
     COUNT(*) DESC
 LIMIT

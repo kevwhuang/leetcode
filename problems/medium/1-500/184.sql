@@ -6,14 +6,14 @@ SELECT
     salary
 FROM
     Employee E
-    JOIN Department D ON E.departmentId = D.id
+    JOIN Department D ON E.departmentid = D.id
 WHERE
-    (departmentId, salary) IN (
+    (departmentid, salary) IN (
         SELECT
-            departmentId,
+            departmentid,
             MAX(salary)
         FROM
             Employee
         GROUP BY
-            departmentId
+            departmentid
     );

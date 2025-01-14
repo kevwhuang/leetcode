@@ -4,7 +4,7 @@ function maxTargetNodes(edges1, edges2) {
     function dfs(node, acc) {
         const next = adj[node];
         adj[node] = false;
-        if (acc % 2) ++odd && acc > 10000 && (adj[node] = 0);
+        if (acc % 2 && ++odd && acc > 10000) adj[node] = 0;
         for (let i = 0; i < next.length; i++) {
             if (adj[next[i]]) dfs(next[i], acc + 1);
         }

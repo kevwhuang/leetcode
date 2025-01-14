@@ -7,7 +7,7 @@ WITH CTE AS (
         ROW_NUMBER() OVER (
             PARTITION BY username
             ORDER BY
-                startDate DESC
+                startdate DESC
         ) AS r
     FROM
         UserActivity
@@ -15,8 +15,8 @@ WITH CTE AS (
 SELECT
     username,
     activity,
-    startDate,
-    endDate
+    startdate,
+    enddate
 FROM
     CTE
 WHERE

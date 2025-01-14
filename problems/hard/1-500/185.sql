@@ -12,7 +12,7 @@ WITH CTE AS (
         ) AS r
     FROM
         Employee E
-        JOIN Department D ON E.departmentId = D.id
+        JOIN Department D ON E.departmentid = D.id
 )
 SELECT
     department,

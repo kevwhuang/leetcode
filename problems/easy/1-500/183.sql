@@ -7,7 +7,7 @@ FROM
 WHERE
     id NOT IN (
         SELECT
-            customerId
+            customerid
         FROM
             Orders
     );
