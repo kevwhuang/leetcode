@@ -26,10 +26,10 @@ function alienOrder(words) {
         const N = [];
         for (let i = 0; i < Q.length; i++) {
             res += Q[i];
-            const M = adj.get(Q[i]);
-            for (let j = 1; j < M.length; j++) {
-                if (--adj.get(M[j])[0]) continue;
-                N.push(M[j]);
+            const arr = adj.get(Q[i]);
+            for (let j = 1; j < arr.length; j++) {
+                if (--adj.get(arr[j])[0]) continue;
+                N.push(arr[j]);
             }
         }
         Q = N;

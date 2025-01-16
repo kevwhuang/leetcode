@@ -1,20 +1,18 @@
 // 282 - Expression Add Operators
 
 function addOperators(num, target) {
-    function backtrack(i, acc, pre, cur, exp) {
-        if (i === num.length) {
-            if (acc !== target || cur) return;
-            return res.push(exp.slice(1));
-        }
+    function backtrack(i, acc, prev, cur, s) {
+        if (i === n && acc === target && cur === 0) res.push(s.slice(1));
+        if (i === n) return;
         cur = 10 * cur + Number(num[i++]);
-        if (cur) backtrack(i, acc, pre, cur, exp);
-        backtrack(i, acc + cur, cur, 0, `${exp}+${cur}`);
-        if (exp.length === 0) return;
-        backtrack(i, acc - cur, -cur, 0, `${exp}-${cur}`);
-        const prod = pre * cur;
-        backtrack(i, acc + prod - pre, prod, 0, `${exp}*${cur}`);
+        if (cur) backtrack(i, acc, prev, cur, s);
+        backtrack(i, acc + cur, cur, 0, `${s}+${cur}`);
+        if (s.length === 0) return;
+        backtrack(i, acc - cur, -cur, 0, `${s}-${cur}`);
+        const prod = prev * cur;
+        backtrack(i, acc + prod - prev, prod, 0, `${s}*${cur}`);
     }
-    const res = [];
+    const res = [], n = num.length;
     backtrack(0, 0, 0, 0, '');
     return res;
 }

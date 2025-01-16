@@ -6,8 +6,9 @@ function maxPathSum(root) {
         const cur = node.val;
         const left = dfs(node.left) + cur;
         const right = dfs(node.right) + cur;
-        res = Math.max(left, right, cur, left + right - cur, res);
-        return Math.max(left, right, cur);
+        const max = Math.max(cur, left, right);
+        res = Math.max(left + right - cur, max, res);
+        return max;
     }
     let res = -Infinity;
     dfs(root);

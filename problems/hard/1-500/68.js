@@ -1,27 +1,25 @@
 // 68 - Text Justification
 
 function fullJustify(words, maxWidth) {
-    const text = [];
+    const res = [], n = words.length;
     let i = 0;
-    while (i < words.length) {
-        const line = [words[i]];
-        let len = line[0].length;
-        while (++i < words.length) {
-            if (len + words[i].length + 1 > maxWidth) break;
-            line.push(' ');
-            line.push(words[i]);
-            len += words[i].length + 1;
+    while (i < n) {
+        const arr = [words[i]];
+        let acc = arr[0].length;
+        while (++i < n && words[i].length + acc + 1 <= maxWidth) {
+            arr.push(' ', words[i]);
+            acc += words[i].length + 1;
         }
-        if (i === words.length || line.length === 1) {
-            text.push(line.join('').padEnd(maxWidth, ' '));
+        if (i === n || arr.length === 1) {
+            res.push(arr.join``.padEnd(maxWidth, ' '));
             continue;
         }
         let j = 1;
-        while (len++ < maxWidth) {
-            line[j] += ' ';
-            if ((j += 2) === line.length) j = 1;
+        while (acc++ < maxWidth) {
+            arr[j] += ' ';
+            if ((j += 2) === arr.length) j = 1;
         }
-        text.push(line.join(''));
+        res.push(arr.join``);
     }
-    return text;
+    return res;
 }

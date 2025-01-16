@@ -1,14 +1,14 @@
 // 158 - Read N Characters Given Read4 II - Call Multiple Times
 
 function solution(read4) {
-    function readN(buf, n) {
+    function res(cur, tgt) {
         while (true) {
-            while (buf.length < n && buffer.length) buf.push(buffer.shift());
-            if (buf.length === n) break;
-            read4(buffer);
-            if (buffer.length === 0) break;
+            while (arr.length && cur.length < tgt) cur.push(arr.shift());
+            if (cur.length === tgt) return;
+            read4(arr);
+            if (arr.length === 0) return;
         }
     }
-    const buffer = [];
-    return readN;
+    const arr = [];
+    return res;
 }

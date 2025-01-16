@@ -8,8 +8,8 @@
  */
 
 function ladderLength(beginWord, endWord, wordList) {
-    wordList = new Set(wordList);
-    if (!wordList.has(endWord)) return 0;
+    const set = new Set(wordList);
+    if (!set.has(endWord)) return 0;
     let res = 1, Q1 = new Set([beginWord]), Q2 = new Set([endWord]);
     const s = 'abcdefghijklmnopqrstuvwxyz';
     while (Q1.size && res++) {
@@ -20,8 +20,8 @@ function ladderLength(beginWord, endWord, wordList) {
                 for (let j = 0; j < 26; j++) {
                     const next = `${left}${s[j]}${right}`;
                     if (Q2.has(next)) return res;
-                    if (!wordList.has(next)) continue;
-                    wordList.delete(next);
+                    if (!set.has(next)) continue;
+                    set.delete(next);
                     N.add(next);
                 }
             }

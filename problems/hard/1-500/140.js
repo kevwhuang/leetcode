@@ -1,20 +1,20 @@
 // 140 - Word Break II
 
 function wordBreak(s, wordDict) {
-    function backtrack(i, cur) {
-        if (i === n && set.has(cur)) {
-            seq.push(cur);
-            res.push(seq.join(' '));
-            seq.pop();
+    function backtrack(i, t) {
+        if (i === n && set.has(t)) {
+            cur.push(t);
+            res.push(cur.join` `);
+            cur.pop();
         }
         if (i === n) return;
-        backtrack(i + 1, cur + s[i]);
-        if (!set.has(cur)) return;
-        seq.push(cur);
+        backtrack(i + 1, t + s[i]);
+        if (!set.has(t)) return;
+        cur.push(t);
         backtrack(i + 1, s[i]);
-        seq.pop();
+        cur.pop();
     }
-    const res = [], seq = [], n = s.length;
+    const res = [], cur = [], n = s.length;
     const set = new Set(wordDict);
     backtrack(1, s[0]);
     return res;

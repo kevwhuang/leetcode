@@ -1,19 +1,15 @@
 // 149 - Max Points on a Line
 
 function maxPoints(points) {
-    let max = 0;
+    let res = 0;
     for (let i = 0; i < points.length; i++) {
-        const map = new Map();
+        const map = new Map(), r = points[i][1], c = points[i][0];
         for (let j = 0; j < points.length; j++) {
             if (i === j) continue;
-            const dy = points[i][1] - points[j][1];
-            const dx = points[i][0] - points[j][0];
-            const slope = dy / dx;
-            map.set(slope, map.get(slope) + 1 || 1);
+            const div = (r - points[j][1]) / (c - points[j][0]);
+            map.set(div, (map.get(div) ?? 0) + 1);
         }
-        for (const count of map.values()) {
-            max = Math.max(count, max);
-        }
+        res = Math.max(...map.values(), res);
     }
-    return max + 1;
+    return res + 1;
 }
