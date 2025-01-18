@@ -1,32 +1,32 @@
 // 591 - Tag Validator
 
 function isValid(code) {
-    const stack = [], len = code.length;
-    let i = 0, tagged;
-    while (i < len) {
+    const S = [], n = code.length;
+    let flag, idx, i = 0;
+    while (i < n) {
         if (code[i] !== '<') {
-            if (!tagged) return false;
+            if (!flag) return false;
             i++;
-        } else if (i + 1 < len && code[i + 1] === '!') {
-            const start = code.indexOf('[CDATA[', i + 2);
-            if (start <= 2) return false;
-            const end = code.indexOf(']]>', start + 7);
-            if (end === -1 || end === len - 3) return false;
-            i = end + 3;
-        } else if (i + 1 < len && code[i + 1] === '/') {
-            const end = code.indexOf('>', i + 2);
-            if (end === -1) return false;
-            if (end !== len - 1 && stack.length === 1) return false;
-            if (code.slice(i + 2, end) !== stack.pop()) return false;
-            i = end + 1;
+        } else if (i + 1 < n && code[i + 1] === '!') {
+            idx = code.indexOf('[CDATA[', i + 2);
+            if (idx <= 2) return false;
+            idx = code.indexOf(']]>', idx + 7);
+            if (idx === -1 || idx === n - 3) return false;
+            i = idx + 3;
+        } else if (i + 1 < n && code[i + 1] === '/') {
+            idx = code.indexOf('>', i + 2);
+            if (idx === -1) return false;
+            if (idx !== n - 1 && S.length === 1) return false;
+            if (code.slice(i + 2, idx) !== S.pop()) return false;
+            i = idx + 1;
         } else {
-            const end = code.indexOf('>', i + 1);
-            if (end === -1) return false;
-            const tag = code.slice(i + 1, end);
-            if (!/^[A-Z]{1,9}$/.test(tag)) return false;
-            stack.push(tag);
-            i = end + 1, tagged = true;
+            idx = code.indexOf('>', i + 1);
+            if (idx === -1) return false;
+            const s = code.slice(i + 1, idx);
+            if (!/^[A-Z]{1,9}$/.test(s)) return false;
+            S.push(s);
+            flag = true, i = idx + 1;
         }
     }
-    return stack.length === 0;
+    return S.length === 0;
 }
