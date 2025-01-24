@@ -1,7 +1,7 @@
 import globals from 'globals';
 import stylistic from '@stylistic/eslint-plugin';
 
-export default [
+const eslint = [
     {
         files: ['**/*.{js,cjs,mjs,jsx}'],
         languageOptions: {
@@ -252,3 +252,5 @@ export default [
         rules: { '@stylistic/max-len': [2, { code: 130 }] },
     },
 ];
+
+export default eslint;

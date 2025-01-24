@@ -48,20 +48,6 @@ select:last-of-type {
     width: calc(80% - 1rem);
 }
 
-@keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 @media screen and (max-width: 768px) {
     select:first-of-type {
         margin-right: 0;
@@ -87,5 +73,19 @@ select:last-of-type {
     nav {
         margin-bottom: 0;
         margin-top: 2dvh;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
