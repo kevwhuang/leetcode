@@ -9,14 +9,14 @@ function minimumCost(n, edges, query) {
     for (let i = 0; i < n; i++) {
         find(i);
     }
-    const costs = {};
+    const C = new Map();
     for (let i = 0; i < edges.length; i++) {
-        const u = uf[edges[i][0]], w = edges[i][2];
-        costs[u] = (costs[u] ?? w) & w;
+        const v = uf[edges[i][0]];
+        C.set(v, (C.get(v) ?? edges[i][2]) & edges[i][2]);
     }
     for (let i = 0; i < query.length; i++) {
-        const u = uf[query[i][0]], v = uf[query[i][1]];
-        query[i] = u === v ? costs[u] : -1;
+        const v = uf[query[i][0]];
+        query[i] = v === uf[query[i][1]] ? C.get(v) : -1;
     }
     return query;
 }

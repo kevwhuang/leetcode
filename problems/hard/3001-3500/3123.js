@@ -1,7 +1,7 @@
 // 3123 - Find Edges in Shortest Paths
 
 function findAnswer(n, edges) {
-    function dijkstra(start) {
+    function calc(start) {
         const C = new Uint32Array(n).fill(-1);
         C[start] = 0;
         const pq = new PriorityQueue({ compare: (a, b) => a % k2 - b % k2 });
@@ -24,9 +24,9 @@ function findAnswer(n, edges) {
         adj[u].push(k1 * v + w);
         adj[v].push(k1 * u + w);
     }
-    const C1 = dijkstra(0), tgt = C1[n - 1];
-    if (tgt === 2 ** 32 - 1) return M.fill(false);
-    const C2 = dijkstra(n - 1);
+    const C1 = calc(0), tgt = C1[n - 1];
+    if (tgt === 4294967295) return M.fill(false);
+    const C2 = calc(n - 1);
     for (let i = 0; i < M.length; i++) {
         const u = M[i][0], v = M[i][1], d = tgt - M[i][2];
         M[i] = C1[u] + C2[v] === d || C1[v] + C2[u] === d;
