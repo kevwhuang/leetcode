@@ -652,14 +652,6 @@ svg {
     display: block;
 }
 
-svg path {
-    fill: currentColor;
-}
-
-svg path:hover {
-    fill: currentColor;
-}
-
 table {
     border: none;
     border-collapse: collapse;

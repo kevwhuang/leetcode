@@ -6,12 +6,12 @@ function countMentions(numberOfUsers, events) {
     const set = new Set(Object.keys(res)), map = new Map();
     let acc = 0, i = -1;
     while (++i < events.length) {
-        const s = events[i][0], t = events[i][2], cur = Number(events[i][1]);
-        if (s === 'OFFLINE') set.delete(t);
-        if (s === 'OFFLINE' && map.set(t, cur + 60)) continue;
-        if (t === 'ALL' && ++acc) continue;
-        if (t !== 'HERE') t.split` `.forEach(e => res[e.slice(2)]++);
-        if (t !== 'HERE') continue;
+        const s = events[i][0][0], t = events[i][2], cur = Number(events[i][1]);
+        if (s === 'O') set.delete(t);
+        if (s === 'O' && map.set(t, cur + 60)) continue;
+        if (t[0] === 'A' && ++acc) continue;
+        if (t[0] !== 'H') t.split` `.forEach(e => res[e.slice(2)]++);
+        if (t[0] !== 'H') continue;
         map.forEach((e, key) => e <= cur && set.add(key) && map.delete(key));
         set.forEach(e => res[e]++);
     }
