@@ -1,21 +1,12 @@
 // 328 - Odd Even Linked List
 
 function oddEvenList(head) {
-    let oddTail = new ListNode(), evenTail = new ListNode();
-    const oddHead = oddTail, evenHead = evenTail;
-    let isOdd = true;
-    while (head) {
-        if (isOdd) {
-            oddTail.next = head;
-            oddTail = oddTail.next;
-        } else {
-            evenTail.next = head;
-            evenTail = evenTail.next;
-        }
-        isOdd = !isOdd;
-        head = head.next;
+    if (!head) return head;
+    let node1 = head, node2 = head.next, next = node2;
+    while (node2 && node2.next) {
+        node1.next = node1.next.next, node1 = node1.next;
+        node2.next = node2.next.next, node2 = node2.next;
     }
-    evenTail.next = null;
-    oddTail.next = evenHead.next;
-    return oddHead.next;
+    node1.next = next;
+    return head;
 }

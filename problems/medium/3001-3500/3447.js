@@ -1,18 +1,18 @@
 // 3447 - Assign Elements to Groups With Constraints
 
 function assignElements(groups, elements) {
-    const map = new Map();
+    const max = groups.reduce((s, e) => Math.max(e, s));
+    const min = groups.reduce((s, e) => Math.min(e, s));
+    const arr = new Int32Array(max - min + 1).fill(-1);
+    const set = new Set();
     for (let i = 0; i < elements.length; i++) {
-        if (!map.has(elements[i])) map.set(elements[i], i);
-    }
-    for (let i = 0; i < groups.length; i++) {
-        let idx = 1e6;
-        const cur = groups[i], sqrt = Math.sqrt(cur);
-        for (let i = 1; i <= sqrt; i++) {
-            if (cur % i) continue;
-            idx = Math.min(map.get(i) ?? 1e6, map.get(cur / i) ?? 1e6, idx);
+        const d = elements[i];
+        if (set.has(d)) continue;
+        set.add(d);
+        for (let j = Math.ceil(min / d) * d; j <= max; j += d) {
+            if (arr[j - min] === -1) arr[j - min] = i;
         }
-        groups[i] = idx < 1e6 ? idx : -1;
     }
+    groups.forEach((e, i) => groups[i] = arr[e - min]);
     return groups;
 }

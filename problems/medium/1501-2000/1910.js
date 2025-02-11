@@ -2,8 +2,8 @@
 
 function removeOccurrences(s, part) {
     while (true) {
-        const len = s.length;
+        const n = s.length;
         s = s.replace(part, '');
-        if (len === s.length) return s;
+        if (n === s.length) return s;
     }
 }
