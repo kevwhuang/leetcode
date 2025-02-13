@@ -4,18 +4,20 @@ function sumPrefixScores(words) {
     const trie = {};
     for (let i = 0; i < words.length; i++) {
         let node = trie;
-        for (let j = 0; j < words[i].length; j++) {
-            node[words[i][j]] ??= { count: 0 };
-            node[words[i][j]].count++;
-            node = node[words[i][j]];
+        const s = words[i];
+        for (let j = 0; j < s.length; j++) {
+            node[s[j]] ??= { acc: 0 };
+            node[s[j]].acc++;
+            node = node[s[j]];
         }
     }
     const res = new Uint32Array(words.length);
     for (let i = 0; i < words.length; i++) {
         let node = trie;
-        for (let j = 0; j < words[i].length; j++) {
-            res[i] += node[words[i][j]].count;
-            node = node[words[i][j]];
+        const s = words[i];
+        for (let j = 0; j < s.length; j++) {
+            res[i] += node[s[j]].acc;
+            node = node[s[j]];
         }
     }
     return res;

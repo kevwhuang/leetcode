@@ -3,9 +3,7 @@
 class Graph {
     constructor(n, edges) {
         this.adj = Array.from({ length: n + 1 }, () => []);
-        for (let i = 0; i < edges.length; i++) {
-            this.addEdge(edges[i]);
-        }
+        edges.forEach(e => this.addEdge(e));
     }
     addEdge(edge) {
         this.adj[edge[0]].push(edge.slice(1));
@@ -15,9 +13,9 @@ class Graph {
         const pq = new PriorityQueue({ compare: (a, b) => a[1] - b[1] });
         pq.enqueue([node1, 0]);
         while (pq.size()) {
-            const u = pq.front()[0], w = pq.dequeue()[1];
+            const u = pq.front()[0];
             if (u === node2) return C[u];
-            const arr = this.adj[u];
+            const arr = this.adj[u], w = pq.dequeue()[1];
             for (let i = 0; i < arr.length; i++) {
                 const v = arr[i][0], next = arr[i][1] + w;
                 if (next >= C[v]) continue;

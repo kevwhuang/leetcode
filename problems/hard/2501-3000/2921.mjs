@@ -1,39 +1,30 @@
 // 2921 - Maximum Profitable Triplets With Increasing Prices II
 
 function maxProfit(prices, profits) {
-    let maxPrice = 0;
-    const n = prices.length;
-    for (let i = 0; i < n; i++) {
-        maxPrice = Math.max(prices[i], maxPrice);
-    }
-    const treeLeft = new Uint32Array(maxPrice + 1);
-    const maxLeft = new Uint32Array(n);
-    for (let i = 0; i < n; i++) {
-        for (let j = prices[i]; j <= maxPrice; j += j & -j) {
-            treeLeft[j] = Math.max(profits[i], treeLeft[j]);
+    const tgt = prices.reduce((s, e) => Math.max(e, s));
+    const arr = new Uint32Array(tgt + 1);
+    const ps = new Uint32Array(prices.length);
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = prices[i]; j <= tgt; j += j & -j) {
+            arr[j] = Math.max(profits[i], arr[j]);
         }
-        let max = 0;
         for (let j = prices[i] - 1; j; j -= j & -j) {
-            max = Math.max(treeLeft[j], max);
+            ps[i] = Math.max(arr[j], ps[i]);
         }
-        maxLeft[i] = max;
     }
-    let maxProfit = -1;
-    const treeRight = new Uint32Array(maxPrice + 1);
-    for (let i = n - 1; ~i; i--) {
-        do {
-            if (maxLeft[i] === 0) break;
-            let maxRight = 0;
-            for (let j = maxPrice - prices[i]; j; j -= j & -j) {
-                maxRight = Math.max(treeRight[j], maxRight);
+    arr.fill(0);
+    let res = -1;
+    for (let i = prices.length - 1; ~i; i--) {
+        if (ps[i]) {
+            let max = 0;
+            for (let j = tgt - prices[i]; j; j -= j & -j) {
+                max = Math.max(arr[j], max);
             }
-            if (maxRight === 0) break;
-            const profit = maxLeft[i] + profits[i] + maxRight;
-            maxProfit = Math.max(profit, maxProfit);
-        } while (false);
-        for (let j = maxPrice - prices[i] + 1; j <= maxPrice; j += j & -j) {
-            treeRight[j] = Math.max(profits[i], treeRight[j]);
+            if (max) res = Math.max(profits[i] + ps[i] + max, res);
+        }
+        for (let j = tgt - prices[i] + 1; j <= tgt; j += j & -j) {
+            arr[j] = Math.max(profits[i], arr[j]);
         }
     }
-    return maxProfit;
+    return res;
 }

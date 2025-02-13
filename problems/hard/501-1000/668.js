@@ -3,11 +3,11 @@
 function findKthNumber(m, n, k) {
     let l = 1, r = m * n;
     while (l <= r) {
-        const mid = l + r >> 1;
-        let count = 0, row = 0;
-        while (++row <= m) count += Math.min(n, mid / row >> 0);
-        if (count < k) l = mid + 1;
-        else r = mid - 1;
+        let acc = 0, rr = 0;
+        const mm = l + r >> 1;
+        while (++rr <= m) acc += Math.min(mm / rr >> 0, n);
+        if (acc < k) l = mm + 1;
+        else r = mm - 1;
     }
     return l;
 }
