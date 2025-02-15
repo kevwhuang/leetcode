@@ -6,25 +6,19 @@ function maxNumEdgesToRemove(n, edges) {
         return p1 !== p2 && (uf[p1] = p2);
     }
     const find = (v, uf) => v === uf[v] ? v : uf[v] = find(uf[v], uf);
+    let res = 0;
     const uf1 = Array.from({ length: n + 1 }, (_, i) => i);
     const uf2 = [...uf1];
     uf1[0] = uf2[0] = n;
-    let acc = 0;
     for (let i = 0; i < edges.length; i++) {
         const u = edges[i][1], v = edges[i][2];
-        edges[i][0] === 3
-            && union(u, v, uf1) && uf1[0]--
-            && union(u, v, uf2) && uf2[0]--
-            && acc++;
+        if (edges[i][0] !== 3 || !union(u, v, uf1)) continue;
+        if (uf1[0]-- && union(u, v, uf2)) uf2[0]-- && res++;
     }
     for (let i = 0; i < edges.length; i++) {
         const u = edges[i][1], v = edges[i][2];
-        edges[i][0] === 1
-            && union(u, v, uf1) && uf1[0]--
-            && acc++;
-        edges[i][0] === 2
-            && union(u, v, uf2) && uf2[0]--
-            && acc++;
+        if (edges[i][0] === 1 && union(u, v, uf1)) uf1[0]-- && res++;
+        if (edges[i][0] === 2 && union(u, v, uf2)) uf2[0]-- && res++;
     }
-    return uf1[0] === 1 && uf2[0] === 1 ? edges.length - acc : -1;
+    return uf1[0] === 1 && uf2[0] === 1 ? edges.length - res : -1;
 }
