@@ -2,23 +2,24 @@
 
 class MyCalendarThree {
     constructor() {
-        this.times = [];
+        this.arr = [];
     }
     book(startTime, endTime) {
-        this.#insert(startTime, 1);
-        this.#insert(endTime, -1);
-        let max = 1, acc = 0;
-        this.times.forEach(e => max = Math.max(acc += e[1], max));
-        return max;
+        this.#add(startTime, 1);
+        this.#add(endTime, -1);
+        let res = 1, acc = 0;
+        this.arr.forEach(e => res = Math.max(acc += e[1], res));
+        return res;
     }
-    #insert(time, val) {
-        let l = 0, r = this.times.length - 1;
+    #add(tgt, val) {
+        const arr = this.arr;
+        let l = 0, r = arr.length - 1;
         while (l <= r) {
             const m = l + r >> 1;
-            if (this.times[m][0] < time) l = m + 1;
-            else if (this.times[m][0] > time) r = m - 1;
-            else return this.times[m][1] += val;
+            if (arr[m][0] < tgt) l = m + 1;
+            else if (arr[m][0] > tgt) r = m - 1;
+            else return arr[m][1] += val;
         }
-        this.times.splice(l, 0, [time, val]);
+        arr.splice(l, 0, [tgt, val]);
     }
 }

@@ -1,29 +1,26 @@
 // 773 - Sliding Puzzle
 
 function slidingPuzzle(board) {
-    const dict = {
-        0: [1, 3], 1: [0, 2, 4], 2: [1, 5],
-        3: [0, 4], 4: [1, 3, 5], 5: [2, 4],
-    };
-    let res = 1, queue = [board[0].concat(board[1])];
-    const seen = new Set([queue[0].join('')]);
+    let res = 1, Q = [board[0].concat(board[1])];
+    const seen = new Set([Q[0].join``]);
     if (seen.has('123450')) return 0;
-    while (queue.length) {
-        const nextQueue = [];
-        for (let i = 0; i < queue.length; i++) {
-            const cur = queue[i].indexOf(0), dirs = dict[cur];
-            for (let j = 0; j < dirs.length; j++) {
-                const next = [...queue[i]];
-                next[cur] = next[dirs[j]];
-                next[dirs[j]] = 0;
-                const key = next.join('');
+    const dict = { 0: [1, 3], 1: [0, 2, 4], 2: [1, 5] };
+    dict[3] = [0, 4], dict[4] = [1, 3, 5], dict[5] = [2, 4];
+    while (Q.length) {
+        const N = [];
+        for (let i = 0; i < Q.length; i++) {
+            const idx = Q[i].indexOf(0), D = dict[idx];
+            for (let j = 0; j < D.length; j++) {
+                const next = [...Q[i]];
+                next[idx] = next[D[j]], next[D[j]] = 0;
+                const key = next.join``;
                 if (key === '123450') return res;
                 if (seen.has(key)) continue;
                 seen.add(key);
-                nextQueue.push(next);
+                N.push(next);
             }
         }
-        res++, queue = nextQueue;
+        res++, Q = N;
     }
     return -1;
 }

@@ -4,42 +4,42 @@ function numDistinctIslands2(grid) {
     function dfs(r, c) {
         if (grid[r][c] === 0) return;
         grid[r][c] = 0;
-        island.push([r, c]);
+        M1.push([r, c]);
         if (r) dfs(r - 1, c);
         if (r + 1 < m) dfs(r + 1, c);
         if (c) dfs(r, c - 1);
         if (c + 1 < n) dfs(r, c + 1);
     }
-    const set = new Set(), m = grid.length, n = grid[0].length;
-    let island;
+    const seen = new Set(), m = grid.length, n = grid[0].length;
+    let M1;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             if (grid[r][c] === 0) continue;
-            island = [];
+            M1 = [];
             dfs(r, c);
-            const len = island.length;
-            if (len <= 2 && set.add(len)) continue;
-            const M = Array.from({ length: 8 }, () => new Array(len));
-            for (let i = 0; i < len; i++) {
-                const r = island[i][0], c = island[i][1];
-                M[0][i] = [-r, -c], M[1][i] = [-r, c];
-                M[2][i] = [r, -c], M[3][i] = [r, c];
-                M[4][i] = [-c, -r], M[5][i] = [-c, r];
-                M[6][i] = [c, -r], M[7][i] = [c, r];
+            const nn = M1.length;
+            if (nn <= 2 && seen.add(nn)) continue;
+            const M2 = Array.from({ length: 8 }, () => new Array(nn));
+            for (let i = 0; i < nn; i++) {
+                const rr = M1[i][0], cc = M1[i][1];
+                M2[0][i] = [-rr, -cc], M2[1][i] = [-rr, cc];
+                M2[2][i] = [rr, -cc], M2[3][i] = [rr, cc];
+                M2[4][i] = [-cc, -rr], M2[5][i] = [-cc, rr];
+                M2[6][i] = [cc, -rr], M2[7][i] = [cc, rr];
             }
             let key;
             for (let i = 0; i < 8; i++) {
-                M[i].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
-                const r = M[i][0][0], c = M[i][0][1];
-                for (let j = 1; j < len; j++) {
-                    M[i][j][0] -= r, M[i][j][1] -= c;
+                M2[i].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+                const rr = M2[i][0][0], cc = M2[i][0][1];
+                for (let j = 1; j < nn; j++) {
+                    M2[i][j][0] -= rr, M2[i][j][1] -= cc;
                 }
-                M[i][0][0] = M[i][0][1] = 0;
-                const serial = JSON.stringify(M[i]);
-                if (!key || serial < key) key = serial;
+                M2[i][0][0] = M2[i][0][1] = 0;
+                const s = String(M2[i]);
+                if (!key || s < key) key = s;
             }
-            set.add(key);
+            seen.add(key);
         }
     }
-    return set.size;
+    return seen.size;
 }

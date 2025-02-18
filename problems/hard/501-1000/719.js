@@ -4,13 +4,13 @@ function smallestDistancePair(nums, k) {
     nums = new Uint32Array(nums).sort();
     let l = 0, r = nums.at(-1) - nums[0];
     while (l < r) {
-        let cnt = 0;
+        let acc = 0;
         const m = l + r >> 1;
-        for (let l = 0, r = 0; r < nums.length; r++) {
-            while (nums[l] + m < nums[r]) l++;
-            cnt += r - l;
+        for (let ll = 0, rr = 0; rr < nums.length; rr++) {
+            while (nums[ll] + m < nums[rr]) ll++;
+            acc += rr - ll;
         }
-        if (cnt < k) l = m + 1;
+        if (acc < k) l = m + 1;
         else r = m;
     }
     return l;

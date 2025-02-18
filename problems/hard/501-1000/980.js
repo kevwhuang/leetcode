@@ -1,27 +1,27 @@
 // 980 - Unique Paths III
 
 function uniquePathsIII(grid) {
-    function dfs(r, c, cells) {
+    function backtrack(r, c, acc) {
         if (r === -1 || r === m || c === -1 || c === n) return;
-        if (grid[r][c] === -1) return;
-        if (grid[r][c] === 2 && cells === 0) return res++;
-        const cur = grid[r][c];
-        grid[r][c] = -1;
-        dfs(r - 1, c, cells - 1);
-        dfs(r + 1, c, cells - 1);
-        dfs(r, c - 1, cells - 1);
-        dfs(r, c + 1, cells - 1);
-        grid[r][c] = cur;
+        const cur = M[r][c];
+        if (cur === -1) return;
+        if (cur === 2 && acc === 0) return res++;
+        M[r][c] = -1, acc--;
+        backtrack(r - 1, c, acc);
+        backtrack(r + 1, c, acc);
+        backtrack(r, c - 1, acc);
+        backtrack(r, c + 1, acc);
+        M[r][c] = cur;
     }
-    const m = grid.length, n = grid[0].length;
-    let start, cells = 1;
+    let a, b, acc = 1;
+    const M = grid, m = M.length, n = M[0].length;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
-            if (grid[r][c] === 0) cells++;
-            else if (grid[r][c] === 1) start = [r, c];
+            if (M[r][c] === 1) a = r, b = c;
+            else if (M[r][c] === 0) acc++;
         }
     }
     let res = 0;
-    dfs(start[0], start[1], cells);
+    backtrack(a, b, acc);
     return res;
 }

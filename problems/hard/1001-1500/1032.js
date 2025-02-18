@@ -3,35 +3,31 @@
 class StreamChecker {
     constructor(words) {
         this.trie = this.#init(words);
-        this.queue = [];
+        this.Q = [];
     }
     query(letter) {
-        let suffix = false;
-        const nextQueue = [];
-        for (let i = 0; i < this.queue.length; i++) {
-            const next = this.queue[i][letter];
-            if (!next) continue;
-            if (next.word) suffix = true;
-            nextQueue.push(next);
+        let res = false;
+        const N = [], next = this.trie[letter];
+        if (next && next.flag) res = true;
+        if (next) N.push(next);
+        for (let i = 0; i < this.Q.length; i++) {
+            const next = this.Q[i][letter];
+            if (next && next.flag) res = true;
+            if (next) N.push(next);
         }
-        const next = this.trie[letter];
-        if (next) {
-            if (next.word) suffix = true;
-            nextQueue.push(next);
-        }
-        this.queue = nextQueue;
-        return suffix;
+        this.Q = N;
+        return res;
     }
-    #init(words) {
+    #init(arr) {
         const trie = {};
-        for (let i = 0; i < words.length; i++) {
+        for (let i = 0; i < arr.length; i++) {
             let node = trie;
-            const word = words[i];
-            for (let j = 0; j < word.length; j++) {
-                node[word[j]] ??= {};
-                node = node[word[j]];
+            const s = arr[i];
+            for (let j = 0; j < s.length; j++) {
+                node[s[j]] ??= {};
+                node = node[s[j]];
             }
-            node.word = true;
+            node.flag = true;
         }
         return trie;
     }

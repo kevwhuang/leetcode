@@ -2,43 +2,39 @@
 
 function largestIsland(grid) {
     function dfs(r, c) {
-        if (grid[r][c] === 0) return;
-        grid[r][c] = 0;
-        cells.push([r, c]);
-        size++;
+        if (M[r][c] !== 1) return;
+        M[r][c] = tgt, acc++;
         if (r) dfs(r - 1, c);
         if (r + 1 < n) dfs(r + 1, c);
         if (c) dfs(r, c - 1);
         if (c + 1 < n) dfs(r, c + 1);
     }
-    let max = 1, id = -1, cells, size;
-    const n = grid.length, map = new Map();
+    let res = 1, tgt = 1, acc;
+    const arr = [0, 0], M = grid, n = M.length;
     for (let r = 0; r < n; r++) {
         for (let c = 0; c < n; c++) {
-            if (grid[r][c] !== 1) continue;
-            cells = [], size = 0;
+            if (M[r][c] !== 1) continue;
+            tgt++, acc = 0;
             dfs(r, c);
-            max = Math.max(size, max);
-            for (let i = 0; i < cells.length; i++) {
-                grid[cells[i][0]][cells[i][1]] = id;
-            }
-            map.set(id--, size);
+            res = Math.max(acc, res);
+            arr.push(acc);
         }
     }
+    tgt = 0;
+    const seen = new Uint32Array(arr.length);
+    const D = [0, -1, 0, 1, 0];
     for (let r = 0; r < n; r++) {
         for (let c = 0; c < n; c++) {
-            if (grid[r][c] !== 0) continue;
-            const set = new Set();
-            if (r && grid[r - 1][c] < 0) set.add(grid[r - 1][c]);
-            if (r + 1 < n && grid[r + 1][c] < 0) set.add(grid[r + 1][c]);
-            if (c && grid[r][c - 1] < 0) set.add(grid[r][c - 1]);
-            if (c + 1 < n && grid[r][c + 1] < 0) set.add(grid[r][c + 1]);
-            size = 1;
-            for (const id of set) {
-                size += map.get(id);
+            if (M[r][c]) continue;
+            tgt++, acc = 1;
+            for (let i = 0; i < 4; i++) {
+                const rr = r + D[i], cc = c + D[i + 1];
+                if (rr < 0 || rr === n || cc < 0 || cc === n) continue;
+                const cur = M[rr][cc];
+                if (seen[cur] !== tgt) seen[cur] = tgt, acc += arr[cur];
             }
-            max = Math.max(size, max);
+            res = Math.max(acc, res);
         }
     }
-    return max;
+    return res;
 }
