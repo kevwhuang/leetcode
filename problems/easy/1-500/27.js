@@ -2,9 +2,10 @@
 
 function removeElement(nums, val) {
     let l = 0, r = 0;
+    const n = nums.length;
     while (true) {
-        while (r < nums.length && nums[r] === val) r++;
-        if (r === nums.length) break;
+        while (r < n && nums[r] === val) r++;
+        if (r === n) break;
         nums[l++] = nums[r++];
     }
     return l;
