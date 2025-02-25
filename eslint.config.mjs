@@ -226,9 +226,6 @@ const eslint = [
             'vars-on-top': 2,
         },
     }, {
-        files: ['problems/medium/2501-3000/2847.mjs'],
-        rules: { 'no-loss-of-precision': 0 },
-    }, {
         files: ['problems/**/*.jsx'],
         rules: { '@stylistic/comma-dangle': 0 },
     }, {
@@ -250,6 +247,9 @@ const eslint = [
     }, {
         files: ['tests/**'],
         rules: { '@stylistic/max-len': [2, { code: 130 }] },
+    }, {
+        files: ['problems/medium/2501-3000/2847.mjs'],
+        rules: { 'no-loss-of-precision': 0 },
     },
 ];
 
