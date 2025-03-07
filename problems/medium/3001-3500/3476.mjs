@@ -1,11 +1,16 @@
 // 3476 - Maximize Profit From Task Assignment
 
 function maxProfit(workers, tasks) {
-    const M = tasks, map = new Map();
-    M.forEach(([a, b]) => map.has(a) ? map.get(a).push(b) : map.set(a, [b]));
-    map.forEach(e => e.sort((a, b) => a - b));
-    const res = workers.reduce((s, e) => s + (map.get(e)?.pop() ?? 0), 0);
-    let max = 0;
-    map.forEach(e => max = Math.max(e.at(-1) ?? 0, max));
+    const arr = new Uint32Array(workers).sort();
+    const M = tasks.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    const m = arr.length, n = M.length;
+    let res = 0, max = 0, i = 0, j = 0;
+    while (i < m && j < n) {
+        const a = arr[i], b = M[j][0], c = M[j][1];
+        if (a === b) res += c, i++, j++;
+        else if (a < b) i++;
+        else max = Math.max(c, max), j++;
+    }
+    while (j < n) max = Math.max(M[j++][1], max);
     return res + max;
 }
