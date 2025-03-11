@@ -1,9 +1,8 @@
 // 718 - Maximum Length of Repeated Subarray
 
 function findLength(nums1, nums2) {
-    const m = nums1.length, n = nums2.length;
-    if (m < n) return findLength(n, m);
     let res = 0;
+    const m = nums1.length, n = nums2.length;
     const dp = new Array(n).fill(0);
     for (let i = 0; i < m; i++) {
         for (let prev = 0, j = 0; j < n; j++) {
