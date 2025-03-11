@@ -1,14 +1,14 @@
 class SegmentTree {
     constructor(vals) {
         this.size = vals.length;
-        this.tree = [null, ...new Array(vals.length), ...vals];
+        this.tree = new Array(vals.length).concat(vals);
         for (let i = vals.length - 1; i; i--) {
             this.tree[i] = Math.max(this.tree[2 * i], this.tree[2 * i + 1]);
         }
     }
     max(start, end) {
         start += this.size;
-        end += this.size + 1;
+        end += this.size;
         let res = -Infinity;
         while (start < end) {
             if (start & 1) res = Math.max(this.tree[start++], res);
