@@ -1,25 +1,24 @@
 // 3488 - Closest Equal Element Queries
 
 function solveQueries(nums, queries) {
-    const map = new Map(), m = nums.length;
-    for (let i = 0; i < m; i++) {
-        if (!map.has(nums[i])) map.set(nums[i], []);
-        map.get(nums[i]).push(i);
+    const map = new Map(), n = nums.length;
+    const arr = new Uint32Array(n).fill(-1);
+    for (let r = 0; r < n; r++) {
+        if (map.has(nums[r])) {
+            const l = map.get(nums[r]);
+            arr[l] = Math.min(r - l, arr[l]);
+            arr[r] = r - l;
+        }
+        map.set(nums[r], r);
+    }
+    for (let r = 0; r < n; r++) {
+        const l = map.get(nums[r]);
+        arr[l] = Math.min(n + r - l, arr[l]);
+        arr[r] = Math.min(n + r - l, arr[r]);
+        map.set(nums[r], r);
     }
     for (let i = 0; i < queries.length; i++) {
-        const tgt = queries[i];
-        const arr = map.get(nums[tgt]), n = arr.length;
-        if (n === 1 && (queries[i] = -1)) continue;
-        let l = 0, r = arr.length - 1;
-        while (l <= r) {
-            const m = l + r >> 1;
-            if (arr[m] < tgt) l = m + 1;
-            else if (arr[m] > tgt) r = m - 1;
-            else l = m, r = -1;
-        }
-        const a = l ? arr[l] - arr[l - 1] : arr[l] - arr[n - 1] + m;
-        const b = l + 1 < n ? arr[l + 1] - arr[l] : arr[0] - arr[l] + m;
-        queries[i] = Math.min(a, b);
+        queries[i] = arr[queries[i]] < n ? arr[queries[i]] : -1;
     }
     return queries;
 }
