@@ -1,15 +1,13 @@
 // 503 - Next Greater Element II
 
 function nextGreaterElements(nums) {
-    const len = nums.length;
-    const res = new Array(len).fill(-1);
-    const stack = [];
-    for (let i = 0; i < 2 * len; i++) {
-        const n = nums[i % len];
-        while (stack.length && n > nums[stack[stack.length - 1]]) {
-            res[stack.pop()] = n;
-        }
-        if (i < len) stack.push(i);
+    const S = [], n = nums.length, nn = n + n;
+    const res = new Int32Array(n);
+    for (let i = 0; i < nn; i++) {
+        const cur = nums[i % n];
+        while (S.length && nums[S.at(-1)] < cur) res[S.pop()] = cur;
+        if (i < n) S.push(i);
     }
+    while (S.length) res[S.pop()] = -1;
     return res;
 }
