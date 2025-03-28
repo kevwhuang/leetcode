@@ -1,17 +1,28 @@
 // 2572 - Count the Number of Square-Free Subsets
 
-function countTheNumOfKFreeSubsets(nums, k) {
-    function init() {
-        dp = new Array(51), dp[0] = 1, dp[1] = 2;
-        for (let i = 2; i < 51; i++) {
-            dp[i] = dp[i - 2] + dp[i - 1];
+function squareFreeSubsets(nums) {
+    const dict = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+    const dp = new Uint32Array(1024);
+    dp[0] = 1;
+    let acc = 0, i = -1;
+    while (++i < nums.length) {
+        if (nums[i] === 1 && ++acc) continue;
+        let mask = 0, cur = nums[i], j = -1;
+        while (++j < 10) {
+            if (cur % dict[j]) continue;
+            mask |= 1 << j, cur /= dict[j];
+            if (cur % dict[j]) continue;
+            cur = 0;
+            break;
+        }
+        if (cur === 0) continue;
+        j = -1;
+        while (++j < 1024) {
+            if (mask & j || dp[j] === 0) continue;
+            dp[mask | j] = (dp[mask | j] + dp[j]) % 1000000007;
         }
     }
-    if (!this.dp) init();
-    const arr = new Uint16Array(nums).sort();
-    const map = new Map();
-    arr.forEach(e => map.set(e, map.get(e - k) + 1 || 1) && map.delete(e - k));
-    let res = 1;
-    map.values().forEach(e => res *= dp[e]);
-    return res;
+    const k = 1n << BigInt(acc);
+    const sum = BigInt(dp.reduce((s, e) => (s + e) % 1000000007));
+    return Number((k * sum + 1000000006n) % 1000000007n);
 }
