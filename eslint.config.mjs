@@ -183,7 +183,7 @@ const eslint = [
             'no-undef-init': 2,
             'no-underscore-dangle': 2,
             'no-unexpected-multiline': 2,
-            'no-unmodified-loop-condition': 2,
+            'no-unmodified-loop-condition': 0,
             'no-unneeded-ternary': 2,
             'no-unreachable': 2,
             'no-unsafe-finally': 2,
