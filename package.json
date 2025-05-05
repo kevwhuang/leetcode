@@ -3,6 +3,7 @@
     "version": "25.5.5",
     "author": "Kevin Huang",
     "scripts": {
+        "gen": "bun platform/gen",
         "lint": "bun eslint"
     },
     "devDependencies": {
