@@ -180,6 +180,7 @@ const eslint = [
             'no-shadow-restricted-names': 2,
             'no-template-curly-in-string': 2,
             'no-this-before-super': 2,
+            'no-unassigned-vars': 2,
             'no-undef-init': 2,
             'no-underscore-dangle': 2,
             'no-unexpected-multiline': 2,
