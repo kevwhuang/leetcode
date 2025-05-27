@@ -1,6 +1,6 @@
 {
     "name": "leetcode",
-    "version": "25.5.25",
+    "version": "25.5.26",
     "author": "Kevin Huang",
     "scripts": {
         "gen": "bun platform/gen",
