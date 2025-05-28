@@ -1,9 +1,9 @@
 {
     "name": "leetcode",
-    "version": "25.5.26",
+    "version": "25.5.27",
     "author": "Kevin Huang",
     "scripts": {
-        "gen": "bun platform/gen",
+        "gen": "bun public/gen",
         "lint": "bun eslint"
     },
     "devDependencies": {
