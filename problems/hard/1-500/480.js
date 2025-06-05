@@ -1,8 +1,8 @@
 // 480 - Sliding Window Median
 
 function medianSlidingWindow(nums, k) {
-    const heap1 = new PriorityQueue({ compare: (a, b) => b - a });
-    const heap2 = new PriorityQueue({ compare: (a, b) => a - b });
+    const heap1 = new PriorityQueue((a, b) => b - a);
+    const heap2 = new PriorityQueue((a, b) => a - b);
     for (let i = 0; i < k; i++) {
         heap1.enqueue(nums[i]);
         heap2.enqueue(heap1.dequeue());
@@ -19,8 +19,8 @@ function medianSlidingWindow(nums, k) {
         if (acc < 0) heap1.enqueue(heap2.dequeue());
         else if (acc) heap2.enqueue(heap1.dequeue());
         B[prev] = (B[prev] ?? 0) + 1;
-        while (heap1.size() && B[heap1.front()]) B[heap1.dequeue()]--;
-        while (heap2.size() && B[heap2.front()]) B[heap2.dequeue()]--;
+        while (B[heap1.front()]) B[heap1.dequeue()]--;
+        while (B[heap2.front()]) B[heap2.dequeue()]--;
         if (k & 1) res[i - k + 1] = heap1.front();
         else res[i - k + 1] = (heap2.front() + heap1.front()) / 2;
     }
