@@ -1,7 +1,8 @@
 // 3551 - Minimum Swaps to Sort by Digit Sum
 
 function minSwaps(nums) {
-    const n = nums.length, arr1 = new Uint8Array(n), arr2 = new Uint32Array(n);
+    const n = nums.length;
+    const arr1 = new Uint8Array(n), arr2 = new Uint32Array(n);
     for (let i = 0; i < n; i++) {
         let acc = 0, cur = nums[i];
         while (cur) acc += cur % 10, cur = cur / 10 >> 0;
