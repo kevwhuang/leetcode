@@ -8,8 +8,7 @@ class KthLargest {
 
     constructor(k, nums) {
         this.k = k;
-        this.heap = new PriorityQueue({ compare: (a, b) => a - b });
-        nums = new Int16Array(nums).sort();
+        this.heap = new PriorityQueue((a, b) => a - b);
         nums.forEach(e => this.heap.enqueue(e));
     }
 

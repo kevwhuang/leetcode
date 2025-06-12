@@ -2,8 +2,8 @@
 
 class MedianFinder {
     constructor() {
-        this.heap1 = new PriorityQueue({ compare: (a, b) => a - b });
-        this.heap2 = new PriorityQueue({ compare: (a, b) => b - a });
+        this.heap1 = new PriorityQueue((a, b) => a - b);
+        this.heap2 = new PriorityQueue((a, b) => b - a);
     }
     addNum(num) {
         const heap1 = this.heap1, heap2 = this.heap2;

@@ -9,7 +9,7 @@
 function minInterval(intervals, queries) {
     const M = intervals.sort((a, b) => a[0] - b[0]);
     const arr = new Uint32Array(queries).sort();
-    const pq = new PriorityQueue({ compare: (a, b) => a[0] - b[0] });
+    const pq = new PriorityQueue((a, b) => a[0] - b[0]);
     const map = new Map();
     for (let i = 0, j = 0; i < arr.length; i++) {
         while (j < M.length && M[j][0] <= arr[i]) {
