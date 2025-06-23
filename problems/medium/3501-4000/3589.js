@@ -9,34 +9,27 @@ function primeSubarray(nums, k) {
                 dict[j] = 1;
             }
         }
+        arr = new Uint16Array(50000);
+        Q1 = new Uint16Array(50000);
+        Q2 = new Uint16Array(50000);
     }
     if (!this.dict) init();
-    let res = 0, l = 0, r = -1, i, j;
-    const arr = [];
-    while (++r < nums.length) {
-        if (dict[nums[r]] === 0) {
-            let ll = 0, rr = arr.length - 1;
-            const tgt = nums[r];
-            while (ll <= rr) {
-                const m = ll + rr >> 1;
-                if (arr[m] < tgt) ll = m + 1;
-                else rr = m - 1;
-            }
-            arr.splice(ll, 0, tgt);
-            i = j, j = r;
+    let i = -1, j = 0;
+    while (++i < nums.length) if (dict[nums[i]] === 0) arr[j++] = i;
+    let res = 0, l1 = 0, r1 = 0, l2 = 0, r2 = 0, l3 = 0, r3 = -1;
+    while (++r3 < j) {
+        while (l1 < r1 && nums[arr[Q1[r1 - 1]]] >= nums[arr[r3]]) r1--;
+        while (l2 < r2 && nums[arr[Q2[r2 - 1]]] <= nums[arr[r3]]) r2--;
+        Q1[r1++] = Q2[r2++] = r3;
+        while (nums[arr[Q2[l2]]] - nums[arr[Q1[l1]]] > k) {
+            if (Q1[l1] === l3) l1++;
+            if (Q2[l2] === l3) l2++;
+            l3++;
         }
-        while (arr.length && arr.at(-1) - arr[0] > k) {
-            if (dict[nums[l++]]) continue;
-            let ll = 0, rr = arr.length - 1;
-            const tgt = nums[l - 1];
-            while (ll <= rr) {
-                const m = ll + rr >> 1;
-                if (arr[m] < tgt) ll = m + 1;
-                else if (arr[m] > tgt) rr = m - 1;
-                else if (arr.splice(m, 1)) break;
-            }
-        }
-        if (arr.length > 1) res += i - l + 1;
+        if (l3 >= r3) continue;
+        const left = arr[r3 - 1] - (l3 ? arr[l3 - 1] : -1);
+        const right = (r3 + 1 < j ? arr[r3 + 1] : nums.length) - arr[r3];
+        res += left * right;
     }
     return res;
 }

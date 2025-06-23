@@ -22,7 +22,6 @@ const eslint = [
             '@stylistic/curly-newline': 2,
             '@stylistic/dot-location': [2, 'property'],
             '@stylistic/eol-last': 2,
-            '@stylistic/func-call-spacing': 2,
             '@stylistic/function-call-argument-newline': [2, 'consistent'],
             '@stylistic/function-call-spacing': 2,
             '@stylistic/generator-star-spacing': [2, { after: true, before: false }],
