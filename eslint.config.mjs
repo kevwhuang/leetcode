@@ -234,6 +234,7 @@ const eslint = [
     }, {
         files: [
             'problems/easy/2001-2500/2383.js',
+            'problems/easy/3501-4000/3633.js',
             'problems/medium/1001-1500/1292.js',
             'problems/medium/1001-1500/1334.js',
             'problems/medium/1001-1500/1343.js',
@@ -242,6 +243,7 @@ const eslint = [
             'problems/medium/1001-1500/1452.js',
             'problems/medium/1501-2000/1577.js',
             'problems/medium/2501-3000/2512.js',
+            'problems/medium/3501-4000/3635.js',
         ],
         rules: { '@stylistic/max-len': [2, { code: 90 }] },
     }, {
