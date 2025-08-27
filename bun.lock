@@ -13,7 +13,7 @@
   "packages": {
     "@datastructures-js/heap": ["@datastructures-js/heap@4.3.3", "", {}, "sha512-UcUu/DLh/aM4W3C8zZfwxxm6/6FIZUlm3mcAXuNOCa6Aj4iizNvNXQyb8DjZQH2jKSQbMRyNlngP6TPimuGjpQ=="],
 
-    "@datastructures-js/priority-queue": ["@datastructures-js/priority-queue@6.3.3", "", { "dependencies": { "@datastructures-js/heap": "^4.3.3" } }, "sha512-CIbUf0h4TPu1tHJ2gV4OTjwPkh7XZNb37u44bwoW6Py2vPdgaRUhFh3qFET6jvhyMNq/+ChWfOBRh+9s5WUtvA=="],
+    "@datastructures-js/priority-queue": ["@datastructures-js/priority-queue@6.3.4", "", { "dependencies": { "@datastructures-js/heap": "^4.3.3" } }, "sha512-m8Jt1OkwyHsKRz6L1FWerz3Hw8iU5vqCdBI6khC8YNssF1kXKX6cs8Xc9Zt9ocPCxO/vZhAu/KnQ+uQ4Btw6AA=="],
 
     "@eslint-community/eslint-utils": ["@eslint-community/eslint-utils@4.7.0", "", { "dependencies": { "eslint-visitor-keys": "^3.4.3" }, "peerDependencies": { "eslint": "^6.0.0 || ^7.0.0 || >=8.0.0" } }, "sha512-dyybb3AcajC7uha6CvhdVRJqaKyn7w2YKqKyAN37NKYgZT36w+iRb0Dymmc5qEJ549c/S31cMMSFd75bteCpCw=="],
 

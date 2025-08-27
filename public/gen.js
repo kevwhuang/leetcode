@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 
 const res = await fetch('https://alfa-leetcode-api.onrender.com/problems?limit=4000');
-(await res.json()).problemsetQuestionList?.slice(3500).forEach(async e => {
+(await res.json()).problemsetQuestionList?.slice(3650).forEach(async e => {
     const difficulty = e.difficulty.toLowerCase();
     const id = Number(e.questionFrontendId);
     const type = e.topicTags[0]?.name === 'Database';
