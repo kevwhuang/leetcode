@@ -37,7 +37,6 @@ const eslint = [
             '@stylistic/jsx-indent-props': 2,
             '@stylistic/jsx-max-props-per-line': [2, { when: 'multiline' }],
             '@stylistic/jsx-pascal-case': [2, { allowAllCaps: true }],
-            '@stylistic/jsx-props-no-multi-spaces': 2,
             '@stylistic/jsx-quotes': 2,
             '@stylistic/jsx-self-closing-comp': 2,
             '@stylistic/jsx-sort-props': [2, { callbacksLast: true, reservedFirst: true }],
