@@ -1,12 +1,13 @@
 // 202 - Happy Number
 
 function isHappy(n) {
-    const set = new Set([n]);
-    while (n > 1) {
-        let acc = 0;
-        while (n) acc += (n % 10) ** 2, n = n / 10 >> 0;
-        if (set.has(acc)) return false;
-        set.add(n = acc);
+    const seen = new Set();
+    while (!seen.has(n)) {
+        seen.add(n);
+        let sum = 0, cur = n;
+        while (cur) sum += (cur % 10) ** 2, cur = cur / 10 >> 0;
+        if (sum === 1) return true;
+        n = sum;
     }
-    return true;
+    return false;
 }
