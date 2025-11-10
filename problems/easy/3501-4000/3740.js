@@ -1,15 +1,19 @@
 // 3740 - Minimum Distance Between Three Equal Elements I
 
 function minimumDistance(nums) {
-    let res = 200000, i = 0;
-    const map1 = new Map(), map2 = new Map();
-    while (i < nums.length) {
-        const cur = nums[i++], a = map1.get(cur);
-        if (!a && map1.set(cur, i)) continue;
-        const b = map2.get(cur);
-        if (map2.set(cur, i) && !b) continue;
-        map1.set(cur, b);
-        res = Math.min(2 * (i - a), res);
+    if (!this.arr1) arr1 = new Uint32Array(100001);
+    if (!this.arr2) arr2 = new Uint32Array(100001);
+    arr1.fill(500000, 0, nums.length + 1);
+    arr2.fill(500000, 0, nums.length + 1);
+    let res = Infinity, i = -1;
+    while (++i < nums.length) {
+        const cur = nums[i];
+        if (arr1[cur] === 500000) arr1[cur] = i;
+        else if (arr2[cur] === 500000) arr2[cur] = i;
+        else {
+            res = Math.min(2 * (i - arr1[cur]), res);
+            arr1[cur] = arr2[cur], arr2[cur] = i;
+        }
     }
-    return res < 200000 ? res : -1;
+    return res < Infinity ? res : -1;
 }
