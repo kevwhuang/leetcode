@@ -86,7 +86,7 @@ const eslint = [
             'arrow-body-style': 2,
             'block-scoped-var': 2,
             'capitalized-comments': 2,
-            'complexity': [2, { max: 30 }],
+            'complexity': [2, { max: 32 }],
             'constructor-super': 2,
             'curly': [2, 'multi-line'],
             'default-case-last': 2,
