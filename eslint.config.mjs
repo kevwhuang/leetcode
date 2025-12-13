@@ -213,6 +213,7 @@ const eslint = [
             'prefer-promise-reject-errors': 2,
             'prefer-regex-literals': 2,
             'prefer-spread': 2,
+            'preserve-caught-error': 2,
             'require-atomic-updates': 2,
             'require-await': 2,
             'require-yield': 2,
