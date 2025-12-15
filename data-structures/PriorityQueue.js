@@ -14,8 +14,8 @@ class PriorityQueue {
         while (!this.fn(this.pq[p], this.pq[pp])) {
             cur = this.pq[p], this.pq[p] = this.pq[pp], this.pq[pp] = cur;
             p = pp, l = 2 * pp, r = l + 1;
-            if (r >= this.pq.length) break;
-            pp = this.fn(this.pq[l], this.pq[r]) ? l : r;
+            if (l >= this.pq.length) break;
+            pp = r >= this.pq.length || this.fn(this.pq[l], this.pq[r]) ? l : r;
         }
         return res;
     }

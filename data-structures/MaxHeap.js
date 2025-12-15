@@ -13,8 +13,8 @@ class MaxHeap {
         while (this.heap[p] < this.heap[pp]) {
             cur = this.heap[p], this.heap[p] = this.heap[pp], this.heap[pp] = cur;
             p = pp, l = 2 * pp, r = l + 1;
-            if (r >= this.heap.length) break;
-            pp = this.heap[l] > this.heap[r] ? l : r;
+            if (l >= this.heap.length) break;
+            pp = r >= this.heap.length || this.heap[l] > this.heap[r] ? l : r;
         }
         return res;
     }

@@ -35,7 +35,7 @@ class BinarySearchTree {
     insert(val) {
         if (!this.tree) return this.tree = new Node(val);
         let res = this.tree;
-        while (res && res !== res.val) {
+        while (res) {
             if (res.val > val) {
                 if (!res.left) return res.left = new Node(val);
                 res = res.left;

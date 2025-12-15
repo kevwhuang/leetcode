@@ -1,11 +1,9 @@
-import globals from 'globals';
 import stylistic from '@stylistic/eslint-plugin';
 
 const eslint = [
     {
         files: ['**/*.{js,cjs,mjs,jsx}'],
         languageOptions: {
-            globals: { ...globals.jest },
             parserOptions: { ecmaFeatures: { jsx: true } },
         },
         plugins: { '@stylistic': stylistic },
@@ -46,7 +44,6 @@ const eslint = [
             '@stylistic/line-comment-position': 2,
             '@stylistic/linebreak-style': 2,
             '@stylistic/max-len': [2, { code: 100 }],
-            '@stylistic/member-delimiter-style': 2,
             '@stylistic/multiline-comment-style': 2,
             '@stylistic/no-extra-parens': [2, 'functions'],
             '@stylistic/no-extra-semi': 2,
@@ -76,9 +73,6 @@ const eslint = [
             '@stylistic/switch-colon-spacing': 2,
             '@stylistic/template-curly-spacing': 2,
             '@stylistic/template-tag-spacing': 2,
-            '@stylistic/type-annotation-spacing': 2,
-            '@stylistic/type-generic-spacing': 2,
-            '@stylistic/type-named-tuple-spacing': 2,
             '@stylistic/wrap-iife': 2,
             '@stylistic/yield-star-spacing': 2,
             'accessor-pairs': 2,
@@ -98,9 +92,6 @@ const eslint = [
             'func-style': [2, 'declaration', { allowArrowFunctions: true }],
             'getter-return': 2,
             'grouped-accessor-pairs': 2,
-            'id-denylist': 2,
-            'id-length': [2, { min: 1 }],
-            'id-match': 2,
             'logical-assignment-operators': 2,
             'max-lines': 2,
             'max-lines-per-function': [2, { max: 80 }],
@@ -166,11 +157,6 @@ const eslint = [
             'no-prototype-builtins': 2,
             'no-redeclare': 2,
             'no-regex-spaces': 2,
-            'no-restricted-exports': 2,
-            'no-restricted-globals': 2,
-            'no-restricted-imports': 2,
-            'no-restricted-properties': 2,
-            'no-restricted-syntax': 2,
             'no-script-url': 2,
             'no-self-assign': 2,
             'no-self-compare': 2,
