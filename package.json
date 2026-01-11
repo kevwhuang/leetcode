@@ -10,5 +10,5 @@
         "gen": "bun public/gen",
         "lint": "bun eslint"
     },
-    "version": "25.12.14"
+    "version": "26.1.11"
 }

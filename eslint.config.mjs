@@ -37,7 +37,6 @@ const eslint = [
             '@stylistic/jsx-pascal-case': [2, { allowAllCaps: true }],
             '@stylistic/jsx-quotes': 2,
             '@stylistic/jsx-self-closing-comp': 2,
-            '@stylistic/jsx-sort-props': [2, { callbacksLast: true, reservedFirst: true }],
             '@stylistic/jsx-tag-spacing': [2, { beforeClosing: 'never' }],
             '@stylistic/key-spacing': 2,
             '@stylistic/keyword-spacing': 2,
