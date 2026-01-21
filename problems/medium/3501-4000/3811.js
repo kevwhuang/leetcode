@@ -1,0 +1,3 @@
+// 3811 - Number of Alternating XOR Partitions
+
+
