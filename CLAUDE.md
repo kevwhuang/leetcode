@@ -25,12 +25,13 @@ This repository contains solutions to every LeetCode problem, written primarily 
 | `.java` | Java problems (concurrency) |
 | `.p.java` | Premium Java problems |
 | `.py` | Python problems (Pandas) |
+| `.sh` | Shell problems |
 
 The `.p.` infix denotes premium.
 
 ## Solution Format
 
-- Header comment: `// {id} - {title}` (or `--` for SQL)
+- Header comment: `// {id} - {title}` (or `--` for SQL, `#` for Shell)
 - Export via `module.exports`
 
 ## Code Style
