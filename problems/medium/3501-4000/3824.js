@@ -1,0 +1,3 @@
+// 3824 - Minimum K to Reduce Array Within Limit
+
+

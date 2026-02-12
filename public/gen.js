@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 
-const res = await fetch('https://alfa-leetcode-api.onrender.com/problems?limit=100&skip=3800');
+const res = await fetch('https://alfa-leetcode-api.onrender.com/problems?limit=100&skip=3837');
 (await res.json()).problemsetQuestionList?.forEach(async e => {
     const difficulty = e.difficulty.toLowerCase();
     const id = Number(e.questionFrontendId);
