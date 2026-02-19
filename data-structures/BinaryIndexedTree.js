@@ -1,11 +1,10 @@
 class BinaryIndexedTree {
     constructor(vals) {
         this.vals = vals;
-        this.tree = [null, ...vals];
-        for (let i = 1; i < this.tree.length; i++) {
+        this.tree = [0, ...vals];
+        for (let i = 1; i <= vals.length; i++) {
             const p = i + (i & -i);
-            if (p >= this.tree.length) continue;
-            this.tree[p] += this.tree[i];
+            if (p <= vals.length) this.tree[p] += this.tree[i];
         }
     }
     sum(start, end) {
@@ -20,11 +19,11 @@ class BinaryIndexedTree {
     }
     set(idx, val) {
         const d = val - this.vals[idx];
+        this.vals[idx] = val;
         for (let i = idx + 1; i < this.tree.length; i += i & -i) {
             this.tree[i] += d;
         }
-        this.vals[idx] = val;
-        return true;
+        return this;
     }
 }
 

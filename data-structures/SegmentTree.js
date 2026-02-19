@@ -27,7 +27,7 @@ class SegmentTree {
             if (this.tree[idx] === max) break;
             this.tree[idx] = max;
         }
-        return true;
+        return this;
     }
 }
 
