@@ -1,56 +1,38 @@
 # CLAUDE.md
 
-This repository contains solutions to every LeetCode problem, written primarily in JavaScript. For problems where JavaScript is not supported (concurrency, Pandas, etc.), solutions are provided in the appropriate language (Java, Python, SQL).
+LeetCode solutions in JavaScript. Problems without JS support (concurrency, Pandas, etc.) use Java, Python, or SQL.
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `bun run lint` | Run ESLint |
-| `bun run gen` | Generate stub files for new problems |
-| `bun test` | Run all tests |
+| Command           | Description              |
+|-------------------|--------------------------|
+| `bun run lint`    | Run ESLint               |
+| `bun run gen`     | Generate stub files      |
+| `bun test`        | Run all tests            |
 | `bun test <file>` | Run a specific test file |
 
 ## File Conventions
 
-| Extension | Usage |
-|-----------|-------|
-| `.js` | Free JavaScript problems |
-| `.jsx` | Free JavaScript problems (React) |
-| `.mjs` | Premium JavaScript problems |
-| `.cjs` | Free JavaScript problems (CommonJS) |
-| `.p.cjs` | Premium JavaScript problems (CommonJS) |
-| `.sql` | Free database problems |
-| `.p.sql` | Premium database problems |
-| `.java` | Java problems (concurrency) |
-| `.p.java` | Premium Java problems |
-| `.py` | Python problems (Pandas) |
-| `.sh` | Shell problems |
-
-The `.p.` infix denotes premium.
-
-## Solution Format
-
-- Header comment: `// {id} - {title}` (or `--` for SQL, `#` for Shell)
-- Export via `module.exports`
-
-## Code Style
-
-| Rule | Value |
-|------|-------|
-| Indentation | 4 spaces |
-| Quotes | Single |
-| Semicolons | Required |
-| Trailing commas | Multiline |
-| Max line length | 80 (problems), 130 (tests), 100 (elsewhere) |
+| Extension | Usage                         |
+|-----------|-------------------------------|
+| `.js`     | Free JavaScript               |
+| `.jsx`    | Free JavaScript (React)       |
+| `.mjs`    | Premium JavaScript            |
+| `.cjs`    | Free JavaScript (CommonJS)    |
+| `.p.cjs`  | Premium JavaScript (CommonJS) |
+| `.sql`    | Free database                 |
+| `.p.sql`  | Premium database              |
+| `.java`   | Java (concurrency)            |
+| `.p.java` | Premium Java                  |
+| `.py`     | Python (Pandas)               |
+| `.sh`     | Shell                         |
 
 ## Architecture
 
 ```
-leetcode/
-├── problems/         Solutions by difficulty (easy/medium/hard) and ID range
-├── neetcode/         Solutions by NeetCode 150 category
-├── data-structures/  Custom implementations (Heap, Trie, SegmentTree, etc.)
-├── tests/            Jest-style tests for neetcode/
-└── public/           Generator scripts
+data-structures/  Custom implementations (Heap, Trie, SegmentTree, etc.)
+neetcode/         NeetCode 150 solutions by category
+problems/         Solutions by difficulty and ID range
+public/           Generator scripts
+tests/            Jest tests for neetcode/
 ```
