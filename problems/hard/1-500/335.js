@@ -1,3 +1,0 @@
-// 335 - Self Crossing
-
-

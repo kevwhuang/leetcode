@@ -1,3 +1,0 @@
-// 336 - Palindrome Pairs
-
-

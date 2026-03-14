@@ -1,3 +1,0 @@
-// 906 - Super Palindromes
-
-
